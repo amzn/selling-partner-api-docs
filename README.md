@@ -1,4 +1,5 @@
-## My Project
+## selling-partner-api-docs
+ This repository contains documentation for third party developers to use when calling Selling Partner APIs.
 
 TODO: Fill this README out!
 
