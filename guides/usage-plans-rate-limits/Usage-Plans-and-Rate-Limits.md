@@ -16,7 +16,7 @@ Selling Partner API operations have associated usage plans that specify the rate
 
 This new feature automatically adjusts rate-limits to right-size them based on the needs of the business over time.
 
-A dynamic usage plan is one that is automatically adjusted to each selling partner based on the current and historical business needs for that business. A variety of measures are employed as rules to drive dynamic rate limit adjustments. This means you can expect rate limits to change for any Selling Partner API operation that employs dynamic usage plans. The default rates published in the API Reference documentation can be used as a basis to plan your application. However, because the purpose of dynamic usage plans is to right-size those limits over time, the rates will change. When you submit a request to a Selling Partner API operation, the current rate limits for that operation are returned in the X-Amz-RateLimit-Limit response header.
+A dynamic usage plan is one that is automatically adjusted to each selling partner based on the current and historical business needs for that business. A variety of measures are employed as rules to drive dynamic rate limit adjustments. This means you can expect rate limits to change for any Selling Partner API operation that employs dynamic usage plans. The default rates published in the API Reference documentation can be used as a basis to plan your application. However, because the purpose of dynamic usage plans is to right-size those limits over time, the rates will change. When you submit a request to a Selling Partner API operation, the current rate limits for that operation are returned in the x-amzn-RateLimit-Limit response header.
 
 ## Comparison to Amazon Marketplace Web Service (Amazon MWS)
 
@@ -34,7 +34,7 @@ The key design improvements are:
 
 **How should my application handle a 429 response?**
 
-A 429 is a retry-able status code. Feel free to try again, but repeated throttled requests require a back off strategy. Please refer to the X-Amz-RateLimit-Limit response header to see if the rate limits differ from your expectations.
+A 429 is a retry-able status code. Feel free to try again, but repeated throttled requests require a back off strategy. Please refer to the x-amzn-RateLimit-Limit response header to see if the rate limits differ from your expectations.
 
 **How can I test my application with respect to its usage plans?**
 
