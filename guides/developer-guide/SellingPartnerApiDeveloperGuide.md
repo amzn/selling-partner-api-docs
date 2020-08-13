@@ -1067,21 +1067,20 @@ Create an instance of `LWAAuthorizationCredentials`, using the following paramet
 <tr class="odd">
 <td><strong>refreshToken</strong></td>
 <td>The LWA refresh token. Get this value when the seller authorizes your application. For more information, see <a href="#authorizing-selling-partner-api-applications">Authorizing Selling</a> <a href="#authorizing-selling-partner-api-applications">Partner API applications</a>.</td>
-<td><p>No. Include refreshToken if the operation that you call in the following step requires seller authorization. All operations that</p>
-<p>are not <a href="#grantless-operations-1">grantless operations</a> require seller authorization. If you include refreshToken, do not include withScopes.</p></td>
+<td><p>No. Include refreshToken if the operation that you call in the following step requires seller authorization. All operations that are not <a href="#grantless-operations-1">grantless operations</a> require seller authorization. If you include refreshToken, do not include withScopes.</p></td>
 </tr>
 <tr class="even">
 <td><strong>withScopes</strong></td>
 <td>
 <p>The scope of the LWA authorization grant. You can specify one or more withScopes values.</p>
 <p>Values:</p>
-
 <ul>
 <li>
-<p><em>SCOPE_NOTIFICATIONS_API</em>. For the Notifications API.</p>
+<em>SCOPE_NOTIFICATIONS_API</em>. For the Notifications API.
 </li>
+<li><em>SCOPE_MIGRATION_API</em>. For the Authorization API.</li>
 </ul>
-<p><em>SCOPE_MIGRATION_API</em>. For the Authorization API.</p></td>
+</td>
 <td>No. Include withScopes if the operation that you call in the following step is a <a href="#grantless-operations-1">grantless</a> <a href="#grantless-operations-1">operation</a>. If you include withScopes, do not include refreshToken.</td>
 </tr>
 <tr class="odd">
