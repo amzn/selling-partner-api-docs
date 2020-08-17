@@ -965,7 +965,7 @@ Create instances of `BasicAWSCredentials` and `STSAssumeRoleSessionCredentialsPr
 </tr>
 <tr class="odd">
 <td><strong>uniqueNameForRoleSession</strong></td>
-<td>An identifier for the session that you define. We recommend using a <strong><a href="https://tools.ietf.org/html/rfc4122">Universally Unique Identifier</a> (UUID).</strong></td>
+<td>An identifier for the session that you define. We recommend using a <a href="https://tools.ietf.org/html/rfc4122">Universally Unique Identifier</a> (UUID).</td>
 <td>Yes</td>
 </tr>
 </tbody>
