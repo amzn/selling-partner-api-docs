@@ -5,7 +5,7 @@ The [selling-partner-api-models/models directory](https://github.com/amzn/sellin
 
 The [selling-partner-api-models/clients directory](https://github.com/amzn/selling-partner-api-models/tree/main/clients) contains a [Java library](https://github.com/amzn/selling-partner-api-models/tree/main/clients/sellingpartner-api-aa-java) and a [C# library](https://github.com/amzn/selling-partner-api-models/tree/main/clients/sellingpartner-api-aa-csharp) with mustache templates for use with [swagger-codegen](https://swagger.io/tools/swagger-codegen/) to generate client libraries with authentication and authorization functionality included. The templates are located in *resources/swagger-codegen*.
 
-Please see the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.pdf) for instructions to get started.
+Please see the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md) for instructions to get started.
 
 The [guides](https://github.com/amzn/selling-partner-api-docs/tree/main/guides) directory contains various API user guides such as the [developer guide](https://github.com/amzn/selling-partner-api-docs/tree/main/guides/developer-guide), API specific [use case guides](https://github.com/amzn/selling-partner-api-docs/tree/main/guides/use-case-guides), and [migration guides](https://github.com/amzn/selling-partner-api-docs/tree/main/guides/migration-guides) that are intended to help existing Amazon Marketplace Web Services developers migrate to Selling Partner API.
 
