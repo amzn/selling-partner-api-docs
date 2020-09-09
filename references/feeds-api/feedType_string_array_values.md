@@ -1,6 +1,6 @@
-# feedType enumeration
+# feedType values
 
-The **feedType** string array indicates to Amazon how to process a feed that you submit using the Feeds API. This page lists **feedType** values for the various feed types.
+A **feedType** value indicates to Amazon how to process a feed that you submit using the Feeds API. This page lists **feedType** values for the various feed types.
 
 For additional information about feed types, including flat file feed templates, see the Amazon Marketplace Web Service documentation. 
 
