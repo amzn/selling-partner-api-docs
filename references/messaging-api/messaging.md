@@ -36,7 +36,7 @@ With the Messaging API you can build applications that send messages to buyers. 
 
 
 ### Operations
-[getMessagingActionsForOrder](#getmessagingactionsfororder)<br>[confirmCustomizationDetails](#confirmcustomizationdetails)<br>[createConfirmDeliveryDetails](#createconfirmdeliverydetails)<br>[createLegalDisclosure](#createlegaldisclosure)<br>[createNegativeFeedbackRemoval](#createnegativefeedbackremoval)<br>[createConfirmOrderDetails](#createconfirmorderdetails)<br>[createConfirmServiceDetails](#createconfirmservicedetails)<br>[CreateAmazonMotors](#createamazonmotors)<br>[CreateWarranty](#createwarranty)<br>[createDigitalAccessKey](#createdigitalaccesskey)<br>[createUnexpectedProblem](#createunexpectedproblem)<br>
+[getMessagingActionsForOrder](#getmessagingactionsfororder)<br>[confirmCustomizationDetails](#confirmcustomizationdetails)<br>[createConfirmDeliveryDetails](#createconfirmdeliverydetails)<br>[createLegalDisclosure](#createlegaldisclosure)<br>[createNegativeFeedbackRemoval](#createnegativefeedbackremoval)<br>[createConfirmOrderDetails](#createconfirmorderdetails)<br>[createConfirmServiceDetails](#createconfirmservicedetails)<br>[CreateAmazonMotors](#createamazonmotors)<br>[CreateWarranty](#createwarranty)<br>[GetAttributes](#getattributes)<br>[createDigitalAccessKey](#createdigitalaccesskey)<br>[createUnexpectedProblem](#createunexpectedproblem)<br>
 <a name="paths"></a>
 ## Paths
 
@@ -398,6 +398,43 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
 
 
+<a name="getattributes"></a>
+### GET /messaging/v1/orders/{amazonOrderId}/attributes
+**Operation: GetAttributes**
+
+#### Description
+Returns a response containing attributes related to an order. This includes buyer preferences.
+
+**Usage Plan:**
+
+| Rate (requests per second) | Burst |
+| ---- | ---- |
+| .1 | 5 |
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**amazonOrderId**  <br>*required*|An Amazon order identifier. This specifies the order for which a message is sent.|string|
+|**Query**|**marketplaceIds**  <br>*required*|A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.<br>**Max count** : 1|< string > array|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**200**|Response has successfully been returned  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+
+
 <a name="createdigitalaccesskey"></a>
 ### POST /messaging/v1/orders/{amazonOrderId}/messages/digitalAccessKey
 **Operation: createDigitalAccessKey**
@@ -743,6 +780,24 @@ The response schema for the createWarranty operation.
 |Name|Description|Schema|
 |---|---|---|
 |**errors**  <br>*optional*|A list of error responses returned when a request is unsuccessful.|[ErrorList](#errorlist)|
+
+
+<a name="getattributesresponse"></a>
+### GetAttributesResponse
+The response schema for the GetAttributes operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**buyer**  <br>*optional*|The list of attributes related to the buyer.|[buyer](#getattributesresponse-buyer)|
+|**errors**  <br>*optional*|A list of error responses returned when a request is unsuccessful.|[ErrorList](#errorlist)|
+
+<a name="getattributesresponse-buyer"></a>
+**buyer**
+
+|Name|Description|Schema|
+|---|---|---|
+|**locale**  <br>*optional*|The buyer's language of preference, indicated with a locale-specific language tag. Examples: "en-US", "zh-CN", and "en-GB".|string|
 
 
 <a name="createdigitalaccesskeyrequest"></a>
