@@ -1,6 +1,6 @@
-# reportType enumeration
+# reportType values
 
-Use the  **reportType** string array to specify the type of report that you want to request using the Reports API.
+Use a **reportType** value to specify the type of report that you want to request using the Reports API.
 
 In the report descriptions, "Seller Central" refers to sellers who have registered to sell on Amazon in the past few years; "Marketplace" refers to legacy sellers who registered to sell on Amazon prior to the last few years. Some reports are only available for Marketplace or Seller Central sellers.
 
