@@ -12,19 +12,18 @@
 - [注册为开发者](#registering-as-a-developer)
 
 - [注册您的销售伙伴 API 应用程序](#registering-your-selling-partner-api-application)
-
-   - [步骤 1。创建 AWS 账户](#step-1-create-an-aws-account)
-
-   - [步骤 2。创建 IAM 用户](#step-2-create-an-iam-user)
-
-   - [步骤 3。创建 IAM 策略](#step-3-create-an-iam-policy)
-
-   - [步骤 4。创建 IAM 职权](#step-4-create-an-iam-role)
-
-   - [步骤 5。向您的 IAM 用户添加 AWS 安全令牌服务策略](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
-
-   - [步骤 6。注册您的应用程序](#step-6-register-your-application)
-
+- [步骤 1。创建 AWS 账户](#step-1-create-an-aws-account)
+   
+- [步骤 2。创建 IAM 用户](#step-2-create-an-iam-user)
+   
+- [步骤 3。创建 IAM 策略](#step-3-create-an-iam-policy)
+   
+- [步骤 4。创建 IAM 职权](#step-4-create-an-iam-role)
+   
+- [步骤 5。向您的 IAM 用户添加 AWS 安全令牌服务策略](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
+   
+- [步骤 6。注册您的应用程序](#step-6-register-your-application)
+   
 - [查看您的开发者信息](#viewing-your-developer-information)
 
 - [授权销售伙伴 API 应用程序](#authorizing-selling-partner-api-applications)
@@ -458,13 +457,13 @@
 
 以下是测试工作流程与生产工作流程的不同之处：
 
-- 测试工作流程不是从商城应用商店详情页面开始，而是从卖家直接导航到应用程序的 OAuth 授权 URI 开始。您可以与合作的可信卖家配合进行测试，也可以使用您自己的销售账户凭证自行测试工作流程。OAuth 授权 URI 必须包含 `version=beta` 参数，指示工作流程授权处于草稿状态的应用程序。当卖家导航到 OAuth 授权 URI 时，工作流程将从[步骤 2：卖家同意授权您的应用程序](#step-2-the-seller-consents-to-authorize-your-application)继续。
+- 测试工作流程不是从商城应用商店详情页面开始，而是从卖家直接导航到应用程序的 OAuth 授权 URI 开始。您可以与合作的可信卖家配合进行测试，也可以使用您自己的销售账户凭证自行测试工作流程。OAuth 授权 URI 必须包含 `version=beta` 参数，指示工作流程授权处于草稿状态的应用程序。当卖家导航到 OAuth 授权 URI 时，工作流程将从 [步骤 2：卖家同意授权您的应用程序](#step-2-the-seller-consents-to-authorize-your-application)继续。
 
    **注意：** 如果您有多个区域 OAuth 授权 URI，请务必为卖家提供与他们的销售区域相对应的 OAuth 授权 URI。
 
-- 您的应用程序将 `version=beta[ 参数添加到亚马逊回调 URI（在`步骤 3：卖家登录您的网站](#step-3-the-seller-signs-into-your-website)中）。这将生成可授权处于“草稿”状态的应用程序的工作流程。
+- 您的应用程序将 `version=beta`参数添加到亚马逊回调 URI中 [步骤 3：卖家登录您的网站](#step-3-the-seller-signs-into-your-website)。这将生成可授权处于“草稿”状态的应用程序的工作流程。
 
-完成工作流程测试后，请对其进行更新，使其不再将 `version=beta[ 参数添加到亚马逊回调 URI（在`步骤 3：卖家登录您的网站](#step-3-the-seller-signs-into-your-website)中）。这使其成为一个生产工作流程。现在，任何卖家都可以从商城应用商店的详情页面开始授权您已发布的应用程序。
+完成工作流程测试后，请对其进行更新，使其不再将 `version=beta`参数添加到亚马逊回调 URI中（[步骤 3：卖家登录您的网站](#step-3-the-seller-signs-into-your-website)）。这使其成为一个生产工作流程。现在，任何卖家都可以从商城应用商店的详情页面开始授权您已发布的应用程序。
 
 生产工作流程从[步骤 1：卖家从商城应用商店启动授权](#step-1-the-seller-initiates-authorization-from-the-marketplace-appstore)开始。
 
@@ -553,7 +552,7 @@ https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d1
 1. 亚马逊将您的重定向 URI 加载到浏览器中，并添加以下查询参数：
 
 | **参数** | **描述** |
-| ------------------------ | -----------------------
+| ------------------------ | -----------------------|
 | **state** | 您在上一步中传递的状态值。 |
 | **selling\_partner\_id** | 授权您的应用程序的卖家的卖家编号。 |
 | **mws\_auth\_token** | 您在为调用亚马逊商城网络服务创建查询字符串时使用的 **MWSAuthToken** 值。只有当卖家授权混合销售伙伴 API 应用程序时，才会传递 mws\_auth\_token 参数。有关更多信息，请参阅[混合销售伙伴 API 应用程序](#hybrid-selling-partner-api-applications)。 |
@@ -973,10 +972,10 @@ mvn install:install-file -Dfile=\[path to JAR file in "target" folder\] -DgroupI
 
 示例：
 ```
-导入 com.amazonaws.auth.AWSCredentialsProvider；
-导入 com.amazonaws.auth.BasicAWSCredentials；
-导入 com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider；
-导入 com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder；
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
+import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
 
 ...
 
@@ -1010,9 +1009,9 @@ credentialsProvider = new STSAssumeRoleSessionCredentialsProvider
 
    示例：
 ```
-导入 com.amazonaws.auth.AWSCredentialsProvider；
-导入 com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider；
-导入 com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder；
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
+import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
 
 ...
 
@@ -1034,8 +1033,8 @@ credentialsProvider = new STSAssumeRoleSessionCredentialsProvider
 
 示例：
 ```
-导入 com.amazonaws.auth.AWSCredentialsProvider；
-导入 com.amazonaws.auth.EnvironmentVariableCredentialsProvider；
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 
 ...
 
@@ -1093,7 +1092,7 @@ AWSCredentialsProvider credentialsProvider = EnvironmentVariableCredentialsProvi
 
 调用需要卖家授权的操作的示例：
 ```
-导入 com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials；
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 
 ...
 
@@ -1107,11 +1106,9 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
 ```
 调用免授权操作的示例：
 ```
-导入 com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials；
-导入 static
-com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_NOTIFICATIONS_API；
-导入 static
-com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_MIGRATION_API；
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import static com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_NOTIFICATIONS_API;
+import static com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_MIGRATION_API;
 
 ...
 
@@ -1379,7 +1376,7 @@ Authorization: AWS4-HMAC-SHA25Credential=AKIDEXAMPLE/20190430/us-east1/
 execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-access-token,
 Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
 host: sellingpartnerapi-na.amazon.com
-user-agent： My Selling Tool/2.0 (Language=Java/1.8.0.221;
+user-agent: My Selling Tool/2.0 (Language=Java/1.8.0.221;
 Platform=Windows/10)
 x-amz-access-token=Atza|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSREXAMPLE
 x-amz-date: 20190430T123600Z
@@ -1412,7 +1409,7 @@ Authorization 标头包含请求的签名信息。尽管标头命名为“Author
 下面列出了 Authorization 标头的组成部分：
 
 | **组成部分** | **描述** |
-| ------------------------------ | ---------| 
+| ------------------------------ | ---------|
 | 用于签名的算法 | 整个签名过程中使用的哈希算法。销售伙伴 API 需要 SHA-256。您可以在[步骤 4：创建并签署您的请求](#step-4-create-and-sign-your-request)中指定此项。 |
 | Credential | 您的 AWS 访问密钥编码加上[凭证范围](#credential-scope)。您可以在[步骤](#step-4-create-an-iam-role) [3：创建 IAM 用户](#step-4-create-an-iam-role)中获取 AWS 访问密钥编码。 |
 | SignedHeaders | 签名请求中包含的所有 HTTP 标头的列表。有关示例，请参阅[步骤 3：将标头添加到 URI](#step-3-add-headers-to-the-uri)。 |
