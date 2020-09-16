@@ -12,19 +12,18 @@
 - [注册为开发者](#registering-as-a-developer)
 
 - [注册您的销售伙伴 API 应用程序](#registering-your-selling-partner-api-application)
-
-   - [步骤 1。创建 AWS 账户](#step-1-create-an-aws-account)
-
-   - [步骤 2。创建 IAM 用户](#step-2-create-an-iam-user)
-
-   - [步骤 3。创建 IAM 策略](#step-3-create-an-iam-policy)
-
-   - [步骤 4。创建 IAM 职权](#step-4-create-an-iam-role)
-
-   - [步骤 5。向您的 IAM 用户添加 AWS 安全令牌服务策略](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
-
-   - [步骤 6。注册您的应用程序](#step-6-register-your-application)
-
+- [步骤 1。创建 AWS 账户](#step-1-create-an-aws-account)
+   
+- [步骤 2。创建 IAM 用户](#step-2-create-an-iam-user)
+   
+- [步骤 3。创建 IAM 策略](#step-3-create-an-iam-policy)
+   
+- [步骤 4。创建 IAM 职权](#step-4-create-an-iam-role)
+   
+- [步骤 5。向您的 IAM 用户添加 AWS 安全令牌服务策略](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
+   
+- [步骤 6。注册您的应用程序](#step-6-register-your-application)
+   
 - [查看您的开发者信息](#viewing-your-developer-information)
 
 - [授权销售伙伴 API 应用程序](#authorizing-selling-partner-api-applications)
@@ -310,7 +309,7 @@
 4. 单击 **JSON** 选项卡。
 
 5. 将以下代码粘贴到文本框中，替换现有代码，然后单击**查看策略**。
-```
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -458,13 +457,13 @@
 
 以下是测试工作流程与生产工作流程的不同之处：
 
-- 测试工作流程不是从商城应用商店详情页面开始，而是从卖家直接导航到应用程序的 OAuth 授权 URI 开始。您可以与合作的可信卖家配合进行测试，也可以使用您自己的销售账户凭证自行测试工作流程。OAuth 授权 URI 必须包含 `version=beta` 参数，指示工作流程授权处于草稿状态的应用程序。当卖家导航到 OAuth 授权 URI 时，工作流程将从[步骤 2：卖家同意授权您的应用程序](#step-2-the-seller-consents-to-authorize-your-application)继续。
+- 测试工作流程不是从商城应用商店详情页面开始，而是从卖家直接导航到应用程序的 OAuth 授权 URI 开始。您可以与合作的可信卖家配合进行测试，也可以使用您自己的销售账户凭证自行测试工作流程。OAuth 授权 URI 必须包含 `version=beta` 参数，指示工作流程授权处于草稿状态的应用程序。当卖家导航到 OAuth 授权 URI 时，工作流程将从 [步骤 2：卖家同意授权您的应用程序](#step-2-the-seller-consents-to-authorize-your-application)继续。
 
    **注意：** 如果您有多个区域 OAuth 授权 URI，请务必为卖家提供与他们的销售区域相对应的 OAuth 授权 URI。
 
-- 您的应用程序将 `version=beta[ 参数添加到亚马逊回调 URI（在`步骤 3：卖家登录您的网站](#step-3-the-seller-signs-into-your-website)中）。这将生成可授权处于“草稿”状态的应用程序的工作流程。
+- 您的应用程序将 `version=beta`参数添加到亚马逊回调 URI中 [步骤 3：卖家登录您的网站](#step-3-the-seller-signs-into-your-website)。这将生成可授权处于“草稿”状态的应用程序的工作流程。
 
-完成工作流程测试后，请对其进行更新，使其不再将 `version=beta[ 参数添加到亚马逊回调 URI（在`步骤 3：卖家登录您的网站](#step-3-the-seller-signs-into-your-website)中）。这使其成为一个生产工作流程。现在，任何卖家都可以从商城应用商店的详情页面开始授权您已发布的应用程序。
+完成工作流程测试后，请对其进行更新，使其不再将 `version=beta`参数添加到亚马逊回调 URI中（[步骤 3：卖家登录您的网站](#step-3-the-seller-signs-into-your-website)）。这使其成为一个生产工作流程。现在，任何卖家都可以从商城应用商店的详情页面开始授权您已发布的应用程序。
 
 生产工作流程从[步骤 1：卖家从商城应用商店启动授权](#step-1-the-seller-initiates-authorization-from-the-marketplace-appstore)开始。
 
@@ -553,7 +552,7 @@ https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d1
 1. 亚马逊将您的重定向 URI 加载到浏览器中，并添加以下查询参数：
 
 | **参数** | **描述** |
-| ------------------------ | -----------------------
+| ------------------------ | -----------------------|
 | **state** | 您在上一步中传递的状态值。 |
 | **selling\_partner\_id** | 授权您的应用程序的卖家的卖家编号。 |
 | **mws\_auth\_token** | 您在为调用亚马逊商城网络服务创建查询字符串时使用的 **MWSAuthToken** 值。只有当卖家授权混合销售伙伴 API 应用程序时，才会传递 mws\_auth\_token 参数。有关更多信息，请参阅[混合销售伙伴 API 应用程序](#hybrid-selling-partner-api-applications)。 |
@@ -590,7 +589,7 @@ https://client-example.com?state=state-example\&mws\_auth\_token=mwsauthtokenexa
 | **client\_secret** | 您的 LWA 凭证的一部分。要获得此值，请参阅[查看您的开发者信息](#viewing-your-developer-information)。 |
 
 例如：
-```
+```http
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -604,7 +603,7 @@ grant_type=authorization_code&code=SplxlOexamplebYS6WxSbIA&client_id=foodev&clie
 | **token\_type** | 返回的令牌类型。应该是 bearer。 |
 | **expires\_in** | 访问令牌失效之前的秒数。 |
 | **refresh\_token** | 可以交换为新访问令牌的长期令牌。请参阅[连接到销售伙伴 API](#connecting-to-the-selling-partner-api)。 |
-```
+```http
 HTTP/l.l 200 OK
 Content-Type: application/json;
 charset UTF-8
@@ -777,7 +776,7 @@ https://client-example.com?state=state-example\&mws\_auth\_token=mwsauthtokenexa
 </table>
 
 例如：
-```
+```http
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -791,7 +790,7 @@ grant_type=authorization_code&code=SplxlOexamplebYS6WxSbIA&client_id=foodev&clie
 | **token\_type** | 返回的令牌类型。应该是 bearer。 |
 | **expires\_in** | 访问令牌失效之前的秒数。 |
 | **refresh\_token** | 可以交换为新访问令牌的长期令牌。请参阅[连接到销售伙伴 API](#connecting-to-the-selling-partner-api)。 |
-```
+```http
 HTTP/l.l 200 OK
 Content-Type: application/json;
 charset UTF-8
@@ -861,7 +860,7 @@ LWA 刷新令牌是您交换 LWA 访问令牌的长期令牌，它必须包含�
 5. 下载最新版本的 Swagger 代码生成器。
 
    例如：
-```
+```bash
 wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagger-codegen-cli-2.4.13.jar -O swagger-codegen-cli.jar
 ```
 **swagger-codegen-cli.jar** 下载到当前目录。
@@ -877,7 +876,7 @@ wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagge
 9. 根据本地存储库副本的 **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** 文件夹中的模板生成 SDK。此文件夹包含授权和身份验证库，以及用于 Swagger 代码生成器的自定义模板。
 
    例如：
-```
+```bash
 java -jar C:\\SwaggerToCL\\swagger-codegen-cli.jar generate -i C:\\SwaggerToCL\\Sellers.json -l java -t \[path to selling-partner-api-models\\clients\\sellingpartner-api-aa-java folder\]\\resources\\swagger-codegen\\templates\\ -o C:\\SwaggerToCL\\Sellers\_JavaCL
 ```
 将 SDK 复制到 C:\\SwaggerToCL\\Sellers\_JavaCL
@@ -889,7 +888,7 @@ java -jar C:\\SwaggerToCL\\swagger-codegen-cli.jar generate -i C:\\SwaggerToCL\\
 2. 在本地 Maven 存储库中安装 JAR 文件。
 
    例如：
-```
+```bash
 mvn install:install-file -Dfile=\[path to JAR file in "target" folder\] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=sellingpartnerapi-aa-java -Dversion=1.0 -Dpackaging=jar
 ```
 您可以在 **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** 文件夹中的 **pom.xml** 文件顶部附近找到实际的 groupId、artifactId 和 version 值。
@@ -897,7 +896,7 @@ mvn install:install-file -Dfile=\[path to JAR file in "target" folder\] -DgroupI
 3. 在客户端库的 **pom.xml** 中添加 AA 库的依赖项：
 
    例如：
-```
+```xml
 <dependency>
   <groupId>com.amazon.sellingpartnerapi</groupId>
   <artifactId>sellingpartnerapi-aa-java</artifactId>
@@ -972,11 +971,11 @@ mvn install:install-file -Dfile=\[path to JAR file in "target" folder\] -DgroupI
 </table>
 
 示例：
-```
-导入 com.amazonaws.auth.AWSCredentialsProvider；
-导入 com.amazonaws.auth.BasicAWSCredentials；
-导入 com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider；
-导入 com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder；
+```java
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
+import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
 
 ...
 
@@ -1009,10 +1008,10 @@ credentialsProvider = new STSAssumeRoleSessionCredentialsProvider
    您现在应该能够获取临时 AWS 凭证，而无需创建 `BasicAWSCredentials` 的实例，如前面的示例所示。
 
    示例：
-```
-导入 com.amazonaws.auth.AWSCredentialsProvider；
-导入 com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider；
-导入 com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder；
+```java
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
+import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
 
 ...
 
@@ -1033,9 +1032,9 @@ credentialsProvider = new STSAssumeRoleSessionCredentialsProvider
 您现在应该能够使用 `EnvironmentVariableCredentialsProvider` 的实例获取临时 AWS 证书。
 
 示例：
-```
-导入 com.amazonaws.auth.AWSCredentialsProvider；
-导入 com.amazonaws.auth.EnvironmentVariableCredentialsProvider；
+```java
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 
 ...
 
@@ -1092,8 +1091,8 @@ AWSCredentialsProvider credentialsProvider = EnvironmentVariableCredentialsProvi
 </table>
 
 调用需要卖家授权的操作的示例：
-```
-导入 com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials；
+```java
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 
 ...
 
@@ -1106,12 +1105,10 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
   .build();
 ```
 调用免授权操作的示例：
-```
-导入 com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials；
-导入 static
-com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_NOTIFICATIONS_API；
-导入 static
-com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_MIGRATION_API；
+```java
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import static com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_NOTIFICATIONS_API;
+import static com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_MIGRATION_API;
 
 ...
 
@@ -1129,7 +1126,7 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
 
 示例：
 
-```
+```java
 SellersApi sellersApi = new SellersApi.Builder()
   .awsAuthenticationCredentialsProvider(credentialsProvider)
   .lwaAuthorizationCredentials(lwaAuthorizationCredentials)
@@ -1247,7 +1244,7 @@ java -jar C:\\SwaggerToCL\\swagger-codegen-cli.jar generate -i C:\\SwaggerToCL\\
 </table>
 
 调用需要卖家授权的操作的示例：
-```
+```http
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1257,7 +1254,7 @@ grant_type=refresh_token
 &client_secret=Y76SDl2F
 ```
 调用免授权操作的示例：
-```
+```http
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1278,7 +1275,7 @@ grant_type=client_credentials
 | **token\_type** | 返回的令牌类型。必须是 *bearer*。 |
 | **expires\_in** | LWA 访问令牌失效之前的秒数。 |
 | **refresh\_token** | 您在请求中提交的 LWA 访问令牌。最大大小： 2048 字节。 |
-```
+```http
 HTTP/l.l 200 OK
 Content-Type: application/json;charset UTF-8
 Cache-Control: no-store
@@ -1305,7 +1302,7 @@ Pragma:no-cache
 | 路径参数 | 路径参数 | `shipmentId1` |
 
 例如：
-```
+```http
 PUT https://sellingpartnerapi-na.amazon.com/fba/inbound/v0/shipments/ shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER\&NeedByDate=2020-10-10
 ```
 ## 步骤 3。将标头添加到 URI
@@ -1322,7 +1319,7 @@ PUT https://sellingpartnerapi-na.amazon.com/fba/inbound/v0/shipments/ shipmentId
 | user-agent | 您的应用程序名称和版本号、平台和编程语言。这些内容可帮助亚马逊诊断和修复您可能遇到的服务问题。请参阅[在所有请求中](#include-a-user-agent-header-in-all-requests)[包含 User-Agent 标头](#include-a-user-agent-header-in-all-requests)。 |
 
 以下是销售伙伴 API 的请求示例，其中包含 URI 和标头，但没有签名信息：
-```
+```http
 PUT /fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10 HTTP/1.1
 host: sellingpartnerapi-na.amazon.com
 user-agent： My Selling Tool/2.0 (Language=Java/1.8.0.221;
@@ -1373,13 +1370,13 @@ x-amz-date: 20190430T123600Z
    - 有关创建 `Authorization` 标头参数的详细信息，请参阅[授权标头](#authorization-header)。
 
    以下示例显示了在您使用 Authorization 标头向其添加签名信息后的类似请求。
-```
+```http
 PUT /fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10HTTP/1.1
 Authorization: AWS4-HMAC-SHA25Credential=AKIDEXAMPLE/20190430/us-east1/
 execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-access-token,
 Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
 host: sellingpartnerapi-na.amazon.com
-user-agent： My Selling Tool/2.0 (Language=Java/1.8.0.221;
+user-agent: My Selling Tool/2.0 (Language=Java/1.8.0.221;
 Platform=Windows/10)
 x-amz-access-token=Atza|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSREXAMPLE
 x-amz-date: 20190430T123600Z
@@ -1412,7 +1409,7 @@ Authorization 标头包含请求的签名信息。尽管标头命名为“Author
 下面列出了 Authorization 标头的组成部分：
 
 | **组成部分** | **描述** |
-| ------------------------------ | ---------| 
+| ------------------------------ | ---------|
 | 用于签名的算法 | 整个签名过程中使用的哈希算法。销售伙伴 API 需要 SHA-256。您可以在[步骤 4：创建并签署您的请求](#step-4-create-and-sign-your-request)中指定此项。 |
 | Credential | 您的 AWS 访问密钥编码加上[凭证范围](#credential-scope)。您可以在[步骤](#step-4-create-an-iam-role) [3：创建 IAM 用户](#step-4-create-an-iam-role)中获取 AWS 访问密钥编码。 |
 | SignedHeaders | 签名请求中包含的所有 HTTP 标头的列表。有关示例，请参阅[步骤 3：将标头添加到 URI](#step-3-add-headers-to-the-uri)。 |
@@ -1440,7 +1437,7 @@ Authorization: AWS4-HMAC-SHA25 Credential=AKIDEXAMPLE/20190430/us-east1/execute-
 ### 成功响应
 
 如果您的请求成功，销售伙伴 API 将返回请求的数据。以下是一个成功响应的例子：
-```
+```http
 HTTP/1.1 200 OK
 Content-Length: 368
 Content-Type: application/json
@@ -1466,7 +1463,7 @@ x-amzn-RequestId: 6875f61f-6aa1-11e8-98c6-9bExample
 | details | 其他信息的链接。 | 否 |
 
 以下是错误响应的示例：
-```
+```http
 HTTP/1.1 400 Bad Request
 Content-Length: 117
 Content-Type: application/json
@@ -1560,9 +1557,7 @@ MyCompanyName/build1611 (Language=Perl; Host=jane.desktop.example.com)
 
 销售伙伴 API 提供了一个沙箱环境，允许您在不影响生产数据或触发真实情况下测试应用程序。对销售伙伴 API 进行沙箱调用与进行生产调用相同，不同之处在于您要将调用指向[销售伙伴 API 沙箱端点](#selling-partner-api-sandbox-endpoints)。调用沙箱端点会返回所有销售伙伴 API 的静态模拟响应。您可以在 Swagger 模型 JSON 文件中为要调用的 API 引用这些模拟响应。有关更多信息，请参阅[如何对销售伙伴 API 进行沙箱调用](#how-to-make-a-sandbox-call-to-the-selling-partner-api)。
 
-销售伙伴 API 沙箱的工作原理与许多模拟框架相同，因为它采用模式匹配，在指定参数存在时返回指定的响应。开发者在发送与指定参数匹配的请求时会收到在 x- amazon-spds-sandbox-behaviors 对象中定义的响应。如果 API
-
-需要未在 x-amazon-spds-sandbox-behaviors 对象中指定的任何参数，则只要请求有效，沙箱都会提供响应，而不考虑请求中的参数值。
+销售伙伴 API 沙箱的工作原理与许多模拟框架相同，因为它采用模式匹配，在指定参数存在时返回指定的响应。开发者在发送与指定参数匹配的请求时会收到在 x- amazon-spds-sandbox-behaviors 对象中定义的响应。如果 API 需要未在 x-amazon-spds-sandbox-behaviors 对象中指定的任何参数，则只要请求有效，沙箱都会提供响应，而不考虑请求中的参数值。
 
 **重要说明：** 沙箱用于测试功能，而非测试可扩展性。对沙箱端点的调用受以下限制的约束：**速率** = 每秒 5 个请求；**突增** = 15。有关限制的更多信息，请参阅销售伙伴 API 文档中的“使用计划和速率限制”。
 

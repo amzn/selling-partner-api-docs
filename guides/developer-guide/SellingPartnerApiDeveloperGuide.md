@@ -310,7 +310,7 @@ This IAM policy defines permissions to make calls to the Selling Partner API. Yo
 4.  Click the **JSON** tab.
 
 5.  Paste the following code into the text box, replacing the existing code, and then click **Review policy**.
-```
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -552,8 +552,8 @@ Seller Central briefly displays a page indicating that Amazon is authorizing you
 
 1.  Amazon loads your redirect URI into the browser, adding the following query parameters:
 
-| **Parameter**| **Description**
-| ------------------------ | -----------------------
+| **Parameter**| **Description**|
+| ------------------------ | -----------------------|
 | **state**  | The state value that you passed in the previous step.  |
 | **selling\_partner\_id** | The seller ID of the seller who is authorizing your application. |
 | **mws\_auth\_token**  | The **MWSAuthToken** value that you use when you create a query string for a call to Amazon Marketplace Web Service. The mws\_auth\_token parameter is only passed when the seller is authorizing a hybrid Selling Partner API application. For more information, see [Hybrid Selling Partner API applications](#hybrid-selling-partner-api-applications).    |
@@ -590,7 +590,7 @@ The Login with Amazon SDK for JavaScript can help you with the exchange of an LW
 | **client\_secret** | Part of your LWA credentials. To get this value, see [Viewing your developer information](#viewing-your-developer-information).  |
 
 For example:
-```
+```http
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -604,7 +604,7 @@ grant_type=authorization_code&code=SplxlOexamplebYS6WxSbIA&client_id=foodev&clie
 | **token\_type**    | The type of token returned. Should be bearer.   |
 | **expires\_in**    | The number of seconds before the access token becomes invalid.  |
 | **refresh\_token** | A long-lived token that can be exchanged for a new access token. See [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api). |
-```
+```http
 HTTP/l.l 200 OK
 Content-Type: application/json;
 charset UTF-8
@@ -777,7 +777,7 @@ The Login with Amazon SDK for JavaScript can help you with the exchange of an LW
 </table>
 
 For example:
-```
+```http
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -791,7 +791,7 @@ grant_type=authorization_code&code=SplxlOexamplebYS6WxSbIA&client_id=foodev&clie
 | **token\_type**    | The type of token returned. Should be bearer.      |
 | **expires\_in**    | The number of seconds before the access token becomes invalid.   |
 | **refresh\_token** | A long-lived token that can be exchanged for a new access token. See [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api). |
-```
+```http
 HTTP/l.l 200 OK
 Content-Type: application/json;
 charset UTF-8
@@ -861,7 +861,7 @@ With this SDK you can make calls to the Sellers API with the following code alre
 5.  Download the latest version of the Swagger Code Generator.
 
     For example:
-```
+```bash
 wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagger-codegen-cli-2.4.13.jar -O swagger-codegen-cli.jar
 ```
 **swagger-codegen-cli.jar** downloads to the current directory.
@@ -877,7 +877,7 @@ wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagge
 9.  Generate the SDK against the templates in the **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** folder of your local copy of the repository. This folder contains an authorization and authentication library, along with customized templates for the Swagger Code Generator.
 
     For example:
-```
+```bash
 java -jar C:\\SwaggerToCL\\swagger-codegen-cli.jar generate -i C:\\SwaggerToCL\\Sellers.json -l java -t \[path to selling-partner-api-models\\clients\\sellingpartner-api-aa-java folder\]\\resources\\swagger-codegen\\templates\\ -o C:\\SwaggerToCL\\Sellers\_JavaCL
 ```
 The SDK is copied to C:\\SwaggerToCL\\Sellers\_JavaCL
@@ -889,7 +889,7 @@ The SDK is copied to C:\\SwaggerToCL\\Sellers\_JavaCL
     2.  Install the JAR file in your local Maven repository.
 
         For example:
-```
+```bash
 mvn install:install-file -Dfile=\[path to JAR file in "target" folder\] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=sellingpartnerapi-aa-java -Dversion=1.0 -Dpackaging=jar
 ```
 You can find the actual groupId, artifactId, and version values near the top of the **pom.xml** file in the **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** folder.
@@ -897,7 +897,7 @@ You can find the actual groupId, artifactId, and version values near the top of 
 3.  Add a dependency on the AA library in the **pom.xml** of the client library:
 
     For example:
-```
+```xml
 <dependency>
   <groupId>com.amazon.sellingpartnerapi</groupId>
   <artifactId>sellingpartnerapi-aa-java</artifactId>
@@ -972,7 +972,7 @@ Create instances of `BasicAWSCredentials` and `STSAssumeRoleSessionCredentialsPr
 </table>
 
 Example:
-```
+```java
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
@@ -1009,7 +1009,7 @@ If you run your Selling Partner API application on an Amazon EC2 instance contai
     You should now be able to get temporary AWS credentials without creating an instance of `BasicAWSCredentials`, as in the previous example.
 
     Example:
-```
+```java
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
 import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
@@ -1033,7 +1033,7 @@ If you make calls to the Selling Partner API using code in a Lambda function, yo
 You should now be able to get temporary AWS credentials using an instance of `EnvironmentVariableCredentialsProvider`.
 
 Example:
-```
+```java
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 
@@ -1092,7 +1092,7 @@ Create an instance of `LWAAuthorizationCredentials`, using the following paramet
 </table>
 
 Example for calling operations that require seller authorization:
-```
+```java
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 
 ...
@@ -1106,7 +1106,7 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
   .build();
 ```
 Example for calling grantless operations:
-```
+```java
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import static
 com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_NOTIFICATIONS_API;
@@ -1129,7 +1129,7 @@ With your `STSAssumeRoleSessionCredentialsProvider` and `LWAAuthorizationCredent
 
 Example:
 
-```
+```java
 SellersApi sellersApi = new SellersApi.Builder()
   .awsAuthenticationCredentialsProvider(credentialsProvider)
   .lwaAuthorizationCredentials(lwaAuthorizationCredentials)
@@ -1247,7 +1247,7 @@ To request an LWA access token, make a secure HTTP POST to the LWA authenticatio
 </table>
 
 Example for calling an operation that requires seller authorization:
-```
+```http
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1257,7 +1257,7 @@ grant_type=refresh_token
 &client_secret=Y76SDl2F
 ```
 Example for calling a grantless operation:
-```
+```http
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1278,7 +1278,7 @@ A successful response includes the following values.
 | **token\_type**    | The type of token returned. Must be *bearer*. |
 | **expires\_in**    | The number of seconds before the LWA access token becomes invalid.  |
 | **refresh\_token** | The LWA access token that you submitted in the request. Maximum size: 2048 bytes. |
-```
+```http
 HTTP/l.l 200 OK
 Content-Type: application/json;charset UTF-8
 Cache-Control: no-store
@@ -1305,7 +1305,7 @@ Here are the components of a Selling Partner API URI.
 | Path parameter | The path parameters  | `shipmentId1`  |
 
 For example:
-```
+```http
 PUT https://sellingpartnerapi-na.amazon.com/fba/inbound/v0/shipments/ shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER\&NeedByDate=2020-10-10
 ```
 ## Step 3. Add headers to the URI
@@ -1322,7 +1322,7 @@ Add headers to the URI that you constructed in [Step 2. Construct a Selling Part
 | user-agent    | Your application name and version number, platform, and programming language. These help Amazon diagnose and fix problems you might encounter with the service. See [Include a User-Agent header in all](#include-a-user-agent-header-in-all-requests) [requests](#include-a-user-agent-header-in-all-requests). |
 
 Here is an example of a request to the Selling Partner API with URI and headers but no signing information:
-```
+```http
 PUT /fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10 HTTP/1.1
 host: sellingpartnerapi-na.amazon.com
 user-agent: My Selling Tool/2.0 (Language=Java/1.8.0.221;
@@ -1373,7 +1373,7 @@ To create and sign your request, complete the following:
       - See [Authorization header](#authorization-header) for details about creating an `Authorization` header parameter.
 
     The following example shows what a request might look like after you've added the signing information to it using the Authorization header.
-```
+```http
 PUT /fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10HTTP/1.1
 Authorization: AWS4-HMAC-SHA25Credential=AKIDEXAMPLE/20190430/us-east1/
 execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-access-token,
@@ -1411,14 +1411,15 @@ The Authorization header contains the signing information for a request. Althoug
 
 Here are the components of an Authorization header:
 
-| **Component** | **Description**   |
-| ------------------------------ | ---------| 
-The algorithm used for signing | The hash algorithm used throughout the signing process. The Selling Partner API requires SHA-256. You specify this in [Step 4. Create and sign your request](#step-4-create-and-sign-your-request).   |
-| Credential   | Your AWS access key ID plus the [Credential scope](#credential-scope). You get your AWS access key ID in [Step](#step-4-create-an-iam-role) [3. Create an IAM user](#step-4-create-an-iam-role). |
-| SignedHeaders     | A list of all the HTTP headers that you included with the signed request. For an example, see [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri).  |
-| Signature  | The signature calculated in [Step 4. Create and sign your request](#step-4-create-and-sign-your-request).  |
+| **Component**                  | **Description**                                              |
+| ------------------------------ | ------------------------------------------------------------ |
+| The algorithm used for signing | The hash algorithm used throughout the signing process. The Selling Partner API requires SHA-256. You specify this in [Step 4. Create and sign your request](#step-4-create-and-sign-your-request). |
+| Credential                     | Your AWS access key ID plus the [Credential scope](#credential-scope). You get your AWS access key ID in [Step](#step-4-create-an-iam-role) [3. Create an IAM user](#step-4-create-an-iam-role). |
+| SignedHeaders                  | A list of all the HTTP headers that you included with the signed request. For an example, see [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri). |
+| Signature                      | The signature calculated in [Step 4. Create and sign your request](#step-4-create-and-sign-your-request). |
 
 For example:
+
 ```
 Authorization: AWS4-HMAC-SHA25 Credential=AKIDEXAMPLE/20190430/us-east1/execute-api/aws4\_request, SignedHeaders=host;user-agent;x-amz-accesstoken;xamz-date, Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
 ```
@@ -1440,7 +1441,7 @@ In response to an HTTP request, the Selling Partner API returns response headers
 ### Success Response
 
 If your request is successful, the Selling Partner API returns the data requested. Here is an example of a successful response:
-```
+```http
 HTTP/1.1 200 OK
 Content-Length: 368
 Content-Type: application/json
@@ -1466,7 +1467,7 @@ If your request is unsuccessful, the Selling Partner API returns an error respon
 | details     | Link to additional information.     | No           |
 
 Here is an example of an error response:
-```
+```http
 HTTP/1.1 400 Bad Request
 Content-Length: 117
 Content-Type: application/json
@@ -1560,9 +1561,7 @@ If a selling partner has authorized you to make calls to Amazon Marketplace Web 
 
 The Selling Partner API provides a sandbox environment that allows you to test your applications without affecting production data or triggering real-world events. Making sandbox calls to the Selling Partner API is identical to making production calls except you direct the calls to the [Selling Partner API sandbox endpoints](#selling-partner-api-sandbox-endpoints). Calling the sandbox endpoints returns static, mocked responses for all Selling Partner APIs. You can refer to these mocked responses in the Swagger model JSON file for the API that you want to call. For more information, see [How to make a sandbox call to the Selling Partner API](#how-to-make-a-sandbox-call-to-the-selling-partner-api).
 
-The Selling Partner API sandbox works like many mocking frameworks, in that it uses pattern matching to return a specified response when the specified parameters are present. A developer receives a response defined in the x- amazon-spds-sandbox-behaviors object when they send a request that matches the specified parameters. If the API
-
-requires any parameters that aren't specified in the x-amazon-spds-sandbox-behaviors object, the sandbox provides the response regardless of the parameter values in the request, as long as the request is valid.
+The Selling Partner API sandbox works like many mocking frameworks, in that it uses pattern matching to return a specified response when the specified parameters are present. A developer receives a response defined in the x- amazon-spds-sandbox-behaviors object when they send a request that matches the specified parameters. If the API requires any parameters that aren't specified in the x-amazon-spds-sandbox-behaviors object, the sandbox provides the response regardless of the parameter values in the request, as long as the request is valid.
 
 **Important:** The sandbox is for testing functionality, not scalability testing. Calls to sandbox endpoints are subject to these throttling limits: **rate** = five requests per second; **burst** = 15. For more information about throttling see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -1596,11 +1595,11 @@ Make a sandbox call to an API in the same way you would make a production call, 
 
 The Selling Partner API has sandbox endpoints for the North America, Europe, and Far East selling regions. For more information, see [The Selling Partner API sandbox](#hybrid-selling-partner-api-applications).
 
-| **Selling region**    | **Endpoint** | **AWS Region** |
-| ------------- | -------------- | -------------- |
-| North America (Canada, US, Mexico, and Brazil marketplaces)  | `https://sandbox.sellingpartnerapi-na.amazon.com` | us-east-1 
-| Europe (Spain, UK, France, Germany, Italy, Turkey, U.A.E, and India marketplaces) | `https://sandbox.sellingpartnerapi-eu.amazon.com` | eu-west-1 |
-| Far East (Singapore, Australia, and Japan marketplaces) | `https://sandbox.sellingpartnerapi-fe.amazon.com` | us-west-2  |
+| **Selling region**                                           | **Endpoint**                                      | **AWS Region** |
+| ------------------------------------------------------------ | ------------------------------------------------- | -------------- |
+| North America (Canada, US, Mexico, and Brazil marketplaces)  | `https://sandbox.sellingpartnerapi-na.amazon.com` | us-east-1      |
+| Europe (Spain, UK, France, Germany, Italy, Turkey, U.A.E, and India marketplaces) | `https://sandbox.sellingpartnerapi-eu.amazon.com` | eu-west-1      |
+| Far East (Singapore, Australia, and Japan marketplaces)      | `https://sandbox.sellingpartnerapi-fe.amazon.com` | us-west-2      |
 
 # How does the Selling Partner API differ from Amazon Marketplace Web Service?
 
