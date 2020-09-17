@@ -112,7 +112,7 @@ Describes a granularity at which inventory data can be aggregated. For example, 
 
 |Name|Description|Schema|
 |---|---|---|
-|**granularityType**  <br>*optional*|The granularity type for the inventory aggregation level.|string|
+|**granularityType**  <br>*optional*|The granularity type for the inventory aggregation level.|enum ([GranularityType](#granularitytype))|
 |**granularityId**  <br>*optional*|The granularity ID for the specified granularity type. When granularityType is Marketplace, specify the marketplaceId.|string|
 
 
