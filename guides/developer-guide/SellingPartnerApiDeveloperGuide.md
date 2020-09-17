@@ -878,7 +878,7 @@ wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagge
 
     For example:
 ```bash
-java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate -i C:\SwaggerToCL\Sellers.json -l java -t [path to selling-partner-api-models\clients\sellingpartner-api-aa-java folder]\resources\swagger-codegen\templates\\ -o C:\SwaggerToCL\Sellers_JavaCL
+java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate -i C:\SwaggerToCL\Sellers.json -l java -t [path to selling-partner-api-models\clients\sellingpartner-api-aa-java folder]\resources\swagger-codegen\templates\ -o C:\SwaggerToCL\Sellers_JavaCL
 ```
 The SDK is copied to C:\\SwaggerToCL\\Sellers\_JavaCL
 
