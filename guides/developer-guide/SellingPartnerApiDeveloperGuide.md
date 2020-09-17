@@ -502,7 +502,7 @@ The production workflow begins at [Step 1. The seller initiates authorization fr
 
 For example:
 ```
-https://d2yzyfnnpjylxu.cloudfront.net/index.html?amazon\_callback\_uri=https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57\&amazon\_state=amazonstateexample\&selling\_partner\_id=A3FHEXAMPLEYWS
+https://d2yzyfnnpjylxu.cloudfront.net/index.html?amazon_callback_uri=https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57&amazon_state=amazonstateexample&selling_partner_id=A3FHEXAMPLEYWS
 ```
 Your website's sign-in page appears.
 
@@ -540,11 +540,11 @@ Your website's sign-in page appears.
 
 For example:
 ```
-https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57?redirect\_uri=https://d2yzyfnnpjylxu.cloudfront.net/landing.html\&amazon\_state=amazonstateexample\&state=-37131022\&version=beta
+https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57?redirect_uri=https://d2yzyfnnpjylxu.cloudfront.net/landing.html&amazon_state=amazonstateexample&state=-37131022&version=beta
 ```
 OR
 ```
-https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57?redirect\_uri=https://d2yzyfnnpjylxu.cloudfront.net/landing.html\&amazon\_state=amazonstateexample\&state=-37131022
+https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57?redirect_uri=https://d2yzyfnnpjylxu.cloudfront.net/landing.html&amazon_state=amazonstateexample&state=-37131022
 ```
 ### Step 4. Amazon sends you the authorization information
 
@@ -561,7 +561,7 @@ Seller Central briefly displays a page indicating that Amazon is authorizing you
 
    For example:
 ```
-https://client-example.com?state=state-example\&mws\_auth\_token=mwsauthtokenexample\&selling\_partner\_id=sellingpartneridexample\&spapi\_oauth\_code=spapioauthcodeexample
+https://client-example.com?state=state-example&mws_auth_token=mwsauthtokenexample&selling_partner_id=sellingpartneridexample&spapi_oauth_code=spapioauthcodeexample
 ```
 2.  Your application validates the state value.
 
@@ -695,11 +695,11 @@ If you have OAuth authorization URIs for more than one region, be sure to set up
 
 For example:
 ```
-https://sellercentral.amazon.com/apps/authorize/consent?application\_id=appidexample\&state=stateexample\&version=beta
+https://sellercentral.amazon.com/apps/authorize/consent?application_id=appidexample&state=stateexample&version=beta
 ```
 OR
 ```
-https://sellercentral.amazon.com/apps/authorize/consent?application\_id=appidexample\&state=stateexample
+https://sellercentral.amazon.com/apps/authorize/consent?application_id=appidexample&state=stateexample
 ```
 The seller arrives at the sign-in page of Seller Central.
 
@@ -724,7 +724,7 @@ Seller Central briefly displays a page indicating that Amazon is authorizing you
 
 For example:
 ````
-https://client-example.com?state=state-example\&mws\_auth\_token=mwsauthtokenexample\&selling\_partner\_id=sellingpartneridexample\&spapi\_oauth\_code=spapioauthcodeexample
+https://client-example.com?state=state-example&mws_auth_token=mwsauthtokenexample&selling_partner_id=sellingpartneridexample&spapi_oauth_code=spapioauthcodeexample
 ````
 2.  Your application validates the state value.
 
@@ -878,7 +878,7 @@ wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagge
 
     For example:
 ```bash
-java -jar C:\\SwaggerToCL\\swagger-codegen-cli.jar generate -i C:\\SwaggerToCL\\Sellers.json -l java -t \[path to selling-partner-api-models\\clients\\sellingpartner-api-aa-java folder\]\\resources\\swagger-codegen\\templates\\ -o C:\\SwaggerToCL\\Sellers\_JavaCL
+java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate -i C:\SwaggerToCL\Sellers.json -l java -t [path to selling-partner-api-models\clients\sellingpartner-api-aa-java folder]\resources\swagger-codegen\templates\\ -o C:\SwaggerToCL\Sellers_JavaCL
 ```
 The SDK is copied to C:\\SwaggerToCL\\Sellers\_JavaCL
 
@@ -890,7 +890,7 @@ The SDK is copied to C:\\SwaggerToCL\\Sellers\_JavaCL
 
         For example:
 ```bash
-mvn install:install-file -Dfile=\[path to JAR file in "target" folder\] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=sellingpartnerapi-aa-java -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=[path to JAR file in "target" folder] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=sellingpartnerapi-aa-java -Dversion=1.0 -Dpackaging=jar
 ```
 You can find the actual groupId, artifactId, and version values near the top of the **pom.xml** file in the **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** folder.
 
@@ -1173,7 +1173,7 @@ wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagge
 
     For example:
 ```
-java -jar C:\\SwaggerToCL\\swagger-codegen-cli.jar generate -i C:\\SwaggerToCL\\Sellers.json -l java -o C:\\SwaggerToCL\\Sellers\_JavaCL
+java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate -i C:\SwaggerToCL\Sellers.json -l java -o C:\SwaggerToCL\Sellers_JavaCL
 ```
 The client library is copied to C:\\SwaggerToCL\\Sellers\_JavaCL.
 
@@ -1306,7 +1306,7 @@ Here are the components of a Selling Partner API URI.
 
 For example:
 ```http
-PUT https://sellingpartnerapi-na.amazon.com/fba/inbound/v0/shipments/ shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER\&NeedByDate=2020-10-10
+PUT https://sellingpartnerapi-na.amazon.com/fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10
 ```
 ## Step 3. Add headers to the URI
 
@@ -1395,11 +1395,11 @@ Credential scope is represented by a slash-separated string of dimensions, as sh
 | Date  | An eight-digit string representing the year (YYYY), month (MM), and day (DD) of the request.  | `20190430` |
 | AWS region  | The region you are sending the request to. See [Selling Partner API endpoints](#Selling-Partner-API-endpoints). | `us-east-1` |
 | Service  | The service you are requesting. You can find this value in the endpoint. See [Selling Partner API endpoints](#Selling-Partner-API-endpoints). | `execute-api` |
-| Termination string | A special termination string. For AWS Signature Version 4, the value is aws4\_request | `aws4\_request` |
+| Termination string | A special termination string. For AWS Signature Version 4, the value is aws4\_request | `aws4_request` |
 
 For example:
 ```
-20190430/us-east-1/execute-api/aws4\_request\\
+20190430/us-east-1/execute-api/aws4_request
 ```
 **Important:** The date that you use as part of your credential scope must match the date of your request, as specified in the x-amz-date header. For more information, see [Handling Dates in Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4-date-handling.html) in the AWS documentation.
 
@@ -1421,7 +1421,7 @@ Here are the components of an Authorization header:
 For example:
 
 ```
-Authorization: AWS4-HMAC-SHA25 Credential=AKIDEXAMPLE/20190430/us-east1/execute-api/aws4\_request, SignedHeaders=host;user-agent;x-amz-accesstoken;xamz-date, Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
+Authorization: AWS4-HMAC-SHA25 Credential=AKIDEXAMPLE/20190430/us-east1/execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-accesstoken;xamz-date, Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
 ```
 For more information, see [Step 4. Create and sign your request](#step-4-create-and-sign-your-request).
 
