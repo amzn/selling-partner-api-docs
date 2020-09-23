@@ -62,9 +62,11 @@
 
   - [Step 1. Configure your AWS credentials](#step-1-configure-your-aws-credentials)
 
-  - [Step 2. Configure your LWA credentials](#step-2-configure-your-lwa-credentials)
+  - [Step 2. Configure your AWS credentials provider](#step-2-Configure-your-AWS-credentials-provider)
 
-  - [Step 3. Create an instance of the Sellers API and call an operation](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
+  - [Step 3. Configure your LWA credentials](#step-3-configure-your-lwa-credentials)
+
+  - [Step 4. Create an instance of the Sellers API and call an operation](#step-4-create-an-instance-of-the-sellers-api-and-call-an-operation)
 
 - [Generating a Java client library](#generating-a-java-client-library)
 
@@ -362,7 +364,7 @@ Create an IAM role that trusts the IAM user that you created in [Step 2. Create 
     
     1.  When you [register your application](#step-6-register-your-application).
     
-    2.  In [Step 5. Your application exchanges the LWA authorization code for an LWA refresh token](#step-5-your-application-exchanges-the-lwa-authorization-code-for-an-lwa-refresh-token).
+    2.  In [Step 5. Add an AWS Security Token Service policy to your IAM user](#step-5-Add-an-AWS-Security-Token-Service-policy-to-your-IAM-user).
 
 For more information, see [Creating a Role to Delegate Permissions to an IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) in the AWS documentation.
 
@@ -371,8 +373,6 @@ For more information, see [Creating a Role to Delegate Permissions to an IAM Use
 Adding an [AWS Security Token Service (AWS STS)](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) policy to your IAM user enables you to request temporary AWS access keys that you can use to authenticate your requests to the Selling Partner API. These credentials expire after a set period of time, helping you to control access to your AWS resources.
 
 1.  If you are not already signed in, sign into the AWS Management Console and open the IAM console at [console.aws.amazon.com/iam](https://console.aws.amazon.com/iam).
-
-2.  In the navigation pane at left, click **Users** and then click the user that you created in [Step 2. Create an IAM user](#step-4-create-an-iam-role).
 
 3.  In the navigation pane at left, click **Users** and then click the user that that you want to add the AWS STS policy to. In this workflow, choose the user you created in [Step 2. Create an IAM user](#step-4-create-an-iam-role). You might choose a different IAM user for other use cases.
 
@@ -917,13 +917,15 @@ These instructions show you how to use a generated Java SDK to make calls. The S
 
 [Step 1. Configure your AWS credentials](#step-1-configure-your-aws-credentials)
 
-[Step 2. Configure your LWA credentials](#step-2-configure-your-lwa-credentials)
+[Step 2. Configure your AWS credentials provider](#step-2-Configure-your-AWS-credentials-provider)
 
-[Step 3. Create an instance of the Sellers API and call an operation](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
+[Step 3. Configure your LWA credentials](#step-3-configure-your-lwa-credentials)
+
+[Step 4. Create an instance of the Sellers API and call an operation](#step-4-create-an-instance-of-the-sellers-api-and-call-an-operation)
 
 ## Step 1. Configure your AWS credentials
 
-Create instances of `BasicAWSCredentials` and `STSAssumeRoleSessionCredentialsProvider`, using the following parameters:
+Create an instance of `AWSAuthenticationCredentials`, using the following parameters:
 
 <table>
 <thead>
@@ -958,13 +960,43 @@ Create instances of `BasicAWSCredentials` and `STSAssumeRoleSessionCredentialsPr
 <td>The AWS region to which you are directing your call. For more information, see <a href="#_Selling_Partner_API">Selling Partner API endpoints</a>.</td>
 <td>Yes</td>
 </tr>
+</tbody>
+</table>
+
+Example:
+```
+import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentials;
+
+AWSAuthenticationCredentials awsAuthenticationCredentials=AWSAuthenticationCredentials.builder()
+  .accessKeyId("myAccessKeyId")
+  .secretKey("mySecretId")
+  .region("us-east-1")
+  .build();
+```
+
+## Step 2. Configure your AWS credentials provider
+
+Create an instance of `AWSAuthenticationCredentialsProvider`, using the following parameters:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong>
+</th>
+<th><strong>Description</strong>
+</th>
+<th><strong>Required</strong>
+</th>
+</tr>
+</thead>
+<tbody>
 <tr class="even">
-<td><strong>myRoleArn</strong></td>
+<td><strong>roleArn</strong></td>
 <td>The ARN of the IAM role that you created in <a href="#step-4-create-an-iam-role">Step 4. Create an IAM role</a>.</td>
 <td>Yes</td>
 </tr>
 <tr class="odd">
-<td><strong>uniqueNameForRoleSession</strong></td>
+<td><strong>roleSessionName</strong></td>
 <td>An identifier for the session that you define. We recommend using a <a href="https://tools.ietf.org/html/rfc4122">Universally Unique Identifier</a> (UUID).</td>
 <td>Yes</td>
 </tr>
@@ -972,76 +1004,16 @@ Create instances of `BasicAWSCredentials` and `STSAssumeRoleSessionCredentialsPr
 </table>
 
 Example:
-```java
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
-import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
+```
+import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentials;
 
-...
-
-BasicAWSCredentials
-awsCreds = new BasicAWSCredentials("myAccessKeyId", "mySecretId");
-
-AWSCredentialsProvider
-credentialsProvider = new STSAssumeRoleSessionCredentialsProvider
-  .Builder("myRoleArn", "uniqueNameForRoleSession")
-  .withStsClient(AWSSecurityTokenServiceClientBuilder.standard()
-    .withRegion(“region”)
-    .withCredentials(awsCreds)
-    .build())
+AWSAuthenticationCredentialsProvider awsAuthenticationCredentialsProvider=AWSAuthenticationCredentialsProvider.builder()
+  .roleArn("myroleARN")
+  .roleSessionName("myrolesessioname")
   .build();
 ```
-The [**STSAssumeRoleSessionCredentialsProvider**](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/auth/STSAssumeRoleSessionCredentialsProvider.html) instance uses the [**AWS Security Token Service (AWS STS)**](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) to enable the user that you created in [Step 2. Create an IAM user](#step-4-create-an-iam-role) to assume the role that you created in [Step 4. Create an IAM role](#step-4-create-an-iam-role). AWS STS creates temporary AWS credentials that you can use to authenticate calls to Selling Partner API operations.
 
-### Hosting your Selling Partner API application on AWS services
-
-If you host your Selling Partner API application on AWS using services such as [AWS Lambda](https://aws.amazon.com/lambda/), [Amazon EC2](https://aws.amazon.com/ec2/), and [Amazon ECS](https://aws.amazon.com/ecs/), the code you need to get your AWS credentials is a little simpler than in the previous example.
-
-**For an Amazon EC2 instance in an Amazon ECS cluster**
-
-If you run your Selling Partner API application on an Amazon EC2 instance contained in an Amazon ECS cluster, you can:
-
-1.  Attach an AWS STS policy to the IAM user that you used to set up Amazon ECS. For instructions, see [Step 5. Add an AWS Security Token Service policy to your IAM user](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user) for instructions.
-
-2.  Attach a policy that defines permissions for calling the Selling Partner API to the role that the Amazon EC2 instance assumes. For instructions, see [Step 3. Create an IAM policy](#step-2-create-an-iam-user).
-
-    You should now be able to get temporary AWS credentials without creating an instance of `BasicAWSCredentials`, as in the previous example.
-
-    Example:
-```java
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
-import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
-
-...
-
-AWSCredentialsProvider
-credentialsProvider = new STSAssumeRoleSessionCredentialsProvider
-  .Builder("myRoleArn", "uniqueNameForRoleSession")
-  .withStsClient(AWSSecurityTokenServiceClientBuilder.standard()
-    .withRegion(“region”)
-    .build())
-  .build();
-```
-**For a Lambda function**
-
-If you make calls to the Selling Partner API using code in a Lambda function, you can:
-
-  - Attach a policy that defines permissions for calling the Selling Partner API to the role that the Lambda function assumes. For instructions, see [Step 3. Create an IAM policy](#step-2-create-an-iam-user).
-
-You should now be able to get temporary AWS credentials using an instance of `EnvironmentVariableCredentialsProvider`.
-
-Example:
-```java
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
-
-...
-
-AWSCredentialsProvider credentialsProvider = EnvironmentVariableCredentialsProvider.create();
-```
-## Step 2. Configure your LWA credentials
+## Step 3. Configure your LWA credentials
 
 Create an instance of `LWAAuthorizationCredentials`, using the following parameters:
 
@@ -1092,13 +1064,10 @@ Create an instance of `LWAAuthorizationCredentials`, using the following paramet
 </table>
 
 Example for calling operations that require seller authorization:
-```java
+```
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 
-...
-
-LWAAuthorizationCredentials lwaAuthorizationCredentials =
-  LWAAuthorizationCredentials.builder()
+LWAAuthorizationCredentials lwaAuthorizationCredentials = LWAAuthorizationCredentials.builder()
   .clientId("myClientId")
   .clientSecret("myClientSecret")
   .refreshToken("Aztr|...")
@@ -1106,14 +1075,10 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
   .build();
 ```
 Example for calling grantless operations:
-```java
+```
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
-import static
-com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_NOTIFICATIONS_API;
-import static
-com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_MIGRATION_API;
-
-...
+import static com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_NOTIFICATIONS_API;
+import static com.amazon.SellingPartnerAPIAA.ScopeConstants.SCOPE_MIGRATION_API;
 
 LWAAuthorizationCredentials lwaAuthorizationCredentials =
   LWAAuthorizationCredentials.builder()
@@ -1123,20 +1088,21 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
   .endpoint("https://api.amazon.com/auth/o2/token")
   .build();
 ```
-## Step 3. Create an instance of the Sellers API and call an operation
+## Step 4. Create an instance of the Sellers API and call an operation
 
-With your `STSAssumeRoleSessionCredentialsProvider` and `LWAAuthorizationCredentials` instances configured you can create an instance of SellersApi and call an operation.
-
+With your `AWSAuthenticationCredentials`, `AWSAuthenticationCredentialsProvider`, and `LWAAuthorizationCredentials` instances configured you can create an instance of SellersApi and call an operation.
+ 
 Example:
 
-```java
+```
 SellersApi sellersApi = new SellersApi.Builder()
-  .awsAuthenticationCredentialsProvider(credentialsProvider)
+  .awsAuthenticationCredentials(awsAuthenticationCredentials)
   .lwaAuthorizationCredentials(lwaAuthorizationCredentials)
+  .awsAuthenticationCredentialsProvider(awsAuthenticationCredentialsProvider)
   .endpoint("https://sellingpartnerapi-na.amazon.com")
   .build();
-sellersApi.getMarketplaceParticipations();
 ```
+
 # Generating a Java client library
 
 These instructions show you how to generate a Java client library for the Sellers API using [Swagger Code Generator](https://github.com/swagger-api/swagger-codegen) on a computer running Microsoft Windows. The process is the same for users of other operating systems such as macOS or Linux, with the replacement of Windows-specific semantics (for example, C:\\). Although these instructions are for the Sellers API, you can modify the instructions to make client libraries for other APIs in the Selling Partner API. See <https://github.com/amzn/selling-partner-api-models/tree/main/models> for Swagger models for each Selling Partner API section.
@@ -1146,6 +1112,8 @@ While a generated client library can help you make calls to the Selling Partner 
 **To generate a Java client library**
 
 1.  Install [Java 8 or newer](https://www.oracle.com/technetwork/java/index.html), [Apache Maven 3.6. or greater](http://maven.apache.org/), and [GNU Wget](https://www.gnu.org/software/wget/wget.html) and make them available in your $PATH.
+
+    test
 
 2.  Go to <https://github.com/amzn/selling-partner-api-models>.
 
