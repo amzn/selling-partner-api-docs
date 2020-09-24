@@ -1,4 +1,4 @@
-# 目录
+﻿# 目录
 
 - [什么是销售伙伴 API？](#what-is-the-selling-partner-api)
    - [销售伙伴 API HTTP 方法](#selling-partner-api-http-methods)
@@ -61,9 +61,11 @@
 
    - [步骤 1。配置 AWS 凭证](#step-1-configure-your-aws-credentials)
 
-   - [步骤 2。配置 LWA 凭证](#step-2-configure-your-lwa-credentials)
+   - [步骤 2。配置AWS凭证提供者](#step-2-configure-your-AWS-credentials-provider)
 
-   - [步骤 3。创建卖家 API 实例并调用操作](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
+   - [步骤 3。配置 LWA 凭证](#step-2-configure-your-lwa-credentials)
+
+   - [步骤 4。创建卖家 API 实例并调用操作](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
 
 - [生成 Java 客户端库](#generating-a-java-client-library)
 
@@ -916,9 +918,11 @@ mvn install:install-file -Dfile=[path to JAR file in "target" folder] -DgroupId=
 
 [步骤 1。配置 AWS 凭证](#step-1-configure-your-aws-credentials)
 
-[步骤 2。配置 LWA 凭证](#step-2-configure-your-lwa-credentials)
+[步骤 2。配置AWS凭证提供者](#step-2-configure-your-AWS-credentials-provider)
 
-[步骤 3。创建卖家 API 实例并调用操作](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
+[步骤 3。配置 LWA 凭证](#step-2-configure-your-lwa-credentials)
+
+[步骤 4。创建卖家 API 实例并调用操作](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
 
 ## 步骤 1。配置 AWS 凭证
 
@@ -1040,7 +1044,40 @@ import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 
 AWSCredentialsProvider credentialsProvider = EnvironmentVariableCredentialsProvider.create();
 ```
-## 步骤 2。配置 LWA 凭证
+## 步骤 2。
+使用以下参数创建 `AWSAuthenticationCredentialsProvider,` 的实例：
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>名称</strong>
+</th>
+<th><strong>描述</strong>
+</th>
+<th><strong>必须项</strong>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>roleArn</strong>
+</td>
+<td>您IAM的ARN，来自<a href="#step-4-create-an-iam-role">步骤 2：创建 IAM 用户</a>。
+</td>
+<td>是
+</td>
+</tr>
+<tr class="even">
+<td><strong>roleSessionName</strong>
+</td>
+<td>您定义的会话的标识符。我们建议使用<a href="https://tools.ietf.org/html/rfc4122">通用唯一标识符</a> (UUID)。
+</td>
+<td>是
+</td>
+</tbody>
+</table>
+
+## 步骤 3。配置 LWA 凭证
 
 使用以下参数创建 `LWAAuthorizationCredentials` 的实例：
 
@@ -1120,7 +1157,7 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
   .endpoint("https://api.amazon.com/auth/o2/token")
   .build();
 ```
-## 步骤 3。创建卖家 API 实例并调用操作
+## 步骤 4。创建卖家 API 实例并调用操作
 
 通过配置 `STSAssumeRoleSessionCredentialsProvider` 和 `LWAAuthorizationCredentials` 实例，您可以创建一个 SellersApi 实例并调用操作。
 

@@ -62,9 +62,11 @@
 
    - [ステップ1.AWS認証情報の設定](#step-1-configure-your-aws-credentials)
 
-   - [ステップ2.LWA認証情報の設定](#step-2-configure-your-lwa-credentials)
+   - [ステップ2.AWS認証情報プロバイダーの設定](#step-2-configure-your-aws-credentials-provider)
 
-   - [ステップ3.出品者APIのインスタンスを作成し、オペレーションを呼び出す](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
+   - [ステップ3.LWA認証情報の設定](#step-3-configure-your-lwa-credentials)
+
+   - [ステップ4.出品者APIのインスタンスを作成し、オペレーションを呼び出す](#step-4-create-an-instance-of-the-sellers-api-and-call-an-operation)
 
 - [Javaクライアントライブラリの生成](#generating-a-java-client-library)
 
@@ -553,7 +555,7 @@ https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d1
 1. AmazonによってリダイレクトURIがブラウザーにロードされ、次のクエリパラメーターが追加されます。
 
 | **パラメーター** | **説明** |
-| ------------------------ | -----------------------
+| ------------------------ | -----------------------|
 | **state** | 前の手順で渡した状態値。 |
 | **selling\_partner\_id** | アプリケーションを認可している出品者の出品者ID。 |
 | **mws\_auth\_token** | Amazonマーケットプレイスウェブサービスを呼び出す際のクエリ文字列を作成するときに使用する**MWSAuthToken**値。mws\_auth\_tokenパラメーターは、出品者が出品パートナーAPIハイブリッドアプリケーションを認可している場合にのみ渡されます。詳しくは、[出品パートナーAPIハイブリッドアプリケーション](#hybrid-selling-partner-api-applications)をご覧ください。 |
@@ -917,13 +919,15 @@ SDKを生成したら、それを使用して出品パートナーAPIを呼び�
 
 [ステップ1.AWS認証情報の設定](#step-1-configure-your-aws-credentials)
 
-[ステップ2.LWA認証情報の設定](#step-2-configure-your-lwa-credentials)
+[ステップ2.AWS認証情報プロバイダーの設定](#step-2-configure-your-aws-credentials-provider)
 
-[ステップ3.出品者APIのインスタンスを作成し、オペレーションを呼び出す](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
+[ステップ3.LWA認証情報の設定](#step-3-configure-your-lwa-credentials)
+
+[ステップ4.出品者APIのインスタンスを作成し、オペレーションを呼び出す](#step-4-create-an-instance-of-the-sellers-api-and-call-an-operation)
 
 ## ステップ1.AWS認証情報の設定
 
-次のパラメータを使用して、`BasicAWSCredentials`と`STSAssumeRoleSessionCredentialsProvider`のインスタンスを作成します。
+次のパラメータを使用して、`AWSAuthenticationCredentials`のインスタンスを作成します。
 
 <table>
 <thead>
@@ -958,14 +962,43 @@ SDKを生成したら、それを使用して出品パートナーAPIを呼び�
 <td>呼び出しを指示しているAWSリージョン。詳細については、<a href="#_Selling_Partner_API">出品パートナーAPIエンドポイント</a>をご覧ください。</td>
 <td>はい</td>
 </tr>
-<tr class="even">
-<td><strong>myRoleArn</strong></td>
-<td><a href="#step-4-create-an-iam-role">ステップ4. IAMロールを作成する</a>で作成したIAMロールのARN。</td>
+</tbody>
+</table>
+
+例：
+```
+import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentials;
+
+...
+
+AWSAuthenticationCredentials
+awsAuthenticationCredentials = AWSAuthenticationCredentials.builder()
+  .accessKeyId("myAccessKeyId")
+  .secretKey("mySecretId")
+  .region("us-east-1")
+  .build();
+```
+## ステップ2.LWA認証情報プロバイダーの設定
+
+以下のパラメーターを使用して、`AWSAuthenticationCredentialsProvider`インスタンスを作成します。
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>名前</strong></th>
+<th><strong>説明</strong></th>
+<th><strong>必須</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>roleArn</strong></td>
+<td><a href="#step-4-create-an-iam-role">ステップ4. IAM ロールを作成する</a>で作成したロールのARN。</td>
 <td>はい</td>
 </tr>
-<tr class="odd">
-<td><strong>uniqueNameForRoleSession</strong></td>
-<td>定義するセッションの識別子。<a href="https://tools.ietf.org/html/rfc4122">ユニバーサルユニークID</a>（UUID）を使用することをお勧めします。</td>
+<tr class="even">
+<td><strong>roleSessionName</strong></td>
+<td>定義するセッションの識別子。<a href="https://tools.ietf.org/html/rfc4122">ユニバーサルユニークID（UUID)</a>を使用することをお勧めします。</td>
 <td>はい</td>
 </tr>
 </tbody>
@@ -973,75 +1006,17 @@ SDKを生成したら、それを使用して出品パートナーAPIを呼び�
 
 例：
 ```
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
-import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
+import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentials;
 
 ...
 
-BasicAWSCredentials
-awsCreds = new BasicAWSCredentials("myAccessKeyId", "mySecretId");
-
-AWSCredentialsProvider
-credentialsProvider = new STSAssumeRoleSessionCredentialsProvider
-  .Builder("myRoleArn", "uniqueNameForRoleSession")
-  .withStsClient(AWSSecurityTokenServiceClientBuilder.standard()
-    .withRegion(“region”)
-    .withCredentials(awsCreds)
-    .build())
+AWSAuthenticationCredentialsProvider awsAuthenticationCredentialsProvider =
+  AWSAuthenticationCredentialsProvider.builder()
+  .roleArn("myroleARN")
+  .roleSessionName("myrolesessioname")
   .build();
 ```
-[**StsAssumeerLesessionCredentialsProvider**](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/auth/STSAssumeRoleSessionCredentialsProvider.html)インスタンスは、[**AWS セキュリティトークンサービス（AWS STS）**](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html)を使用して、[ステップ2.IAMユーザーを作成する](#step-4-create-an-iam-role)で作成したユーザーを有効にし、[ステップ4.IAMロールを作成する](#step-4-create-an-iam-role)で作成したIAMロールを継承します。AWS STSは、出品パートナーAPIオペレーションへの呼び出しを認証するために使用できる一時的なAWS認証情報を作成します。
-
-### AWSサービスでの出品パートナーAPIアプリケーションのホスティング
-
-[AWS Lambda](https://aws.amazon.com/lambda/)、[Amazon EC2](https://aws.amazon.com/ec2/)、[Amazon ECS](https://aws.amazon.com/ecs/)などのサービスを使用してAWSで出品パートナーAPIアプリケーションをホストする場合、AWS認証情報の取得に必要なコードは、前の例よりも少し簡単です。
-
-**Amazon ECSクラスター内のAmazon EC2インスタンスの場合**
-
-Amazon ECSクラスターに含まれるAmazon EC2インスタンスで出品パートナーAPIアプリケーションを実行する場合、次の操作を実行できます。
-
-1. Amazon ECSのセットアップに使用したIAMユーザーにAWS STSポリシーをアタッチします。手順については、[ステップ5.IAMユーザーにAWSセキュリティトークンサービスポリシーを追加する](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)をご覧ください。
-
-2. Amazon EC2インスタンスが継承するロールに、出品パートナーAPIを呼び出すためのアクセス許可を定義するポリシーをアタッチします。手順については、[ステップ3.IAMポリシーを作成する](#step-2-create-an-iam-user)をご覧ください。
-
-   これで、前の例のように、`BasicAWSCredentials`のインスタンスを作成しなくても、一時的なAWS認証情報を取得できるようになりました。
-
-   例：
-```
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
-import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
-
-...
-
-AWSCredentialsProvider
-credentialsProvider = new STSAssumeRoleSessionCredentialsProvider
-  .Builder("myRoleArn", "uniqueNameForRoleSession")
-  .withStsClient(AWSSecurityTokenServiceClientBuilder.standard()
-    .withRegion(“region”)
-    .build())
-  .build();
-```
-**Lambda関数の場合**
-
-Lambda関数のコードを使用して出品パートナーAPIを呼び出す場合、次のことができます。
-
-- Lambda関数が継承するロールに、出品パートナーAPIを呼び出すためのアクセス許可を定義するポリシーをアタッチします。手順については、[ステップ3.IAMポリシーを作成する](#step-2-create-an-iam-user)をご覧ください。
-
-これで、`EnvironmentVariableCredentialsProvider`のインスタンスを使用して、一時的なAWS認証情報を取得できるようになりました。
-
-例：
-```
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
-
-...
-
-AWSCredentialsProvider credentialsProvider = EnvironmentVariableCredentialsProvider.create();
-```
-## ステップ2.LWA認証情報の設定
+## ステップ3.LWA認証情報の設定
 
 以下のパラメーターを使用して、`LWAAuthorizationCredentials`インスタンスを作成します。
 
@@ -1123,19 +1098,19 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
   .endpoint("https://api.amazon.com/auth/o2/token")
   .build();
 ```
-## ステップ3.出品者APIのインスタンスを作成し、オペレーションを呼び出す
+## ステップ4.出品者APIのインスタンスを作成し、オペレーションを呼び出す
 
-`STSAssumeRoleSessionCredentialsProvider`インスタンスと`LWAAuthorizationCredentials`インスタンスを設定すると、SellersApiインスタンスを作成してオペレーションを呼び出すことができます。
+`AWSAuthenticationCredentials`、`AWSAuthenticationCredentialsProvider`、`LWAAuthorizationCredentials`の各インスタンスを設定すると、SellersApiインスタンスを作成してオペレーションを呼び出すことができます。
 
 例：
 
 ```
 SellersApi sellersApi = new SellersApi.Builder()
-  .awsAuthenticationCredentialsProvider(credentialsProvider)
+  .awsAuthenticationCredentials(awsAuthenticationCredentials)
   .lwaAuthorizationCredentials(lwaAuthorizationCredentials)
+  .awsAuthenticationCredentialsProvider(awsAuthenticationCredentialsProvider)
   .endpoint("https://sellingpartnerapi-na.amazon.com")
   .build();
-sellersApi.getMarketplaceParticipations();
 ```
 # Javaクライアントライブラリの生成
 
@@ -1412,7 +1387,7 @@ Authorizationヘッダーには、要求に対する署名情報が含まれま�
 Authorizationヘッダーのコンポーネントは次のとおりです。
 
 | **コンポーネント** | **説明** |
-| ------------------------------ | ---------| 
+| ------------------------------ | ---------|
 | 署名に使用されるアルゴリズム | 署名プロセス全体で使用されるハッシュアルゴリズム。出品パートナーAPIには、SHA-256が必要です。これは、[ステップ 4.リクエストの作成と署名](#step-4-create-and-sign-your-request)をご覧ください。 |
 | 認証情報 | AWSアクセスキーIDと[認証情報スコープ](#credential-scope)。AWSアクセスキーIDは、[ステップ](#step-4-create-an-iam-role)[3.IAMユーザーを作成する](#step-4-create-an-iam-role)で作成したユーザーを選択します。 |
 | SignedHeaders | 署名付きリクエストに含めたすべてのHTTPヘッダーのリスト。例については、[ステップ3.URIにヘッダーを追加する](#step-3-add-headers-to-the-uri)をご覧ください。 |
