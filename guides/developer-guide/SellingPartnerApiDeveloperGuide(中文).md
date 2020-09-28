@@ -1,99 +1,99 @@
 ﻿# 目录
 
-- [什么是销售伙伴 API？](#what-is-the-selling-partner-api)
-   - [销售伙伴 API HTTP 方法](#selling-partner-api-http-methods)
+- [什么是销售伙伴 API？](#什么是销售伙伴-api)
+   - [销售伙伴 API HTTP 方法](#销售伙伴-api-http-方法)
 
-   - [销售伙伴 API 端点](#selling-partner-api-endpoints)
+   - [销售伙伴 API 端点](#销售伙伴-api-端点)
 
-   - [marketplaceId 值](#marketplaceid-values)
+   - [marketplaceId 值](#marketplaceid-值)
 
-- [全球应用程序](#global-applications)
+- [全球应用程序](#全球应用程序)
 
-- [注册为开发者](#registering-as-a-developer)
+- [注册为开发者](#注册为开发者)
 
-- [注册您的销售伙伴 API 应用程序](#registering-your-selling-partner-api-application)
-- [步骤 1。创建 AWS 账户](#step-1-create-an-aws-account)
+- [注册您的销售伙伴 API 应用程序](#注册您的销售伙伴-api-应用程序)
+- [步骤 1。创建 AWS 账户](#步骤-1创建-aws-账户)
    
-- [步骤 2。创建 IAM 用户](#step-2-create-an-iam-user)
+- [步骤 2。创建 IAM 用户](#步骤-2创建-iam-用户)
    
-- [步骤 3。创建 IAM 策略](#step-3-create-an-iam-policy)
+- [步骤 3。创建 IAM 策略](#步骤-3创建-iam-策略)
    
-- [步骤 4。创建 IAM 职权](#step-4-create-an-iam-role)
+- [步骤 4。创建 IAM 职权](#步骤-4创建-iam-职权)
    
-- [步骤 5。向您的 IAM 用户添加 AWS 安全令牌服务策略](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
+- [步骤 5。向您的 IAM 用户添加 AWS 安全令牌服务策略](#步骤-5向-iam-用户添加-aws-安全令牌服务策略)
    
-- [步骤 6。注册您的应用程序](#step-6-register-your-application)
+- [步骤 6。注册您的应用程序](#步骤-6注册您的应用程序)
    
-- [查看您的开发者信息](#viewing-your-developer-information)
+- [查看您的开发者信息](#查看您的开发者信息)
 
-- [授权销售伙伴 API 应用程序](#authorizing-selling-partner-api-applications)
+- [授权销售伙伴 API 应用程序](#授权销售伙伴-api-应用程序)
 
-   - [商城应用商店工作流程](#marketplace-appstore-workflow)
+   - [商城应用商店工作流程](#商城应用商店工作流程)
 
-      - [步骤 1。卖家从商城应用商店启动授权](#step-1-the-seller-initiates-authorization-from-the-marketplace-appstore)
+      - [步骤 1。卖家从商城应用商店启动授权](#步骤-1卖家从商城应用商店启动授权)
 
-      - [步骤 2。卖家同意授权您的应用程序](#Step-2-The-seller-consents-to-authorize-your-application)
+      - [步骤 2。卖家同意授权您的应用程序](#步骤-2卖家同意授权您的应用程序)
 
-      - [步骤 3。卖家登录您的网站](#step-3-the-seller-signs-into-your-website)。
+      - [步骤 3。卖家登录您的网站](#步骤-3卖家登录您的网站)。
 
-      - [步骤 4。亚马逊向您发送授权信息](#step-4-amazon-sends-you-the-authorization-information)
+      - [步骤 4。亚马逊向您发送授权信息](#步骤-4亚马逊向您发送授权信息)
 
-      - [步骤 5。您的应用程序用 LWA 授权码交换 LWA 刷新令牌](#step-5-your-application-exchanges-the-lwa-authorization-code-for-an-lwa-refresh-token)
+      - [步骤 5。您的应用程序用 LWA 授权码交换 LWA 刷新令牌](#步骤-5您的应用程序用-lwa-授权码交换-lwa-刷新令牌)
 
-   - [网站工作流程](#website-workflow)
+   - [网站工作流程](#网站工作流程)
 
-      - [步骤 0。设置 OAuth 授权 URI](#Step-0-Set-up-your-OAuth-authorization-URIs)
+      - [步骤 0。设置 OAuth 授权 URI](#步骤-0设置-oauth-授权-uri)
 
-      - [步骤 1。卖家从您的网站启动授权](#Step-1-The-seller-initiates-authorization-from-your-website)
+      - [步骤 1。卖家从您的网站启动授权](#步骤-1卖家从您的网站启动授权)
 
-      - [步骤 2。卖家同意授权应用程序](#Step-2-The-seller-consents-to-authorize-the-application)
+      - [步骤 2。卖家同意授权应用程序](#步骤-2卖家同意授权应用程序)
 
-      - [步骤 3。亚马逊向您发送授权信息](#Step-3-Amazon-sends-you-the-authorization-information)
+      - [步骤 3。亚马逊向您发送授权信息](#步骤-3亚马逊向您发送授权信息)
 
-      - [步骤 4。您的应用程序用 LWA 授权码交换 LWA 刷新令牌](#Step-4-Your-application-exchanges-the-LWA-authorization-code-for-a-LWA-refresh-token)
+      - [步骤 4。您的应用程序用 LWA 授权码交换 LWA 刷新令牌](#步骤-4您的应用程序用-lwa-授权码交换-lwa-刷新令牌)
 
 
-- [自行授权](#self-authorization-1)
+- [自行授权](#自行授权-1)
 
-- [通过 LWA 令牌交换和身份验证生成 Java SDK](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication)
+- [通过 LWA 令牌交换和身份验证生成 Java SDK](#通过-lwa-令牌交换和身份验证生成-java-sdk)
 
-- [使用生成的 Java SDK 连接到销售伙伴 API](#connecting-to-the-selling-partner-api-using-a-generated-java-sdk)
+- [使用生成的 Java SDK 连接到销售伙伴 API](#使用生成的-java-sdk-连接到销售伙伴-api)
 
-   - [步骤 1。配置 AWS 凭证](#step-1-configure-your-aws-credentials)
+   - [步骤 1。配置 AWS 凭证](#步骤-1配置-aws-凭证)
 
-   - [步骤 2。配置AWS凭证提供者](#step-2-configure-your-AWS-credentials-provider)
+   - [步骤 2。配置AWS凭证提供者](#步骤-2配置AWS凭证提供者)
 
-   - [步骤 3。配置 LWA 凭证](#step-2-configure-your-lwa-credentials)
+   - [步骤 3。配置 LWA 凭证](#步骤-3配置-lwa-凭证)
 
-   - [步骤 4。创建卖家 API 实例并调用操作](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
+   - [步骤 4。创建卖家 API 实例并调用操作](#步骤-4创建卖家-api-实例并调用操作)
 
-- [生成 Java 客户端库](#generating-a-java-client-library)
+- [生成 Java 客户端库](#生成-java-客户端库)
 
-- [连接到销售伙伴 API](#connecting-to-the-selling-partner-api)
+- [连接到销售伙伴 API](#连接到销售伙伴-api)
 
-   - [步骤 1。请求“使用亚马逊账户登录”访问令牌](#step-1-request-a-login-with-amazon-access-token)
+   - [步骤 1。请求“使用亚马逊账户登录”访问令牌](#步骤-1请求使用亚马逊账户登录访问令牌)
 
-   - [步骤 2。构建销售伙伴 API URI](#step-2-construct-a-selling-partner-api-uri)
+   - [步骤 2。构建销售伙伴 API URI](#步骤-2构建销售伙伴-api-uri)
 
-   - [步骤 3。将标头添加到 URI](#step-3-add-headers-to-the-uri)
+   - [步骤 3。将标头添加到 URI](#步骤-3将标头添加到-uri)
 
-   - [步骤 4。创建并签署您的请求](#step-4-create-and-sign-your-request)
+   - [步骤 4。创建并签署您的请求](#步骤-4创建并签署您的请求)
 
-      - [凭证范围](#credential-scope)
+      - [凭证范围](#凭证范围)
 
-      - [Authorization 标头](#authorization-header)
+      - [Authorization 标头](#authorization-标头)
 
-- [响应格式](#response-format)
+- [响应格式](#响应格式)
 
-- [免授权操作](#grantless-operations-1)
+- [免授权操作](#免授权操作-1)
 
-- [在所有请求中包含 User-Agent 标头](#include-a-user-agent-header-in-all-requests)
+- [在所有请求中包含 User-Agent 标头](#在所有请求中包含-user-agent-标头)
 
-- [混合销售伙伴 API 应用程序](#hybrid-selling-partner-api-applications)
+- [混合销售伙伴 API 应用程序](#混合销售伙伴-api-应用程序)
 
-- [销售伙伴 API 沙箱](#the-selling-partner-api-sandbox)
+- [销售伙伴 API 沙箱](#销售伙伴-api-沙箱)
 
-- [销售伙伴 API 与亚马逊商城网络服务有何不同？](#how-does-the-selling-partner-api-differ-from-amazon-marketplace-web-service)
+- [销售伙伴 API 与亚马逊商城网络服务有何不同？](#销售伙伴-api-与亚马逊商城网络服务有何不同)
 
 # 什么是销售伙伴 API？
 
@@ -220,9 +220,9 @@
 
 您只需在您选择的区域和商城以开发者的身份注册一次，即可创建一个销售伙伴 API 应用程序，该应用程序可由任何区域或商城的卖家授权。只要端点与授权您的应用程序的卖家来自同一区域，您只需一组开发者凭证（您的 AWS 访问密钥编码和 AWS 访问密钥）即可调用任何销售伙伴 API 端点。
 
-**重要说明。** 如果您有[混合销售伙伴 API 应用程序](#hybrid-selling-partner-api-applications)，则您对亚马逊商城网络服务（亚马逊 MWS）端点的调用与亚马逊 MWS 应用程序具有相同的限制。也就是说，当您调用亚马逊 MWS 端点时，您必须使用与该端点来自的区域关联的亚马逊 MWS 访问密钥。
+**重要说明。** 如果您有[混合销售伙伴 API 应用程序](#混合销售伙伴-api-应用程序)，则您对亚马逊商城网络服务（亚马逊 MWS）端点的调用与亚马逊 MWS 应用程序具有相同的限制。也就是说，当您调用亚马逊 MWS 端点时，您必须使用与该端点来自的区域关联的亚马逊 MWS 访问密钥。
 
-有关更多信息，请参阅[销售伙伴 API 端点](#Selling_Partner_API_endpoints)。
+有关更多信息，请参阅[销售伙伴 API 端点](#销售伙伴-api-端点)。
 
 # 注册为开发者
 
@@ -1044,7 +1044,7 @@ import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 
 AWSCredentialsProvider credentialsProvider = EnvironmentVariableCredentialsProvider.create();
 ```
-## 步骤 2。
+## 步骤 2。配置AWS凭证提供者
 使用以下参数创建 `AWSAuthenticationCredentialsProvider,` 的实例：
 
 <table>
