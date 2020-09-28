@@ -583,4 +583,5 @@ The type of notification to which you want to subscribe.
 |**BRANDED_ITEM_CONTENT_CHANGE**|Sent whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with.|
 |**ITEM_PRODUCT_TYPE_CHANGE**|Sent whenever there is a change to the product type name of any ASIN that the selling partner has a brand relationship with.|
 |**MFN_ORDER_STATUS_CHANGE**|Sent whenever there is a change in the status of a MFN order availability.|
+|**B2B_ANY_OFFER_CHANGED**|Sent whenever there is a listing change for any of the top 20 B2B offers, by condition (new or used). The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points(applicable only JP). If multiple sellers are charging the same landed price, the results will be returned in random order.<br><br> These notifications are only sent for items for which the seller has active offers. Seller cannot receive notifications for items for which the seller does not have active offers.|
 

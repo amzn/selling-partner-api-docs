@@ -409,7 +409,7 @@ Returns a response containing attributes related to an order. This includes buye
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 10 | 10 |
 
 
 #### Parameters
@@ -424,7 +424,7 @@ Returns a response containing attributes related to an order. This includes buye
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Response has successfully been returned  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**200**|Response has successfully been returned.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
 |**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
@@ -768,8 +768,8 @@ The request schema for the createWarranty operation.
 |Name|Description|Schema|
 |---|---|---|
 |**attachments**  <br>*optional*|Attachments to include in the message to the buyer.|< [Attachment](#attachment) > array|
-|**coverageStartDate**  <br>*optional*|The start date of the warranty coverage to include in the message to the buyer|string (date-time)|
-|**coverageEndDate**  <br>*optional*|The end date of the warranty coverage to include in the message to the buyer|string (date-time)|
+|**coverageStartDate**  <br>*optional*|The start date of the warranty coverage to include in the message to the buyer.|string (date-time)|
+|**coverageEndDate**  <br>*optional*|The end date of the warranty coverage to include in the message to the buyer.|string (date-time)|
 
 
 <a name="createwarrantyresponse"></a>

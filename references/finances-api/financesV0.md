@@ -564,8 +564,6 @@ Contains all information related to a financial event.
 |**NetworkComminglingTransactionEventList**  <br>*optional*|A list of network commingling transaction events.|[NetworkComminglingTransactionEventList](#networkcomminglingtransactioneventlist)|
 |**AffordabilityExpenseEventList**  <br>*optional*|A list of expense information related to an affordability promotion.|[AffordabilityExpenseEventList](#affordabilityexpenseeventlist)|
 |**AffordabilityExpenseReversalEventList**  <br>*optional*|A list of expense information related to an affordability promotion.|[AffordabilityExpenseEventList](#affordabilityexpenseeventlist)|
-|**TrialShipmentEventList**  <br>*optional*|A list of information about trial shipment financial events.|[TrialShipmentEventList](#trialshipmenteventlist)|
-|**ShipmentSettleEventList**  <br>*optional*|A list of information about shipment settle financial events.|[ShipmentSettleEventList](#shipmentsettleeventlist)|
 
 
 <a name="imagingservicesfeeevent"></a>
@@ -749,8 +747,7 @@ A removal shipment event for a removal order.
 |Name|Description|Schema|
 |---|---|---|
 |**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
-|**MerchantOrderId**  <br>*optional*|The merchant removal orderId.|string|
-|**OrderId**  <br>*optional*|The orderId for shipping inventory.|string|
+|**OrderId**  <br>*optional*|The identifier for the removal shipment order.|string|
 |**TransactionType**  <br>*optional*|The type of removal order.<br><br>Possible values:<br><br><li> WHOLESALE_LIQUIDATION</li>|string|
 |**RemovalShipmentItemList**  <br>*optional*|A list of removal shipment items.|[RemovalShipmentItemList](#removalshipmentitemlist)|
 
@@ -784,50 +781,6 @@ Item-level information for a removal shipment.
 A list of information about removal shipment items.
 
 *Type* : < [RemovalShipmentItem](#removalshipmentitem) > array
-
-
-<a name="removalshipmentadjustmentevent"></a>
-### RemovalShipmentAdjustmentEvent
-A financial adjustment event for FBA liquidated inventory.
-
-Possible adjustment:
-
-* Positive values - Buyer needs to pay more amount to Amazon. E.g. charge was wrongly calculated 0$ instead of 100$ due to system error. 
-
-* Negative Values - Buyer get refund. E.g. Buyer receives less items or damaged items and as part of their adjustment buyer gets refund.
-
-
-|Name|Description|Schema|
-|---|---|---|
-|**PostedDate**  <br>*optional*|The date when the financial event was posted.|[Date](#date)|
-|**AdjustmentEventId**  <br>*optional*|The unique identifier for the adjustment event.|string|
-|**MerchantOrderId**  <br>*optional*|The merchant removal orderId.|string|
-|**OrderId**  <br>*optional*|The orderId for shipping inventory.|string|
-|**TransactionType**  <br>*optional*|The type of removal order.<br><br>Possible values:<br><br><li> WHOLESALE_LIQUIDATION.</li>|string|
-|**RemovalShipmentItemAdjustmentList**  <br>*optional*|A comma-delimited list of Removal shipmentItemAdjustment details for FBA inventory.|< [RemovalShipmentItemAdjustment](#removalshipmentitemadjustment) > array|
-
-
-<a name="removalshipmentadjustmenteventlist"></a>
-### RemovalShipmentAdjustmentEventList
-A comma-delimited list of Removal shipmentAdjustment details for FBA inventory.
-
-*Type* : < [RemovalShipmentAdjustmentEvent](#removalshipmentadjustmentevent) > array
-
-
-<a name="removalshipmentitemadjustment"></a>
-### RemovalShipmentItemAdjustment
-Item-level information for a removal shipment item adjustment.
-
-
-|Name|Description|Schema|
-|---|---|---|
-|**RemovalShipmentItemId**  <br>*optional*|An identifier for an item in a removal shipment.|string|
-|**TaxCollectionModel**  <br>*optional*|The tax collection model applied to the item.<br><br>Possible values:<br><br><li> MarketplaceFacilitator - Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller.</li><br><li> Standard - Tax is paid to the seller and not remitted to the taxing authority by Amazon.</li>|string|
-|**FulfillmentNetworkSKU**  <br>*optional*|The Amazon fulfillment network SKU for the item.|string|
-|**AdjustedQuantity**  <br>*optional*|Adjusted quantity of removal shipmentItemAdjustment items.|integer (int32)|
-|**RevenueAdjustment**  <br>*optional*|The total amount adjusted for disputed items.|[Currency](#currency)|
-|**TaxAmountAdjustment**  <br>*optional*|Adjustment on the Tax collected amount on the adjusted revenue.|[Currency](#currency)|
-|**TaxWithheldAdjustment**  <br>*optional*|Adjustment the tax withheld and remitted to the taxing authority by Amazon on behalf of the seller. If TaxCollectionModel=MarketplaceFacilitator, then TaxWithheld=TaxAmount (except the TaxWithheld amount is a negative number). Otherwise TaxWithheld=0.|[Currency](#currency)|
 
 
 <a name="rentaltransactionevent"></a>
@@ -1128,13 +1081,6 @@ An event related to a trial shipment.
 A list of information about trial shipment financial events.
 
 *Type* : < [TrialShipmentEvent](#trialshipmentevent) > array
-
-
-<a name="shipmentsettleeventlist"></a>
-### ShipmentSettleEventList
-A list of information about shipment settle financial events.
-
-*Type* : < [ShipmentEvent](#shipmentevent) > array
 
 
 <a name="errorlist"></a>
