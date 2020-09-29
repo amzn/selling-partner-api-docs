@@ -119,43 +119,35 @@ Report types fall into these categories:
 </td>
 </tr>
 <tr class="odd">
-<td><p><strong>Sold Listings Report</strong></p>
-<p><strong>reportType</strong> value:</p>
-<p>GET_CONVERGED_FLAT_FILE_SOLD_LISTINGS_DATA</p>
-</td>
-<td>Tab-delimited flat file sold listings report that contains items sold on Amazon's retail website. For Marketplace and Seller Central sellers.
-<p>Can be requested.</p></td>
-</tr>
-<tr class="even">
 <td><p><strong>Listing Quality and Suppressed Listing Report</strong></p>
 <p><strong>reportType</strong> value: GET_MERCHANT_LISTINGS_DEFECT_DATA</p>
 </td>
 <td>Tab-delimited flat file listing quality and suppressed listing report that contains listing information that is incomplete or incorrect. For Marketplace and Seller Central sellers.
 <p>Can be requested.</p></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>Pan-European Eligibility: FBA ASINs</strong> <p><strong>reportType</strong> value:</p> GET_PAN_EU_OFFER_STATUS</td>
 <td>Tab-delimited flat file report that contains enrollment status and eligibility information for the Pan-European FBA program for each of the seller's Amazon-fulfilled listings. This report is only available to FBA sellers in the Spain, UK, France, Germany, and Italy marketplaces. For more information, see the Seller Central Help.
 <p>Can be requested.</p></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>Pan-European Eligibility: Self-fulfilled ASINs</strong> <strong>reportType</strong> value: GET_MFN_PAN_EU_OFFER_STATUS</td>
 <td><p>Tab-delimited flat file report that contains eligibility information for the Pan-European FBA Program for each of the seller's self-fulfilled listings. Self-fulfilled listings are not allowed in the Pan-European FBA program, and this report can help sellers determine whether to convert any of their self-fulfilled listings to Amazon-fulfilled listings in order to enroll them in the program. This report is only available in the Spain, UK, France, Germany, and Italy marketplaces. For more information, see the Seller Central Help.</p>
 <p>Can be requested.</p></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p><strong>Global Expansion Opportunities Report</strong></p>
 <p><strong>reportType</strong> value: GET_FLAT_FILE_GEO_OPPORTUNITIES</p>
 </td>
 <td>Tab-delimited flat file report that contains products that a seller lists which have a high sales potential in other Amazon marketplaces.
 <p>Can be requested.</p></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p><strong>Referral Fee Preview Report</strong></p>
 <p><strong>reportType</strong> value: GET_REFERRAL_FEE_PREVIEW_REPORT</p>
 </td>
 <td><p>Tab-delimited flat file that contains the seller's open listings as well as the price and estimated referral fees for each SKU.</p>
- 
+
 <p><strong>Note:</strong> The information in this report may be up to 24 hours old. Please do not request a report more than once per 24 hour period.</p>
 <p>Can be requested.</p></td>
 </tr>
@@ -176,7 +168,7 @@ The date range that you specify when requesting an order report indicates when t
 <tbody>
 <tr class="odd">
 <td><p><strong>Unshipped Orders Report</strong></p>
-<p><strong>reportType</strong> value: GET_FLAT_FILE_ACTIONABLE_ORDER_DATA</p></td>
+<p><strong>reportType</strong> value: GET_FLAT_FILE_ACTIONABLE_ORDER_DATA_SHIPPING</p></td>
 <td><p>Tab-delimited flat file report that contains only orders that are not confirmed as shipped. Can be requested or scheduled. For Marketplace and Seller Central sellers.</p>
 <p>This report accepts the following reportOptions values:</p>
 <ul>
@@ -186,18 +178,29 @@ the sales channel. Default: <code>false</code>. URL-encoded example: <code>Repor
 </td>
 </tr>
 <tr class="even">
-<td><p><strong>Scheduled XML Order Report</strong></p> <strong>reportType</strong> value: GET_ORDERS_DATA</td>
-<td><p>Scheduled XML order report. For Seller Central sellers only.</p>
-<p>You can only schedule one GET_ORDERS_DATA or GET_FLAT_FILE_ORDERS_DATA report at a time. If you have one of these reports scheduled and you schedule a new report, the existing report will be canceled.</p>
+<td><p><strong>Scheduled XML Order Report (Invoicing)</strong></p> <strong>reportType</strong> value: GET_ORDER_REPORT_DATA_INVOICING</td>
+<td><p>Scheduled XML order report. For Seller Central sellers only. This report can be used to generate tax invoices in the EU region.</p>
+<p>You can only schedule one GET_ORDER_REPORT_DATA_INVOICING or GET_FLAT_FILE_ORDER_REPORT_DATA_INVOICING report at a time. If you have one of these reports scheduled and you schedule a new report, the existing report will be canceled.</p>
 <p>Can be scheduled.</p></td>
 </tr>
 <tr class="odd">
-<td><strong>Requested or Scheduled Flat File Order Report</strong> <strong>reportType</strong> value: GET_FLAT_FILE_ORDERS_DATA</td>
-<td><p>Tab-delimited flat file order report that can be requested or scheduled. This report shows orders from the previous 60 days. For Marketplace and Seller Central sellers.</p>
-<p>Seller Central sellers can only schedule one GET_ORDERS_DATA or GET_FLAT_FILE_ORDERS_DATA report at a time.</p>
+<td><p><strong>Scheduled XML Order Report (Tax)</strong></p> <strong>reportType</strong> value: GET_ORDER_REPORT_DATA_TAX</td>
+<td><p>Scheduled XML order report. For Seller Central sellers only. This report is for calculating and remitting taxes in the NA region.</p>
+<p>You can only schedule one GET_ORDER_REPORT_DATA_TAX or GET_FLAT_FILE_ORDER_REPORT_DATA_TAX report at a time. If you have one of these reports scheduled and you schedule a new report, the existing report will be canceled.</p>
+<p>Can be scheduled.</p></td>
+</tr>
+<tr class="even">
+<td><p><strong>Scheduled XML Order Report (Shipping)</strong></p> <strong>reportType</strong> value: GET_ORDER_REPORT_DATA_SHIPPING</td>
+<td><p>Scheduled XML order report. For Seller Central sellers only. This report is for shipping seller fulfilled orders to customers.</p>
+<p>You can only schedule one GET_ORDER_REPORT_DATA_SHIPPING or GET_FLAT_FILE_ORDER_REPORT_DATA_SHIPPING report at a time. If you have one of these reports scheduled and you schedule a new report, the existing report will be canceled.</p>
+<p>Can be scheduled.</p></td>
+</tr>
+<tr class="odd">
+<td><p><strong>Requested or Scheduled Flat File Order Report (Invoicing)</strong></p> <strong>reportType</strong> value: GET_FLAT_FILE_ORDER_REPORT_DATA_INVOICING</td>
+<td><p>Tab-delimited flat file order report that can be requested or scheduled. This report can be used to generate tax invoices in the EU region. This report shows orders from the previous 60 days. For Marketplace and Seller Central sellers.</p>
+<p>Seller Central sellers can only schedule one GET_ORDER_REPORT_DATA_INVOICING or GET_FLAT_FILE_ORDER_REPORT_DATA_INVOICING report at a time.</p>
 <p>If you have one of these reports scheduled and you schedule a new report, the existing report will be canceled.</p>
-<p>Marketplace sellers can only schedule one GET_FLAT_FILE_ORDERS_DATA or GET_CONVERGED_FLAT_FILE_ORDER_REPORT_DATA report at a time. If you have one of these reports scheduled and you schedule a new report, the existing report will be canceled.</p>
- 
+
 <p><strong>Note:</strong> The format of this report will differ slightly depending on whether it is scheduled or requested.</p>
 
 <p>This report accepts the following reportOptions values:</p>
@@ -207,20 +210,35 @@ the sales channel. Default: <code>false</code>. URL-encoded example: <code>Repor
 <p>Can be requested or scheduled.</p></td>
 </tr>
 <tr class="even">
-<td><p><strong>Flat File Order Report</strong></p>
-<p><strong>reportType</strong> value:</p>
-<p>GET_CONVERGED_FLAT_FILE_ORDER_REPORT_DATA</p></td>
-<td><p>Tab-delimited flat file order report that can be requested or scheduled. For Marketplace sellers only.</p>
-<p>You can only schedule one GET_FLAT_FILE_ORDERS_DATA or GET_CONVERGED_FLAT_FILE_ORDER_REPORT_DATA report at a time. If you have one of these reports scheduled and you schedule a new report, the existing report will be canceled.</p>
- 
-<p><strong>Note:</strong> The format of this report will differ slightly depending on whether it is scheduled or requested. For example, the format for the dates will differ, and the ship-method column is only returned when the report is requested.</p>
+<td><p><strong>Requested or Scheduled Flat File Order Report (Shipping)</strong></p>
+<strong>reportType</strong> value: GET_FLAT_FILE_ORDER_REPORT_DATA_SHIPPING</td>
+<td><p>Tab-delimited flat file order report that can be requested or scheduled. This report shows orders from the previous 60 days. This report can be used to ship Amazon orders. For Marketplace and Seller Central sellers.</p>
+<p>Seller Central sellers can only schedule one GET_ORDER_REPORT_DATA_SHIPPING or GET_FLAT_FILE_ORDER_REPORT_DATA_SHIPPING report at a time.</p>
+<p>If you have one of these reports scheduled and you schedule a new report, the existing report will be canceled.</p>
+
+<p><strong>Note:</strong> The format of this report will differ slightly depending on whether it is scheduled or requested.</p>
 
 <p>This report accepts the following reportOptions values:</p>
 <ul>
-<li><p><strong>ShowSalesChannel</strong> - A Boolean value that indicates whether an additional column is added to the report that shows the sales channel. Default: <code>false</code>. URL-encoded example: <code>ReportOptions=ShowSalesChannel%3Dtrue</code></p></li></ul>
-<p>Can be requested or scheduled.</p>
-</td>
+<li><p><strong>ShowSalesChannel</strong> - A Boolean value that indicates whether an additional column is added to the report that shows the sales channel. Default: <code>false</code>. URL-encoded example: <code>ReportOptions=ShowSalesChannel%3Dtrue</code></p></li>
+</ul>
+<p>Can be requested or scheduled.</p></td>
 </tr>
+<tr class="odd">
+<td><p><strong>Requested or Scheduled Flat File Order Report (Tax)</p></strong> <strong>reportType</strong> value: GET_FLAT_FILE_ORDER_REPORT_DATA_TAX</td>
+<td><p>Tab-delimited flat file order report for the NA region that can be requested or scheduled. This report shows orders from the previous 60 days for NA region only. For Marketplace and Seller Central sellers.</p>
+<p>Seller Central sellers can only schedule one GET_ORDER_REPORT_DATA_TAX or GET_FLAT_FILE_ORDER_REPORT_DATA_TAX report at a time.</p>
+<p>If you have one of these reports scheduled and you schedule a new report, the existing report will be canceled.</p>
+
+<p><strong>Note:</strong> The format of this report will differ slightly depending on whether it is scheduled or requested.</p>
+
+<p>This report accepts the following reportOptions values:</p>
+<ul>
+<li><p><strong>ShowSalesChannel</strong> - A Boolean value that indicates whether an additional column is added to the report that shows the sales channel. Default: <code>false</code>. URL-encoded example: <code>ReportOptions=ShowSalesChannel%3Dtrue</code></p></li>
+</ul>
+<p>Can be requested or scheduled.</p></td>
+</tr>
+
 </tbody>
 </table>
 
@@ -239,7 +257,7 @@ These order tracking reports are available in North America (NA) and Europe (EU)
 <tr class="odd">
 <td><p><strong>Flat File Orders By Last Update Report</strong></p>
 <p><strong>reportType</strong> value:</p>
-<p>GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE</p>
+<p>GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL</p>
 </td>
 <td>Tab-delimited flat file report that shows all orders updated in the specified period. For all sellers.
 <p>Can be requested.</p></td>
@@ -247,7 +265,7 @@ These order tracking reports are available in North America (NA) and Europe (EU)
 <tr class="even">
 <td><p><strong>Flat File Orders By Order Date Report</strong></p>
 <p><strong>reportType</strong> value:</p>
-<p>GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE</p>
+<p>GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL</p>
 </td>
 <td>Tab-delimited flat file report that shows all orders that were placed in the specified period. For all sellers.
 <p>Can be requested.</p></td>
@@ -262,14 +280,14 @@ These order tracking reports are available in North America (NA) and Europe (EU)
 </tr>
 <tr class="even">
 <td><p><strong>XML Orders By Last Update Report</strong></p>
-<p><strong>reportType</strong> value: GET_XML_ALL_ORDERS_DATA_BY_LAST_UPDATE</p>
+<p><strong>reportType</strong> value: GET_XML_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL</p>
 </td>
 <td>XML report that shows all orders updated in the specified period. For all sellers.
 <p>Can be requested.</p></td>
 </tr>
 <tr class="odd">
 <td><p><strong>XML Orders By Order Date Report</strong></p>
-<p><strong>reportType</strong> value: GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE</p>
+<p><strong>reportType</strong> value: GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL</p>
 </td>
 <td>XML report that shows all orders that were placed in the specified period. For all sellers.
 <p>Can be requested.</p></td>
@@ -335,26 +353,26 @@ These pending order reports are only available in the Japan marketplace.
 <p>Can be requested or scheduled.</p></td>
 </tr>
 
-<tr class="even">
+<tr class="odd">
 <td><p><strong>XML Prime Returns Report by Return Date</strong></p>
 <p><strong>reportType</strong> value: GET_XML_MFN_PRIME_RETURNS_REPORT</p></td>
 <td>XML report that contains detailed Seller Fulfilled Prime returns information, including return request date, RMA ID, label details, ASIN, and return reason code. You can request up to 60 days of data in a single report.
 <p>Can be requested or scheduled.</p></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p><strong>CSV Prime Returns Report by Return Date</strong></p>
 <p><strong>reportType</strong> value: GET_CSV_MFN_PRIME_RETURNS_REPORT</p></td>
 <td>Comma-separated flat file report that contains detailed Seller Fulfilled Prime returns information, including return request date, RMA ID, label details, ASIN, and return reason code. You can request up to 60 days of data in a single report.
 <p>Can be requested or scheduled.</p></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p><strong>XML Return Attributes Report by Return Date</strong></p>
 <p><strong>reportType</strong> value:</p>
 <p>GET_XML_MFN_SKU_RETURN_ATTRIBUTES_REPORT</p></td>
 <td>XML report that contains detailed return attribute information by SKU, including prepaid label eligibility and returnless refund eligibility. You can request up to 60 days of data in a single report.
 <p>Can be requested or scheduled.</p></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p><strong>Flat File Return Attributes Report by Return Date</strong></p>
 <p><strong>reportType</strong> value:</p>
 <p>GET_FLAT_FILE_MFN_SKU_RETURN_ATTRIBUTES_REPORT</p></td>
@@ -393,7 +411,7 @@ These pending order reports are only available in the Japan marketplace.
 
 ## Settlement reports
 
-Settlement reports cannot be requested or scheduled. They are automatically scheduled by Amazon. You can search for these reports using the getReports operation. 
+Settlement reports cannot be requested or scheduled. They are automatically scheduled by Amazon. You can search for these reports using the getReports operation.
 
 <table>
 <thead>
@@ -444,18 +462,38 @@ A daily FBA report is generated no more than once every four hours. This means t
 </tr>
 <tr class="even">
 <td><p><strong>FBA Amazon Fulfilled Shipments Report</strong></p>
-<p><strong>reportType</strong> value: GET_AMAZON_FULFILLED_SHIPMENTS_DATA</p>
+<p><strong>reportType</strong> value: GET_AMAZON_FULFILLED_SHIPMENTS_DATA_GENERAL</p>
 </td>
-<td><p>Tab-delimited flat file report. Contains detailed order/shipment/item information including price, address, and tracking data. You can request up to one month of data in a single report. Content updated near real- time in Europe (EU), Japan, and North America (NA). For FBA sellers only. For Marketplace and Seller Central sellers.</p>
- 
+<td><p>Tab-delimited flat file report. Contains detailed order/shipment/item information including price, courier, and tracking data. You can request up to one month of data in a single report. Content updated near real- time in Europe (EU), Japan, and North America (NA). For FBA sellers only. For Marketplace and Seller Central sellers.</p>
+
 <p><strong>Note:</strong> In Japan, EU, and NA, in most cases, there will be a delay of approximately one to three hours from the time a fulfillment order ships and the time the items in the fulfillment order appear in the report. In some rare cases there could be a delay of up to 24 hours.</p>
+<p>Can be requested.</p>
+</td>
+</tr>
+<tr class="odd">
+<td><p><strong>FBA Amazon Fulfilled Shipments Report (Invoicing)</strong></p>
+<p><strong>reportType</strong> value: GET_AMAZON_FULFILLED_SHIPMENTS_DATA_INVOICING</p>
+</td>
+<td><p>Tab-delimited flat file report. This report should be used to generate tax invoices in the EU region. You can request up to one month of data in a single report. Content updated near real-time in Europe (EU), Japan, and North America (NA). For FBA sellers only. For Marketplace and Seller Central sellers.</p>
+
+<p><strong>Note:</strong> In most cases, there will be a delay of approximately one to three hours from the time a fulfillment order ships and the time the items in the fulfillment order appear in the report. In some rare cases there could be a delay of up to 24 hours.</p>
+<p>Can be requested.</p>
+</td>
+</tr>
+<tr class="even">
+<td><p><strong>FBA Amazon Fulfilled Shipments Report (Tax)</strong></p>
+<p><strong>reportType</strong> value: GET_AMAZON_FULFILLED_SHIPMENTS_DATA_TAX</p>
+</td>
+<td><p>Tab-delimited flat file report. This report is for calculating and remitting taxes in the NA region. You can request up to one month of data in a single report. Content updated near real-time in Europe (EU), Japan, and North America (NA). For FBA sellers only. For Marketplace and Seller Central sellers.</p>
+
+<p><strong>Note:</strong> In most cases, there will be a delay of approximately one to three hours from the time a fulfillment order ships and the time the items in the fulfillment order appear in the report. In some rare cases there could be a delay of up to 24 hours.</p>
 <p>Can be requested.</p>
 </td>
 </tr>
 <tr class="odd">
 <td><p><strong>Flat File All Orders Report by Last Update</strong></p>
 <p><strong>reportType</strong> value:</p>
-<p>GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE</p>
+<p>_GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL</p>
 </td>
 <td>Tab-delimited flat file report. Returns all orders updated in the specified date range regardless of fulfillment channel or shipment status. This report is intended for order tracking, not to drive a seller's fulfillment process. It does not include customer identifying information and scheduling is not supported. For all sellers.
 <p>Can be requested.</p></td>
@@ -463,37 +501,37 @@ A daily FBA report is generated no more than once every four hours. This means t
 <tr class="even">
 <td><p><strong>Flat File All Orders Report by Order Date</strong></p>
 <p><strong>reportType</strong> value:</p>
-<p>GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE</p>
+<p>GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL</p>
 </td>
 <td>Tab-delimited flat file report. Returns all orders placed in the specified date range regardless of fulfillment channel or shipment status. This report is intended for order tracking, not to drive a seller's fulfillment process. It does not include customer identifying information and scheduling is not supported. For all sellers.
 <p>Can be requested.</p></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p><strong>XML All Orders Report by Last Update</strong></p>
-<p><strong>reportType</strong> value: GET_XML_ALL_ORDERS_DATA_BY_LAST_UPDATE</p>
+<p><strong>reportType</strong> value: GET_XML_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL</p>
 </td>
 <td>XML file order report that returns all orders updated in the specified date range regardless of fulfillment channel or shipment status. This report is intended for order tracking, not to drive a seller's fulfillment process. It does not include customer identifying information and scheduling is not supported. For all sellers.
 <p>Can be requested.</p></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p><strong>XML All Orders Report by Order Date</strong></p>
-<p><strong>reportType</strong> value: GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE</p>
+<p><strong>reportType</strong> value: GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL</p>
 </td>
 <td>XML file order report that returns all orders placed in the specified date range regardless of fulfillment channel or shipment status. This report is intended for order tracking, not to drive a seller's fulfillment process. It does not include customer identifying information and scheduling is not supported. For all sellers.
 <p>Can be requested.</p></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p><strong>FBA Customer Shipment Sales Report</strong></p>
 <p><strong>reportType</strong> value:</p>
 <p>GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_SALES_DATA</p>
 </td>
 <td><p>Tab-delimited flat file report. Contains condensed item level data on shipped FBA customer orders including price, quantity, and ship to location. Content updated near real-time in Europe (EU), Japan, and North America (NA). For FBA sellers only. For Marketplace and Seller Central sellers.</p>
- 
+
 <p><strong>Note:</strong> In Japan, EU, and NA, in most cases, there will be a delay of approximately one to three hours from the time a fulfillment order ships and the time the items in the fulfillment order appear in the report. In some rare cases there could be a delay of up to 24 hours.</p>
 <p>Can be requested.</p>
 </td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p><strong>FBA Promotions Report</strong></p>
 <p><strong>reportType</strong> value:</p>
 <p>GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_PROMOTION_DATA</p>
@@ -501,19 +539,19 @@ A daily FBA report is generated no more than once every four hours. This means t
 <td>Tab-delimited flat file report. Contains promotions applied to FBA customer orders sold through Amazon, such as Super Saver Shipping. Content updated daily. This report is only available to FBA sellers in North America (NA). For Marketplace and Seller Central sellers.
 <p>Can be requested.</p></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p><strong>FBA Customer Taxes</strong></p>
 <p><strong>reportType</strong> value: GET_FBA_FULFILLMENT_CUSTOMER_TAXES_DATA</p>
 </td>
 <td>Tab-delimited flat file report for tax-enabled US sellers. This report contains data through February 28, 2013. All new transaction data can be found in the Sales Tax Report. For FBA sellers only. For Marketplace and Seller Central sellers.
 <p>Can be requested.</p></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p><strong>Remote Fulfillment Eligibility</strong></p>
 <p><strong>reportType</strong> value: GET_REMOTE_FULFILLMENT_ELIGIBILITY</p>
 </td>
 <td><p>Tab-delimited flat file report that contains all of a seller's US Fulfillment by Amazon offers, including whether they qualify for the North America Remote Fulfillment (NARF) program.</p>
- 
+
 <p><strong>Note:</strong> Recheck this report regularly, since ASIN eligibility can change. This report can take up to 24 hours to generate.</p>
 
 <p>Can be requested.</p></td>
@@ -868,7 +906,7 @@ A daily FBA report is generated no more than once every four hours. This means t
 <p>To keep track of which browse nodes change over time, Amazon recommends that each time you request this report you compare it to the last report you requested using the same <strong>reportOptions</strong> values.</p>
 <p>URL-encoded example: <code>ReportOptions=MarketplaceId%3DATVPDKIKX0DER;BrowseNodeId%3D15706661</code></p>
 <p>The Browse Tree Report is described by the following XSD: <a href="https://images-na.ssl-images-amazon.com/images/G/01/mwsportal/doc/en_US/Reports/XSDs/BrowseTreeReport.xsd"><span class="underline">BrowseTreeReport.xsd</span></a>.</p>
- 
+
 <p><strong>Note:</strong>Amazon may update the BrowseTreeReport.xsd schema. Keep this in mind if you choose to use this schema for validation.</p>
 <p>Can be requested or scheduled.</p></td>
 </tr>
