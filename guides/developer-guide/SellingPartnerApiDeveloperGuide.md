@@ -245,8 +245,6 @@ After we have registered you as a developer, you can [register your Selling Part
 
 The following steps explain how to create and configure IAM policies and entities with the end goal of creating an IAM role that you provide when you register your application. In this workflow you create an IAM user (with an [AWS STS](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) policy attached) that assumes an IAM role that has permissions to call Selling Partner API.
 
-**Important.** If you host your Selling Partner API application on AWS using services such as [AWS Lambda](https://aws.amazon.com/lambda/), [Amazon EC2](https://aws.amazon.com/ec2/), and [Amazon ECS](https://aws.amazon.com/ecs/), your permissions configuration will be different. For more information, see [Hosting your Selling Partner API application on AWS services](#hosting-your-selling-partner-api-application-on-aws-services).
-
 **Steps**
 
 [Step 1. Create an AWS account](#step-1-create-an-aws-account)

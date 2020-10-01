@@ -245,8 +245,6 @@
 
 以下の手順では、アプリケーションの登録時に提供するIAMロールを作成する目標として、IAMポリシーとエンティティを作成および設定する方法について説明します。このワークフローでは、出品パートナーAPIを呼び出すアクセス権限を持つIAMロールを継承するIAMユーザー（[AWS STS](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html)ポリシーがアタッチされている）を作成します。
 
-**重要**[AWS Lambda](https://aws.amazon.com/lambda/)、[Amazon EC2](https://aws.amazon.com/ec2/)、[Amazon ECS](https://aws.amazon.com/ecs/)などのサービスを使用してAWSで出品パートナーAPIアプリケーションをホストする場合、アクセス権限の設定は異なります。詳細については、[AWSサービスでの出品パートナーAPIアプリケーションのホスティング](#hosting-your-selling-partner-api-application-on-aws-services)をご覧ください。
-
 **手順**
 
 [ステップ1.AWSアカウントを作成する](#step-1-create-an-aws-account)
