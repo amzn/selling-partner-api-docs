@@ -1003,7 +1003,7 @@ Create an instance of `AWSAuthenticationCredentialsProvider`, using the followin
 
 Example:
 ```
-import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentials;
+import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentialsProvider;
 
 AWSAuthenticationCredentialsProvider awsAuthenticationCredentialsProvider=AWSAuthenticationCredentialsProvider.builder()
   .roleArn("myroleARN")
