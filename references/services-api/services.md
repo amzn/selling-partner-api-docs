@@ -182,8 +182,8 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**Query**|**serviceJobStatus**  <br>*optional*|A list of one or more job status by which to filter the list of jobs.|< enum ([ServiceJobStatus](#servicejobstatus-subgroup-2)) > array|-|
 |**Query**|**pageToken**  <br>*optional*|String returned in the response of your previous request.|string|-|
 |**Query**|**pageSize**  <br>*optional*|A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. <br>**Minimum** : 1<br>**Maximum** : 20|integer|`20`|
-|**Query**|**sortField**  <br>*optional*|Sort fields on which you want to sort the output.|string|-|
-|**Query**|**sortOrder**  <br>*optional*|sort order for the query you want to perform.|string|-|
+|**Query**|**sortField**  <br>*optional*|Sort fields on which you want to sort the output.|enum ([SortField](#sortfield))|-|
+|**Query**|**sortOrder**  <br>*optional*|sort order for the query you want to perform.|enum ([SortOrder](#sortorder))|-|
 |**Query**|**createdAfter**  <br>*optional*|A date used for selecting jobs created after (or at) a specified time must be in ISO 8601 format. Required if LastUpdatedAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error.|string|-|
 |**Query**|**createdBefore**  <br>*optional*|A date used for selecting jobs created before (or at) a specified time must be in ISO 8601 format.|string|-|
 |**Query**|**lastUpdatedAfter**  <br>*optional*|A date used for selecting jobs updated after (or at) a specified time must be in ISO 8601 format. Required if createdAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error.|string|-|
@@ -696,6 +696,19 @@ The type of POA uploaded.
 |**POA_RECEIPT**|Indicates that the type of proof of appointment is a receipt.|
 
 
+<a name="sortorder"></a>
+### SortOrder
+sort order for the query you want to perform.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**ASC**|-|
+|**DESC**|-|
+
+
 <a name="errorlevel"></a>
 ### ErrorLevel
 The type of error.
@@ -707,6 +720,19 @@ The type of error.
 |---|---|
 |**ERROR**|Error|
 |**WARNING**|Warning|
+
+
+<a name="sortfield"></a>
+### SortField
+Sort fields on which you want to sort the output.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**JOB_DATE**|-|
+|**JOB_STATUS**|-|
 
 
 <a name="appointmentstatus"></a>
