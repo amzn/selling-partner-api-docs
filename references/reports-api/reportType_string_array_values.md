@@ -582,7 +582,26 @@ A daily FBA report is generated no more than once every four hours. This means t
 <td>Tab-delimited flat file report. Contains quantity available for local fulfillment by country, helping Multi-Country Inventory sellers in Europe track their FBA inventory. Content updated in near-real time. This report is only available to FBA sellers in Europe (EU). For Seller Central sellers.
 <p>Can be requested.</p></td>
 </tr>
-
+<tr class="even">
+<td><p><strong>Inventory Ledger Report - Summary View</strong></p>
+<p><strong>reportType</strong> value: GET_LEDGER_SUMMARY_VIEW_DATA</p>
+</td>
+<td><p>Tab-delimited flat file report. Inventory Ledger Report is like a "bank statement" of your inventory. It provides end-to-end inventory reconciliation capability by showing starting inventory balance, received inventory, customer orders, customer returns, adjustments, removals and ending balance. </p>
+<p>This report accepts the following <strong>reportOptions</strong> values:</p>
+<ul>
+<li><p><strong>aggregateByLocation.</strong> Include <code>Country</code> to aggregate Summary View data by country. Include <code>FulfillmentCenter</code> to aggregate Summary View data by fulfillment center. Default: <code>COUNTRY</code>. URL-encoded example: <code>ReportOptions=aggregateByLocation%3DCOUNTRY</code></p></li></ul>	
+<ul>
+<li><p><strong>aggregatedByTimePeriod.</strong> Specify the time period to aggregate Summary View data accordingly (for example, <code>MONTHLY</code>, <code>WEEKLY</code>, <code>DAILY</code>, etc.). Default: <code>MONTHLY</code>. URL-encoded example: <code>ReportOptions=aggregatedByTimePeriod%3DMONTHLY</code></p></li></ul>	
+<p>Can be requested.</p>
+</td>
+</tr>
+<tr class="odd">
+<td><p><strong>Inventory Ledger Report - Detailed View</strong></p>
+<p><strong>reportType</strong> value: GET_LEDGER_DETAIL_VIEW_DATA</p>
+</td>
+<td>Tab-delimited flat file report. Use the Inventory Ledger Report - Detailed View to analyze your inventory movements to and from Amazon fulfillment centers, including products that are sold, returned, removed/disposed, damaged, lost, and found. You can view all historical movements of your inventory for 18 months in this report.
+<p>Can be requested.</p></td>
+</tr>
 <tr class="odd">
 <td><p><strong>FBA Daily Inventory History Report</strong></p>
 <p><strong>reportType</strong> value:</p>
