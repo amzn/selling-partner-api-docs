@@ -106,9 +106,9 @@ Call the **createDestination** operation to create an Amazon EventBridge destina
 <table>
 <thead>
 <tr class="header">
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
+<th><b>Parameter</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
 </tr>
 </thead>
 <tbody>
@@ -151,8 +151,8 @@ A successful response includes the following elements:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -284,9 +284,9 @@ Path parameters:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
+<th><b>Parameter</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
 </tr>
 </thead>
 <tbody>
@@ -305,9 +305,9 @@ Body parameters:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
+<th><b>Parameter</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
 </tr>
 </thead>
 <tbody>
@@ -320,7 +320,7 @@ Body parameters:
 </tr>
 <tr class="even">
 <td>destinationId</td>
-<td><p>The identifier for the destination where notifications will be delivered. Use the <strong>destinationId</strong> value that you saved in <a href="#step-1.-create-a-destination">Step 1. Create a destination</a>.</p>
+<td><p>The identifier for the destination where notifications will be delivered. Use the <b>destinationId</b> value that you saved in <a href="#step-1.-create-a-destination">Step 1. Create a destination</a>.</p>
 <p>Type: string</p></td>
 <td>Yes</td>
 </tr>
@@ -340,8 +340,8 @@ POST https://sellingpartnerapi-na.amazon.com/ notifications/v1/subscriptions/BRA
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -427,15 +427,15 @@ Call the **createDestination** operation to create an Amazon Simple Queue Servic
 <table>
 <thead>
 <tr class="header">
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
+<th><b>Parameter</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>resourceSpecification</td>
-<td><p>The information required to create an SQS destination. This includes the <strong>sqs:arn</strong> value that you got from <a href="#step-1.-grant-selling-partner-api-permission-to-write-to-your-sqs-queue">Step 1. Grant Selling Partner API permission to write to your SQS queue</a>.</p>
+<td><p>The information required to create an SQS destination. This includes the <b>sqs:arn</b> value that you got from <a href="#step-1.-grant-selling-partner-api-permission-to-write-to-your-sqs-queue">Step 1. Grant Selling Partner API permission to write to your SQS queue</a>.</p>
 <p>Type: object</p></td>
 <td>Yes.</td>
 </tr>
@@ -468,8 +468,8 @@ POST https://sellingpartnerapi-na.amazon.com/ notifications/v1/destinations
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -518,9 +518,9 @@ Path parameters:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
+<th><b>Parameter</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
 </tr>
 </thead>
 <tbody>
@@ -540,9 +540,9 @@ Body parameters:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
+<th><b>Parameter</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
 </tr>
 </thead>
 <tbody>
@@ -574,8 +574,8 @@ POST https://sellingpartnerapi-na.amazon.com/ notifications/v1/subscriptions/ANY
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -591,7 +591,7 @@ POST https://sellingpartnerapi-na.amazon.com/ notifications/v1/subscriptions/ANY
 </tr>
 <tr class="odd">
 <td>destinationId</td>
-<td><p>The identifier for the destination where notifications will be delivered. Use the <strong>destinationId</strong> value that you saved in the previous step.</p>
+<td><p>The identifier for the destination where notifications will be delivered. Use the <b>destinationId</b> value that you saved in the previous step.</p>
 <p>Type: string</p></td>
 </tr>
 </tbody>
@@ -616,9 +616,9 @@ A Selling Partner notification with **NotificationVersion**=1.0 contain the foll
 <table>
 <thead>
 <tr class="header">
-<th><strong>Object</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Type</strong></th>
+<th><b>Object</b></th>
+<th><b>Description</b></th>
+<th><b>Type</b></th>
 </tr>
 </thead>
 <tbody>
@@ -629,12 +629,12 @@ A Selling Partner notification with **NotificationVersion**=1.0 contain the foll
 </tr>
 <tr class="even">
 <td>NotificationType</td>
-<td>The notification type. <strong>NotificationType</strong>, combined with <strong>PayloadVersion,</strong> controls the structure of the <strong>Payload object</strong>.</td>
+<td>The notification type. <b>NotificationType</b>, combined with <b>PayloadVersion,</b> controls the structure of the <b>Payload object</b>.</td>
 <td>string</td>
 </tr>
 <tr class="odd">
 <td>PayloadVersion</td>
-<td>The payload version. <strong>PayloadVersion</strong>, combined with <strong>NotificationType,</strong> controls the structure of the <strong>Payload object</strong>.</td>
+<td>The payload version. <b>PayloadVersion</b>, combined with <b>NotificationType,</b> controls the structure of the <b>Payload object</b>.</td>
 <td>string</td>
 </tr>
 <tr class="even">
@@ -644,18 +644,18 @@ A Selling Partner notification with **NotificationVersion**=1.0 contain the foll
 </tr>
 <tr class="odd">
 <td>Payload</td>
-<td>The actionable data of the notification. The structure of the <strong>Payload</strong> is determined by <strong>NotificationType</strong>, in combination with <strong>PayloadVersion</strong>.</td>
+<td>The actionable data of the notification. The structure of the <b>Payload</b> is determined by <b>NotificationType</b>, in combination with <b>PayloadVersion</b>.</td>
 <td><p>JSON object</p>
 <p>For more information, see <a href="#notificationtype">Notifications</a>.</p></td>
 </tr>
 <tr class="even">
-<td><strong>NotificationMetadata</strong></td>
+<td><b>NotificationMetadata</b></td>
 <td><p>The notification metadata. This includes the following objects:</p>
 <ul>
-<li><p><strong>ApplicationId</strong> – The identifier for the application that uses the notifications. Type = string</p></li>
-<li><p><strong>SubscriptionId</strong> - A unique identifier for the subscription which resulted in this notification. Type = string</p></li>
-<li><p><strong>PublishTime</strong> - The date and time (in UTC) that the notification was sent. Type = string</p></li>
-<li><p><strong>NotificationId</strong> - A unique identifier for this notification instance. Type = string</p></li>
+<li><p><b>ApplicationId</b> – The identifier for the application that uses the notifications. Type = string</p></li>
+<li><p><b>SubscriptionId</b> - A unique identifier for the subscription which resulted in this notification. Type = string</p></li>
+<li><p><b>PublishTime</b> - The date and time (in UTC) that the notification was sent. Type = string</p></li>
+<li><p><b>NotificationId</b> - A unique identifier for this notification instance. Type = string</p></li>
 </ul></td>
 <td>JSON object</td>
 </tr>
@@ -788,8 +788,8 @@ The following table shows the child elements of the AnyOfferChangedNotification 
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -825,8 +825,8 @@ The following table shows the child elements of the BuyBoxPrice element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -871,8 +871,8 @@ The following table shows the child elements of the LowestPrice element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -923,8 +923,8 @@ The following table shows the child elements of the Offer element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1029,8 +1029,8 @@ The following table shows the child elements of the OfferChangeTrigger element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1077,8 +1077,8 @@ The following table shows the child elements of the OfferCount element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1109,8 +1109,8 @@ The following table shows the child elements of the Points element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1130,8 +1130,8 @@ The following table shows the child elements of the PrimeInformation element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1157,8 +1157,8 @@ The following table shows the child elements of the SalesRank element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1184,8 +1184,8 @@ The following table shows the child elements of the SellerFeedbackRating element
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1211,8 +1211,8 @@ The following table shows the child elements of the ShippingTime element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1249,8 +1249,8 @@ The following table shows the child elements of the ShipsFrom element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1282,8 +1282,8 @@ The following table shows the child elements of the Summary element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1524,10 +1524,10 @@ The following table shows the attributes of a FeeDetail element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Value</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
+<th><b>Value</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1588,10 +1588,10 @@ Each FeePromotionNotification element is made up of the following data objects:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Value</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
+<th><b>Value</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1648,10 +1648,10 @@ The following table describes the attributes of an item from the IdentifierList 
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Value</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
+<th><b>Value</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1678,10 +1678,10 @@ A description of identifier values to which this promotion applies.
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Value</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
+<th><b>Value</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1707,10 +1707,10 @@ The following table shows the child elements of the PromotionInformation element
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Value</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
+<th><b>Required</b></th>
+<th><b>Value</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1861,8 +1861,8 @@ The following table shows the child elements of the FBAOutboundShipmentStatusNot
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -1923,8 +1923,8 @@ The following table shows the child elements of the FulfillmentOrderStatusNotifi
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -2010,8 +2010,8 @@ The following table shows the child elements of the FulfillmentReturnItem elemen
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -2042,8 +2042,8 @@ The following table shows the child elements of the FulfillmentShipment element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -2087,8 +2087,8 @@ The following table shows the child elements of the FulfillmentShipmentPackage e
 <table>
 <thead>
 <tr class="header">
-<th><strong>Name</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Name</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
@@ -2201,8 +2201,8 @@ The following table shows the elements of the MoneyType element:
 <table>
 <thead>
 <tr class="header">
-<th><strong>Element</strong></th>
-<th><strong>Description</strong></th>
+<th><b>Element</b></th>
+<th><b>Description</b></th>
 </tr>
 </thead>
 <tbody>
