@@ -51,7 +51,7 @@ Returns orders created or updated during the time frame indicated by the specifi
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 0.0055 | 20 |
+| 1 | 1 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -100,7 +100,7 @@ Returns the order indicated by the specified order ID.
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 0.0055 | 20 |
+| 1 | 1 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -136,7 +136,7 @@ Returns buyer information for the order indicated by the specified order ID.
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 0.0055 | 20 |
+| 1 | 1 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -172,7 +172,7 @@ Returns the shipping address for the order indicated by the specified order ID.
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 0.0055 | 20 |
+| 1 | 1 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -210,7 +210,7 @@ Note: When an order is in the Pending state (the order has been placed but payme
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 0.0055 | 20 |
+| 1 | 1 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -247,7 +247,7 @@ Returns buyer information in the order items of the order indicated by the speci
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 0.0055 | 20 |
+| 1 | 1 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
