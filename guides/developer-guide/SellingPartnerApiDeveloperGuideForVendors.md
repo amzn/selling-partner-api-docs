@@ -679,7 +679,7 @@ For more information, see [Authorization Code Grant](https://developer.amazon.co
 
 Here are the components of a Selling Partner API URI:
 
-<table><tbody><tr class="odd"><td><strong>Name</strong></td><td><strong>Description</strong></td><td><strong>Example</strong></td></tr><tr class="even"><td><strong>HTTP method</strong></td><td>One of the <a href="#selling-partner-api-http-methods">Selling Partner API HTTP methods</a>.</td><td>GET</td></tr><tr class="odd"><td><strong>Endpoint</strong></td><td>A <a href="#selling-partner-api-endpoints">Selling Partner API endpoint</a>.</td><td>https://sellingpartnerapi-eu.amazon.com</td></tr><tr class="even"><td><strong>Path</strong></td><td>Selling Partner API section/version number of the section/resource</td><td><code>vendor/orders/v1/purchaseOrders</code></td></tr><tr class="odd"><td><strong>Query string</strong></td><td>The query parameters.</td><td><code>?limit={example}&amp;createdAfter={example}&amp;createdBefore={example}&amp;sortOrder={example}&amp;nextToken={example}&amp;includeDetails={example}</code></td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Name</b></td><td><b>Description</b></td><td><b>Example</b></td></tr><tr class="even"><td><b>HTTP method</b></td><td>One of the <a href="#selling-partner-api-http-methods">Selling Partner API HTTP methods</a>.</td><td>GET</td></tr><tr class="odd"><td><b>Endpoint</b></td><td>A <a href="#selling-partner-api-endpoints">Selling Partner API endpoint</a>.</td><td>https://sellingpartnerapi-eu.amazon.com</td></tr><tr class="even"><td><b>Path</b></td><td>Selling Partner API section/version number of the section/resource</td><td><code>vendor/orders/v1/purchaseOrders</code></td></tr><tr class="odd"><td><b>Query string</b></td><td>The query parameters.</td><td><code>?limit={example}&amp;createdAfter={example}&amp;createdBefore={example}&amp;sortOrder={example}&amp;nextToken={example}&amp;includeDetails={example}</code></td></tr></tbody></table>
 
 For example:
 
@@ -699,7 +699,7 @@ Here are the HTTP headers that you include in requests to the Selling Partner AP
 
 <table>
 <tbody>
-<tr class="odd"><td><strong>Name</strong></td><td><p><strong>Description</strong></p></td><td><p><strong>Required</strong></p></td></tr>
+<tr class="odd"><td><b>Name</b></td><td><p><b>Description</b></p></td><td><p><b>Required</b></p></td></tr>
 <tr class="even"><td>host</td><td><p>The Selling Partner endpoint. See <a href="#selling-partner-api-endpoints">Selling Partner API endpoints</a></p></td><td><p>Yes</p></td></tr>
 <tr class="odd"><td>x-amz-access-token</td><td><p>The Login with Amazon access token. See <a href="#step-1-request-a-login-with-amazon-access-token">Step 1. Request a Login with Amazon access token</a>.</p></td><td><p>Yes</p></td></tr>
 <tr class="even"><td>x-amz-date</td><td><p>The date and time of your request</p></td><td><p>Yes</p></td></tr><tr class="odd"><td>user-agent</td><td><p>Your application name and version number, platform, and programming language. These help us diagnose and fix problems you might encounter with the service. See <a href="#include-a-user-agent-header-in-all-requests">Include a User-Agent header in all requests</a>.</p></td><td><p>Yes</p></td></tr>
@@ -771,7 +771,7 @@ The credential scope is a component of the "string to sign" that you create when
 
 Credential scope is represented by a slash-separated string of dimensions, as shown in the following table:
 
-<table><tbody><tr class="odd"><td><strong>Dimension</strong></td><td><strong>Description</strong></td><td><strong>Example</strong></td></tr><tr class="even"><td>Date</td><td>An eight-digit string representing the year (YYYY), month (MM), and day (DD) of the request.</td><td>20190430</td></tr><tr class="odd"><td>AWS region</td><td>The region you are sending the request to. See <a href="#selling-partner-api-endpoints">Selling Partner API endpoints</a>.</td><td>us-east-1</td></tr><tr class="even"><td>Service</td><td>The service you are requesting. You can find this value in the endpoint. See <a href="#bookmark2">.</a></td><td>execute-api</td></tr><tr class="odd"><td>Termination string</td><td>A special termination string. For AWS Signature Version 4, the value is aws4_request</td><td>aws4_request</td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Dimension</b></td><td><b>Description</b></td><td><b>Example</b></td></tr><tr class="even"><td>Date</td><td>An eight-digit string representing the year (YYYY), month (MM), and day (DD) of the request.</td><td>20190430</td></tr><tr class="odd"><td>AWS region</td><td>The region you are sending the request to. See <a href="#selling-partner-api-endpoints">Selling Partner API endpoints</a>.</td><td>us-east-1</td></tr><tr class="even"><td>Service</td><td>The service you are requesting. You can find this value in the endpoint. See <a href="#bookmark2">.</a></td><td>execute-api</td></tr><tr class="odd"><td>Termination string</td><td>A special termination string. For AWS Signature Version 4, the value is aws4_request</td><td>aws4_request</td></tr></tbody></table>
 
 For example:
 
@@ -789,7 +789,7 @@ The Authorization header contains the signing information for a request. Althoug
 
 Here are the components of an Authorization header:
 
-<table><tbody><tr class="odd"><td><strong>Header component</strong></td><td><strong>Description</strong></td></tr><tr class="even"><td>The algorithm used for signing</td><td>The hash algorithm used throughout the signing process. The Selling Partner API requires SHA-256. You specify this in <a href="#step-4-create-and-sign-your-request">Step 4. Create and sign your request</a>.</td></tr><tr class="odd"><td>Credential</td><td>Your AWS access key ID plus the <a href="#credential-scope">Credential scope</a>. You get your AWS access key ID in see <a href="#step-4-provide-your-application-registration-information">Step 3. Create an IAM user</a>.</td></tr><tr class="even"><td>SignedHeaders</td><td>A list of all the HTTP headers that you included with the signed request. For an example, see <a href="#_bookmark20">Step 3. Add headers to the URI</a>.</td></tr><tr class="odd"><td>Signature</td><td>The signature calculated in <a href="#step-4-create-and-sign-your-request">Step 4. Create and sign your request</a>.</td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Header component</b></td><td><b>Description</b></td></tr><tr class="even"><td>The algorithm used for signing</td><td>The hash algorithm used throughout the signing process. The Selling Partner API requires SHA-256. You specify this in <a href="#step-4-create-and-sign-your-request">Step 4. Create and sign your request</a>.</td></tr><tr class="odd"><td>Credential</td><td>Your AWS access key ID plus the <a href="#credential-scope">Credential scope</a>. You get your AWS access key ID in see <a href="#step-4-provide-your-application-registration-information">Step 3. Create an IAM user</a>.</td></tr><tr class="even"><td>SignedHeaders</td><td>A list of all the HTTP headers that you included with the signed request. For an example, see <a href="#_bookmark20">Step 3. Add headers to the URI</a>.</td></tr><tr class="odd"><td>Signature</td><td>The signature calculated in <a href="#step-4-create-and-sign-your-request">Step 4. Create and sign your request</a>.</td></tr></tbody></table>
 
 For example:
 
@@ -805,7 +805,7 @@ In response to an HTTP request, the Selling Partner API returns response headers
 
 **Response headers**
 
-<table><tbody><tr class="odd"><td><strong>Name</strong></td><td><strong>Description</strong></td></tr><tr class="even"><td>Content-Length</td><td>Standard HTTP response header.</td></tr><tr class="odd"><td>Content-Type</td><td>Standard HTTP response header.</td></tr><tr class="even"><td>Date</td><td>Standard HTTP response header.</td></tr><tr class="odd"><td>x-amzn-ErrorType</td><td>Error type.</td></tr><tr class="even"><td>x-amzn-RequestId</td><td>Request identifier. Include this if you contact us for support.</td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Name</b></td><td><b>Description</b></td></tr><tr class="even"><td>Content-Length</td><td>Standard HTTP response header.</td></tr><tr class="odd"><td>Content-Type</td><td>Standard HTTP response header.</td></tr><tr class="even"><td>Date</td><td>Standard HTTP response header.</td></tr><tr class="odd"><td>x-amzn-ErrorType</td><td>Error type.</td></tr><tr class="even"><td>x-amzn-RequestId</td><td>Request identifier. Include this if you contact us for support.</td></tr></tbody></table>
 
 **Success response**
 
@@ -872,7 +872,7 @@ If your request is unsuccessful, the Selling Partner API returns an error respon
 
 **Response message**
 
-<table><tbody><tr class="odd"><td><strong>Element</strong></td><td><p><strong>Description</strong></p></td><td><p><strong>Required</strong></p></td></tr><tr class="even"><td>code</td><td><p>HTTP status code.</p></td><td><p>Yes</p></td></tr><tr class="odd"><td>message</td><td><p>Explanation of the error condition.</p></td><td><p>Yes</p></td></tr><tr class="even"><td>details</td><td><p>Link to additional information.</p></td><td><p>No.</p></td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Element</b></td><td><p><b>Description</b></p></td><td><p><b>Required</b></p></td></tr><tr class="even"><td>code</td><td><p>HTTP status code.</p></td><td><p>Yes</p></td></tr><tr class="odd"><td>message</td><td><p>Explanation of the error condition.</p></td><td><p>Yes</p></td></tr><tr class="even"><td>details</td><td><p>Link to additional information.</p></td><td><p>No.</p></td></tr></tbody></table>
 
 Here is an example of an error response:
 
@@ -950,7 +950,7 @@ You should receive a response that matches the payload object contained in the <
 
 The Selling Partner API has sandbox endpoints for the North America, Europe, and Far East selling regions. For more information, see [The Selling Partner API sandbox](#the-selling-partner-api-sandbox).
 
-<table><tbody><tr class="odd"><td><strong>Selling region</strong></td><td><strong>Endpoint</strong></td><td><p><strong>AWS Region</strong></p></td></tr><tr class="even"><td>North America (Canada, US, Mexico, and Brazil marketplaces)</td><td><a href="https://sandbox.sellingpartnerapi-na.amazon.com">https://sandbox.sellingpartnerapi-na.amazon.com</a></td><td><p>us-east-1</p></td></tr><tr class="odd"><td>Europe (Spain, UK, France, Germany, Italy, Turkey, U.A.E, and India marketplaces)</td><td><a href="https://sandbox.sellingpartnerapi-eu.amazon.com">https://sandbox.sellingpartnerapi-eu.amazon.com</a></td><td><p>eu-west-1</p></td></tr><tr class="even"><td>Far East (Singapore, Australia, and Japan marketplaces)</td><td><a href="https://sandbox.sellingpartnerapi-fe.amazon.com">https://sandbox.sellingpartnerapi-fe.amazon.com</a></td><td><p>us-west-2</p></td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Selling region</b></td><td><b>Endpoint</b></td><td><p><b>AWS Region</b></p></td></tr><tr class="even"><td>North America (Canada, US, Mexico, and Brazil marketplaces)</td><td><a href="https://sandbox.sellingpartnerapi-na.amazon.com">https://sandbox.sellingpartnerapi-na.amazon.com</a></td><td><p>us-east-1</p></td></tr><tr class="odd"><td>Europe (Spain, UK, France, Germany, Italy, Turkey, U.A.E, and India marketplaces)</td><td><a href="https://sandbox.sellingpartnerapi-eu.amazon.com">https://sandbox.sellingpartnerapi-eu.amazon.com</a></td><td><p>eu-west-1</p></td></tr><tr class="even"><td>Far East (Singapore, Australia, and Japan marketplaces)</td><td><a href="https://sandbox.sellingpartnerapi-fe.amazon.com">https://sandbox.sellingpartnerapi-fe.amazon.com</a></td><td><p>us-west-2</p></td></tr></tbody></table>
 
 # Vendor Central URIs
 
