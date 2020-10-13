@@ -180,7 +180,7 @@ After we have registered you as a developer, you can [register your Selling Part
 
 # Registering your Selling Partner API application
 
-The following steps explain how to create and configure IAM policies and entities with the end goal of creating an IAM role that you provide when you register your application. In this workflow you create an IAM user (with an AWS STS policy attached) that assumes an IAM role that has permissions to call Selling Partner API.
+The following steps explain how to create and configure IAM (AWS Identity and Access Management) policies and entities with the end goal of creating an IAM role that you provide when you register your application. In this workflow you create an IAM user (with an AWS STS policy attached) that assumes an IAM role that has permissions to call the Selling Partner API.
 
 Here are the steps to register as a developer and register an application for the Selling Partner API.
 
@@ -198,7 +198,7 @@ Here are the steps to register as a developer and register an application for th
 
 ## Step 1. Create an AWS account
 
-You need an AWS account because the Selling Partner API security model uses AWS authentication credentials. If you’re not already an AWS customer, you can create a free AWS account. For more information, see [AWS Free Tier](https://aws.amazon.com/free/).
+You need an AWS account because the Selling Partner API security model uses AWS authentication credentials. If you’re not already an AWS customer, you can create a free AWS account. For more information, see [AWS Free Tier](https://aws.amazon.com/free/). Note that IAM is the only AWS feature required to use the vendor APIs, and is offered at no additional charge to your AWS account.
 
 ## Step 2. Create an IAM user
 
