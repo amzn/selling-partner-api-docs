@@ -64,8 +64,6 @@
 
 - [Response format](#response-format)
 
-- [Throttling: limits to how often you can submit requests](#throttling-limits-to-how-often-you-can-submit-requests)
-
 - [Include a User-Agent header in all requests](#include-a-user-agent-header-in-all-requests)
 
 - [The Selling Partner API sandbox](#the-selling-partner-api-sandbox)
