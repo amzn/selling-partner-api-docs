@@ -916,7 +916,11 @@ Because the User-Agent header is transmitted in every request, it is a good prac
 
 The Selling Partner API provides a sandbox environment that allows you to test your applications without affecting production data or triggering real-world events. Making sandbox calls to the Selling Partner API is identical to making production calls except you direct the calls to the [Selling Partner API sandbox endpoints](#selling-partner-api-sandbox-endpoints). The authorization and authentications models are the same for sandbox calls and production calls. Calling the sandbox endpoints returns static, mocked responses for all Selling Partner APIs. You can refer to these mocked responses in the Swagger model JSON file for the API that you want to call. For more information, see [How to make a sandbox call to the Selling Partner API](#how-to-make-a-sandbox-call-to-the-selling-partner-api).
 
-The Selling Partner API sandbox works like many mocking frameworks, in that it uses pattern matching to return a specified response when the specified parameters are present. A developer receives a response defined in the <code>x-amazon-spds-sandbox-behaviors</code> object when they send a request that matches the specified parameters. If the API requires any parameters that aren't specified in the <code>x-amazon-spds-sandbox-behaviors</code> object, the sandbox provides the response regardless of the parameter values in the request, as long as the request is valid.
+The Selling Partner API sandbox works like many mocking frameworks, in that it uses pattern matching to return a specified response when the specified parameters are present. A developer receives a response defined in the x-amazon-spds-sandbox-behaviors object when they send a request that matches the specified parameters. 
+
+If the request sent to the sandbox endpoint does not match the parameter values in the x-amazon-spds-sandbox-behaviors object, you will receive a "500 Internal Server Error" in the response. You must be sure to send the request with the exact values specified in the model.
+
+If the API requires any parameters that are not specified in the x-amazon-spds-sandbox-behaviors object, the sandbox provides the response regardless of the parameter values in the request, as long as the request is valid. 
 
 **Important:** The sandbox is for testing functionality, not scalability testing. Calls to sandbox endpoints are subject to these throttling limits: **rate** = 5 requests per second; **burst** = 15.
 
