@@ -51,7 +51,7 @@ Returns a list of solicitation types that are available for an order that you sp
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 5 | 15 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -90,7 +90,7 @@ Sends a solicitation to a buyer asking for seller feedback and a product review 
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 5 | 15 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 

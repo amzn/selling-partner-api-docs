@@ -51,7 +51,7 @@ Gets service job details for the service job indicated by the service job identi
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 1 | 5 |
+| 20 | 40 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -90,7 +90,7 @@ Cancels the service job indicated by the service job identifier you specify.
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 1 | 5 |
+| 5 | 20 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -130,7 +130,7 @@ Completes the service job indicated by the service job identifier you specify.
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 1 | 5 |
+| 5 | 20 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -169,7 +169,7 @@ Gets service job details for the specified filter query.
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 1 | 5 |
+| 10 | 40 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -183,7 +183,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**Query**|**pageToken**  <br>*optional*|String returned in the response of your previous request.|string|-|
 |**Query**|**pageSize**  <br>*optional*|A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. <br>**Minimum** : 1<br>**Maximum** : 20|integer|`20`|
 |**Query**|**sortField**  <br>*optional*|Sort fields on which you want to sort the output.|enum ([SortField](#sortfield))|-|
-|**Query**|**sortOrder**  <br>*optional*|sort order for the query you want to perform.|enum ([SortOrder](#sortorder))|-|
+|**Query**|**sortOrder**  <br>*optional*|Sort order for the query you want to perform.|enum ([SortOrder](#sortorder))|-|
 |**Query**|**createdAfter**  <br>*optional*|A date used for selecting jobs created after (or at) a specified time must be in ISO 8601 format. Required if LastUpdatedAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error.|string|-|
 |**Query**|**createdBefore**  <br>*optional*|A date used for selecting jobs created before (or at) a specified time must be in ISO 8601 format.|string|-|
 |**Query**|**lastUpdatedAfter**  <br>*optional*|A date used for selecting jobs updated after (or at) a specified time must be in ISO 8601 format. Required if createdAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error.|string|-|
@@ -219,7 +219,7 @@ Adds an appointment to the service job indicated by the service job identifier y
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 1 | 5 |
+| 5 | 20 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -259,7 +259,7 @@ Reschedules an appointment for the service job indicated by the service job iden
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 1 | 5 |
+| 5 | 20 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -429,7 +429,7 @@ Information about the service job provider.
 
 |Name|Description|Schema|
 |---|---|---|
-|**serviceJobProviderId**  <br>*optional*|The identifier of the service job provider  <br>**Pattern** : `"^[A-Z0-9]<li>$"`</li>|string|
+|**serviceJobProviderId**  <br>*optional*|The identifier of the service job provider.  <br>**Pattern** : `"^[A-Z0-9]<li>$"`</li>|string|
 
 
 <a name="buyer"></a>
@@ -698,15 +698,15 @@ The type of POA uploaded.
 
 <a name="sortorder"></a>
 ### SortOrder
-sort order for the query you want to perform.
+Sort order for the query you want to perform.
 
 *Type* : enum
 
 
 |Value|Description|
 |---|---|
-|**ASC**|-|
-|**DESC**|-|
+|**ASC**|Sort in ascending order.|
+|**DESC**|Sort in descending order.|
 
 
 <a name="errorlevel"></a>
@@ -731,8 +731,8 @@ Sort fields on which you want to sort the output.
 
 |Value|Description|
 |---|---|
-|**JOB_DATE**|-|
-|**JOB_STATUS**|-|
+|**JOB_DATE**|Sort on job date.|
+|**JOB_STATUS**|Sort on job status.|
 
 
 <a name="appointmentstatus"></a>
