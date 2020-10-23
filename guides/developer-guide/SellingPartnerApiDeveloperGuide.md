@@ -71,19 +71,18 @@
 - [Generating a Java client library](#generating-a-java-client-library)
 
 - [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api)
-
-  - [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token)
-
-  - [Step 2. Construct a Selling Partner API URI](#step-2-construct-a-selling-partner-api-uri)
-
-  - [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri)
-
-  - [Step 4. Create and sign your request](#step-4-create-and-sign-your-request)
-
-    - [Credential scope](#credential-scope)
-
-    - [Authorization header](#authorization-header)
-
+- [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token)
+  
+- [Step 2. Construct a Selling Partner API URI](#step-2-construct-a-selling-partner-api-uri)
+  
+- [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri)
+  
+- [Step 4. Create and sign your request](#step-4-create-and-sign-your-request)
+  
+  - [Credential scope](#credential-scope)
+  
+  - [Authorization header](#authorization-header)
+  
 - [Response format](#response-format)
 
 - [Grantless operations](#grantless-operations-1)
@@ -1089,7 +1088,7 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
 ## Step 4. Create an instance of the Sellers API and call an operation
 
 With your `AWSAuthenticationCredentials`, `AWSAuthenticationCredentialsProvider`, and `LWAAuthorizationCredentials` instances configured you can create an instance of SellersApi and call an operation.
- 
+
 Example:
 
 ```
@@ -1341,8 +1340,7 @@ To create and sign your request, complete the following:
     The following example shows what a request might look like after you've added the signing information to it using the Authorization header.
 ```http
 PUT /fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10HTTP/1.1
-Authorization: AWS4-HMAC-SHA25Credential=AKIDEXAMPLE/20190430/us-east1/
-execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-access-token,
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAIHV6HIXXXXXXX/20201022/us-east-1/execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-access-token,
 Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
 host: sellingpartnerapi-na.amazon.com
 user-agent: My Selling Tool/2.0 (Language=Java/1.8.0.221;
@@ -1387,7 +1385,7 @@ Here are the components of an Authorization header:
 For example:
 
 ```
-Authorization: AWS4-HMAC-SHA25 Credential=AKIDEXAMPLE/20190430/us-east1/execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-accesstoken;xamz-date, Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAIHV6HIXXXXXXX/20201022/us-east-1/execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-access-token;x-amz-date, Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
 ```
 For more information, see [Step 4. Create and sign your request](#step-4-create-and-sign-your-request).
 
