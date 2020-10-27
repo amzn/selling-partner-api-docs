@@ -405,6 +405,8 @@ Register your application in Developer Central.
 
 3.  Follow the instructions to register your application.
 
+**Important.** When registering your application, the IAM ARN that you provide must be for the IAM entity to which you attached the IAM policy from  [Step 3. Create an IAM policy](#Step-3-Create-an-IAM-policy). In this workflow, that IAM entity is the IAM role from [Step 4. Create an IAM role](#Step-4-Create-an-IAM-role). If you register your application using your IAM user, be sure that the IAM policy is attached to it. Otherwise your calls to the Selling Partner API will fail. We recommend registering your application using an IAM role, as shown in this workflow, to help you better control access to your AWS resources.
+
 # Viewing your developer information
 
 After [registering your Selling Partner API application](#registering-as-a-developer) you can sign into Developer Central to view your developer information.
