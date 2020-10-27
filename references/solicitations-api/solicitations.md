@@ -47,6 +47,14 @@ With the Solicitations API you can build applications that send non-critical sol
 #### Description
 Returns a list of solicitation types that are available for an order that you specify. A solicitation type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a solicitation. Currently only the productReviewAndSellerFeedbackSolicitation solicitation type is available.
 
+**Usage Plan:**
+
+| Rate (requests per second) | Burst |
+| ---- | ---- |
+| 1 | 5 |
+
+For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+
 
 #### Parameters
 
@@ -76,7 +84,15 @@ Returns a list of solicitation types that are available for an order that you sp
 **Operation: createProductReviewAndSellerFeedbackSolicitation**
 
 #### Description
-Sends a solicitation to a buyer asking for seller feedback and a product review for the specified order.
+Sends a solicitation to a buyer asking for seller feedback and a product review for the specified order. Send only one productReviewAndSellerFeedback or free form proactive message per order.
+
+**Usage Plan:**
+
+| Rate (requests per second) | Burst |
+| ---- | ---- |
+| 1 | 5 |
+
+For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters

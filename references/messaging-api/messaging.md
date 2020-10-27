@@ -51,7 +51,7 @@ Returns a list of message types that are available for an order that you specify
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -68,7 +68,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Returns hypermedia links under the _links.actions key that specify which messaging actions are allowed for the order.  <br>**Headers** :   <br>`x-amzn-requestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**200**|Returns hypermedia links under the _links.actions key that specify which messaging actions are allowed for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
 |**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
@@ -90,7 +90,7 @@ Sends a message asking a buyer to provide or verify customization details such a
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -130,7 +130,7 @@ Sends a message to a buyer to arrange a delivery or to confirm contact informati
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -170,7 +170,7 @@ Sends a critical message that contains documents that a seller is legally obliga
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -210,7 +210,7 @@ Sends a non-critical message that asks a buyer to remove their negative feedback
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -249,7 +249,7 @@ Sends a message to ask a buyer an order-related question prior to shipping their
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -289,7 +289,7 @@ Sends a message to contact a Home Service customer to arrange a service call or 
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -329,7 +329,7 @@ Sends a message to a buyer to provide details about an Amazon Motors order. This
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -369,7 +369,7 @@ Sends a message to a buyer to provide details about warranty information on a pu
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -409,7 +409,7 @@ Returns a response containing attributes related to an order. This includes buye
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 
 #### Parameters
@@ -424,7 +424,7 @@ Returns a response containing attributes related to an order. This includes buye
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Response has successfully been returned  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**200**|Response has successfully been returned.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
 |**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
@@ -446,7 +446,7 @@ Sends a message to a buyer to share a digital access key needed to utilize digit
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -486,7 +486,7 @@ Sends a critical message to a buyer that an unexpected problem was encountered a
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| .1 | 5 |
+| 1 | 5 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -768,8 +768,8 @@ The request schema for the createWarranty operation.
 |Name|Description|Schema|
 |---|---|---|
 |**attachments**  <br>*optional*|Attachments to include in the message to the buyer.|< [Attachment](#attachment) > array|
-|**coverageStartDate**  <br>*optional*|The start date of the warranty coverage to include in the message to the buyer|string (date-time)|
-|**coverageEndDate**  <br>*optional*|The end date of the warranty coverage to include in the message to the buyer|string (date-time)|
+|**coverageStartDate**  <br>*optional*|The start date of the warranty coverage to include in the message to the buyer.|string (date-time)|
+|**coverageEndDate**  <br>*optional*|The end date of the warranty coverage to include in the message to the buyer.|string (date-time)|
 
 
 <a name="createwarrantyresponse"></a>

@@ -36,7 +36,7 @@ With the Services API, you can build applications that help service providers ge
 
 
 ### Operations
-[getServiceJobByServiceJobId](#getservicejobbyservicejobid)<br>[cancelServiceJobByServiceJobId](#cancelservicejobbyservicejobid)<br>[completeServiceJobByServiceJobId](#completeservicejobbyservicejobid)<br>[getServiceJobs](#getservicejobs)<br>
+[getServiceJobByServiceJobId](#getservicejobbyservicejobid)<br>[cancelServiceJobByServiceJobId](#cancelservicejobbyservicejobid)<br>[completeServiceJobByServiceJobId](#completeservicejobbyservicejobid)<br>[getServiceJobs](#getservicejobs)<br>[addAppointmentForServiceJobByServiceJobId](#addappointmentforservicejobbyservicejobid)<br>[rescheduleAppointmentForServiceJobByServiceJobId](#rescheduleappointmentforservicejobbyservicejobid)<br>
 <a name="paths"></a>
 ## Paths
 
@@ -45,13 +45,13 @@ With the Services API, you can build applications that help service providers ge
 **Operation: getServiceJobByServiceJobId**
 
 #### Description
-Gets service job details for the specified service job identifier.
+Gets service job details for the service job indicated by the service job identifier you specify.
 
 **Usage Plan:**
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 50 | 200 |
+| 20 | 40 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -73,7 +73,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
 |**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
 |**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
-|**422**|Unprocessable Entity. Unable to process the contained instructions.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
 |**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
@@ -84,7 +84,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 **Operation: cancelServiceJobByServiceJobId**
 
 #### Description
-Cancels a service job for a service job Id.
+Cancels the service job indicated by the service job identifier you specify.
+
+**Usage Plan:**
+
+| Rate (requests per second) | Burst |
+| ---- | ---- |
+| 5 | 20 |
+
+For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -99,16 +107,16 @@ Cancels a service job for a service job Id.
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**403**|403 can be caused for reasons like Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**415**|The entity of the request is in a format not supported by the requested resource.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
 
 
 <a name="completeservicejobbyservicejobid"></a>
@@ -116,7 +124,15 @@ Cancels a service job for a service job Id.
 **Operation: completeServiceJobByServiceJobId**
 
 #### Description
-Completes a service job for a service job Id
+Completes the service job indicated by the service job identifier you specify.
+
+**Usage Plan:**
+
+| Rate (requests per second) | Burst |
+| ---- | ---- |
+| 5 | 20 |
+
+For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -130,16 +146,16 @@ Completes a service job for a service job Id
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**403**|403 can be caused for reasons like Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**415**|The entity of the request is in a format not supported by the requested resource.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
 
 
 <a name="getservicejobs"></a>
@@ -148,6 +164,14 @@ Completes a service job for a service job Id
 
 #### Description
 Gets service job details for the specified filter query.
+
+**Usage Plan:**
+
+| Rate (requests per second) | Burst |
+| ---- | ---- |
+| 10 | 40 |
+
+For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -158,15 +182,15 @@ Gets service job details for the specified filter query.
 |**Query**|**serviceJobStatus**  <br>*optional*|A list of one or more job status by which to filter the list of jobs.|< enum ([ServiceJobStatus](#servicejobstatus-subgroup-2)) > array|-|
 |**Query**|**pageToken**  <br>*optional*|String returned in the response of your previous request.|string|-|
 |**Query**|**pageSize**  <br>*optional*|A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. <br>**Minimum** : 1<br>**Maximum** : 20|integer|`20`|
-|**Query**|**sortField**  <br>*optional*|Sort fields on which you want to sort the output.|string|-|
-|**Query**|**sortOrder**  <br>*optional*|sort order for the query you want to perform.|string|-|
+|**Query**|**sortField**  <br>*optional*|Sort fields on which you want to sort the output.|enum ([SortField](#sortfield))|-|
+|**Query**|**sortOrder**  <br>*optional*|Sort order for the query you want to perform.|enum ([SortOrder](#sortorder))|-|
 |**Query**|**createdAfter**  <br>*optional*|A date used for selecting jobs created after (or at) a specified time must be in ISO 8601 format. Required if LastUpdatedAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error.|string|-|
 |**Query**|**createdBefore**  <br>*optional*|A date used for selecting jobs created before (or at) a specified time must be in ISO 8601 format.|string|-|
 |**Query**|**lastUpdatedAfter**  <br>*optional*|A date used for selecting jobs updated after (or at) a specified time must be in ISO 8601 format. Required if createdAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error.|string|-|
 |**Query**|**lastUpdatedBefore**  <br>*optional*|A date used for selecting jobs updated before (or at) a specified time must be in ISO 8601 format.|string|-|
-|**Query**|**scheduleStartDate**  <br>*optional*|A date used for filtering jobs in a interval of the schedule appointment date, a specified time must be in 8601 format. Required both scheduleStartDate and scheduleEndDate,Also schedule end date should not be earlier than schedule start date.|string|-|
-|**Query**|**scheduleEndDate**  <br>*optional*|A date used for filtering jobs in a interval of the appointment date, a specified time must be in 8601 format. Required both scheduleStartDate and scheduleEndDate,Also schedule end date should not be earlier than schedule start date.|string|-|
-|**Query**|**marketplaceIds**  <br>*required*|Used to select jobs that were placed in the specified marketplaces.|< string > array|-|
+|**Query**|**scheduleStartDate**  <br>*optional*|A date used for filtering jobs schedule after (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date.|string|-|
+|**Query**|**scheduleEndDate**  <br>*optional*|A date used for filtering jobs schedule before (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date.|string|-|
+|**Query**|**marketplaceIds**  <br>*required*|Used to select jobs that were placed in the specified marketplaces.<br>**Max count** : 1|< string > array|-|
 
 
 #### Responses
@@ -182,6 +206,87 @@ Gets service job details for the specified filter query.
 |**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
+
+
+<a name="addappointmentforservicejobbyservicejobid"></a>
+### POST /service/v1/serviceJobs/{serviceJobId}/appointments
+**Operation: addAppointmentForServiceJobByServiceJobId**
+
+#### Description
+Adds an appointment to the service job indicated by the service job identifier you specify.
+
+**Usage Plan:**
+
+| Rate (requests per second) | Burst |
+| ---- | ---- |
+| 5 | 20 |
+
+For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**serviceJobId**  <br>*required*|An Amazon defined service job identifier.<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Body**|**body**  <br>*required*|Add appointment operation input details.|[AddAppointmentRequest](#addappointmentrequest)|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+
+
+<a name="rescheduleappointmentforservicejobbyservicejobid"></a>
+### POST /service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}
+**Operation: rescheduleAppointmentForServiceJobByServiceJobId**
+
+#### Description
+Reschedules an appointment for the service job indicated by the service job identifier you specify.
+
+**Usage Plan:**
+
+| Rate (requests per second) | Burst |
+| ---- | ---- |
+| 5 | 20 |
+
+For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**serviceJobId**  <br>*required*|An Amazon defined service job identifier.<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Path**|**appointmentId**  <br>*required*|An existing appointment identifier for the Service Job.<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Body**|**body**  <br>*required*|Reschedule appointment operation input details.|[RescheduleAppointmentRequest](#rescheduleappointmentrequest)|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
 
 
 <a name="definitions"></a>
@@ -225,13 +330,25 @@ Response schema for GetJobs operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**payload**  <br>*optional*|The payload for the GetJobs operation.|[JobItemList](#jobitemlist)|
+|**payload**  <br>*optional*|The payload for the GetJobs operation.|[JobListing](#joblisting)|
 |**errors**  <br>*optional*|An unexpected condition occurred during the GetServiceJobs operation.|[ErrorList](#errorlist)|
 
 
-<a name="jobitemlist"></a>
-### JobItemList
-List of Job Items.
+<a name="setappointmentresponse"></a>
+### SetAppointmentResponse
+Response schema for add or reschedule appointment operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**appointmentId**  <br>*optional*|New appointment id generated during add or reschedule appointment operation.|[AppointmentId](#appointmentid)|
+|**warnings**  <br>*optional*|Warnings generated during add or reschedule appointment operation.|[WarningList](#warninglist)|
+|**errors**  <br>*optional*|Errors occurred during during add or reschedule appointment operation.|[ErrorList](#errorlist)|
+
+
+<a name="joblisting"></a>
+### JobListing
+The payload for the GetJobs operation.
 
 
 |Name|Description|Schema|
@@ -239,22 +356,7 @@ List of Job Items.
 |**totalResultSize**  <br>*optional*|Total result size of the query result.|integer|
 |**nextPageToken**  <br>*optional*|A generated string used to pass information to your next request.If nextPageToken is returned, pass the value of nextPageToken to the pageToken to get next results.|string|
 |**previousPageToken**  <br>*optional*|A generated string used to pass information to your next request.If previousPageToken is returned, pass the value of previousPageToken to the pageToken to get previous page results.|string|
-|**jobItems**  <br>*optional*|List of job details of a service for the given input.|< [JobItem](#jobitem) > array|
-
-
-<a name="jobitem"></a>
-### JobItem
-The job details of a service for get jobs input.
-
-
-|Name|Description|Schema|
-|---|---|---|
-|**serviceOrderDate**  <br>*optional*|Order date on which the Job was created, in ISO 8601 format.|string (date-time)|
-|**serviceJobId**  <br>*optional*|The service job identifier for a job.|[ServiceJobId](#servicejobid)|
-|**serviceJobStatus**  <br>*optional*|The status of the current service job.|enum ([ServiceJobStatus](#servicejobstatus-subgroup-3))|
-|**appointments**  <br>*optional*|A list of appointments.|< [Appointment](#appointment) > array|
-|**serviceOrderId**  <br>*optional*|The Amazon defined identifier for an order placed by the buyer, in 3-7-7 format.|[OrderId](#orderid)|
-|**buyer**  <br>*optional*|Information about the buyer.|[Buyer](#buyer)|
+|**jobs**  <br>*optional*|List of job details for the given input.|< [ServiceJob](#servicejob) > array|
 
 
 <a name="servicejob"></a>
@@ -327,7 +429,7 @@ Information about the service job provider.
 
 |Name|Description|Schema|
 |---|---|---|
-|**serviceJobProviderId**  <br>*optional*|The identifier of the service job provider  <br>**Pattern** : `"^[A-Z0-9]<li>$"`</li>|string|
+|**serviceJobProviderId**  <br>*optional*|The identifier of the service job provider.  <br>**Pattern** : `"^[A-Z0-9]<li>$"`</li>|string|
 
 
 <a name="buyer"></a>
@@ -472,6 +574,45 @@ The shipping address for the service job.
 |**phone**  <br>*optional*|The phone number.|string|
 
 
+<a name="addappointmentrequest"></a>
+### AddAppointmentRequest
+Input for add appointment operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**appointmentTime**  <br>*required*|Input appointment time details.|[AppointmentTimeInput](#appointmenttimeinput)|
+
+
+<a name="rescheduleappointmentrequest"></a>
+### RescheduleAppointmentRequest
+Input for rescheduled appointment operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**appointmentTime**  <br>*required*|Input appointment time details.|[AppointmentTimeInput](#appointmenttimeinput)|
+|**rescheduleReasonCode**  <br>*required*|Input appointment reschedule reason.|[RescheduleReasonCode](#reschedulereasoncode)|
+
+
+<a name="appointmenttimeinput"></a>
+### AppointmentTimeInput
+The input appointment time details.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**startTime**  <br>*required*|The date, time in UTC for the start time of an appointment in ISO 8601 format.|string (date-time)|
+|**durationInMinutes**  <br>*optional*|The duration of an appointment in minutes.|integer|
+
+
+<a name="reschedulereasoncode"></a>
+### RescheduleReasonCode
+Appointment reschedule reason code.
+
+*Type* : string
+
+
 <a name="errorlist"></a>
 ### ErrorList
 A list of error responses returned when a request is unsuccessful.
@@ -492,6 +633,25 @@ Error response returned when the request is unsuccessful.
 |**errorLevel**  <br>*optional*|The type of error.|enum ([ErrorLevel](#errorlevel))|
 
 
+<a name="warninglist"></a>
+### WarningList
+A list of warnings returned in the sucessful execution response of an API request.
+
+*Type* : < [Warning](#warning) > array
+
+
+<a name="warning"></a>
+### Warning
+Warning returned when the request is successful but execution have some important callouts on basis of which API clients should take defined actions.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**code**  <br>*required*|An warning code that identifies the type of warning that occurred.|string|
+|**message**  <br>*required*|A message that describes the warning condition in a human-readable form.|string|
+|**details**  <br>*optional*|Additional details that can help the caller understand or address the warning.|string|
+
+
 <a name="servicelocationtype"></a>
 ### ServiceLocationType
 The location of the service job.
@@ -501,8 +661,8 @@ The location of the service job.
 
 |Value|Description|
 |---|---|
-|**IN_HOME**|Indicates the service for the service job is performed at the customer�s home address.|
-|**IN_STORE**|Indicates the service for the service job is performed at the service provider�s store.|
+|**IN_HOME**|Indicates the service for the service job is performed at the customers home address.|
+|**IN_STORE**|Indicates the service for the service job is performed at the service providers store.|
 |**ONLINE**|Indicates the service for the service job is performed remotely.|
 
 
@@ -536,6 +696,19 @@ The type of POA uploaded.
 |**POA_RECEIPT**|Indicates that the type of proof of appointment is a receipt.|
 
 
+<a name="sortorder"></a>
+### SortOrder
+Sort order for the query you want to perform.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**ASC**|Sort in ascending order.|
+|**DESC**|Sort in descending order.|
+
+
 <a name="errorlevel"></a>
 ### ErrorLevel
 The type of error.
@@ -547,6 +720,19 @@ The type of error.
 |---|---|
 |**ERROR**|Error|
 |**WARNING**|Warning|
+
+
+<a name="sortfield"></a>
+### SortField
+Sort fields on which you want to sort the output.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**JOB_DATE**|Sort on job date.|
+|**JOB_STATUS**|Sort on job status.|
 
 
 <a name="appointmentstatus"></a>
@@ -591,17 +777,4 @@ The status of the service job.
 |**NOT_FULFILLABLE**|Jobs which are not fulfillable.|
 |**HOLD**|Jobs which are on hold.|
 |**PAYMENT_DECLINED**|Jobs for which payment was declined.|
-
-<a id="servicejobstatus-subgroup-3"></a>**For use with the definition(s): [JobItem](#jobitem)**
-The status of the current service job.
-
-|Value|Description|
-|---|---|
-|**NOT_SERVICED**|Indicates that the service for the service job is not complete.|
-|**CANCELLED**|Indicates that the service job is cancelled.|
-|**COMPLETED**|Indicates that the service is performed and the service job is closed successfully.|
-|**PENDING_SCHEDULE**|Indicates that an appointment for the service job has not been scheduled.|
-|**NOT_FULFILLABLE**|Indicates that the service job is not actionable due to an unexpected exception.|
-|**HOLD**|Indicates that the appointment time preference given by customer cannot be serviced by the service provider.|
-|**PAYMENT_DECLINED**|Indicates that the customer payment has been declined.|
 

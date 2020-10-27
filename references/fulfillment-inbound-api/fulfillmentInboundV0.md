@@ -603,7 +603,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
-|**Query**|**ShipmentStatusList**  <br>*optional*|A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify.|< [ShipmentStatus](#shipmentstatus) > array|
+|**Query**|**ShipmentStatusList**  <br>*optional*|A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify.|< enum ([ShipmentStatusList](#shipmentstatuslist)) > array|
 |**Query**|**ShipmentIdList**  <br>*optional*|A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned.|< string > array|
 |**Query**|**LastUpdatedAfter**  <br>*optional*|A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller.|string (date-time)|
 |**Query**|**LastUpdatedBefore**  <br>*optional*|A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller.|string (date-time)|
@@ -979,7 +979,7 @@ The request schema for an inbound shipment.
 |---|---|---|
 |**InboundShipmentHeader**  <br>*required*|Inbound shipment information used to create and update inbound shipments.|[InboundShipmentHeader](#inboundshipmentheader)|
 |**InboundShipmentItems**  <br>*required*|A list of inbound shipment item information.|[InboundShipmentItemList](#inboundshipmentitemlist)|
-|**MarketplaceId**  <br>*optional*|A marketplace identifier. Specifies the marketplace where the product would be stored.|string|
+|**MarketplaceId**  <br>*required*|A marketplace identifier. Specifies the marketplace where the product would be stored.|string|
 
 
 <a name="inboundshipmentresult"></a>
@@ -2056,6 +2056,25 @@ The type of labels requested.
 |**DEFAULT**|This option is provided for backwards compatibility only. Amazon strongly recommends using the UNIQUE option to get package labels instead of the DEFAULT option.|
 |**UNIQUE**|Document data for printing unique shipping labels and carrier labels for an inbound shipment.|
 |**PALLET**|Document data for printing pallet labels for a Less Than Truckload/Full Truckload (LTL/FTL) inbound shipment.|
+
+
+<a name="shipmentstatuslist"></a>
+### ShipmentStatusList
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**WORKING**|The shipment was created by the seller, but has not yet shipped.|
+|**SHIPPED**|The shipment was picked up by the carrier.|
+|**RECEIVING**|The shipment has arrived at the fulfillment center, but not all items have been marked as received.|
+|**CANCELLED**|The shipment was cancelled by the seller after the shipment was sent to the fulfillment center.|
+|**DELETED**|The shipment was cancelled by the seller before the shipment was sent to the  fulfillment center.|
+|**CLOSED**|The shipment has arrived at the fulfillment center and all items have been marked as received.|
+|**ERROR**|There was an error with the shipment and it was not processed by Amazon.|
+|**IN_TRANSIT**|The carrier has notified the fulfillment center that it is aware of the shipment.|
+|**DELIVERED**|The shipment was delivered by the carrier to the fulfillment center.|
+|**CHECKED_IN**|The shipment was checked-in at the receiving dock of the fulfillment center.|
 
 
 <a name="pagetype"></a>

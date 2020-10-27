@@ -547,25 +547,23 @@ Contains all information related to a financial event.
 |**GuaranteeClaimEventList**  <br>*optional*|A list of guarantee claim events.|[ShipmentEventList](#shipmenteventlist)|
 |**ChargebackEventList**  <br>*optional*|A list of chargeback events.|[ShipmentEventList](#shipmenteventlist)|
 |**PayWithAmazonEventList**  <br>*optional*|A list of events related to the seller's Pay with Amazon account.|[PayWithAmazonEventList](#paywithamazoneventlist)|
-|**ServiceProviderCreditEventList**  <br>*optional*|-|[SolutionProviderCreditEventList](#solutionprovidercrediteventlist)|
-|**RetrochargeEventList**  <br>*optional*|-|[RetrochargeEventList](#retrochargeeventlist)|
-|**RentalTransactionEventList**  <br>*optional*|-|[RentalTransactionEventList](#rentaltransactioneventlist)|
+|**ServiceProviderCreditEventList**  <br>*optional*|A list of information about solution provider credits.|[SolutionProviderCreditEventList](#solutionprovidercrediteventlist)|
+|**RetrochargeEventList**  <br>*optional*|A list of information about Retrocharge or RetrochargeReversal events.|[RetrochargeEventList](#retrochargeeventlist)|
+|**RentalTransactionEventList**  <br>*optional*|A list of rental transaction event information.|[RentalTransactionEventList](#rentaltransactioneventlist)|
 |**ProductAdsPaymentEventList**  <br>*optional*|A list of sponsored products payment events.|[ProductAdsPaymentEventList](#productadspaymenteventlist)|
-|**ServiceFeeEventList**  <br>*optional*|-|[ServiceFeeEventList](#servicefeeeventlist)|
-|**SellerDealPaymentEventList**  <br>*optional*|-|[SellerDealPaymentEventList](#sellerdealpaymenteventlist)|
+|**ServiceFeeEventList**  <br>*optional*|A list of information about service fee events.|[ServiceFeeEventList](#servicefeeeventlist)|
+|**SellerDealPaymentEventList**  <br>*optional*|A list of payment events for deal-related fees.|[SellerDealPaymentEventList](#sellerdealpaymenteventlist)|
 |**DebtRecoveryEventList**  <br>*optional*|A list of debt recovery event information.|[DebtRecoveryEventList](#debtrecoveryeventlist)|
 |**LoanServicingEventList**  <br>*optional*|A list of loan servicing events.|[LoanServicingEventList](#loanservicingeventlist)|
 |**AdjustmentEventList**  <br>*optional*|A list of adjustment event information for the seller's account.|[AdjustmentEventList](#adjustmenteventlist)|
-|**SAFETReimbursementEventList**  <br>*optional*|-|[SAFETReimbursementEventList](#safetreimbursementeventlist)|
-|**SellerReviewEnrollmentPaymentEventList**  <br>*optional*|-|[SellerReviewEnrollmentPaymentEventList](#sellerreviewenrollmentpaymenteventlist)|
+|**SAFETReimbursementEventList**  <br>*optional*|A list of SAFETReimbursementEvents.|[SAFETReimbursementEventList](#safetreimbursementeventlist)|
+|**SellerReviewEnrollmentPaymentEventList**  <br>*optional*|A list of information about fee events for the Early Reviewer Program.|[SellerReviewEnrollmentPaymentEventList](#sellerreviewenrollmentpaymenteventlist)|
 |**FBALiquidationEventList**  <br>*optional*|A list of FBA inventory liquidation payment events.|[FBALiquidationEventList](#fbaliquidationeventlist)|
 |**CouponPaymentEventList**  <br>*optional*|A list of coupon payment event information.|[CouponPaymentEventList](#couponpaymenteventlist)|
 |**ImagingServicesFeeEventList**  <br>*optional*|A list of fee events related to Amazon Imaging services.|[ImagingServicesFeeEventList](#imagingservicesfeeeventlist)|
 |**NetworkComminglingTransactionEventList**  <br>*optional*|A list of network commingling transaction events.|[NetworkComminglingTransactionEventList](#networkcomminglingtransactioneventlist)|
 |**AffordabilityExpenseEventList**  <br>*optional*|A list of expense information related to an affordability promotion.|[AffordabilityExpenseEventList](#affordabilityexpenseeventlist)|
 |**AffordabilityExpenseReversalEventList**  <br>*optional*|A list of expense information related to an affordability promotion.|[AffordabilityExpenseEventList](#affordabilityexpenseeventlist)|
-|**TrialShipmentEventList**  <br>*optional*|-|[TrialShipmentEventList](#trialshipmenteventlist)|
-|**ShipmentSettleEventList**  <br>*optional*|-|[ShipmentSettleEventList](#shipmentsettleeventlist)|
 
 
 <a name="imagingservicesfeeevent"></a>
@@ -749,8 +747,7 @@ A removal shipment event for a removal order.
 |Name|Description|Schema|
 |---|---|---|
 |**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
-|**MerchantOrderId**  <br>*optional*|The merchant removal orderId.|string|
-|**OrderId**  <br>*optional*|The orderId for shipping inventory.|string|
+|**OrderId**  <br>*optional*|The identifier for the removal shipment order.|string|
 |**TransactionType**  <br>*optional*|The type of removal order.<br><br>Possible values:<br><br><li> WHOLESALE_LIQUIDATION</li>|string|
 |**RemovalShipmentItemList**  <br>*optional*|A list of removal shipment items.|[RemovalShipmentItemList](#removalshipmentitemlist)|
 
@@ -786,46 +783,321 @@ A list of information about removal shipment items.
 *Type* : < [RemovalShipmentItem](#removalshipmentitem) > array
 
 
-<a name="removalshipmentadjustmentevent"></a>
-### RemovalShipmentAdjustmentEvent
-A financial adjustment event for FBA liquidated inventory.
-
-Possible adjustment:
-
-* Positive values - Buyer needs to pay more amount to Amazon. E.g. charge was wrongly calculated 0$ instead of 100$ due to system error. 
-
-* Negative Values - Buyer get refund. E.g. Buyer receives less items or damaged items and as part of their adjustment buyer gets refund.
+<a name="rentaltransactionevent"></a>
+### RentalTransactionEvent
+An event related to a rental transaction.
 
 
 |Name|Description|Schema|
 |---|---|---|
-|**PostedDate**  <br>*optional*|The date when the financial event was posted.|[Date](#date)|
-|**AdjustmentEventId**  <br>*optional*|The unique identifier for the adjustment event.|string|
-|**MerchantOrderId**  <br>*optional*|The merchant removal orderId.|string|
-|**OrderId**  <br>*optional*|The orderId for shipping inventory.|string|
-|**TransactionType**  <br>*optional*|The type of removal order.<br><br>Possible values:<br><br><li> WHOLESALE_LIQUIDATION.</li>|string|
-|**RemovalShipmentItemAdjustmentList**  <br>*optional*|A comma-delimited list of Removal shipmentItemAdjustment details for FBA inventory.|< [RemovalShipmentItemAdjustment](#removalshipmentitemadjustment) > array|
+|**AmazonOrderId**  <br>*optional*|An Amazon-defined identifier for an order.|string|
+|**RentalEventType**  <br>*optional*|The type of rental event.<br><br>Possible values:<br><br><li> RentalCustomerPayment-Buyout - Transaction type that represents when the customer wants to buy out a rented item.</li><br><li> RentalCustomerPayment-Extension - Transaction type that represents when the customer wants to extend the rental period.</li><br><li> RentalCustomerRefund-Buyout - Transaction type that represents when the customer requests a refund for the buyout of the rented item.</li><br><li> RentalCustomerRefund-Extension - Transaction type that represents when the customer requests a refund over the extension on the rented item.</li><br><li> RentalHandlingFee - Transaction type that represents the fee that Amazon charges sellers who rent through Amazon.</li><br><li> RentalChargeFailureReimbursement - Transaction type that represents when Amazon sends money to the seller to compensate for a failed charge.</li><br><li> RentalLostItemReimbursement - Transaction type that represents when Amazon sends money to the seller to compensate for a lost item.</li>|string|
+|**ExtensionLength**  <br>*optional*|The number of days that the buyer extended an already rented item. This value is only returned for RentalCustomerPayment-Extension and RentalCustomerRefund-Extension events.|integer (int32)|
+|**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
+|**RentalChargeList**  <br>*optional*|A list of charges associated with the rental event.|[ChargeComponentList](#chargecomponentlist)|
+|**RentalFeeList**  <br>*optional*|A list of fees associated with the rental event.|[FeeComponentList](#feecomponentlist)|
+|**MarketplaceName**  <br>*optional*|The name of the marketplace.|string|
+|**RentalInitialValue**  <br>*optional*|The amount of money the customer originally paid to rent the item. This value is only returned for RentalChargeFailureReimbursement and RentalLostItemReimbursement events.|[Currency](#currency)|
+|**RentalReimbursement**  <br>*optional*|The amount of money Amazon sends the seller to compensate for a lost item or a failed charge. This value is only returned for RentalChargeFailureReimbursement and RentalLostItemReimbursement events.|[Currency](#currency)|
+|**RentalTaxWithheldList**  <br>*optional*|A list of taxes withheld information for a rental item.|[TaxWithheldComponentList](#taxwithheldcomponentlist)|
 
 
-<a name="removalshipmentadjustmenteventlist"></a>
-### RemovalShipmentAdjustmentEventList
-A comma-delimited list of Removal shipmentAdjustment details for FBA inventory.
+<a name="rentaltransactioneventlist"></a>
+### RentalTransactionEventList
+A list of rental transaction event information.
 
-*Type* : < [RemovalShipmentAdjustmentEvent](#removalshipmentadjustmentevent) > array
+*Type* : < [RentalTransactionEvent](#rentaltransactionevent) > array
 
 
-<a name="removalshipmentitemadjustment"></a>
-### RemovalShipmentItemAdjustment
-Item-level information for a removal shipment item adjustment.
+<a name="retrochargeevent"></a>
+### RetrochargeEvent
+A retrocharge or retrocharge reversal.
 
 
 |Name|Description|Schema|
 |---|---|---|
-|**RemovalShipmentItemId**  <br>*optional*|An identifier for an item in a removal shipment.|string|
+|**RetrochargeEventType**  <br>*optional*|The type of event.<br><br>Possible values:<br><br><li> Retrocharge</li><br><li> RetrochargeReversal</li>|string|
+|**AmazonOrderId**  <br>*optional*|An Amazon-defined identifier for an order.|string|
+|**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
+|**BaseTax**  <br>*optional*|The base tax associated with the retrocharge event.|[Currency](#currency)|
+|**ShippingTax**  <br>*optional*|The shipping tax associated with the retrocharge event.|[Currency](#currency)|
+|**MarketplaceName**  <br>*optional*|The name of the marketplace where the retrocharge event occurred.|string|
+|**RetrochargeTaxWithheldList**  <br>*optional*|A list of information about taxes withheld.|[TaxWithheldComponentList](#taxwithheldcomponentlist)|
+
+
+<a name="retrochargeeventlist"></a>
+### RetrochargeEventList
+A list of information about Retrocharge or RetrochargeReversal events.
+
+*Type* : < [RetrochargeEvent](#retrochargeevent) > array
+
+
+<a name="safetreimbursementevent"></a>
+### SAFETReimbursementEvent
+A SAFE-T claim reimbursement on the seller's account.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
+|**SAFETClaimId**  <br>*optional*|A SAFE-T claim identifier.|string|
+|**ReimbursedAmount**  <br>*optional*|The amount of the reimbursement.|[Currency](#currency)|
+|**ReasonCode**  <br>*optional*|Indicates why the seller was reimbursed.|string|
+|**SAFETReimbursementItemList**  <br>*optional*|A list of SAFETReimbursementItems.|[SAFETReimbursementItemList](#safetreimbursementitemlist)|
+
+
+<a name="safetreimbursementeventlist"></a>
+### SAFETReimbursementEventList
+A list of SAFETReimbursementEvents.
+
+*Type* : < [SAFETReimbursementEvent](#safetreimbursementevent) > array
+
+
+<a name="safetreimbursementitem"></a>
+### SAFETReimbursementItem
+An item from a SAFE-T claim reimbursement.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**itemChargeList**  <br>*optional*|A list of charges associated with the item.|[ChargeComponentList](#chargecomponentlist)|
+|**productDescription**  <br>*optional*|The description of the item as shown on the product detail page on the retail website.|string|
+|**quantity**  <br>*optional*|The number of units of the item being reimbursed.|string|
+
+
+<a name="safetreimbursementitemlist"></a>
+### SAFETReimbursementItemList
+A list of SAFETReimbursementItems.
+
+*Type* : < [SAFETReimbursementItem](#safetreimbursementitem) > array
+
+
+<a name="sellerdealpaymentevent"></a>
+### SellerDealPaymentEvent
+An event linked to the payment of a fee related to the specified deal.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**postedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
+|**dealId**  <br>*optional*|The unique identifier of the deal.|string|
+|**dealDescription**  <br>*optional*|The internal description of the deal.|string|
+|**eventType**  <br>*optional*|The type of event: SellerDealComplete.|string|
+|**feeType**  <br>*optional*|The type of fee: RunLightningDealFee.|string|
+|**feeAmount**  <br>*optional*|The monetary amount of the fee.|[Currency](#currency)|
+|**taxAmount**  <br>*optional*|The monetary amount of the tax applied.|[Currency](#currency)|
+|**totalAmount**  <br>*optional*|The total monetary amount paid.|[Currency](#currency)|
+
+
+<a name="sellerdealpaymenteventlist"></a>
+### SellerDealPaymentEventList
+A list of payment events for deal-related fees.
+
+*Type* : < [SellerDealPaymentEvent](#sellerdealpaymentevent) > array
+
+
+<a name="sellerreviewenrollmentpaymentevent"></a>
+### SellerReviewEnrollmentPaymentEvent
+A fee payment event for the Early Reviewer Program.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
+|**EnrollmentId**  <br>*optional*|An enrollment identifier.|string|
+|**ParentASIN**  <br>*optional*|The Amazon Standard Identification Number (ASIN) of the item that was enrolled in the Early Reviewer Program.|string|
+|**FeeComponent**  <br>*optional*|A fee associated with the event.|[FeeComponent](#feecomponent)|
+|**ChargeComponent**  <br>*optional*|A charge on the seller's account.<br><br>Possible values:<br><br><li> Principal - The selling price of the order item, equal to the selling price of the item multiplied by the quantity ordered.</li><br><li> Tax - The tax collected by the seller on the Principal.</li><br><li> MarketplaceFacilitatorTax-Principal - The tax withheld on the Principal.</li><br><li> MarketplaceFacilitatorTax-Shipping - The tax withheld on the ShippingCharge.</li><br><li> MarketplaceFacilitatorTax-Giftwrap - The tax withheld on the Giftwrap charge.</li><br><li> MarketplaceFacilitatorTax-Other - The tax withheld on other miscellaneous charges.</li><br><li> Discount - The promotional discount for an order item.</li><br><li> TaxDiscount - The tax amount deducted for promotional rebates.</li><br><li> CODItemCharge - The COD charge for an order item.</li><br><li> CODItemTaxCharge - The tax collected by the seller on a CODItemCharge.</li><br><li> CODOrderCharge - The COD charge for an order.</li><br><li> CODOrderTaxCharge - The tax collected by the seller on a CODOrderCharge.</li><br><li> CODShippingCharge - Shipping charges for a COD order.</li><br><li> CODShippingTaxCharge - The tax collected by the seller on a CODShippingCharge.</li><br><li> ShippingCharge - The shipping charge.</li><br><li> ShippingTax - The tax collected by the seller on a ShippingCharge.</li><br><li> Goodwill - The amount given to a buyer as a gesture of goodwill or to compensate for pain and suffering in the buying experience.</li><br><li> Giftwrap - The gift wrap charge.</li><br><li> GiftwrapTax - The tax collected by the seller on a Giftwrap charge.</li><br><li> RestockingFee - The charge applied to the buyer when returning a product in certain categories.</li><br><li> ReturnShipping - The amount given to the buyer to compensate for shipping the item back in the event we are at fault.</li><br><li> PointsFee - The value of Amazon Points deducted from the refund if the buyer does not have enough Amazon Points to cover the deduction.</li><br><li> GenericDeduction - A generic bad debt deduction.</li><br><li> FreeReplacementReturnShipping - The compensation for return shipping when a buyer receives the wrong item, requests a free replacement, and returns the incorrect item.</li><br><li> PaymentMethodFee - The fee collected for certain payment methods in certain marketplaces.</li><br><li> ExportCharge - The export duty that is charged when an item is shipped to an international destination as part of the Amazon Global program.</li><br><li> SAFE-TReimbursement - The SAFE-T claim amount for the item.</li><br><li> TCS-CGST - Tax Collected at Source (TCS) for Central Goods and Services Tax (CGST).</li><br><li> TCS-SGST - Tax Collected at Source for State Goods and Services Tax (SGST).</li><br><li> TCS-IGST - Tax Collected at Source for Integrated Goods and Services Tax (IGST).</li><br><li> TCS-UTGST - Tax Collected at Source for Union Territories Goods and Services Tax (UTGST).</li>|[ChargeComponent](#chargecomponent)|
+|**TotalAmount**  <br>*optional*|The FeeComponent value plus the ChargeComponent value.|[Currency](#currency)|
+
+
+<a name="sellerreviewenrollmentpaymenteventlist"></a>
+### SellerReviewEnrollmentPaymentEventList
+A list of information about fee events for the Early Reviewer Program.
+
+*Type* : < [SellerReviewEnrollmentPaymentEvent](#sellerreviewenrollmentpaymentevent) > array
+
+
+<a name="servicefeeevent"></a>
+### ServiceFeeEvent
+A service fee on the seller's account.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**AmazonOrderId**  <br>*optional*|An Amazon-defined identifier for an order.|string|
+|**FeeReason**  <br>*optional*|A short description of the service fee reason.|string|
+|**FeeList**  <br>*optional*|A list of fee components associated with the service fee.|[FeeComponentList](#feecomponentlist)|
+|**SellerSKU**  <br>*optional*|The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.|string|
+|**FnSKU**  <br>*optional*|A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.|string|
+|**FeeDescription**  <br>*optional*|A short description of the service fee event.|string|
+|**ASIN**  <br>*optional*|The Amazon Standard Identification Number (ASIN) of the item.|string|
+
+
+<a name="servicefeeeventlist"></a>
+### ServiceFeeEventList
+A list of information about service fee events.
+
+*Type* : < [ServiceFeeEvent](#servicefeeevent) > array
+
+
+<a name="shipmentevent"></a>
+### ShipmentEvent
+A shipment, refund, guarantee claim, or chargeback.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**AmazonOrderId**  <br>*optional*|An Amazon-defined identifier for an order.|string|
+|**SellerOrderId**  <br>*optional*|A seller-defined identifier for an order.|string|
+|**MarketplaceName**  <br>*optional*|The name of the marketplace where the event occurred.|string|
+|**OrderChargeList**  <br>*optional*|A list of order-level charges. These charges are applicable to Multi-Channel Fulfillment COD orders.|[ChargeComponentList](#chargecomponentlist)|
+|**OrderChargeAdjustmentList**  <br>*optional*|A list of order-level charge adjustments. These adjustments are applicable to Multi-Channel Fulfillment COD orders.|[ChargeComponentList](#chargecomponentlist)|
+|**ShipmentFeeList**  <br>*optional*|A list of shipment-level fees.|[FeeComponentList](#feecomponentlist)|
+|**ShipmentFeeAdjustmentList**  <br>*optional*|A list of shipment-level fee adjustments.|[FeeComponentList](#feecomponentlist)|
+|**OrderFeeList**  <br>*optional*|A list of order-level fees. These charges are applicable to Multi-Channel Fulfillment orders.|[FeeComponentList](#feecomponentlist)|
+|**OrderFeeAdjustmentList**  <br>*optional*|A list of order-level fee adjustments. These adjustments are applicable to Multi-Channel Fulfillment orders.|[FeeComponentList](#feecomponentlist)|
+|**DirectPaymentList**  <br>*optional*|A list of transactions where buyers pay Amazon through one of the credit cards offered by Amazon or where buyers pay a seller directly through COD.|[DirectPaymentList](#directpaymentlist)|
+|**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
+|**ShipmentItemList**  <br>*optional*|A list of shipment items.|[ShipmentItemList](#shipmentitemlist)|
+|**ShipmentItemAdjustmentList**  <br>*optional*|A list of shipment item adjustments.|[ShipmentItemList](#shipmentitemlist)|
+
+
+<a name="shipmenteventlist"></a>
+### ShipmentEventList
+A list of shipment event information.
+
+*Type* : < [ShipmentEvent](#shipmentevent) > array
+
+
+<a name="shipmentitem"></a>
+### ShipmentItem
+An item of a shipment, refund, guarantee claim, or chargeback.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**SellerSKU**  <br>*optional*|The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.|string|
+|**OrderItemId**  <br>*optional*|An Amazon-defined order item identifier.|string|
+|**OrderAdjustmentItemId**  <br>*optional*|An Amazon-defined order adjustment identifier defined for refunds, guarantee claims, and chargeback events.|string|
+|**QuantityShipped**  <br>*optional*|The number of items shipped.|integer (int32)|
+|**ItemChargeList**  <br>*optional*|A list of charges associated with the shipment item.|[ChargeComponentList](#chargecomponentlist)|
+|**ItemChargeAdjustmentList**  <br>*optional*|A list of charge adjustments associated with the shipment item. This value is only returned for refunds, guarantee claims, and chargeback events.|[ChargeComponentList](#chargecomponentlist)|
+|**ItemFeeList**  <br>*optional*|A list of fees associated with the shipment item.|[FeeComponentList](#feecomponentlist)|
+|**ItemFeeAdjustmentList**  <br>*optional*|A list of fee adjustments associated with the shipment item. This value is only returned for refunds, guarantee claims, and chargeback events.|[FeeComponentList](#feecomponentlist)|
+|**ItemTaxWithheldList**  <br>*optional*|A list of taxes withheld information for a shipment item.|[TaxWithheldComponentList](#taxwithheldcomponentlist)|
+|**PromotionList**  <br>*optional*|A list of promotions.|[PromotionList](#promotionlist)|
+|**PromotionAdjustmentList**  <br>*optional*|A list of promotion adjustments associated with the shipment item. This value is only returned for refunds, guarantee claims, and chargeback events.|[PromotionList](#promotionlist)|
+|**CostOfPointsGranted**  <br>*optional*|The cost of Amazon Points granted for a shipment item.|[Currency](#currency)|
+|**CostOfPointsReturned**  <br>*optional*|The cost of Amazon Points returned for a shipment item. This value is only returned for refunds, guarantee claims, and chargeback events.|[Currency](#currency)|
+
+
+<a name="shipmentitemlist"></a>
+### ShipmentItemList
+A list of shipment items.
+
+*Type* : < [ShipmentItem](#shipmentitem) > array
+
+
+<a name="solutionprovidercreditevent"></a>
+### SolutionProviderCreditEvent
+A credit given to a solution provider.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**ProviderTransactionType**  <br>*optional*|The transaction type.|string|
+|**SellerOrderId**  <br>*optional*|A seller-defined identifier for an order.|string|
+|**MarketplaceId**  <br>*optional*|The identifier of the marketplace where the order was placed.|string|
+|**MarketplaceCountryCode**  <br>*optional*|The two-letter country code of the country associated with the marketplace where the order was placed.|string|
+|**SellerId**  <br>*optional*|The Amazon-defined identifier of the seller.|string|
+|**SellerStoreName**  <br>*optional*|The store name where the payment event occurred.|string|
+|**ProviderId**  <br>*optional*|The Amazon-defined identifier of the solution provider.|string|
+|**ProviderStoreName**  <br>*optional*|The store name where the payment event occurred.|string|
+|**TransactionAmount**  <br>*optional*|The amount of the credit.|[Currency](#currency)|
+|**TransactionCreationDate**  <br>*optional*|The date and time that the credit transaction was created, in ISO 8601 date time format.|[Date](#date)|
+
+
+<a name="solutionprovidercrediteventlist"></a>
+### SolutionProviderCreditEventList
+A list of information about solution provider credits.
+
+*Type* : < [SolutionProviderCreditEvent](#solutionprovidercreditevent) > array
+
+
+<a name="tdsreimbursementevent"></a>
+### TDSReimbursementEvent
+A tax deduction at source (TDS) claim reimbursement event on the seller's account.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
+|**TdsOrderId**  <br>*optional*|A tax deduction at source (TDS) claim identifier.|string|
+|**ReimbursedAmount**  <br>*optional*|The amount of the reimbursement.|[Currency](#currency)|
+
+
+<a name="tdsreimbursementeventlist"></a>
+### TDSReimbursementEventList
+A list of information about tax deduction at source (TDS) claim reimbursement events.
+
+*Type* : < [TDSReimbursementEvent](#tdsreimbursementevent) > array
+
+
+<a name="taxwithheldcomponent"></a>
+### TaxWithheldComponent
+Information about the taxes withheld.
+
+
+|Name|Description|Schema|
+|---|---|---|
 |**TaxCollectionModel**  <br>*optional*|The tax collection model applied to the item.<br><br>Possible values:<br><br><li> MarketplaceFacilitator - Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller.</li><br><li> Standard - Tax is paid to the seller and not remitted to the taxing authority by Amazon.</li>|string|
-|**FulfillmentNetworkSKU**  <br>*optional*|The Amazon fulfillment network SKU for the item.|string|
-|**AdjustedQuantity**  <br>*optional*|Adjusted quantity of removal shipmentItemAdjustment items.|integer (int32)|
-|**RevenueAdjustment**  <br>*optional*|The total amount adjusted for disputed items.|[Currency](#currency)|
-|**TaxAmountAdjustment**  <br>*optional*|Adjustment on the Tax collected amount on the adjusted revenue.|[Currency](#currency)|
-|**TaxWithheldAdjustment**  <br>*optional*|Adjustment the tax withheld and remitted to the taxing authority by Amazon on behalf of the seller. If TaxCollectionModel=MarketplaceFacilitator, then TaxWithheld=TaxAmount (except the TaxWithheld amount is a negative number). Otherwise TaxWithheld=0.|[Currency](#currency)|
+|**TaxesWithheld**  <br>*optional*|A list of charges that represent the types and amounts of taxes withheld.|[ChargeComponentList](#chargecomponentlist)|
+
+
+<a name="taxwithheldcomponentlist"></a>
+### TaxWithheldComponentList
+A list of information about taxes withheld.
+
+*Type* : < [TaxWithheldComponent](#taxwithheldcomponent) > array
+
+
+<a name="trialshipmentevent"></a>
+### TrialShipmentEvent
+An event related to a trial shipment.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**AmazonOrderId**  <br>*optional*|An Amazon-defined identifier for an order.|string|
+|**FinancialEventGroupId**  <br>*optional*|The identifier of the financial event group.|string|
+|**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
+|**SKU**  <br>*optional*|The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.|string|
+|**FeeList**  <br>*optional*|A list of fees charged by Amazon for trial shipments.|[FeeComponentList](#feecomponentlist)|
+
+
+<a name="trialshipmenteventlist"></a>
+### TrialShipmentEventList
+A list of information about trial shipment financial events.
+
+*Type* : < [TrialShipmentEvent](#trialshipmentevent) > array
+
+
+<a name="errorlist"></a>
+### ErrorList
+A list of error responses returned when a request is unsuccessful.
+
+*Type* : < [Error](#error) > array
+
+
+<a name="error"></a>
+### Error
+Error response returned when the request is unsuccessful.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**code**  <br>*required*|An error code that identifies the type of error that occurred.|string|
+|**message**  <br>*required*|A message that describes the error condition in a human-readable form.|string|
+|**details**  <br>*optional*|Additional details that can help the caller understand or fix the issue.|string|
 

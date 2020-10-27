@@ -403,6 +403,7 @@ Order information.
 |**IsEstimatedShipDateSet**  <br>*optional*|When true, the estimated ship date is set for the order. Returned only for Sourcing on Demand orders.|boolean|
 |**IsSoldByAB**  <br>*optional*|When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.|boolean|
 |**AssignedShipFromLocationAddress**  <br>*optional*|The recommended location for the seller to ship the items from. It is calculated at checkout. The seller may or may not choose to ship from this location.|[Address](#address)|
+|**FulfillmentInstruction**  <br>*optional*|Contains the instructions about the fulfillment like where should it be fulfilled from.|[FulfillmentInstruction](#fulfillmentinstruction)|
 
 
 <a name="orderbuyerinfo"></a>
@@ -652,6 +653,16 @@ Information about withheld taxes.
 |---|---|---|
 |**Model**  <br>*optional*|The tax collection model applied to the item.|enum ([Model](#model))|
 |**ResponsibleParty**  <br>*optional*|The party responsible for withholding the taxes and remitting them to the taxing authority.|enum ([ResponsibleParty](#responsibleparty))|
+
+
+<a name="fulfillmentinstruction"></a>
+### FulfillmentInstruction
+Contains the instructions about the fulfillment like where should it be fulfilled from.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**FulfillmentSupplySourceId**  <br>*optional*|Denotes the recommended sourceId where the order should be fulfilled from.|string|
 
 
 <a name="errorlist"></a>

@@ -1,4 +1,4 @@
-# 目录
+﻿# 目录
 
 - [什么是销售伙伴 API？](#what-is-the-selling-partner-api)
    - [销售伙伴 API HTTP 方法](#selling-partner-api-http-methods)
@@ -61,9 +61,11 @@
 
    - [步骤 1。配置 AWS 凭证](#step-1-configure-your-aws-credentials)
 
-   - [步骤 2。配置 LWA 凭证](#step-2-configure-your-lwa-credentials)
+   - [步骤 2。配置AWS凭证提供者](#step-2-configure-your-AWS-credentials-provider)
 
-   - [步骤 3。创建卖家 API 实例并调用操作](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
+   - [步骤 3。配置 LWA 凭证](#step-2-configure-your-lwa-credentials)
+
+   - [步骤 4。创建卖家 API 实例并调用操作](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
 
 - [生成 Java 客户端库](#generating-a-java-client-library)
 
@@ -241,8 +243,6 @@
 # 注册您的销售伙伴 API 应用程序
 
 以下步骤说明了如何创建和配置 IAM 策略和实体，最终目标是创建您在注册应用程序时提供的 IAM 职权。在此工作流程中，您将创建一个 IAM 用户（附加了 [AWS STS](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) 策略），该用户拥有的 IAM 职权具有调用销售伙伴 API 的权限。
-
-**重要说明。** 如果您使用 [AWS Lambda](https://aws.amazon.com/lambda/)、[Amazon EC2](https://aws.amazon.com/ec2/) 和 [Amazon ECS](https://aws.amazon.com/ecs/) 等服务在 AWS 上托管您的销售伙伴 API 应用程序，则您的权限配置将会有所不同。有关更多信息，请参阅[在 AWS 服务上托管您的销售伙伴 API 应用程序](#hosting-your-selling-partner-api-application-on-aws-services)。
 
 **步骤**
 
@@ -501,7 +501,7 @@
 
 例如：
 ```
-https://d2yzyfnnpjylxu.cloudfront.net/index.html?amazon\_callback\_uri=https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57\&amazon\_state=amazonstateexample\&selling\_partner\_id=A3FHEXAMPLEYWS
+https://d2yzyfnnpjylxu.cloudfront.net/index.html?amazon_callback_uri=https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57&amazon_state=amazonstateexample&selling_partner_id=A3FHEXAMPLEYWS
 ```
 将显示您网站的登录页面。
 
@@ -539,11 +539,11 @@ https://d2yzyfnnpjylxu.cloudfront.net/index.html?amazon\_callback\_uri=https://a
 
 例如：
 ```
-https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57?redirect\_uri=https://d2yzyfnnpjylxu.cloudfront.net/landing.html\&amazon\_state=amazonstateexample\&state=-37131022\&version=beta
+https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57?redirect_uri=https://d2yzyfnnpjylxu.cloudfront.net/landing.html&amazon_state=amazonstateexample&state=-37131022&version=beta
 ```
 或者
 ```
-https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57?redirect\_uri=https://d2yzyfnnpjylxu.cloudfront.net/landing.html\&amazon\_state=amazonstateexample\&state=-37131022
+https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57?redirect_uri=https://d2yzyfnnpjylxu.cloudfront.net/landing.html&amazon_state=amazonstateexample&state=-37131022
 ```
 ### 步骤 4。亚马逊向您发送授权信息
 
@@ -560,7 +560,7 @@ https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d1
 
 例如：
 ```
-https://client-example.com?state=state-example\&mws\_auth\_token=mwsauthtokenexample\&selling\_partner\_id=sellingpartneridexample\&spapi\_oauth\_code=spapioauthcodeexample
+https://client-example.com?state=state-example&mws_auth_token=mwsauthtokenexample&selling_partner_id=sellingpartneridexample&spapi_oauth_code=spapioauthcodeexample
 ```
 2. 您的应用程序可以验证 state 值。
 
@@ -694,11 +694,11 @@ LWA 刷新令牌是您交换 LWA 访问令牌的长期令牌，它必须包含�
 
 例如：
 ```
-https://sellercentral.amazon.com/apps/authorize/consent?application\_id=appidexample\&state=stateexample\&version=beta
+https://sellercentral.amazon.com/apps/authorize/consent?application_id=appidexample&state=stateexample&version=beta
 ```
 或者
 ```
-https://sellercentral.amazon.com/apps/authorize/consent?application\_id=appidexample\&state=stateexample
+https://sellercentral.amazon.com/apps/authorize/consent?application_id=appidexample&state=stateexample
 ```
 卖家到达卖家平台的登录页面。
 
@@ -723,7 +723,7 @@ https://sellercentral.amazon.com/apps/authorize/consent?application\_id=appidexa
 
 例如：
 ````
-https://client-example.com?state=state-example\&mws\_auth\_token=mwsauthtokenexample\&selling\_partner\_id=sellingpartneridexample\&spapi\_oauth\_code=spapioauthcodeexample
+https://client-example.com?state=state-example&mws_auth_token=mwsauthtokenexample&selling_partner_id=sellingpartneridexample&spapi_oauth_code=spapioauthcodeexample
 ````
 2. 您的应用程序可以验证 state 值。
 
@@ -877,7 +877,7 @@ wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagge
 
    例如：
 ```bash
-java -jar C:\\SwaggerToCL\\swagger-codegen-cli.jar generate -i C:\\SwaggerToCL\\Sellers.json -l java -t \[path to selling-partner-api-models\\clients\\sellingpartner-api-aa-java folder\]\\resources\\swagger-codegen\\templates\\ -o C:\\SwaggerToCL\\Sellers\_JavaCL
+java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate -i C:\SwaggerToCL\Sellers.json -l java -t [path to selling-partner-api-models\clients\sellingpartner-api-aa-java folder]\resources\swagger-codegen\templates\ -o C:\SwaggerToCL\Sellers_JavaCL
 ```
 将 SDK 复制到 C:\\SwaggerToCL\\Sellers\_JavaCL
 
@@ -889,7 +889,7 @@ java -jar C:\\SwaggerToCL\\swagger-codegen-cli.jar generate -i C:\\SwaggerToCL\\
 
    例如：
 ```bash
-mvn install:install-file -Dfile=\[path to JAR file in "target" folder\] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=sellingpartnerapi-aa-java -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=[path to JAR file in "target" folder] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=sellingpartnerapi-aa-java -Dversion=1.0 -Dpackaging=jar
 ```
 您可以在 **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** 文件夹中的 **pom.xml** 文件顶部附近找到实际的 groupId、artifactId 和 version 值。
 
@@ -916,9 +916,11 @@ mvn install:install-file -Dfile=\[path to JAR file in "target" folder\] -DgroupI
 
 [步骤 1。配置 AWS 凭证](#step-1-configure-your-aws-credentials)
 
-[步骤 2。配置 LWA 凭证](#step-2-configure-your-lwa-credentials)
+[步骤 2。配置AWS凭证提供者](#step-2-configure-your-AWS-credentials-provider)
 
-[步骤 3。创建卖家 API 实例并调用操作](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
+[步骤 3。配置 LWA 凭证](#step-2-configure-your-lwa-credentials)
+
+[步骤 4。创建卖家 API 实例并调用操作](#step-3-create-an-instance-of-the-sellers-api-and-call-an-operation)
 
 ## 步骤 1。配置 AWS 凭证
 
@@ -1040,7 +1042,40 @@ import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 
 AWSCredentialsProvider credentialsProvider = EnvironmentVariableCredentialsProvider.create();
 ```
-## 步骤 2。配置 LWA 凭证
+## 步骤 2。
+使用以下参数创建 `AWSAuthenticationCredentialsProvider,` 的实例：
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>名称</strong>
+</th>
+<th><strong>描述</strong>
+</th>
+<th><strong>必须项</strong>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>roleArn</strong>
+</td>
+<td>您IAM的ARN，来自<a href="#step-4-create-an-iam-role">步骤 2：创建 IAM 用户</a>。
+</td>
+<td>是
+</td>
+</tr>
+<tr class="even">
+<td><strong>roleSessionName</strong>
+</td>
+<td>您定义的会话的标识符。我们建议使用<a href="https://tools.ietf.org/html/rfc4122">通用唯一标识符</a> (UUID)。
+</td>
+<td>是
+</td>
+</tbody>
+</table>
+
+## 步骤 3。配置 LWA 凭证
 
 使用以下参数创建 `LWAAuthorizationCredentials` 的实例：
 
@@ -1120,7 +1155,7 @@ LWAAuthorizationCredentials lwaAuthorizationCredentials =
   .endpoint("https://api.amazon.com/auth/o2/token")
   .build();
 ```
-## 步骤 3。创建卖家 API 实例并调用操作
+## 步骤 4。创建卖家 API 实例并调用操作
 
 通过配置 `STSAssumeRoleSessionCredentialsProvider` 和 `LWAAuthorizationCredentials` 实例，您可以创建一个 SellersApi 实例并调用操作。
 
@@ -1170,7 +1205,7 @@ wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagge
 
    例如：
 ```
-java -jar C:\\SwaggerToCL\\swagger-codegen-cli.jar generate -i C:\\SwaggerToCL\\Sellers.json -l java -o C:\\SwaggerToCL\\Sellers\_JavaCL
+java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate -i C:\SwaggerToCL\Sellers.json -l java -o C:\SwaggerToCL\Sellers_JavaCL
 ```
 客户端库被复制到 C:\\SwaggerToCL\\Sellers\_JavaCL。
 
@@ -1303,7 +1338,7 @@ Pragma:no-cache
 
 例如：
 ```http
-PUT https://sellingpartnerapi-na.amazon.com/fba/inbound/v0/shipments/ shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER\&NeedByDate=2020-10-10
+PUT https://sellingpartnerapi-na.amazon.com/fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10
 ```
 ## 步骤 3。将标头添加到 URI
 
@@ -1392,11 +1427,11 @@ x-amz-date: 20190430T123600Z
 | 日期 | 一个八位数的字符串，表示请求的年份 (YYYY)、月份 (MM) 和日期 (DD)。 | `20190430` |
 | AWS 区域 | 您要向其发送请求的区域。请参阅[销售伙伴 API 端点](#Selling-Partner-API-endpoints)。 | `us-east-1` |
 | 服务 | 您请求的服务。您可以在端点中找到该值。请参阅[销售伙伴 API 端点](#Selling-Partner-API-endpoints)。 | `execute-api` |
-| 终止字符串 | 一个特殊的终止字符串。对于 AWS 签名版本 4，值为 aws4\_request | `aws4\_request` |
+| 终止字符串 | 一个特殊的终止字符串。对于 AWS 签名版本 4，值为 aws4\_request | `aws4_request` |
 
 例如：
 ```
-20190430/us-east-1/execute-api/aws4\_request\\
+20190430/us-east-1/execute-api/aws4_request
 ```
 **重要说明：** 作为凭证范围一部分使用的日期必须与您的请求日期匹配，如 x-amz-date 标头中指定的那样。有关更多信息，请参阅 AWS 文档中的[处理签名版本 4 中的日期](https://docs.aws.amazon.com/general/latest/gr/sigv4-date-handling.html)。
 
@@ -1417,7 +1452,7 @@ Authorization 标头包含请求的签名信息。尽管标头命名为“Author
 
 例如：
 ```
-Authorization: AWS4-HMAC-SHA25 Credential=AKIDEXAMPLE/20190430/us-east1/execute-api/aws4\_request, SignedHeaders=host;user-agent;x-amz-accesstoken;xamz-date, Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
+Authorization: AWS4-HMAC-SHA25 Credential=AKIDEXAMPLE/20190430/us-east1/execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-accesstoken;xamz-date, Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
 ```
 有关更多信息，请参阅[步骤 4：创建并签署您的请求](#step-4-create-and-sign-your-request)。
 

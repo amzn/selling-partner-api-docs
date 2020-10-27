@@ -486,7 +486,7 @@ An event of a shipment
 |Name|Description|Schema|
 |---|---|---|
 |**eventCode**  <br>*required*|The event code of a shipment, such as Departed, Received, and ReadyForReceive.|[EventCode](#eventcode)|
-|**eventTime**  <br>*optional*|The date and time of an event for a shipment.|string (date-time)|
+|**eventTime**  <br>*required*|The date and time of an event for a shipment.|string (date-time)|
 |**location**  <br>*optional*|The location where the person, business or institution is located.|[Location](#location)|
 
 
