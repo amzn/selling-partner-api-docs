@@ -818,6 +818,7 @@ The following table shows the child elements of the AnyOfferChangedNotification 
 </tr>
 </tbody>
 </table>
+
 ### BuyBoxPrice
 
 The following table shows the child elements of the BuyBoxPrice element:
@@ -1242,6 +1243,7 @@ The following table shows the child elements of the ShippingTime element:
 </tr>
 </tbody>
 </table>
+
 ### ShipsFrom
 
 The following table shows the child elements of the ShipsFrom element:
@@ -1337,6 +1339,7 @@ The following table shows the child elements of the Summary element:
 </tr>
 </tbody>
 </table>
+
 **Notification schema:** [AnyOfferChangedNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/AnyOfferChangedNotification.json)
 
 **Notification example:**
