@@ -1,3 +1,5 @@
+# Selling Partner API Developer Guide
+
 # Contents
 
 - [What is the Selling Partner API?](#what-is-the-selling-partner-api)
@@ -71,18 +73,19 @@
 - [Generating a Java client library](#generating-a-java-client-library)
 
 - [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api)
-- [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token)
-  
-- [Step 2. Construct a Selling Partner API URI](#step-2-construct-a-selling-partner-api-uri)
-  
-- [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri)
-  
-- [Step 4. Create and sign your request](#step-4-create-and-sign-your-request)
-  
-  - [Credential scope](#credential-scope)
-  
-  - [Authorization header](#authorization-header)
-  
+
+  - [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token)
+    
+  - [Step 2. Construct a Selling Partner API URI](#step-2-construct-a-selling-partner-api-uri)
+    
+  - [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri)
+    
+  - [Step 4. Create and sign your request](#step-4-create-and-sign-your-request)
+    
+    - [Credential scope](#credential-scope)
+    
+    - [Authorization header](#authorization-header)
+
 - [Response format](#response-format)
 
 - [Grantless operations](#grantless-operations-1)
@@ -222,7 +225,7 @@ You only need to register as a developer once, in the region and marketplace of 
 
 **Important.** If you have a [hybrid Selling Partner API applications](#hybrid-selling-partner-api-applications), your calls to Amazon Marketplace Web Service (Amazon MWS) endpoints have the same restrictions as an Amazon MWS application. That is, when you call an Amazon MWS endpoint, you must use Amazon MWS Access Keys associated with the region that the endpoint comes from.
 
-For more information, see [Selling Partner API endpoints](#Selling_Partner_API_endpoints).
+For more information, see [Selling Partner API endpoints](#Selling-Partner-API-endpoints).
 
 # Registering as a developer
 
@@ -333,7 +336,7 @@ For more information, see [Creating IAM Policies](https://docs.aws.amazon.com/IA
 
 ## Step 4. Create an IAM role
 
-Create an IAM role that trusts the IAM user that you created in [Step 2. Create an IAM user](#step-4-create-an-iam-role) and has permissions to call the Selling Partner API.
+Create an IAM role that trusts the IAM user that you created in [Step 2. Create an IAM user](#Step-2-Create-an-IAM-user) and has permissions to call the Selling Partner API.
 
 **To create an IAM role**
 
@@ -343,9 +346,9 @@ Create an IAM role that trusts the IAM user that you created in [Step 2. Create 
 
 3.  On the **Create role** page, click **Another AWS account**.
 
-4.  In the **Account ID** box, enter the account identifier for the AWS account in which you created your IAM user in [Step 2. Create an IAM user](#step-4-create-an-iam-role), and then click the **Next: Permissions** button.
+4.  In the **Account ID** box, enter the account identifier for the AWS account in which you created your IAM user in [Step 2. Create an IAM user](#Step-2-Create-an-IAM-user), and then click the **Next: Permissions** button.
 
-5.  On the **Attach permissions policies** page, under **Policy name**, select the policy that you created in [Step 3. Create an IAM policy](#step-2-create-an-iam-user), and then click **Next: Tags.**
+5.  On the **Attach permissions policies** page, under **Policy name**, select the policy that you created in [Step 3. Create an IAM policy](#Step-3-Create-an-IAM-policy), and then click **Next: Tags.**
 
     **Tip:** Click **Filter policies** and then select **Customer managed** to narrow your choices.
 
@@ -371,7 +374,7 @@ Adding an [AWS Security Token Service (AWS STS)](https://docs.aws.amazon.com/STS
 
 1.  If you are not already signed in, sign into the AWS Management Console and open the IAM console at [console.aws.amazon.com/iam](https://console.aws.amazon.com/iam).
 
-3.  In the navigation pane at left, click **Users** and then click the user that that you want to add the AWS STS policy to. In this workflow, choose the user you created in [Step 2. Create an IAM user](#step-4-create-an-iam-role). You might choose a different IAM user for other use cases.
+3.  In the navigation pane at left, click **Users** and then click the user that that you want to add the AWS STS policy to. In this workflow, choose the user you created in [Step 2. Create an IAM user](#Step-2-Create-an-IAM-user). You might choose a different IAM user for other use cases.
 
 4.  On the **Permissions** tab, click **Add inline policy**.
 
@@ -409,7 +412,7 @@ Register your application in Developer Central.
 
 # Viewing your developer information
 
-After [registering your Selling Partner API application](#registering-as-a-developer) you can sign into Developer Central to view your developer information.
+After [registering your Selling Partner API application](#registering-your-Selling-Partner-API-application) you can sign into Developer Central to view your developer information.
 
 **To view your developer information**
 
@@ -430,18 +433,15 @@ The authorization model for the Selling Partner API is based on [Login with Amaz
 Selling partners can authorize your applications using one of these workflows:
 
   - [Marketplace Appstore workflow](#marketplace-appstore-workflow). An OAuth authorization workflow initiated from the Marketplace Appstore detail page.
-
   - [Website workflow](#website-workflow). An OAuth authorization workflow initiated from your own website.
+
+If you are developing an application for your own selling account, you can authorize it yourself. For more information, see [Self authorization](#self-authorization).
 
 ## Grantless operations
 
 A grantless operation is an operation that you can call without explicit authorization from a selling partner. This authorization model doesn't require you to receive and exchange LWA authorization codes and refresh tokens to get an LWA access token, as you must when calling other Selling Partner API operations. Instead you get your LWA access token with a single call to the LWA authorization server.
 
-## Self authorization
-
-If you are developing an application for your own selling account, you can authorize it yourself. For more information, see [Self authorization](#self-authorization-1).
-
-### Migrating authorization from Amazon Marketplace Web Service
+## Migrating authorization from Amazon Marketplace Web Service
 
 If a selling partner has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a hybrid Selling Partner API application. This eliminates the need to request authorization from the selling partner again. For more information, see the Authorization API User Guide.
 
@@ -741,7 +741,7 @@ The Login with Amazon SDK for JavaScript can help you with the exchange of an LW
 
 **To exchange an LWA authorization code for an LWA refresh token**
 
-1.  Your application calls the Login with Amazon (LWA) authorization server (https://api.amazon.com/auth/o2/token) to exchange the LWA authorization code for an LWA refresh token. The call must include the following query parameters.
+1.  Your application calls the Login with Amazon (LWA) authorization server (`https://api.amazon.com/auth/o2/token`) to exchange the LWA authorization code for an LWA refresh token. The call must include the following query parameters:
 
 <table>
 <thead>
@@ -941,7 +941,7 @@ Create an instance of `AWSAuthenticationCredentials`, using the following parame
 <tr class="odd">
 <td><strong>accessKeyId</strong>
 </td>
-<td>Your AWS access key Id, from <a href="#step-4-create-an-iam-role">Step 2. Create an IAM user</a>.
+<td>Your AWS access key Id, from <a href="#step-2-create-an-iam-user">Step 2. Create an IAM user</a>.
 </td>
 <td>Yes
 </td>
@@ -949,14 +949,14 @@ Create an instance of `AWSAuthenticationCredentials`, using the following parame
 <tr class="even">
 <td><strong>secretKey</strong>
 </td>
-<td>Your AWS secret access key, from <a href="#step-4-create-an-iam-role">Step 2. Create an IAM user</a>.
+<td>Your AWS secret access key, from <a href="#step-2-create-an-iam-user">Step 2. Create an IAM user</a>.
 </td>
 <td>Yes
 </td>
 </tr>
 <tr class="odd">
 <td><strong>region</strong></td>
-<td>The AWS region to which you are directing your call. For more information, see <a href="#_Selling_Partner_API">Selling Partner API endpoints</a>.</td>
+<td>The AWS region to which you are directing your call. For more information, see <a href="#selling-partner-api-endpoints">Selling Partner API endpoints</a>.</td>
 <td>Yes</td>
 </tr>
 </tbody>
@@ -1038,7 +1038,7 @@ Create an instance of `LWAAuthorizationCredentials`, using the following paramet
 <tr class="odd">
 <td><strong>refreshToken</strong></td>
 <td>The LWA refresh token. Get this value when the seller authorizes your application. For more information, see <a href="#authorizing-selling-partner-api-applications">Authorizing Selling</a> <a href="#authorizing-selling-partner-api-applications">Partner API applications</a>.</td>
-<td><p>No. Include refreshToken if the operation that you call in the following step requires seller authorization. All operations that are not <a href="#grantless-operations-1">grantless operations</a> require seller authorization. If you include refreshToken, do not include withScopes.</p></td>
+<td><p>No. Include refreshToken if the operation that you call in the following step requires seller authorization. All operations that are not <a href="#grantless-operations">grantless operations</a> require seller authorization. If you include refreshToken, do not include withScopes.</p></td>
 </tr>
 <tr class="even">
 <td><strong>withScopes</strong></td>
@@ -1052,7 +1052,7 @@ Create an instance of `LWAAuthorizationCredentials`, using the following paramet
 <li><em>SCOPE_MIGRATION_API</em>. For the Authorization API.</li>
 </ul>
 </td>
-<td>No. Include withScopes if the operation that you call in the following step is a <a href="#grantless-operations-1">grantless</a> <a href="#grantless-operations-1">operation</a>. If you include withScopes, do not include refreshToken.</td>
+<td>No. Include withScopes if the operation that you call in the following step is a <a href="#grantless-operations">grantless</a> <a href="#grantless-operations-1">operation</a>. If you include withScopes, do not include refreshToken.</td>
 </tr>
 <tr class="odd">
 <td><strong>endpoint</strong></td>
@@ -1150,7 +1150,7 @@ After you have generated your client library you can use it to help you make cal
 
 Before your application can connect to the Selling Partner API, you must register it and it must be authorized by a seller. See [Registering your Selling Partner API application](#registering-as-a-developer) and [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications).
 
-These instructions show you the steps for making a call to the Selling Partner API. For help with constructing a Selling Partner API URI and adding headers to it, see [Generating a Java client library](#Generating_a_Java_client_library). For a more complete solution that includes code for exchanging LWA tokens and authentication, see [Generating a Java SDK with LWA token exchange](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication) [and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication).
+These instructions show you the steps for making a call to the Selling Partner API. For help with constructing a Selling Partner API URI and adding headers to it, see [Generating a Java client library](#Generating-a-Java-client-library). For a more complete solution that includes code for exchanging LWA tokens and authentication, see [Generating a Java SDK with LWA token exchange](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication) [and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication).
 
 **Steps**
 
@@ -1181,8 +1181,8 @@ To request an LWA access token, make a secure HTTP POST to the LWA authenticatio
 <td><strong>grant_type</strong></td>
 <td><p>The type of access grant requested. Values:</p>
 <ul>
-<li><p><em>refresh_token</em>. Use this for calling operations that require authorization from a seller. All operations that are not   <a href="#grantless-operations-1">grantless operations</a> require authorization from a seller. When specifying this value, include the <em>refresh_token</em> parameter.</p></li>
-<li><p><em>client_credentials</em>. Use this for calling <a href="#grantless-operations-1">grantless operations</a>. When specifying this value, include the <code>scope</code> parameter.</p></li>
+<li><p><em>refresh_token</em>. Use this for calling operations that require authorization from a seller. All operations that are not   <a href="#grantless-operations">grantless operations</a> require authorization from a seller. When specifying this value, include the <em>refresh_token</em> parameter.</p></li>
+<li><p><em>client_credentials</em>. Use this for calling <a href="#grantless-operations">grantless operations</a>. When specifying this value, include the <code>scope</code> parameter.</p></li>
 </ul></td>
 <td>Yes</td>
 </tr>
@@ -1198,7 +1198,7 @@ To request an LWA access token, make a secure HTTP POST to the LWA authenticatio
 <li><p><em>sellingpartnerapi::notifications</em>. For the Notifications API.</p></li>
 <li><p><em>sellingpartnerapi::migration</em>. For the Authorization API.</p></li>
 </ul></td>
-<td>No. Include scope for calling a <a href="#grantless-operations-1">grantless</a> <a href="#grantless-operations-1">operation</a>. If you include scope, do not include refresh_token.</td>
+<td>No. Include scope for calling a <a href="#grantless-operations">grantless operation</a>. If you include scope, do not include refresh_token.</td>
 </tr>
 <tr class="even">
 <td><strong>client_id</strong></td>
@@ -1266,7 +1266,7 @@ Here are the components of a Selling Partner API URI.
 | **Name**       | **Description**    | **Example**   |
 | -------------- | ---------------------- | ------------ |
 | HTTP method    | One of the [Selling Partner API HTTP methods](#selling-partner-api-http-methods). | `GET` |
-| Endpoint | A [Selling Partner API endpoint](#Selling_Partner_API_endpoints). | `https://sellingpartnerapi-na.amazon.com` |
+| Endpoint | A [Selling Partner API endpoint](#Selling-Partner-API-endpoints). | `https://sellingpartnerapi-na.amazon.com` |
 | Path   | The Selling Partner API section/version. number of the section/resource. | `/fba/inbound/v0/shipments/{shipmentId}/preorder/confirm` |
 | Query string   | The query parameters.  | `?marketplace=ATVPDKIKX0DER`   |
 | Path parameter | The path parameters  | `shipmentId1`  |
@@ -1301,7 +1301,7 @@ To sign a request to the Selling Partner API, see [Step 4. Create and sign your 
 
 ## Step 4. Create and sign your request
 
-The Selling Partner API uses the AWS [Signature Version 4 Signing Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) for authenticating requests. When you send HTTP requests to the Selling Partner API, you sign the requests so that Amazon can identify who sent them. You sign requests using your AWS access key, which consists of an access key ID and a secret access key. For information about getting your AWS access key, see [Step 2. Create an IAM user](#step-4-create-an-iam-role).
+The Selling Partner API uses the AWS [Signature Version 4 Signing Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) for authenticating requests. When you send HTTP requests to the Selling Partner API, you sign the requests so that Amazon can identify who sent them. You sign requests using your AWS access key, which consists of an access key ID and a secret access key. For information about getting your AWS access key, see [Step 2. Create an IAM user](#step-2-create-an-iam-user).
 
 **Note:** You need to learn how to sign HTTP requests only when you manually create them. When you use the one of the AWS SDKs to calculate signatures for you, the SDK automatically signs the requests with the AWS access key that you specify when you configure it. When you use an SDK you don't need to learn how to sign requests yourself. Java developers, for example, can use [AWS4Signer.java](https://github.com/aws/aws-sdk-java/blob/master/aws-java-sdk-core/src/main/java/com/amazonaws/auth/AWS4Signer.java) from the AWS SDK for Java as a model for calculating a signature. You can find SDKs for other languages in the [AWS GitHub repository](https://github.com/aws).
 
@@ -1380,7 +1380,7 @@ Here are the components of an Authorization header:
 | **Component**                  | **Description**                                              |
 | ------------------------------ | ------------------------------------------------------------ |
 | The algorithm used for signing | The hash algorithm used throughout the signing process. The Selling Partner API requires SHA-256. You specify this in [Step 4. Create and sign your request](#step-4-create-and-sign-your-request). |
-| Credential                     | Your AWS access key ID plus the [Credential scope](#credential-scope). You get your AWS access key ID in [Step](#step-4-create-an-iam-role) [3. Create an IAM user](#step-4-create-an-iam-role). |
+| Credential                     | Your AWS access key ID plus the [Credential scope](#credential-scope). You get your AWS access key ID in [Step 2. Create an IAM user](#step-2-create-an-iam-user). |
 | SignedHeaders                  | A list of all the HTTP headers that you included with the signed request. For an example, see [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri). |
 | Signature                      | The signature calculated in [Step 4. Create and sign your request](#step-4-create-and-sign-your-request). |
 
@@ -1453,7 +1453,7 @@ x-amzn-RequestId: a8c8d99a-6ab5-11e8-b0f8-19363980175b
 
 # Grantless operations
 
-A grantless operation is an operation that you can call without explicit authorization from a selling partner. This means that when you [request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token) prior to calling a grantless operation, you don't need to provide a refresh token. Instead, you use the **scope** parameter to provide the scope of the LWA authorization grant. If you use a generated Java SDK (see [Connecting to the Selling Partner API using a generated Java SDK](#Connecting_to_Selling_Partner_API_using_)) to call grantless operations, use the **withScopes** parameter to set one or more scopes for the LWA authorization grant when you configure your LWA credentials.
+A grantless operation is an operation that you can call without explicit authorization from a selling partner. This means that when you [request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token) prior to calling a grantless operation, you don't need to provide a refresh token. Instead, you use the **scope** parameter to provide the scope of the LWA authorization grant. If you use a generated Java SDK (see [Connecting to the Selling Partner API using a generated Java SDK](#Connecting-to-the-Selling-Partner-API-using-a-generated-Java-SDK)) to call grantless operations, use the **withScopes** parameter to set one or more scopes for the LWA authorization grant when you configure your LWA credentials.
 
 See the following table for the grantless operations in the Selling Partner API.
 
@@ -1559,7 +1559,7 @@ Make a sandbox call to an API in the same way you would make a production call, 
 
 ## Selling Partner API sandbox endpoints
 
-The Selling Partner API has sandbox endpoints for the North America, Europe, and Far East selling regions. For more information, see [The Selling Partner API sandbox](#hybrid-selling-partner-api-applications).
+The Selling Partner API has sandbox endpoints for the North America, Europe, and Far East selling regions.
 
 | **Selling region**                                           | **Endpoint**                                      | **AWS Region** |
 | ------------------------------------------------------------ | ------------------------------------------------- | -------------- |
@@ -1573,12 +1573,12 @@ Although the Selling Partner API and Amazon Marketplace Web Service (Amazon MWS)
 
   - The Selling Partner API treats data as REST-compliant resources that can be accessed and modified via standard HTTP methods. By contrast, Amazon MWS exposes data using operations that are specific to Amazon MWS.
 
-  - The Selling Partner API authorization leverages LWA, Amazon's implementation of OAuth 2.0. This model eliminates the need for the manual exchange of auth tokens, as required by Amazon MWS. See [Authorizing your Selling Partner API application](#website-workflow).
+  - The Selling Partner API authorization leverages LWA, Amazon's implementation of OAuth 2.0. This model eliminates the need for the manual exchange of auth tokens, as required by Amazon MWS. See [Authorizing Selling Partner API applications](#Authorizing-Selling-Partner-API-applications).
 
   - With Amazon MWS, sellers authorize developers. With the Selling Partner API, sellers authorize applications. Using the Selling Partner API, developers can create multiple applications that require varying levels of access to seller data.
 
   - The Selling Partner API provides finer grain data access control than Amazon MWS. Developers can request access to only the data they need, and sellers can grant permissions at the API section, operation, or data resource level.
 
-  - The Selling Partner API lets you directly procure and manage your own authentication credentials using AWS Identity and Access Management (IAM). With Amazon MWS, you receive authentication credentials provided by Amazon using a special registration workflow, and you get new credentials by opening a contact with Amazon MWS support. See [Step 2. Create an IAM user](#step-4-create-an-iam-role).
+  - The Selling Partner API lets you directly procure and manage your own authentication credentials using AWS Identity and Access Management (IAM). With Amazon MWS, you receive authentication credentials provided by Amazon using a special registration workflow, and you get new credentials by opening a contact with Amazon MWS support. See [Step 2. Create an IAM user](#step-2-create-an-iam-user).
 
   - The Selling Partner API uses AWS Signature Version 4 for authentication. Amazon MWS uses Signature Version 2. See [ Step 4. Create and sign your request](#step-4-create-and-sign-your-request).
