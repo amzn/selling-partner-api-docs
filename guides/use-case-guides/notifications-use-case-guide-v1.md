@@ -724,14 +724,13 @@ A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* inc
   "NotificationType": "BRANDED_ITEM_CONTENT_CHANGE",
   "PayloadVersion": "1.0",
   "EventTime": "2019-03-20T18:59:30.194Z",
-  "Payload":
-  {
+  "Payload": {
     "MarketplaceId": "ATVPDKIKX0DER",
     "BrandName": "Great Brand",
-    "Asin": "B1234567"
+    "Asin": "B1234567",
+    "AttributesChanged": ["bullet_point", "item_name", "product_description"]
   },
-  "NotificationMetadata":
-  {
+  "NotificationMetadata": {
     "ApplicationId": "amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
     "SubscriptionId": "93b098e1-c42-2f45-93a1-78910a6a8369",
     "PublishTime": "2019-03-20T18:59:48.768Z",
