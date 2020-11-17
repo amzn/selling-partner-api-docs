@@ -4,8 +4,6 @@
 
 - [What is the Selling Partner API?](#what-is-the-selling-partner-api)
 
-  - [Selling Partner API HTTP methods](#selling-partner-api-http-methods)
-
   - [Selling Partner API endpoints](#selling-partner-api-endpoints)
 
 - [About vendor groups](#about-vendor-groups)
@@ -17,20 +15,19 @@
 - [Registering as a developer](#registering-as-a-developer)
 
 - [Registering your Selling Partner API application](#registering-your-selling-partner-api-application)
-
-  - [Step 1. Create an AWS account](#step-1-create-an-aws-account)
-
-  - [Step 2. Create an IAM user](#step-2-create-an-iam-user)
-
-  - [Step 3. Create an IAM policy](#step-3-create-an-iam-policy)
-
-  - [Step 4. Create an IAM role](#step-4-create-an-iam-role)
-
-  - [Step 5. Add an AWS Security Token Service policy to your IAM user](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
-
-  - [Step 6. Register your application](#step-6-register-your-application)
-
-- [Viewing your developer information](#viewing-your-developer-information)
+- [Step 1. Create an AWS account](#step-1-create-an-aws-account)
+  
+- [Step 2. Create an IAM user](#step-2-create-an-iam-user)
+  
+- [Step 3. Create an IAM policy](#step-3-create-an-iam-policy)
+  
+- [Step 4. Create an IAM role](#step-4-create-an-iam-role)
+  
+- [Step 5. Add an AWS Security Token Service policy to your IAM user](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
+  
+- [Step 6. Register your application](#step-6-register-your-application)
+  
+- [Viewing your application information](#viewing-your-application-information)
 
 - [Authorizing your application](#authorizing-your-application)
 
@@ -76,19 +73,11 @@
 
   - [Selling Partner API sandbox endpoints](#selling-partner-api-sandbox-endpoints)
 
-- [Vendor Central URIs](#vendor-central-uris)
+- [Vendor Central URLs](#vendor-central-urls)
 
 # What is the Selling Partner API?
 
 The Selling Partner API is a REST-based API that helps vendors programmatically access their data to automate their business by increasing efficiency, reducing labor requirements, and improving response time to customers.
-
-## Selling Partner API HTTP methods
-
-The Selling Partner API supports these HTTP methods (there will be support for more methods in future releases):
-
-1.  **GET** – Retrieves resource data or a list of resources.
-
-2.  **POST** – Submits an entity to the specified resource, often causing a change in state or side effects on the server.
 
 ## Selling Partner API endpoints
 
@@ -114,7 +103,7 @@ To be sure that your vendor group contains all of the vendor codes that you want
 
 ## To check the vendor codes in your vendor group
 
-1.  Go to [Vendor Central](https://vendorcentral.amazon.com) for your marketplace. See [Vendor Central URIs](#vendor-central-uris) for a list of URIs by marketplace.
+1.  Go to [Vendor Central](https://vendorcentral.amazon.com) for your marketplace. See [Vendor Central URLs](#vendor-central-urls) for a list of URLs by marketplace.
 
 2.  Sign in using the credentials for the Vendor Central account with the vendor group that you want your application to access.
 
@@ -124,7 +113,7 @@ To be sure that your vendor group contains all of the vendor codes that you want
 
 ## To add or remove vendor codes from your vendor group
 
-1.  Go to [Vendor Central](https://vendorcentral.amazon.com) for your marketplace. See [Vendor Central URIs](#vendor-central-uris) for a list of URIs by marketplace.
+1.  Go to [Vendor Central](https://vendorcentral.amazon.com) for your marketplace. See [Vendor Central URLs](#vendor-central-urls) for a list of URLs by marketplace.
 
 2.  Sign in using the credentials for the Vendor Central account with the vendor group for which you want to add or remove vendor codes.
 
@@ -132,19 +121,19 @@ To be sure that your vendor group contains all of the vendor codes that you want
 
 4.  On the **Support** page, click the **Contact Us** button.
 
-5.  On the **Contact Amazon support** page, click **API Integrations**.
+5.  On the **Contact Amazon support** page, click **Settings and Account Management**, then choose **Account Settings**.
 
-6.  In the **Please describe your issue** box, indicate the vendor codes that you want to add or remove from your vendor group.
+6.  In the **Settings and Account Management** box, at the bottom, click **Still need help?**.
 
-7.  In the **Related vendor or developer ID(s)** box, enter your vendor ID, and click the **Submit** button.
+7.  Follow the instructions to contact Amazon support.
 
 # Using multiple vendor groups
 
-Perhaps you use multiple vendor groups to manage your vendor codes. If so, for Selling Partner API integrations we recommend that you either 1) [Create a new vendor group](#to-create-a-new-vendor-group) containing all of the vendor codes you need, or 2) Choose an existing vendor group and add the vendor codes that you need. You can add or remove vendor codes in a vendor group at any time. However once you have registered as a developer, you cannot change the vendor group associated with that developer. If you want to maintain separate API integrations for different businesses, you can. To do this, register as a developer separately for each vendor code that you want to access. Then you can develop separate API integrations with each registered developer.
+Perhaps you use multiple vendor groups to manage your vendor codes. If so, for Selling Partner API integrations we recommend that you either 1) [Create a new vendor group](#to-create-a-new-vendor-group) containing all of the vendor codes you need, or 2) Choose an existing vendor group and add the vendor codes that you need. You can add or remove vendor codes in a vendor group at any time. However once you have registered as a developer, you cannot change the vendor group associated with that developer. If you want to maintain separate API integrations for different businesses, you can. To do this, register as a developer separately for each vendor group that you want to access. Then you can develop separate API integrations with each registered developer.
 
 ## To create a new vendor group
 
-1.  Go to [Vendor Central](https://vendorcentral.amazon.com) for your marketplace. See [Vendor Central URIs](#vendor-central-uris) for a list of URIs by marketplace.
+1.  Go to [Vendor Central](https://vendorcentral.amazon.com) for your marketplace. See [Vendor Central URLs](#vendor-central-urls) for a list of URLs by marketplace.
 
 2.  Sign in using the credentials for the Vendor Central account with the vendor group that you want your application to access.
 
@@ -152,9 +141,11 @@ Perhaps you use multiple vendor groups to manage your vendor codes. If so, for S
 
 4.  On the **Support** page, click the **Contact Us** button.
 
-5.  On the **Contact Amazon support** page, click **API Integrations**.
+5.  On the **Contact Amazon support** page, click **Settings and Account Management**, then choose **Account Settings**.
 
-6.  In the **Please describe your issue** box, indicate that you would like to create a new vendor group for API integration and provide a list of all the vendor codes to be added to the new vendor group.
+6.  In the **Settings and Account Management** box, at the bottom, click **Still need help?**.
+
+7.  Follow the instructions to contact Amazon support.
 
 # Registering as a developer
 
@@ -162,19 +153,43 @@ You must register as a Selling Partner API developer before you can register you
 
 **To register as a developer**
 
-1.  Sign into Vendor Central with the credentials that you want to associate with your developer account.
+1.  Sign into [Vendor Central](https://vendorcentral.amazon.com) for your marketplace with the credentials that you want to associate with your developer account. See [Vendor Central URLs](#vendor-central-urls) for a list of URLs by marketplace. 
 
-2.  Go to the Developer Profile page: https://vendorcentral.amazon.com/developer/register.
+2.  In the **Integration** menu, click **API Integration**.
 
-    The **Developer Profile** page appears.
+   The **Developer Central** page appears.
 
-    **Note**: The link to the developer profile page above is for the US marketplace. To create a URL for another region, start with the base URL for Vendor Central for that marketplace, and then append `/developer/register`.
+3. Click **Proceed to Developer Profile**.
 
-    For example, the base URL for Vendor Central for the UK marketplace is `https://vendorcentral.amazon.co.uk`, so the URL for the developer profile page is `https://vendorcentral.amazon.co.uk/developer/register`.
+   The **Developer Profile** page appears.
 
-3.  Follow the instructions to register as a developer.
+4. Follow the instructions to register as a developer.
 
-After we have registered you as a developer, you can [register your Selling Partner API application](#registering-your-selling-partner-api-application). To view your developer information, see [Viewing your developer information](#viewing-your-developer-information).
+-Or-
+
+1. Go directly to the Developer Profile page for your marketplace and sign in. For example, https://vendorcentral.amazon.com/developer/register for the US marketplace.
+
+   The **Developer Profile** page appears.
+
+   **Note**: The link to the developer profile page above is for the US marketplace. To create a URL for another region, start with the base URL for Vendor Central for that marketplace, and then append `/developer/register`. See [Vendor Central URLs](#vendor-central-urls) for a list of URLs by marketplace. 
+
+   For example, the base URL for Vendor Central for the UK marketplace is `https://vendorcentral.amazon.co.uk`, so the URL for the developer profile page is `https://vendorcentral.amazon.co.uk/developer/register`.
+
+2. Follow the instructions to register as a developer.
+
+**To check the status of your Developer Profile application**
+
+Once you have submitted your developer profile application, Amazon evaluates the information provided and approves or denies your request. If denied, you can address the reason for the denial and then  resubmit your profile. To check the status of your developer profile application while it is under review:
+
+1. Sign into Vendor Central with the credentials that you used when you created your developer profile.
+
+2. In the **Integration** menu, click **API Integration**.
+
+   The **Developer Central** page appears. 
+
+3. Follow the instructions in the **Your developer registration is under review** banner. The banner will change to reflect the status of your application.
+
+After we have registered you as a developer, you can [register your Selling Partner API application](#registering-your-selling-partner-api-application). To view your application information, see [Viewing your application information](#viewing-your-application-information).
 
 # Registering your Selling Partner API application
 
@@ -236,19 +251,19 @@ For more information, see [Creating an IAM User in Your AWS Account](https://do
 
 This IAM policy defines permissions to make calls to the Selling Partner API. You will attach it to the IAM role that you create in [Step 4. Create an IAM role](#step-4-create-an-iam-role).
 
-To create an IAM policy
+**To create an IAM policy**
 
-1.  Sign into the AWS Management Console and open the IAM console at [console.aws.amazon.com/iam](file:///Users/drugved/Downloads/console.aws.amazon.com/iam).
+1.  Sign into the AWS Management Console and open the IAM console at [console.aws.amazon.com/iam](https://console.aws.amazon.com/iam).
 
-2.  In the navigation pane at left, click Policies.
+2.  In the navigation pane at left, click **Policies**.
 
-If this is your first time choosing Policies, the Welcome to Managed Policies page appears. Click Get Started.
+    If this is your first time choosing **Policies**, the **Welcome to Managed Policies** page appears. Click **Get Started**.
 
-3.  Click the Create policy button.
+3.  Click the **Create policy** button.
 
-4.  Click the JSON tab.
+4.  Click the **JSON** tab.
 
-5.  Paste the following code into the text box, replacing the existing code, and then click Review policy.
+5.  Paste the following code into the text box, replacing the existing code, and then click **Review policy**.
 
 ```json
 {
@@ -311,7 +326,7 @@ Adding an [AWS Security Token Service (AWS STS)](https://docs.aws.amazon.com/ST
 
 1.  If you are not already signed in, sign into the AWS Management Console and open the IAM console at [console.aws.amazon.com/iam](https://console.aws.amazon.com/iam).
 
-2.  In the navigation pane at left, click Users and then click the user that that you want to add the AWS STS policy to. In this workflow, choose the user you created in [Step 2. Create an IAM user](#step-2-create-an-iam-user). You might choose a different IAM user for other use cases.
+2.  In the navigation pane at left, click **Users** and then click the user that that you want to add the AWS STS policy to. In this workflow, choose the user you created in [Step 2. Create an IAM user](#step-2-create-an-iam-user). You might choose a different IAM user for other use cases.
 
 3.  On the **Permissions** tab, click **Add inline policy**.
 
@@ -339,35 +354,27 @@ Register your application in Developer Central.
 
 1.  Sign in to Vendor Central using the credentials that you used to [register as a developer](#registering-as-a-developer).
 
-2.  Go to the Developer Central page: https://vendorcentral.amazon.com/sellingpartner/developerconsole.
+2. In the **Integration** menu, click **API Integration**.
 
-    The **Developer Central** page will appear.
+   The **Developer Central** page appears.
 
-    **Note**: The link to the developer console page above is for the US marketplace. To create a URL for another marketplace, start with the base URL for Vendor Central for that marketplace, and then append `/sellingpartner/developerconsole`.
+3. Follow the instructions to register your application.
 
-    For example, the base URL for Vendor Central for the UK marketplace is `https://vendorcentral.amazon.co.uk`, so the URL for the developer console page is `https://vendorcentral.amazon.co.uk/sellingpartner/developerconsole`.
+   **Note**: If you have not already filled out the Developer Registration Application Form (DRAF), you will be instructed to complete this form before you can register your application. You will be able to register your application once you have been granted a role. Check your DRAF Case ID to track the status of your submission.
+   
+   **Important**: When registering your application, the IAM ARN that you provide must be for the IAM entity to which you attached the IAM policy from  [Step 3. Create an IAM policy](#Step-3-Create-an-IAM-policy). In this workflow, that IAM entity is the IAM role from [Step 4. Create an IAM role](#Step-4-Create-an-IAM-role). If you register your application using your IAM user, be sure that the IAM policy is attached to it. Otherwise your calls to the Selling Partner API will fail. We recommend registering your application using an IAM role, as shown in this workflow, to help you better control access to your AWS resources.
 
-3.  Follow the instructions to register your application.
+# Viewing your application information
 
-    **Important**: If you have not already filled out the Developer Registration Application Form (DRAF), you will be instructed to complete this form before you can register your application. You will be able to register your application once you have been granted a role. Check your DRAF Case ID to track the status of your submission.
+After [registering your Selling Partner API application](#registering-your-selling-partner-api-application) you can view your application information on the Developer Central page in Vendor Central.
 
-# Viewing your developer information
+**To view your application information**
 
-After [registering your Selling Partner API application](#registering-your-selling-partner-api-application) you can view your developer information on the Developer Central page in Vendor Central.
+1. Go to Vendor Central for your marketplace. See [Vendor Central URLs](#vendor-central-urls) for a list of URLs by marketplace.
 
-**To view your developer information**
+2. Sign in using the credentials for the vendor account that identifies you as a Selling Partner API developer. For more information, see [Registering as a developer](#registering-as-a-developer).
 
-1. Go to Vendor Central for your marketplace. See [Vendor Central URIs](#vendor-central-uris) for a list of URIs by marketplace.
-
-2. Sign in using the credentials for the vendor account that identifies you as a Selling Partner API developer. For more information, see [Registering as a developer](#registering-as-a-developer) and [Registering your Selling Partner API application](#registering-your-selling-partner-api-application).
-
-3. Direct your browser to the Vendor Central developer console for your marketplace. To get the URI:
-
-   1. Go to [Vendor Central URIs](#vendor-central-uris) to get the Vendor Central domain for your marketplace.
-
-   2. Append the following to the domain: <code>/sellingpartner/developerconsole.</code>
-
-      Example URI for the US marketplace: https://vendorcentral.amazon.com/sellingpartner/developerconsole
+3. In the **Integration** menu, click **API Integration**.
 
    The **Developer Central** page appears, displaying the application name and the IAM user ARN for each of your registered applications.
 
@@ -381,27 +388,25 @@ You will need these LWA credentials to request an LWA access token before making
 
 # Authorizing your application
 
-The authorization model for the Selling Partner API is based on [<u>Login with Amazon</u>](https://developer.amazon.com/docs/login-with-amazon/documentation-overview.html) (LWA), Amazon’s implementation of OAuth 2.0. After [registering as a developer and registering your Selling Partner API application](#registering-your-selling-partner-api-application), you can authorize your application to call the Selling Partner API to access your vendor account information. For more information about accessing vendor account information, see [About vendor groups](#about-vendor-groups).
+The authorization model for the Selling Partner API is based on [<u>Login with Amazon</u>](https://developer.amazon.com/docs/login-with-amazon/documentation-overview.html) (LWA), Amazon’s implementation of OAuth 2.0. After [registering as a developer](#registering-as-a-developer) and [registering your Selling Partner API application](#registering-your-selling-partner-api-application), you can authorize your application to call the Selling Partner API to access your vendor account information. For more information about accessing vendor account information, see [About vendor groups](#about-vendor-groups).
 
 **To authorize an application**
 
-1.  Go to Vendor Central for your marketplace. See [Appendix – Vendor Central URIs](#appendix-vendor-central-uris) for a list of URIs by marketplace.
+1.  Go to Vendor Central for your marketplace. See [Vendor Central URLs](#vendor-central-urls) for a list of URLs by marketplace.
 
-2.  Direct your browser to the Vendor Central developer console for your marketplace. To get the URI:
+2. Sign in using the credentials for the vendor account that identifies you as a Selling Partner API developer. For more information, see [Registering as a developer](#registering-as-a-developer).
 
-    1.  Go to [Appendix – Vendor Central URIs](#appendix-vendor-central-uris) to get the Vendor Central domain for your marketplace.
+3. In the **Integration** menu, click **API Integration**.
 
-    2.  Append the following to the domain: <code>/sellingpartner/developerconsole</code>.
+   The **Developer Central** page appears, displaying the application name and the IAM user ARN for each of your registered applications. 
 
-        Example URI for the US marketplace: https://vendorcentral.amazon.com/sellingpartner/developerconsole
-    
-    The **Developer Central** page appears, displaying the application name and the IAM user ARN for each of your registered applications.
-    
-3. In the **Action** column, next to the application that you want to authorize, click **Edit** and then **Authorize**.
+4.  In the **Action** column, next to the application that you want to authorize, click the down arrow next to **Edit App** and then **Authorize**.
 
-4. On the **Authorize application** page, click the **Generate refresh token** button.
+5. On the **Authorize application** page, click the **Generate refresh token** button.
 
-The refresh token displays in the **Refresh token** box.
+The refresh token displays in the **Refresh token** box. 
+
+**Note**: You should save the refresh token. It is not visible again after you leave the page. 
 
 The refresh token is a long-lived token that you exchange for a short-lived access token. An access token must be included with every request to the Selling Partner API. Once an access token is issued it is valid for one hour. The same access token can be used for multiple API calls, until it expires. See [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token).
 
@@ -525,8 +530,8 @@ Create an instance of <code>LWAAuthorizationCredentials</code>, using the follow
 
 | **Name**         | **Description**                                                                                                                                                             | **Required** |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| **clientId**     | Your LWA client identifier. For more information, see [Viewing your developer information](#_bookmark12).                                                                   | Yes          |
-| **clientSecret** | Your LWA client secret. For more information, see [Viewing your developer information](#_bookmark12).                                                                       | Yes          |
+| **clientId**     | Your LWA client identifier. For more information, see [Viewing your application information](#viewing-your-application-information).                                                                   | Yes          |
+| **clientSecret** | Your LWA client secret. For more information, see [Viewing your application information](#viewing-your-application-information).                                                                       | Yes          |
 | **refreshToken** | The LWA refresh token. Get this value when the vendor authorizes your application. For more information, see [Authorizing your application](#authorizing-your-application). | Yes          |
 | **endpoint**     | The LWA authentication server URI.                                                                                                                                          | Yes          |
 
@@ -612,7 +617,7 @@ To complete this procedure you will need:
 
 These instructions show the steps for making a call to the Selling Partner API. The instructions are primarily for developers coding in languages other than Java. For developers coding in Java, we recommend using a generated Java SDK, which helps you create the request and makes authorization and authentication much easier. For more information, see [Generating a Java SDK with LWA token exchange and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication).
 
-Before your application can connect to the Selling Partner API, you must register it and it must be authorized by a selling partner. See [Registering your Selling Partner API application](#registering-your-selling-partner-api-application) and [Authorizing your application](#_bookmark13).
+Before your application can connect to the Selling Partner API, you must register it and it must be authorized by a selling partner. See [Registering your Selling Partner API application](#registering-your-selling-partner-api-application) and [Authorizing your application](#authorizing-your-application).
 
 ## Step 1. Request a Login with Amazon access token
 
@@ -623,9 +628,9 @@ To request an access token, make a secure HTTP POST to the LWA authentication se
 | **Name**          | **Description**                                                                                                                      | **Required** |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------ |
 | **grant_type**    | The type of access grant requested. Must be refresh_token.                                                                           | Yes          |
-| **refresh_token** | Get this value when you authorize your application to access your selling account. See [Authorizing your application](#_bookmark13). | Yes          |
-| **client_id**     | Get this value when you register your application. See [Viewing your developer information](#_bookmark12).                           | Yes          |
-| **client_secret** | Get this value when you register your application. See [Viewing your developer information](#_bookmark12).                           | Yes          |
+| **refresh_token** | Get this value when you authorize your application to access your selling account. See [Authorizing your application](#authorizing-your-application). | Yes          |
+| **client_id**     | Get this value when you register your application. See [Viewing your application information](#viewing-your-application-information).                           | Yes          |
+| **client_secret** | Get this value when you register your application. See [Viewing your application information](#viewing-your-application-information).                           | Yes          |
 
 For example:
 
@@ -677,7 +682,7 @@ For more information, see [Authorization Code Grant](https://developer.amazon.co
 
 Here are the components of a Selling Partner API URI:
 
-<table><tbody><tr class="odd"><td><b>Name</b></td><td><b>Description</b></td><td><b>Example</b></td></tr><tr class="even"><td><b>HTTP method</b></td><td>One of the <a href="#selling-partner-api-http-methods">Selling Partner API HTTP methods</a>.</td><td>GET</td></tr><tr class="odd"><td><b>Endpoint</b></td><td>A <a href="#selling-partner-api-endpoints">Selling Partner API endpoint</a>.</td><td>https://sellingpartnerapi-eu.amazon.com</td></tr><tr class="even"><td><b>Path</b></td><td>Selling Partner API section/version number of the section/resource</td><td><code>vendor/orders/v1/purchaseOrders</code></td></tr><tr class="odd"><td><b>Query string</b></td><td>The query parameters.</td><td><code>?limit={example}&amp;createdAfter={example}&amp;createdBefore={example}&amp;sortOrder={example}&amp;nextToken={example}&amp;includeDetails={example}</code></td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Name</b></td><td><b>Description</b></td><td><b>Example</b></td></tr><tr class="even"><td><b>HTTP method</b></td><td>The HTTP method</a>.</td><td>GET</td></tr><tr class="odd"><td><b>Endpoint</b></td><td>A <a href="#selling-partner-api-endpoints">Selling Partner API endpoint</a>.</td><td>https://sellingpartnerapi-eu.amazon.com</td></tr><tr class="even"><td><b>Path</b></td><td>Selling Partner API section/version number of the section/resource.</td><td><code>vendor/orders/v1/purchaseOrders</code></td></tr><tr class="odd"><td><b>Query string</b></td><td>The query parameters.</td><td><code>?limit={example}&amp;createdAfter={example}&amp;createdBefore={example}&amp;sortOrder={example}&amp;nextToken={example}&amp;includeDetails={example}</code></td></tr></tbody></table>
 
 For example:
 
@@ -698,13 +703,13 @@ Here are the HTTP headers that you include in requests to the Selling Partner AP
 <table>
 <tbody>
 <tr class="odd"><td><b>Name</b></td><td><p><b>Description</b></p></td><td><p><b>Required</b></p></td></tr>
-<tr class="even"><td>host</td><td><p>The Selling Partner endpoint. See <a href="#selling-partner-api-endpoints">Selling Partner API endpoints</a></p></td><td><p>Yes</p></td></tr>
+<tr class="even"><td>host</td><td><p>The Selling Partner endpoint. See <a href="#selling-partner-api-endpoints">Selling Partner API endpoints</a>.</p></td><td><p>Yes</p></td></tr>
 <tr class="odd"><td>x-amz-access-token</td><td><p>The Login with Amazon access token. See <a href="#step-1-request-a-login-with-amazon-access-token">Step 1. Request a Login with Amazon access token</a>.</p></td><td><p>Yes</p></td></tr>
 <tr class="even"><td>x-amz-date</td><td><p>The date and time of your request</p></td><td><p>Yes</p></td></tr><tr class="odd"><td>user-agent</td><td><p>Your application name and version number, platform, and programming language. These help us diagnose and fix problems you might encounter with the service. See <a href="#include-a-user-agent-header-in-all-requests">Include a User-Agent header in all requests</a>.</p></td><td><p>Yes</p></td></tr>
 </tbody>
 </table>
 
-Here is an example of a request to the Selling Partner API with URI and headers but no signing information:
+Here is an example of a Selling Partner API request with URI and headers but no signing information:
 
 ```http
 GET https://sellingpartnerapi-eu.amazon.com/vendor/orders/v1/purchaseOrders?limit={example}&createdAfter={example}&createdBefore={example}&sortOrder={example}&nextToken={example}&includeDetails={example} HTTP/1.1
@@ -730,7 +735,7 @@ To create and sign your request, complete the following:
 
     Follow the instructions in [Task 1: Create a Canonical Request for Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html) in the AWS documentation, using this guidance:
 
-    - See [Step 3. Add headers to the URI](#_bookmark20) for an example of an unsigned request to start with when you create your canonical request.
+    - See [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri) for an example of an unsigned request to start with when you create your canonical request.
     - Use SHA-256 for the hash algorithm.
     - Do not put authentication information in the query parameters. Put it in the [Authorization header](#authorization-header).
 
@@ -769,7 +774,7 @@ The credential scope is a component of the "string to sign" that you create when
 
 Credential scope is represented by a slash-separated string of dimensions, as shown in the following table:
 
-<table><tbody><tr class="odd"><td><b>Dimension</b></td><td><b>Description</b></td><td><b>Example</b></td></tr><tr class="even"><td>Date</td><td>An eight-digit string representing the year (YYYY), month (MM), and day (DD) of the request.</td><td>20190430</td></tr><tr class="odd"><td>AWS region</td><td>The region you are sending the request to. See <a href="#selling-partner-api-endpoints">Selling Partner API endpoints</a>.</td><td>us-east-1</td></tr><tr class="even"><td>Service</td><td>The service you are requesting. You can find this value in the endpoint. See <a href="#bookmark2">.</a></td><td>execute-api</td></tr><tr class="odd"><td>Termination string</td><td>A special termination string. For AWS Signature Version 4, the value is aws4_request</td><td>aws4_request</td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Dimension</b></td><td><b>Description</b></td><td><b>Example</b></td></tr><tr class="even"><td>Date</td><td>An eight-digit string representing the year (YYYY), month (MM), and day (DD) of the request.</td><td>20190430</td></tr><tr class="odd"><td>AWS region</td><td>The region you are sending the request to. See <a href="#selling-partner-api-endpoints">Selling Partner API endpoints</a>.</td><td>us-east-1</td></tr><tr class="even"><td>Service</td><td>The service you are requesting. You can find this value in the endpoint. See [Selling Partner API endpoints](#selling-partner-api-endpoints).</a></td><td>execute-api</td></tr><tr class="odd"><td>Termination string</td><td>A special termination string. For AWS Signature Version 4, the value is aws4_request.</td><td>aws4_request</td></tr></tbody></table>
 
 For example:
 
@@ -787,7 +792,7 @@ The Authorization header contains the signing information for a request. Althoug
 
 Here are the components of an Authorization header:
 
-<table><tbody><tr class="odd"><td><b>Header component</b></td><td><b>Description</b></td></tr><tr class="even"><td>The algorithm used for signing</td><td>The hash algorithm used throughout the signing process. The Selling Partner API requires SHA-256. You specify this in <a href="#step-4-create-and-sign-your-request">Step 4. Create and sign your request</a>.</td></tr><tr class="odd"><td>Credential</td><td>Your AWS access key ID plus the <a href="#credential-scope">Credential scope</a>. You get your AWS access key ID in see <a href="#step-4-provide-your-application-registration-information">Step 3. Create an IAM user</a>.</td></tr><tr class="even"><td>SignedHeaders</td><td>A list of all the HTTP headers that you included with the signed request. For an example, see <a href="#_bookmark20">Step 3. Add headers to the URI</a>.</td></tr><tr class="odd"><td>Signature</td><td>The signature calculated in <a href="#step-4-create-and-sign-your-request">Step 4. Create and sign your request</a>.</td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Header component</b></td><td><b>Description</b></td></tr><tr class="even"><td>The algorithm used for signing</td><td>The hash algorithm used throughout the signing process. The Selling Partner API requires SHA-256. You specify this in <a href="#step-4-create-and-sign-your-request">Step 4. Create and sign your request</a>.</td></tr><tr class="odd"><td>Credential</td><td>Your AWS access key ID plus the <a href="#credential-scope">Credential scope</a>. You get your AWS access key ID in see <a href="#step-4-provide-your-application-registration-information">Step 3. Create an IAM user</a>.</td></tr><tr class="even"><td>SignedHeaders</td><td>A list of all the HTTP headers that you included with the signed request. For an example, see <a href="#step-3-add-headers-to-the-uri">Step 3. Add headers to the URI</a>.</td></tr><tr class="odd"><td>Signature</td><td>The signature calculated in <a href="#step-4-create-and-sign-your-request">Step 4. Create and sign your request</a>.</td></tr></tbody></table>
 
 For example:
 
@@ -870,7 +875,7 @@ If your request is unsuccessful, the Selling Partner API returns an error respon
 
 **Response message**
 
-<table><tbody><tr class="odd"><td><b>Element</b></td><td><p><b>Description</b></p></td><td><p><b>Required</b></p></td></tr><tr class="even"><td>code</td><td><p>HTTP status code.</p></td><td><p>Yes</p></td></tr><tr class="odd"><td>message</td><td><p>Explanation of the error condition.</p></td><td><p>Yes</p></td></tr><tr class="even"><td>details</td><td><p>Link to additional information.</p></td><td><p>No.</p></td></tr></tbody></table>
+<table><tbody><tr class="odd"><td><b>Element</b></td><td><p><b>Description</b></p></td><td><p><b>Required</b></p></td></tr><tr class="even"><td>code</td><td><p>HTTP status code.</p></td><td><p>Yes</p></td></tr><tr class="odd"><td>message</td><td><p>Explanation of the error condition.</p></td><td><p>Yes</p></td></tr><tr class="even"><td>details</td><td><p>Link to additional information.</p></td><td><p>No</p></td></tr></tbody></table>
 
 Here is an example of an error response:
 
@@ -954,13 +959,13 @@ The Selling Partner API has sandbox endpoints for the North America, Europe, and
 
 <table><tbody><tr class="odd"><td><b>Selling region</b></td><td><b>Endpoint</b></td><td><p><b>AWS Region</b></p></td></tr><tr class="even"><td>North America (Canada, US, Mexico, and Brazil marketplaces)</td><td><a href="https://sandbox.sellingpartnerapi-na.amazon.com">https://sandbox.sellingpartnerapi-na.amazon.com</a></td><td><p>us-east-1</p></td></tr><tr class="odd"><td>Europe (Spain, UK, France, Germany, Italy, Turkey, U.A.E, and India marketplaces)</td><td><a href="https://sandbox.sellingpartnerapi-eu.amazon.com">https://sandbox.sellingpartnerapi-eu.amazon.com</a></td><td><p>eu-west-1</p></td></tr><tr class="even"><td>Far East (Singapore, Australia, and Japan marketplaces)</td><td><a href="https://sandbox.sellingpartnerapi-fe.amazon.com">https://sandbox.sellingpartnerapi-fe.amazon.com</a></td><td><p>us-west-2</p></td></tr></tbody></table>
 
-# Vendor Central URIs
+# Vendor Central URLs
 
-Here are the Vendor Central URIs by marketplace.
+Here are the Vendor Central URLs by marketplace.
 
 **North America**
 
-| **Marketplace** | **Vendor Central URI**                |
+| **Marketplace** | **Vendor Central URL**                |
 | --------------- | ------------------------------------- |
 | Canada          | <https://vendorcentral.amazon.ca>     |
 | US              | <https://vendorcentral.amazon.com>    |
@@ -968,11 +973,28 @@ Here are the Vendor Central URIs by marketplace.
 
 **Europe**
 
-| **Marketplace** | **Vendor Central URI**               |
-| --------------- | ------------------------------------ |
-| Spain           | <https://vendorcentral.amazon.es>    |
-| UK              | <https://vendorcentral.amazon.co.uk> |
-| France          | <https://vendorcentral.amazon.fr>    |
-| Germany         | <https://vendorcentral.amazon.de>    |
-| Italy           | <https://vendorcentral.amazon.it>    |
-| India           | <https://www.vendorcentral.in>       |
+| **Marketplace** | **Vendor Central URL**                |
+| --------------- | ------------------------------------- |
+| Spain           | <https://vendorcentral.amazon.es>     |
+| UK              | <https://vendorcentral.amazon.co.uk>  |
+| France          | <https://vendorcentral.amazon.fr>     |
+| Germany         | <https://vendorcentral.amazon.de>     |
+| Italy           | <https://vendorcentral.amazon.it>     |
+| India           | <https://www.vendorcentral.in>        |
+| Turkey          | <https://vendorcentral.amazon.com.tr> |
+| Netherlands     | <https://vendorcentral.amazon.nl>     |
+| U.A.E.          | <https://vendorcentral.amazon.ae>     |
+
+**Far East**
+
+| **Marketplace** | **Vendor Central URL**                |
+| --------------- | ------------------------------------- |
+| Australia       | <https://vendorcentral.amazon.com.au> |
+| Japan           | <https://vendorcentral.amazon.co.jp>  |
+| Singapore       | <https://vendorcentral.amazon.com.sg> |
+
+**South America**
+
+| **Marketplace** | **Vendor Central URL**                |
+| --------------- | ------------------------------------- |
+| Brazil          | <https://vendorcentral.amazon.com.br> |
