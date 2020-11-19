@@ -38,7 +38,7 @@ A 429 is a retry-able status code. Feel free to try again, but repeated throttle
 
 **How can I test my application with respect to its usage plans?**
 
-The Selling Partner API Test Sandbox leverages production usage plans. You can expect to see the same rate limiting behavior in the Sandbox as in production.
+You can test 429 error handling using the Selling Partner API sandbox. However, you cannot test rate limits with the sandbox. This is because while operations in production can have various rates, all sandbox operation share the same rate. You can see your assigned usage rates in the x-amzn-RateLimit-Limit response header for each operation.
 
 **Can my application completely avoid getting throttled?**
 
