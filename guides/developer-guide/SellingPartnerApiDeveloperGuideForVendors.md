@@ -479,9 +479,7 @@ These files were included (along with this developer guide) in the SDK that we p
 
 These instructions show you how to use a generated Java SDK to make calls to the Selling Partner API. The SDK exposes classes for configuring your AWS and LWA credentials and uses these to exchange LWA tokens and sign requests for you.
 
-For more information, see [Generating a Java SDK with authorization and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication).
-
-_Instead should be Generating a Java SDK with LWA token exchange and authentication._
+For more information, see [Generating a Java SDK with LWA token exchange and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication).
 
 ## Step 1. Configure your AWS credentials
 
