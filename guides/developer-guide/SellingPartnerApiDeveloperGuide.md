@@ -441,7 +441,7 @@ If you are developing an application for your own selling account, you can autho
 
 An OAuth authorization URI is a key component for creating and testing Selling Partner API authorization workflows. The OAuth authorization URI redirects a browser to a Seller Central sign-in page. After sign-in, a consent page appears, where a seller can give your application consent to make calls to the Selling Partner API on their behalf.
 
-If a seller authorizes your application starting from your own website (the [Website workflow](#website-workflow)) your website uses an OAuth authorization URI to redirect the seller to the Seller Central consent page. Even if a sellers authorizes your application starting from the Marketplace Appstore (the [Marketplace Appstore workflow](#marketplace-appstore-workflow)), you still need an OAuth authorization URI to test your authorization workflow in draft status before creating a live listing in the Marketplace Appstore.
+If a seller authorizes your application starting from your own website (the [Website workflow](#website-workflow)) your website uses an OAuth authorization URI to redirect the seller to the Seller Central consent page. Even if a seller authorizes your application starting from the Marketplace Appstore (the [Marketplace Appstore workflow](#marketplace-appstore-workflow)), you still need an OAuth authorization URI to test your authorization workflow in draft status before creating a live listing in the Marketplace Appstore.
 
 **To construct an OAuth authorization URI**
 
