@@ -45,7 +45,7 @@
 
   - [Website workflow](#website-workflow)
 
-    - [Step 0. Set up your OAuth authorization URIs](#Step-0-Set-up-your-OAuth-authorization-URIs)
+    - [Step 0. Set up an "Authorize" button](#step-0-set-up-an-"authorize"-button)
 
     - [Step 1. The seller initiates authorization from your website](#Step-1-The-seller-initiates-authorization-from-your-website)
 
@@ -437,6 +437,28 @@ Selling partners can authorize your applications using one of these workflows:
 
 If you are developing an application for your own selling account, you can authorize it yourself. For more information, see [Self authorization](#self-authorization).
 
+## OAuth authorization URIs
+
+An OAuth authorization URI is a key component for creating and testing Selling Partner API authorization workflows. The OAuth authorization URI redirects a browser to a Seller Central sign-in page. After sign-in, a consent page appears, where a seller can give your application consent to make calls to the Selling Partner API on their behalf.
+
+If a seller authorizes your application starting from your own website (the [Website workflow](#website-workflow)) your website uses an OAuth authorization URI to redirect the seller to the Seller Central consent page. Even if a sellers authorizes your application starting from the Marketplace Appstore (the [Marketplace Appstore workflow](#marketplace-appstore-workflow)), you still need an OAuth authorization URI to test your authorization workflow in draft status before creating a live listing in the Marketplace Appstore.
+
+**To construct an OAuth authorization URI**
+
+1.  Get the Seller Central URL for the marketplace where you want sellers to authorize your applications. Example: `https://sellercentral.amazon.com`
+
+2.  Combine the Seller Central URL with `/apps/authorize/consent?{your application ID}`.
+
+    Example: `https://sellercentral.amazon.com/apps/authorize/consent?application\_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28`
+
+You will need an OAuth authorization URI for every marketplace where you want sellers to authorize your application. Simply use the appropriate Seller Central URL in each OAuth authorization URI that you need.
+
+**Note.** For sellers who sell in the Spain, UK, France, Germany, and Italy marketplaces, you can use the Seller Central URL for Europe when creating an OAuth authorization URI. Example: `https://sellercentral-europe.amazon.com/apps/authorize/consent?application\_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28`
+
+If you are creating an OAuth authorization URI for testing your authorization workflow, add the version=beta parameter. This indicates that the authorization workflow is for an application in draft status. Example: `https://sellercentral-europe.amazon.com/apps/authorize/consent?application\_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28?version=beta`
+
+For information about creating and testing an authorization workflow, see [Marketplace Appstore workflow](#marketplace-appstore-workflow) and [Website workflow](#website-workflow).
+
 ## Grantless operations
 
 A grantless operation is an operation that you can call without explicit authorization from a selling partner. This authorization model doesn't require you to receive and exchange LWA authorization codes and refresh tokens to get an LWA access token, as you must when calling other Selling Partner API operations. Instead you get your LWA access token with a single call to the LWA authorization server.
@@ -447,25 +469,33 @@ If a selling partner has authorized you to make calls to Amazon Marketplace Web 
 
 ## Marketplace Appstore workflow
 
-The Marketplace Appstore workflow is an OAuth authorization workflow that is initiated from the Marketplace Appstore detail page. When you publish a Selling Partner API application on the Marketplace Appstore, sellers can authorize your application by clicking an **Authorize Now** button on the detail page.
+The Marketplace Appstore workflow is an OAuth authorization workflow that the seller initiates from the Marketplace Appstore detail page. When you list a Selling Partner API application on the Marketplace Appstore, sellers can authorize your application by clicking an **Authorize Now** button on the detail page.
 
-This topic includes the Marketplace Appstore workflow steps as well as information about testing the workflow.
+**Testing your authorization workflow**
 
-**Testing the Marketplace Appstore workflow**
+Before listing your application on the Marketplace Appstore, you should test your authorization workflow while your application is in draft status. Your test workflow won’t be exactly the same as the final production workflow, but you'll be able to ensure that your application can exchange parameters with Amazon and receive authorization information.
 
-Before creating a production Marketplace Appstore workflow, it's important to create a test workflow that can authorize your application in Draft state. Your test workflow won't be exactly the same as the final production workflow. Still, you can test to make sure that your application can exchange parameters with Amazon and receive authorization information.
+**To set up a test authorization workflow**
 
-Here is how a test workflow differs from a production workflow:
+1.  Make sure that your application in draft status.
 
-  - Instead of starting at the Marketplace Appstore detail page, a test workflow starts with a seller directly navigating to the OAuth authorization URI for your application. You can test with a trusted seller who works with you, or you can test the workflow yourself using your own selling account credentials. The OAuth authorization URI must include the `version=beta` parameter to indicate that the workflow is authorizing an application in Draft state. When the seller navigates to the OAuth authorization URI, the workflow continues at [Step 2. The seller consents to authorize your application](#step-2-the-seller-consents-to-authorize-your-application).
+2.  Construct one or more OAuth authorization URIs for testing purposes. Include the version=beta parameter in the OAuth URI(s) to indicate that the workflow is for authorizing an application in draft status. For more information, see [OAuth authorization URIs](#oauth-authorization-uris).
 
-    **Note:** If you have more than one regional OAuth authorization URI, be sure give the seller the OAuth authorization URI that corresponds to the region that they sell in.
+3.  At [Step 3. The seller signs into your website](#step-3.-the-seller-signs-into-your-website), be sure that your workflow adds the `version=beta` parameter to the Amazon callback URI to indicate that the workflow is for authorizing an application in draft status.
 
-  - Your application adds the `version=beta` parameter to the Amazon callback URI in [Step 3. The seller signs into your website](#step-3-the-seller-signs-into-your-website). This results in the workflow authorizing your application in Draft state.
+You are now ready to test your authorization workflow with a trusted seller who works with you. Alternatively, you can test the workflow yourself, using your own selling account credentials. Instead of starting at [Step 1. The seller initiates authorization from the Marketplace Appstore](#step-1.-the-seller-initiates-authorization-from-the-marketplace-appstore), the seller starts the test workflow by navigating to an OAuth authorization URI that you constructed previously.
 
-When you have finished testing the workflow, update it so that it no longer adds the `version=beta` parameter to the Amazon callback URI in [Step 3. The seller signs into your website](#step-3-the-seller-signs-into-your-website). This makes it a production workflow. Now any seller can authorize your published application starting from the detail page of the Marketplace Appstore.
+**Note:** If you have more than one regional OAuth authorization URI, be sure give the seller the OAuth authorization URI that corresponds to the region that they sell in.
 
-The production workflow begins at [Step 1. The seller initiates authorization from the Marketplace Appstore](#step-1-the-seller-initiates-authorization-from-the-marketplace-appstore).
+When you have finished testing the authorization workflow you can convert it to a production workflow.
+
+**To convert your test authorization workflow to a productions workflow**
+
+1.  List your application in the Marketplace Appstore. This changes your application from draft status to published status.
+
+2.  Update your workflow so that it no longer adds the `version=beta` parameter to the Amazon callback URI in [Step 3. The seller signs into your website](#Step-3-The-seller-signs-into-your-website).
+
+    Now any seller can authorize your published application starting at [Step 1. The seller initiates authorization from the Marketplace Appstore](#Step-1-The-seller-initiates-authorization-from-the-Marketplace-Appstore).
 
 **Steps**
 
@@ -489,7 +519,7 @@ The production workflow begins at [Step 1. The seller initiates authorization fr
 
 1.  The seller views the consent page, reviews and accepts the data access requested by your application, and then clicks the **Login to \[your application name\] now** button to continue. The seller can click the **Cancel** button to exit without authorizing.
 
-2.  Amazon loads your sign-in Login URI (which you provided at application registration) into the browser, adding the following query parameters:
+2.  Amazon loads your Login URI (which you provided at application registration) into the browser, adding the following query parameters:
 
 | **Parameter**             | **Description**     |
 | ------------------------- | ------------------  |
@@ -630,25 +660,35 @@ If an MWS auth token was returned in [Step 4. Amazon sends you the authorization
 
 ## Website workflow
 
-The Website workflow is an OAuth authorization workflow that is initiated from your own website. Sellers sign into your website and click an "Authorize" button that you configure to initiate authorization. For more information, see [Step 0. Set up your OAuth authorization URIs](#step-0-set-up-your-oauth-authorization-uris).
+The Website workflow is an OAuth authorization workflow that is initiated from your own website. Sellers sign into your website and click an “Authorize” button that you configure to initiate authorization. For more information, see [Step 0. Set up an "Authorize" button](#step-0.-set-up-an-authorize-button).
 
-This topic includes the Website workflow steps as well as information about testing the workflow.
+**Testing your authorization workflow**
 
-**Testing the Website workflow**
+Before creating a production Website workflow, you should test your authorization workflow while your application is in draft status. By testing you can ensure that your application can exchange parameters with Amazon and receive authorization information.
 
-Before creating a production Website workflow, it's important to create a test workflow that can authorize your application in Draft state. This lets you test to make sure that your application can exchange parameters with Amazon and receive authorization information.
+**To set up a test authorization workflow**
 
-Here is how a test workflow differs from a production workflow:
+1.  Make sure that your application is in draft status.
 
-  - Your application adds the `version=beta` parameter to the OAuth authorization URI in [Step 1. The seller initiates authorization from your website](#step-1-the-seller-initiates-authorization-from-your-website). This results in the workflow authorizing your application in Draft state.
+2.  At [Step 0. Set up an "Authorize" button](#step-0.-set-up-an-authorize-button), when you construct one or more OAuth authorization URIs, add the version=beta parameter to the OAuth URI(s) to indicate that the workflow is for authorizing an application in draft status.
 
-When you have finished testing the workflow, update it so that it no longer adds the `version=beta` parameter to the OAuth authorization URI in [Step 1. The seller initiates authorization from your website](#step-1-the-seller-initiates-authorization-from-your-website). This makes it a production workflow. Now any seller can authorize your published application starting from your own website.
+You are now ready to test your authorization workflow with a trusted seller who works with you. Alternatively, you can test the workflow yourself, using your own selling account credentials. Start at [Step 1. The seller initiates authorization from your website](#step-1.-the-seller-initiates-authorization-from-your-website).
 
-The production workflow begins at [Step 0. Set up your OAuth authorization URIs](#step-0-set-up-your-oauth-authorization-uris).
+When you have finished testing the authorization workflow you can convert it to a production workflow.
+
+**To convert your test authorization workflow to a productions workflow**
+
+1.  List your application in the Marketplace Appstore. This changes your application from draft status to published status.
+
+    **Important.** Your application must be in published status for the Webstore authorization workflow to work.
+
+2.  Remove the version=beta parameter from the OAuth authorization URI(s) that you constructed in [Step 0. Set up an "Authorize" button](#step-0.-set-up-an-authorize-button).
+
+    Now any seller can authorize your published application starting at [Step 1. The seller initiates authorization from your website](#step-1.-the-seller-initiates-authorization-from-your-website).
 
 **Steps**
 
-[Step 0. Set up your OAuth authorization URIs](#Step-0-Set-up-your-OAuth-authorization-URIs)
+[Step 0. Set up an "Authorize" button](#step-0-set-up-an-"authorize"-button)
 
 [Step 1. The seller initiates authorization from your website](#Step-1-The-seller-initiates-authorization-from-your-website)
 
@@ -658,19 +698,19 @@ The production workflow begins at [Step 0. Set up your OAuth authorization URIs]
 
 [Step 4. Your application exchanges the LWA authorization code for a LWA refresh token](#Step-4-Your-application-exchanges-the-LWA-authorization-code-for-a-LWA-refresh-token)
 
-### Step 0. Set up your OAuth authorization URIs
+### Step 0. Set up an "Authorize" button
 
-Set up an "Authorize" button (or something similar) on your application website that the seller can click to initiate authorization of your application. When the seller clicks the button, your website loads an OAuth authorization URI into the browser and the seller is redirected to a Seller Central sign-in page. You get your OAuth authorization URIs when you [register your application](#step-6-register-your-application).
+Set up an “Authorize” button (or something similar) on your application website that the seller can click to initiate authorization of your application. When the seller clicks the button, your website loads an OAuth authorization URI into the browser and the seller is redirected to a Seller Central sign-in page. After sign-in, a consent page appears, where a seller can give your application consent to make calls to the Selling Partner API on their behalf. For information about constructing and OAuth authorization URI, see [OAuth authorization URIs](#oauth-authorization-uris).
 
-**Multiple OAuth authorization URIs**
+**Note.** If you have OAuth authorization URIs for more than one region, be sure to set up your “Authorize” buttons so that sellers are redirected to the Seller Central sign-in page for their own region.
 
-If you have OAuth authorization URIs for more than one region, be sure to set up your "Authorize" buttons so that sellers are redirected to the Seller Central sign-in page for their own region. Setting up your "Authorize" button(s) is a one-time task.
+Setting up your “Authorize” button(s) is a one-time task.
 
 ### Step 1. The seller initiates authorization from your website
 
 1.  The seller signs into your website. If the seller does not yet have an account, they complete your registration process.
 
-2.  The seller clicks the "Authorize" button that you set up in [Step 0. Set up your OAuth authorization URIs](#step-0-set-up-your-oauth-authorization-uris). If you have more than one regional "Authorize" button, be sure that the seller is directed to the button that corresponds to the region that they sell in.
+2.  The seller clicks the "Authorize" button that you set up in [Step 0. Set up an "Authorize" button](#step-0.-set-up-an-authorize-button). If you have more than one regional "Authorize" button, be sure that the seller is directed to the button that corresponds to the region that they sell in.
 
 3.  Your application loads the OAuth authorization URI into the browser, adding the following query parameter:
 
