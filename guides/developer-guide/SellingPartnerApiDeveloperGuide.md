@@ -56,7 +56,7 @@
     - [Step 4. Your application exchanges the LWA authorization code for a LWA refresh token](#Step-4-Your-application-exchanges-the-LWA-authorization-code-for-a-LWA-refresh-token)
 
 
-- [Self authorization](#self-authorization-1)
+- [Self authorization](#self-authorization)
 
 - [Generating a Java SDK with LWA token exchange and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication)
 
@@ -857,7 +857,7 @@ If an MWS auth token was returned in [Step 3. Amazon sends you the authorization
 
 # Self authorization
 
-You can self-authorize your application in Developer Central. Before doing this you must [Registering your Selling Partner API application](#registering-your-selling-partner-api-application).
+You can self-authorize your application in Developer Central. Before doing this you must [Registering your Selling Partner API application](#registering-your-selling-partner-api-application). You can self authorize your application in draft state; there is no reason to publish your self-authorized application to the Marketplace Appstore.
 
 To implement the full OAuth authorization workflow, see [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications).
 
