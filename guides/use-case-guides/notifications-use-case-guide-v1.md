@@ -715,7 +715,7 @@ A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* inc
 | BrandName     | The brand name of the item.                 |
 | Asin          | The ASIN of the item.                       |
 
-**Notification schema:** [BrandedItemContentChangeNotification.json](https://amazonservicesstatic.com.s3.amazonaws.com/json-schemas/notifications/BrandedItemContentChangeNotification.json)
+**Notification schema:** [BrandedItemContentChangeNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/BrandedItemContentChangeNotification.json)
 
 **Notification example:**
 ```
@@ -753,7 +753,7 @@ An **ITEM_PRODUCT_TYPE_CHANGE** notification with **PayloadVersion**=*1.0* inclu
 | PreviousProductType | The previous product type.                  |
 | CurrentProductType  | The current product type.                   |
 
-**Notification schema:** [ItemProductTypeChangeNotification.json](https://amazonservicesstatic.com.s3.amazonaws.com/json-schemas/notifications/ItemProductTypeChangeNotification.json)
+**Notification schema:** [ItemProductTypeChangeNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/ItemProductTypeChangeNotification.json)
 
 **Notification example:**
 ```
@@ -1339,7 +1339,7 @@ The following table shows the child elements of the Summary element:
 </tbody>
 </table>
 
-**Notification schema:** [AnyOfferChangedNotification.json](https://amazonservicesstatic.com.s3.amazonaws.com/json-schemas/notifications/AnyOfferChangedNotification.json)
+**Notification schema:** [AnyOfferChangedNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/AnyOfferChangedNotification.json)
 
 **Notification example:**
 ```
@@ -1573,7 +1573,6 @@ The following table shows the attributes of a FeeDetail element:
 </tr>
 </tbody>
 </table>
-
 ### FeesEstimate
 
 The following table shows the child elements of the FeesEstimate element:
@@ -1644,7 +1643,6 @@ Each FeePromotionNotification element is made up of the following data objects:
 </tr>
 </tbody>
 </table>
-
 ### Identifier
 
 The following table describes the attributes of an item from the IdentifierList element:
@@ -1675,7 +1673,6 @@ The following table describes the attributes of an item from the IdentifierList 
 </tr>
 </tbody>
 </table>
-
 ### IdentifierValue
 
 A description of identifier values to which this promotion applies.
@@ -1705,7 +1702,6 @@ A description of identifier values to which this promotion applies.
 </tr>
 </tbody>
 </table>
-
 ### PromotionInformation
 
 The following table shows the child elements of the PromotionInformation element:
@@ -1762,7 +1758,6 @@ The following table shows the child elements of the PromotionInformation element
 </tr>
 </tbody>
 </table>
-
 ### PromotionActiveTimeRange
 
 The following table shows the child elements of the PromotionActiveTimeRange element:
@@ -1772,7 +1767,7 @@ The following table shows the child elements of the PromotionActiveTimeRange ele
 | EffectiveFromDate    | Date (inclusive) when the promotion becomes active. | Yes          | *Type: dateTime* |
 | EffectiveThroughDate | Date (exclusive) when the promotion has ended.      | *Yes*        | *Type: dateTime* |
 
-**Notification schema:** [FeePromotionNotification.json](https://amazonservicesstatic.com.s3.amazonaws.com/json-schemas/notifications/FeePromotionNotification.json)
+**Notification schema:** [FeePromotionNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/FeePromotionNotification.json)
 
 **Notification example:**
 ```
@@ -1890,8 +1885,7 @@ The following table shows the child elements of the FBAOutboundShipmentStatusNot
 </tr>
 </tbody>
 </table>
-
-**Notification schema:** [FBAOutboundShipmentStatusNotification.json](https://amazonservicesstatic.com.s3.amazonaws.com/json-schemas/notifications/FBAOutboundShipmentStatusNotification.json)
+**Notification schema:** [FBAOutboundShipmentStatusNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/FBAOutboundShipmentStatusNotification.json)
 
 **Notification example:**
 
@@ -2043,7 +2037,6 @@ The following table shows the child elements of the FulfillmentReturnItem elemen
 </tr>
 </tbody>
 </table>
-
 ### FulfillmentShipment
 
 The following table shows the child elements of the FulfillmentShipment element:
@@ -2089,7 +2082,6 @@ The following table shows the child elements of the FulfillmentShipment element:
 </tr>
 </tbody>
 </table>
-
 ### FulfillmentShipmentPackage
 
 The following table shows the child elements of the FulfillmentShipmentPackage element:
@@ -2122,8 +2114,7 @@ The following table shows the child elements of the FulfillmentShipmentPackage e
 </tr>
 </tbody>
 </table>
-
-**Notification schema:** [FulfillmentOrderStatusNotification.json](https://amazonservicesstatic.com.s3.amazonaws.com/json-schemas/notifications/FulfillmentOrderStatusNotification.json)
+**Notification schema:** [FulfillmentOrderStatusNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/FulfillmentOrderStatusNotification.json)
 
 **Notification example:**
 ```
