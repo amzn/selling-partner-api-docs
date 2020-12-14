@@ -447,6 +447,7 @@ Call the **createDestination** operation to create an Amazon Simple Queue Servic
 </tr>
 </tbody>
 </table>
+
 **Note:** Calling the **createDestination** operation does not require authorization from any selling partner. In this respect, this operation is a "grantless" operation and has a different authorization model from most other Selling Partner API operations. For more information, see [Grantless operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#grantless-operations-1) in the Selling Partner API Developer Guide.
 
 Request example:
