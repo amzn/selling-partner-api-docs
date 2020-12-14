@@ -1,4 +1,8 @@
 ## Selling Partner API Documentation
+
+Check out the deployed API documentation.
+
+
 This repository contains documentation for developers to use to call Selling Partner APIs. You can find the API models in and currently available client helper code in the [selling-partner-api-models](https://github.com/amzn/selling-partner-api-models) repo.
 
 The [selling-partner-api-models/models](https://github.com/amzn/selling-partner-api-models/tree/main/models) directory contains all of the currently available Selling Partner API models.
