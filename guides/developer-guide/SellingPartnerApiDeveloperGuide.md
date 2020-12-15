@@ -145,7 +145,7 @@ Selling Partner API endpoints are associated with a particular AWS Region. The A
 <td>us-east-1</td>
 </tr>
 <tr class="even">
-<td>Europe (Spain, UK, France, Netherlands, Germany, Italy, Turkey, U.A.E, and India marketplaces)</td>
+<td>Europe (Spain, UK, France, Netherlands, Germany, Italy, Sweden, Poland, Turkey, U.A.E, and India marketplaces)</td>
 <td>https://sellingpartnerapi-eu.amazon.com</td>
 <td>eu-west-1</td>
 </tr>
@@ -182,6 +182,8 @@ The `marketplaceId` identifies the marketplace for a request.
 | Netherlands          | A1805IZSGTT6HS    | NL               |
 | Germany              | A1PA6795UKMFR9    | DE               |
 | Italy                | APJ6JRA9NG5V4     | IT               |
+| Sweden               | A2NODRKZP88ZB9    | IT               |
+| Poland               | A1C3SOZRARQ6R3    | PL               |
 | Turkey               | A33AVAJ2PDY3EV    | TR               |
 | United Arab Emirates | A2VIGQ35RCS4UG    | AE               |
 | India                | A21TJRUUN4KGV     | IN               |
@@ -374,7 +376,7 @@ Adding an [AWS Security Token Service (AWS STS)](https://docs.aws.amazon.com/STS
 
 1.  If you are not already signed in, sign into the AWS Management Console and open the IAM console at [console.aws.amazon.com/iam](https://console.aws.amazon.com/iam).
 
-3.  In the navigation pane at left, click **Users** and then click the user that that you want to add the AWS STS policy to. In this workflow, choose the user you created in [Step 2. Create an IAM user](#Step-2-Create-an-IAM-user). You might choose a different IAM user for other use cases.
+3.  In the navigation pane at left, click **Users** and then click the user that you want to add the AWS STS policy to. In this workflow, choose the user you created in [Step 2. Create an IAM user](#Step-2-Create-an-IAM-user). You might choose a different IAM user for other use cases.
 
 4.  On the **Permissions** tab, click **Add inline policy**.
 
