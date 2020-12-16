@@ -1,6 +1,6 @@
 ---
 name: Documentation Bug Report
-about: Create a report to help us improve our documentation
+about: Report an error in our documentation
 title: "[BUG] Documentation"
 labels: bug, documentation
 assignees: ''
