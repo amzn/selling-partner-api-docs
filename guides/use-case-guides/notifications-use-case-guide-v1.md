@@ -201,7 +201,7 @@ Response example
 
 Associate an event bus with your partner event source. For definitions, see [Terminology](#terminology).
 
-1. Go to the go to [Amazon EventBridge](https://console.aws.amazon.com/events) and sign into the AWS console using the AWS Account ID that you specified when you called the **createDestination** operation in  [Step 1. Create a destination](#step-1-create-a-destination).
+1. Go to [Amazon EventBridge](https://console.aws.amazon.com/events) and sign into the AWS console using the AWS Account ID that you specified when you called the **createDestination** operation in  [Step 1. Create a destination](#step-1-create-a-destination).
 
 2.  In the console, ensure that the AWS region that you specified when you called the **createDestination** operation is selected.
 
