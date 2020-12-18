@@ -159,7 +159,7 @@ A successful response includes the following elements:
 <tr class="odd">
 <td>resource</td>
 <td><p>The resource that will receive notifications associated with this destination.</p>
-<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/notifications-api/notifications.md#destinationresource">resource</a></p></td>
+<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/notifications-api/notifications.md#destinationresource">DestinationResource</a></p></td>
 </tr>
 <tr class="even">
 <td>destinationId</td>
@@ -173,6 +173,7 @@ A successful response includes the following elements:
 </tr>
 </tbody>
 </table>
+
 Response example
 ```
 {
@@ -200,15 +201,17 @@ Response example
 
 Associate an event bus with your partner event source. For definitions, see [Terminology](#terminology).
 
-1.  Go to the [Amazon EventBridge console](https://console.aws.amazon.com/events) and sign in with your AWS credentials.
+1. Go to the go to [Amazon EventBridge](https://console.aws.amazon.com/events) and sign into the AWS console using the AWS Account ID that you specified when you called the **createDestination** operation in  [Step 1. Create a destination](#step-1-create-a-destination).
 
-2.  In the navigation pane, click **Partner event sources**.
+2.  In the console, ensure that the AWS region that you specified when you called the **createDestination** operation is selected.
 
-3.  In the **Partner event sources** area, under **Name**, click the partner event source that matches the **resource:eventBridge:name** value returned in [Step 1. Create a destination](#step-1-create-a-destination). The partner event source is in this format: aws.partner/sellingpartnerapi.amazon.com/{AWS Account Id}/{Application Id}
+3.  In the navigation pane, click **Partner event sources**.
 
-4.  On the new page that appears, click the **Associate with event bus** button.
+4.  In the **Partner event sources** area, under **Name**, click the partner event source that matches the **resource:eventBridge:name** value returned in [Step 1. Create a destination](#step-1-create-a-destination). The partner event source is in this format: aws.partner/sellingpartnerapi.amazon.com/{AWS Account Id}/{Application Id}
 
-5.  On the **Associate with event bus** page, leave the checkboxes cleared and click the **Associate** button.
+5.  On the new page that appears, click the **Associate with event bus** button.
+
+6.  On the **Associate with event bus** page, leave the checkboxes cleared and click the **Associate** button.
 
 You have created a partner event bus and associated it with your partner event source. Go to [Step 3. Create a rule that triggers on a notification event](#step-3-create-a-rule-that-triggers-on-a-notification-event).
 
@@ -216,19 +219,23 @@ You have created a partner event bus and associated it with your partner event s
 
 Create a rule that watches for specific notification events and routes them to the target resource of your choice.
 
-1.  If you are not already signed in, go to the [Amazon EventBridge console](https://console.aws.amazon.com/events) and sign in with your AWS credentials.
+1.  Go to [Amazon EventBridge](https://console.aws.amazon.com/events). If you are not already signed into the AWS console, sign in using the AWS Account ID that you specified when you called the **createDestination** operation in  [Step 1. Create a destination](#step-1-create-a-destination).
 
-2.  In the navigation pane, click **Rules**.
+2. In the console, ensure that the AWS region that you specified when you called the **createDestination** operation is selected.
 
-3.  Click the **Create rule** button.
+3.  In the navigation pane, click **Rules**.
 
-4.  Enter a name and optional description for the rule.
+4.  Click the **Create rule** button.
 
-5.  In the **Define pattern** area, select **Event pattern**.
+5.  Enter a name and optional description for the rule.
 
-6.  Select **Pre-defined pattern by service**.
+6.  In the **Define pattern** area, select **Event pattern**.
 
-7.  Under **Service provider**, select **All Events**.
+7.  Select **Pre-defined pattern by service**.
+
+8.  Under **Service provider**, select **Service partners**.
+
+9.  Under **Service name**, select **Amazon Selling Partner APIs**.
 
 The event pattern that displays should be similar to the following, which indicates that you will receive all events emitted by sellingpartnerapi.amazon.com:
 ```
@@ -238,7 +245,7 @@ The event pattern that displays should be similar to the following, which indica
   ]
 }
 ```
-8.  (Optional) Edit the event pattern to include rules that match only the notification events that you want. The following event pattern contains a rule that matches only BRANDED_ITEM_CONTENT_CHANGE events from sellingpartnerapi.amazon.com:
+10.  (Optional) Edit the event pattern to include rules that match only the notification events that you want. The following event pattern contains a rule that matches only BRANDED_ITEM_CONTENT_CHANGE events from sellingpartnerapi.amazon.com:
 ```
 {
   "account": [
@@ -251,9 +258,9 @@ The event pattern that displays should be similar to the following, which indica
 ```
 For information about creating more complex rules, see [Event Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html) in the AWS documentation.
 
-9.  In the **Select event bus** area, select **Custom or partner event bus** and then select the partner event bus that you configured in [Step 2. Configure Amazon EventBridge to handle notifications](#step-2-configure-amazon-eventbridge-to-handle-notifications).
+11.  In the **Select event bus** area, select **Custom or partner event bus** and then select the partner event bus that you configured in [Step 2. Configure Amazon EventBridge to handle notifications](#step-2-configure-amazon-eventbridge-to-handle-notifications).
 
-10. In the **Select targets** area, select the AWS service that is to act when an event of the selected type is detected. Enter other information specific to this target type, if required.
+12. In the **Select targets** area, select the AWS service that is to act when an event of the selected type is detected. Enter other information specific to this target type, if required.
 
     **Note.** For many target types, EventBridge needs permissions to send events to the target. In these cases, you can create a new IAM role or you can use an existing IAM role. Do one of the following:
 
@@ -261,11 +268,11 @@ For information about creating more complex rules, see [Event Patterns](https://
 
     - To use an IAM role that you have already created, select **Use existing role**.
 
-11. (Optional) Click **Add target** to add another target for this rule.
+13. (Optional) Click **Add target** to add another target for this rule.
 
-12. (Optional) Enter one or more tags for the rule. For more information, see [Tagging Your Amazon EventBridge Resources](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-tagging.html) in the AWS documentation.
+14. (Optional) Enter one or more tags for the rule. For more information, see [Tagging Your Amazon EventBridge Resources](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-tagging.html) in the AWS documentation.
 
-13. Click the **Create** button.
+15. Click the **Create** button.
 
 Troubleshooting:
 
