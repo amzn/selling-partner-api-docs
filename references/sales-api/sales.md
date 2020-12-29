@@ -75,7 +75,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|OrderMetric action taken on the resource OrderMetrics.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
+|**200**|OrderMetric action taken on the resource OrderMetrics.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : TPS throttle rate customer is authorized for.  <br>`x-amzn-RequestId` (string) : unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
 
 For error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 
@@ -87,14 +87,14 @@ This table contains HTTP status codes and associated information for error respo
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):TPS throttle rate customer is authorized for.  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
 |**403**|403 can be caused for reasons like Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
 |**404**|The resource specified does not exist.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
-|**415**|The entity of the request is in a format not supported by the requested resource.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
-|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):TPS throttle rate customer is authorized for.  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
+|**415**|The entity of the request is in a format not supported by the requested resource.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):TPS throttle rate customer is authorized for.  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):TPS throttle rate customer is authorized for.  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):TPS throttle rate customer is authorized for.  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):TPS throttle rate customer is authorized for.  <br>`x-amzn-RequestId` (string):Unique request reference id.|[GetOrderMetricsResponse](#getordermetricsresponse)|
 
 
 <a name="definitions"></a>
@@ -165,7 +165,7 @@ The currency type and the amount.
 
 <a name="decimal"></a>
 ### Decimal
-A decimal number with no loss of precision. Useful when precision loss is unnaceptable, as with currencies. Follows RFC7159 for number representation.
+A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\d*))(\.\d+)?([eE][+-]?\d+)?$`.
 
 *Type* : string
 
