@@ -31,7 +31,8 @@ Feed types fall into these categories:
 <p><strong>feedType</strong> value: POST_PRODUCT_DATA</p>
 <p>XSD: <a href="https://images-na.ssl-images-amazon.com/images/G/01/rainier/help/xsd/release_4_1/Product.xsd">Product.xsd</a></p></td>
 <td>
-<p>Builds a record and assigns an ASIN (Amazon Standard Item Number) to a product.</p></td>
+<p>Builds a record and assigns an ASIN (Amazon Standard Item Number) to a product.</p>
+<p>For more information about Category XSDs, see "XSDs" in the Seller Central Help for your marketplace.</p></td>
 </tr>
 <tr class="even">
 <td><p><strong>Inventory Feed</strong></p>
