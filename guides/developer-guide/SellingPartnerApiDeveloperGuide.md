@@ -876,7 +876,7 @@ To implement the full OAuth authorization workflow, see [Authorizing Selling Par
 
     The Login with Amazon (LWA) refresh token appears. If your selling account is linked to accounts from other regions, you will receive a separate refresh token for each region. Your application is now authorized to access your selling account(s).
 
-    **Important:** Click **Generate refresh token** just once to get your refresh token, and then save it for making calls to the Selling Partner API. If you click the **Generate refresh token** multiple times you will get a new refresh token each time, invalidating previous refresh tokens.
+    **Important:** Click **Generate refresh token** to get your refresh token. Generating a new refresh token does not invalidate previous refresh tokens.
 
 The refresh token is a long-lived token that you exchange for a short-lived access token. An access token must be included with every request to the Selling Partner API. Once an access token is issued it is valid for one hour. The same access token can be used for multiple API calls, until it expires. For more information, see [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token)).
 
