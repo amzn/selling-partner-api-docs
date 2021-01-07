@@ -361,7 +361,7 @@ Path parameter:
 #### Request example:
 
 ```
-GET https://sellingpartnerapi-na.amazon.com/reports/2020-09-04/reports/2020-09-04/documents/DOC-b8b0-4226-b4b9-0ee058ea5760
+GET https://sellingpartnerapi-na.amazon.com/reports/2020-09-04/documents/DOC-b8b0-4226-b4b9-0ee058ea5760
 ```
 
 **Response**
