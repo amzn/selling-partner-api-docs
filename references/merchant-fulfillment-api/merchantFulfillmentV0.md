@@ -67,14 +67,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**200**|Success  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
 
 
 <a name="geteligibleshipmentservices"></a>
@@ -104,14 +104,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**200**|Success  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetEligibleShipmentServicesResponse](#geteligibleshipmentservicesresponse)|
 
 
 <a name="getshipment"></a>
@@ -141,14 +141,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
+|**200**|Success  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetShipmentResponse](#getshipmentresponse)|
 
 
 <a name="cancelshipment"></a>
@@ -178,14 +178,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**200**|Success  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
 
 
 <a name="cancelshipmentold"></a>
@@ -215,14 +215,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**200**|Success  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CancelShipmentResponse](#cancelshipmentresponse)|
 
 
 <a name="createshipment"></a>
@@ -252,14 +252,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
+|**200**|Success  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateShipmentResponse](#createshipmentresponse)|
 
 
 <a name="getadditionalsellerinputsold"></a>
@@ -289,14 +289,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**200**|Success  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
 
 
 <a name="getadditionalsellerinputs"></a>
@@ -326,14 +326,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**200**|Success  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAdditionalSellerInputsResponse](#getadditionalsellerinputsresponse)|
 
 
 <a name="definitions"></a>
@@ -593,7 +593,7 @@ The name of the addressee, or business name.
 
 <a name="amazonorderid"></a>
 ### AmazonOrderId
-An Amazon-defined order identifier, in 3-7-7 format.
+An Amazon-defined order identifier, in 3-7-7 format. <br>**Pattern** : `[0-9A-Z]{3}-[0-9]{7}-[0-9]{7}`.
 
 *Type* : string
 
@@ -1077,7 +1077,7 @@ The details of a shipment, including the shipment status.
 |Name|Description|Schema|
 |---|---|---|
 |**ShipmentId**  <br>*required*|An Amazon-defined shipment identifier.|[ShipmentId](#shipmentid)|
-|**AmazonOrderId**  <br>*required*|An Amazon-defined order identifier, in 3-7-7 format.|[AmazonOrderId](#amazonorderid)|
+|**AmazonOrderId**  <br>*required*|An Amazon-defined order identifier, in 3-7-7 format. <br>**Pattern** : `[0-9A-Z]{3}-[0-9]{7}-[0-9]{7}`.|[AmazonOrderId](#amazonorderid)|
 |**SellerOrderId**  <br>*optional*|A seller-defined order identifier.|[SellerOrderId](#sellerorderid)|
 |**ItemList**  <br>*required*|The list of items to be included in a shipment.|[ItemList](#itemlist)|
 |**ShipFromAddress**  <br>*required*|The address of the sender.|[Address](#address)|

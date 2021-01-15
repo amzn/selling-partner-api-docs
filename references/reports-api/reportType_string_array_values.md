@@ -493,7 +493,7 @@ A daily FBA report is generated no more than once every four hours. This means t
 <tr class="odd">
 <td><p><strong>Flat File All Orders Report by Last Update</strong></p>
 <p><strong>reportType</strong> value:</p>
-<p>_GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL</p>
+<p>GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL</p>
 </td>
 <td>Tab-delimited flat file report. Returns all orders updated in the specified date range regardless of fulfillment channel or shipment status. This report is intended for order tracking, not to drive a seller's fulfillment process. It does not include customer identifying information and scheduling is not supported. For all sellers.
 <p>Can be requested.</p></td>

@@ -1,3 +1,5 @@
+# Selling Partner API Developer Guide
+
 # Contents
 
 - [What is the Selling Partner API?](#what-is-the-selling-partner-api)
@@ -43,7 +45,7 @@
 
   - [Website workflow](#website-workflow)
 
-    - [Step 0. Set up your OAuth authorization URIs](#Step-0-Set-up-your-OAuth-authorization-URIs)
+    - [Step 0. Set up an "Authorize" button](#step-0-set-up-an-"authorize"-button)
 
     - [Step 1. The seller initiates authorization from your website](#Step-1-The-seller-initiates-authorization-from-your-website)
 
@@ -54,7 +56,7 @@
     - [Step 4. Your application exchanges the LWA authorization code for a LWA refresh token](#Step-4-Your-application-exchanges-the-LWA-authorization-code-for-a-LWA-refresh-token)
 
 
-- [Self authorization](#self-authorization-1)
+- [Self authorization](#self-authorization)
 
 - [Generating a Java SDK with LWA token exchange and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication)
 
@@ -71,18 +73,19 @@
 - [Generating a Java client library](#generating-a-java-client-library)
 
 - [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api)
-- [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token)
-  
-- [Step 2. Construct a Selling Partner API URI](#step-2-construct-a-selling-partner-api-uri)
-  
-- [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri)
-  
-- [Step 4. Create and sign your request](#step-4-create-and-sign-your-request)
-  
-  - [Credential scope](#credential-scope)
-  
-  - [Authorization header](#authorization-header)
-  
+
+  - [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token)
+    
+  - [Step 2. Construct a Selling Partner API URI](#step-2-construct-a-selling-partner-api-uri)
+    
+  - [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri)
+    
+  - [Step 4. Create and sign your request](#step-4-create-and-sign-your-request)
+    
+    - [Credential scope](#credential-scope)
+    
+    - [Authorization header](#authorization-header)
+
 - [Response format](#response-format)
 
 - [Grantless operations](#grantless-operations-1)
@@ -142,7 +145,7 @@ Selling Partner API endpoints are associated with a particular AWS Region. The A
 <td>us-east-1</td>
 </tr>
 <tr class="even">
-<td>Europe (Spain, UK, France, Netherlands, Germany, Italy, Turkey, U.A.E, and India marketplaces)</td>
+<td>Europe (Spain, UK, France, Netherlands, Germany, Italy, Sweden, Poland, Turkey, U.A.E, and India marketplaces)</td>
 <td>https://sellingpartnerapi-eu.amazon.com</td>
 <td>eu-west-1</td>
 </tr>
@@ -179,6 +182,7 @@ The `marketplaceId` identifies the marketplace for a request.
 | Netherlands          | A1805IZSGTT6HS    | NL               |
 | Germany              | A1PA6795UKMFR9    | DE               |
 | Italy                | APJ6JRA9NG5V4     | IT               |
+| Sweden               | A2NODRKZP88ZB9    | SE               |
 | Turkey               | A33AVAJ2PDY3EV    | TR               |
 | United Arab Emirates | A2VIGQ35RCS4UG    | AE               |
 | India                | A21TJRUUN4KGV     | IN               |
@@ -222,7 +226,7 @@ You only need to register as a developer once, in the region and marketplace of 
 
 **Important.** If you have a [hybrid Selling Partner API applications](#hybrid-selling-partner-api-applications), your calls to Amazon Marketplace Web Service (Amazon MWS) endpoints have the same restrictions as an Amazon MWS application. That is, when you call an Amazon MWS endpoint, you must use Amazon MWS Access Keys associated with the region that the endpoint comes from.
 
-For more information, see [Selling Partner API endpoints](#Selling_Partner_API_endpoints).
+For more information, see [Selling Partner API endpoints](#Selling-Partner-API-endpoints).
 
 # Registering as a developer
 
@@ -333,7 +337,7 @@ For more information, see [Creating IAM Policies](https://docs.aws.amazon.com/IA
 
 ## Step 4. Create an IAM role
 
-Create an IAM role that trusts the IAM user that you created in [Step 2. Create an IAM user](#step-4-create-an-iam-role) and has permissions to call the Selling Partner API.
+Create an IAM role that trusts the IAM user that you created in [Step 2. Create an IAM user](#Step-2-Create-an-IAM-user) and has permissions to call the Selling Partner API.
 
 **To create an IAM role**
 
@@ -343,9 +347,9 @@ Create an IAM role that trusts the IAM user that you created in [Step 2. Create 
 
 3.  On the **Create role** page, click **Another AWS account**.
 
-4.  In the **Account ID** box, enter the account identifier for the AWS account in which you created your IAM user in [Step 2. Create an IAM user](#step-4-create-an-iam-role), and then click the **Next: Permissions** button.
+4.  In the **Account ID** box, enter the account identifier for the AWS account in which you created your IAM user in [Step 2. Create an IAM user](#Step-2-Create-an-IAM-user), and then click the **Next: Permissions** button.
 
-5.  On the **Attach permissions policies** page, under **Policy name**, select the policy that you created in [Step 3. Create an IAM policy](#step-2-create-an-iam-user), and then click **Next: Tags.**
+5.  On the **Attach permissions policies** page, under **Policy name**, select the policy that you created in [Step 3. Create an IAM policy](#Step-3-Create-an-IAM-policy), and then click **Next: Tags.**
 
     **Tip:** Click **Filter policies** and then select **Customer managed** to narrow your choices.
 
@@ -371,7 +375,7 @@ Adding an [AWS Security Token Service (AWS STS)](https://docs.aws.amazon.com/STS
 
 1.  If you are not already signed in, sign into the AWS Management Console and open the IAM console at [console.aws.amazon.com/iam](https://console.aws.amazon.com/iam).
 
-3.  In the navigation pane at left, click **Users** and then click the user that that you want to add the AWS STS policy to. In this workflow, choose the user you created in [Step 2. Create an IAM user](#step-4-create-an-iam-role). You might choose a different IAM user for other use cases.
+3.  In the navigation pane at left, click **Users** and then click the user that you want to add the AWS STS policy to. In this workflow, choose the user you created in [Step 2. Create an IAM user](#Step-2-Create-an-IAM-user). You might choose a different IAM user for other use cases.
 
 4.  On the **Permissions** tab, click **Add inline policy**.
 
@@ -409,7 +413,7 @@ Register your application in Developer Central.
 
 # Viewing your developer information
 
-After [registering your Selling Partner API application](#registering-as-a-developer) you can sign into Developer Central to view your developer information.
+After [registering your Selling Partner API application](#registering-your-Selling-Partner-API-application) you can sign into Developer Central to view your developer information.
 
 **To view your developer information**
 
@@ -430,42 +434,69 @@ The authorization model for the Selling Partner API is based on [Login with Amaz
 Selling partners can authorize your applications using one of these workflows:
 
   - [Marketplace Appstore workflow](#marketplace-appstore-workflow). An OAuth authorization workflow initiated from the Marketplace Appstore detail page.
-
   - [Website workflow](#website-workflow). An OAuth authorization workflow initiated from your own website.
+
+If you are developing an application for your own selling account, you can authorize it yourself. For more information, see [Self authorization](#self-authorization).
+
+## OAuth authorization URIs
+
+An OAuth authorization URI is a key component for creating and testing Selling Partner API authorization workflows. The OAuth authorization URI redirects a browser to a Seller Central sign-in page. After sign-in, a consent page appears, where a seller can give your application consent to make calls to the Selling Partner API on their behalf.
+
+If a seller authorizes your application starting from your own website (the [Website workflow](#website-workflow)) your website uses an OAuth authorization URI to redirect the seller to the Seller Central consent page. Even if a seller authorizes your application starting from the Marketplace Appstore (the [Marketplace Appstore workflow](#marketplace-appstore-workflow)), you still need an OAuth authorization URI to test your authorization workflow in draft status before creating a live listing in the Marketplace Appstore.
+
+**To construct an OAuth authorization URI**
+
+1.  Get the Seller Central URL for the marketplace where you want sellers to authorize your applications. Example: `https://sellercentral.amazon.com`
+
+2.  Combine the Seller Central URL with `/apps/authorize/consent?{your application ID}`.
+
+    Example: `https://sellercentral.amazon.com/apps/authorize/consent?application\_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28`
+
+You will need an OAuth authorization URI for every marketplace where you want sellers to authorize your application. Simply use the appropriate Seller Central URL in each OAuth authorization URI that you need.
+
+**Note.** For sellers who sell in the Spain, UK, France, Germany, and Italy marketplaces, you can use the Seller Central URL for Europe when creating an OAuth authorization URI. Example: `https://sellercentral-europe.amazon.com/apps/authorize/consent?application\_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28`
+
+If you are creating an OAuth authorization URI for testing your authorization workflow, add the version=beta parameter. This indicates that the authorization workflow is for an application in draft status. Example: `https://sellercentral-europe.amazon.com/apps/authorize/consent?application\_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28&version=beta`
+
+For information about creating and testing an authorization workflow, see [Marketplace Appstore workflow](#marketplace-appstore-workflow) and [Website workflow](#website-workflow).
 
 ## Grantless operations
 
 A grantless operation is an operation that you can call without explicit authorization from a selling partner. This authorization model doesn't require you to receive and exchange LWA authorization codes and refresh tokens to get an LWA access token, as you must when calling other Selling Partner API operations. Instead you get your LWA access token with a single call to the LWA authorization server.
 
-## Self authorization
-
-If you are developing an application for your own selling account, you can authorize it yourself. For more information, see [Self authorization](#self-authorization-1).
-
-### Migrating authorization from Amazon Marketplace Web Service
+## Migrating authorization from Amazon Marketplace Web Service
 
 If a selling partner has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a hybrid Selling Partner API application. This eliminates the need to request authorization from the selling partner again. For more information, see the Authorization API User Guide.
 
 ## Marketplace Appstore workflow
 
-The Marketplace Appstore workflow is an OAuth authorization workflow that is initiated from the Marketplace Appstore detail page. When you publish a Selling Partner API application on the Marketplace Appstore, sellers can authorize your application by clicking an **Authorize Now** button on the detail page.
+The Marketplace Appstore workflow is an OAuth authorization workflow that the seller initiates from the Marketplace Appstore detail page. When you list a Selling Partner API application on the Marketplace Appstore, sellers can authorize your application by clicking an **Authorize Now** button on the detail page.
 
-This topic includes the Marketplace Appstore workflow steps as well as information about testing the workflow.
+**Testing your authorization workflow**
 
-**Testing the Marketplace Appstore workflow**
+Before listing your application on the Marketplace Appstore, you should test your authorization workflow while your application is in draft status. Your test workflow won’t be exactly the same as the final production workflow, but you'll be able to ensure that your application can exchange parameters with Amazon and receive authorization information.
 
-Before creating a production Marketplace Appstore workflow, it's important to create a test workflow that can authorize your application in Draft state. Your test workflow won't be exactly the same as the final production workflow. Still, you can test to make sure that your application can exchange parameters with Amazon and receive authorization information.
+**To set up a test authorization workflow**
 
-Here is how a test workflow differs from a production workflow:
+1.  Make sure that your application in draft status.
 
-  - Instead of starting at the Marketplace Appstore detail page, a test workflow starts with a seller directly navigating to the OAuth authorization URI for your application. You can test with a trusted seller who works with you, or you can test the workflow yourself using your own selling account credentials. The OAuth authorization URI must include the `version=beta` parameter to indicate that the workflow is authorizing an application in Draft state. When the seller navigates to the OAuth authorization URI, the workflow continues at [Step 2. The seller consents to authorize your application](#step-2-the-seller-consents-to-authorize-your-application).
+2.  Construct one or more OAuth authorization URIs for testing purposes. Include the version=beta parameter in the OAuth URI(s) to indicate that the workflow is for authorizing an application in draft status. For more information, see [OAuth authorization URIs](#oauth-authorization-uris).
 
-    **Note:** If you have more than one regional OAuth authorization URI, be sure give the seller the OAuth authorization URI that corresponds to the region that they sell in.
+3.  At [Step 3. The seller signs into your website](#step-3.-the-seller-signs-into-your-website), be sure that your workflow adds the `version=beta` parameter to the Amazon callback URI to indicate that the workflow is for authorizing an application in draft status.
 
-  - Your application adds the `version=beta` parameter to the Amazon callback URI in [Step 3. The seller signs into your website](#step-3-the-seller-signs-into-your-website). This results in the workflow authorizing your application in Draft state.
+You are now ready to test your authorization workflow with a trusted seller who works with you. Alternatively, you can test the workflow yourself, using your own selling account credentials. Instead of starting at [Step 1. The seller initiates authorization from the Marketplace Appstore](#step-1.-the-seller-initiates-authorization-from-the-marketplace-appstore), the seller starts the test workflow by navigating to an OAuth authorization URI that you constructed previously.
 
-When you have finished testing the workflow, update it so that it no longer adds the `version=beta` parameter to the Amazon callback URI in [Step 3. The seller signs into your website](#step-3-the-seller-signs-into-your-website). This makes it a production workflow. Now any seller can authorize your published application starting from the detail page of the Marketplace Appstore.
+**Note:** If you have more than one regional OAuth authorization URI, be sure give the seller the OAuth authorization URI that corresponds to the region that they sell in.
 
-The production workflow begins at [Step 1. The seller initiates authorization from the Marketplace Appstore](#step-1-the-seller-initiates-authorization-from-the-marketplace-appstore).
+When you have finished testing the authorization workflow you can convert it to a production workflow.
+
+**To convert your test authorization workflow to a productions workflow**
+
+1.  List your application in the Marketplace Appstore. This changes your application from draft status to published status.
+
+2.  Update your workflow so that it no longer adds the `version=beta` parameter to the Amazon callback URI in [Step 3. The seller signs into your website](#Step-3-The-seller-signs-into-your-website).
+
+    Now any seller can authorize your published application starting at [Step 1. The seller initiates authorization from the Marketplace Appstore](#Step-1-The-seller-initiates-authorization-from-the-Marketplace-Appstore).
 
 **Steps**
 
@@ -489,7 +520,7 @@ The production workflow begins at [Step 1. The seller initiates authorization fr
 
 1.  The seller views the consent page, reviews and accepts the data access requested by your application, and then clicks the **Login to \[your application name\] now** button to continue. The seller can click the **Cancel** button to exit without authorizing.
 
-2.  Amazon loads your sign-in Login URI (which you provided at application registration) into the browser, adding the following query parameters:
+2.  Amazon loads your Login URI (which you provided at application registration) into the browser, adding the following query parameters:
 
 | **Parameter**             | **Description**     |
 | ------------------------- | ------------------  |
@@ -630,25 +661,35 @@ If an MWS auth token was returned in [Step 4. Amazon sends you the authorization
 
 ## Website workflow
 
-The Website workflow is an OAuth authorization workflow that is initiated from your own website. Sellers sign into your website and click an "Authorize" button that you configure to initiate authorization. For more information, see [Step 0. Set up your OAuth authorization URIs](#step-0-set-up-your-oauth-authorization-uris).
+The Website workflow is an OAuth authorization workflow that is initiated from your own website. Sellers sign into your website and click an “Authorize” button that you configure to initiate authorization. For more information, see [Step 0. Set up an "Authorize" button](#step-0.-set-up-an-authorize-button).
 
-This topic includes the Website workflow steps as well as information about testing the workflow.
+**Testing your authorization workflow**
 
-**Testing the Website workflow**
+Before creating a production Website workflow, you should test your authorization workflow while your application is in draft status. By testing you can ensure that your application can exchange parameters with Amazon and receive authorization information.
 
-Before creating a production Website workflow, it's important to create a test workflow that can authorize your application in Draft state. This lets you test to make sure that your application can exchange parameters with Amazon and receive authorization information.
+**To set up a test authorization workflow**
 
-Here is how a test workflow differs from a production workflow:
+1.  Make sure that your application is in draft status.
 
-  - Your application adds the `version=beta` parameter to the OAuth authorization URI in [Step 1. The seller initiates authorization from your website](#step-1-the-seller-initiates-authorization-from-your-website). This results in the workflow authorizing your application in Draft state.
+2.  At [Step 0. Set up an "Authorize" button](#step-0.-set-up-an-authorize-button), when you construct one or more OAuth authorization URIs, add the version=beta parameter to the OAuth URI(s) to indicate that the workflow is for authorizing an application in draft status.
 
-When you have finished testing the workflow, update it so that it no longer adds the `version=beta` parameter to the OAuth authorization URI in [Step 1. The seller initiates authorization from your website](#step-1-the-seller-initiates-authorization-from-your-website). This makes it a production workflow. Now any seller can authorize your published application starting from your own website.
+You are now ready to test your authorization workflow with a trusted seller who works with you. Alternatively, you can test the workflow yourself, using your own selling account credentials. Start at [Step 1. The seller initiates authorization from your website](#step-1.-the-seller-initiates-authorization-from-your-website).
 
-The production workflow begins at [Step 0. Set up your OAuth authorization URIs](#step-0-set-up-your-oauth-authorization-uris).
+When you have finished testing the authorization workflow you can convert it to a production workflow.
+
+**To convert your test authorization workflow to a productions workflow**
+
+1.  List your application in the Marketplace Appstore. This changes your application from draft status to published status.
+
+    **Important.** Your application must be in published status for the Webstore authorization workflow to work.
+
+2.  Remove the version=beta parameter from the OAuth authorization URI(s) that you constructed in [Step 0. Set up an "Authorize" button](#step-0.-set-up-an-authorize-button).
+
+    Now any seller can authorize your published application starting at [Step 1. The seller initiates authorization from your website](#step-1.-the-seller-initiates-authorization-from-your-website).
 
 **Steps**
 
-[Step 0. Set up your OAuth authorization URIs](#Step-0-Set-up-your-OAuth-authorization-URIs)
+[Step 0. Set up an "Authorize" button](#step-0-set-up-an-"authorize"-button)
 
 [Step 1. The seller initiates authorization from your website](#Step-1-The-seller-initiates-authorization-from-your-website)
 
@@ -658,19 +699,19 @@ The production workflow begins at [Step 0. Set up your OAuth authorization URIs]
 
 [Step 4. Your application exchanges the LWA authorization code for a LWA refresh token](#Step-4-Your-application-exchanges-the-LWA-authorization-code-for-a-LWA-refresh-token)
 
-### Step 0. Set up your OAuth authorization URIs
+### Step 0. Set up an "Authorize" button
 
-Set up an "Authorize" button (or something similar) on your application website that the seller can click to initiate authorization of your application. When the seller clicks the button, your website loads an OAuth authorization URI into the browser and the seller is redirected to a Seller Central sign-in page. You get your OAuth authorization URIs when you [register your application](#step-6-register-your-application).
+Set up an “Authorize” button (or something similar) on your application website that the seller can click to initiate authorization of your application. When the seller clicks the button, your website loads an OAuth authorization URI into the browser and the seller is redirected to a Seller Central sign-in page. After sign-in, a consent page appears, where a seller can give your application consent to make calls to the Selling Partner API on their behalf. For information about constructing and OAuth authorization URI, see [OAuth authorization URIs](#oauth-authorization-uris).
 
-**Multiple OAuth authorization URIs**
+**Note.** If you have OAuth authorization URIs for more than one region, be sure to set up your “Authorize” buttons so that sellers are redirected to the Seller Central sign-in page for their own region.
 
-If you have OAuth authorization URIs for more than one region, be sure to set up your "Authorize" buttons so that sellers are redirected to the Seller Central sign-in page for their own region. Setting up your "Authorize" button(s) is a one-time task.
+Setting up your “Authorize” button(s) is a one-time task.
 
 ### Step 1. The seller initiates authorization from your website
 
 1.  The seller signs into your website. If the seller does not yet have an account, they complete your registration process.
 
-2.  The seller clicks the "Authorize" button that you set up in [Step 0. Set up your OAuth authorization URIs](#step-0-set-up-your-oauth-authorization-uris). If you have more than one regional "Authorize" button, be sure that the seller is directed to the button that corresponds to the region that they sell in.
+2.  The seller clicks the "Authorize" button that you set up in [Step 0. Set up an "Authorize" button](#step-0.-set-up-an-authorize-button). If you have more than one regional "Authorize" button, be sure that the seller is directed to the button that corresponds to the region that they sell in.
 
 3.  Your application loads the OAuth authorization URI into the browser, adding the following query parameter:
 
@@ -741,7 +782,7 @@ The Login with Amazon SDK for JavaScript can help you with the exchange of an LW
 
 **To exchange an LWA authorization code for an LWA refresh token**
 
-1.  Your application calls the Login with Amazon (LWA) authorization server (https://api.amazon.com/auth/o2/token) to exchange the LWA authorization code for an LWA refresh token. The call must include the following query parameters.
+1.  Your application calls the Login with Amazon (LWA) authorization server (`https://api.amazon.com/auth/o2/token`) to exchange the LWA authorization code for an LWA refresh token. The call must include the following query parameters:
 
 <table>
 <thead>
@@ -817,7 +858,7 @@ If an MWS auth token was returned in [Step 3. Amazon sends you the authorization
 
 # Self authorization
 
-You can self-authorize your application in Developer Central. Before doing this you must [Registering your Selling Partner API application](#registering-your-selling-partner-api-application).
+You can self-authorize your application in Developer Central. Before doing this you must [Registering your Selling Partner API application](#registering-your-selling-partner-api-application). You can self authorize your application in draft state; there is no reason to publish your self-authorized application to the Marketplace Appstore.
 
 To implement the full OAuth authorization workflow, see [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications).
 
@@ -835,7 +876,7 @@ To implement the full OAuth authorization workflow, see [Authorizing Selling Par
 
     The Login with Amazon (LWA) refresh token appears. If your selling account is linked to accounts from other regions, you will receive a separate refresh token for each region. Your application is now authorized to access your selling account(s).
 
-    **Important:** Click **Generate refresh token** just once to get your refresh token, and then save it for making calls to the Selling Partner API. If you click the **Generate refresh token** multiple times you will get a new refresh token each time, invalidating previous refresh tokens.
+    **Important:** Click **Generate refresh token** to get your refresh token. Generating a new refresh token does not invalidate previous refresh tokens.
 
 The refresh token is a long-lived token that you exchange for a short-lived access token. An access token must be included with every request to the Selling Partner API. Once an access token is issued it is valid for one hour. The same access token can be used for multiple API calls, until it expires. For more information, see [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token)).
 
@@ -941,7 +982,7 @@ Create an instance of `AWSAuthenticationCredentials`, using the following parame
 <tr class="odd">
 <td><strong>accessKeyId</strong>
 </td>
-<td>Your AWS access key Id, from <a href="#step-4-create-an-iam-role">Step 2. Create an IAM user</a>.
+<td>Your AWS access key Id, from <a href="#step-2-create-an-iam-user">Step 2. Create an IAM user</a>.
 </td>
 <td>Yes
 </td>
@@ -949,14 +990,14 @@ Create an instance of `AWSAuthenticationCredentials`, using the following parame
 <tr class="even">
 <td><strong>secretKey</strong>
 </td>
-<td>Your AWS secret access key, from <a href="#step-4-create-an-iam-role">Step 2. Create an IAM user</a>.
+<td>Your AWS secret access key, from <a href="#step-2-create-an-iam-user">Step 2. Create an IAM user</a>.
 </td>
 <td>Yes
 </td>
 </tr>
 <tr class="odd">
 <td><strong>region</strong></td>
-<td>The AWS region to which you are directing your call. For more information, see <a href="#_Selling_Partner_API">Selling Partner API endpoints</a>.</td>
+<td>The AWS region to which you are directing your call. For more information, see <a href="#selling-partner-api-endpoints">Selling Partner API endpoints</a>.</td>
 <td>Yes</td>
 </tr>
 </tbody>
@@ -1038,7 +1079,7 @@ Create an instance of `LWAAuthorizationCredentials`, using the following paramet
 <tr class="odd">
 <td><strong>refreshToken</strong></td>
 <td>The LWA refresh token. Get this value when the seller authorizes your application. For more information, see <a href="#authorizing-selling-partner-api-applications">Authorizing Selling</a> <a href="#authorizing-selling-partner-api-applications">Partner API applications</a>.</td>
-<td><p>No. Include refreshToken if the operation that you call in the following step requires seller authorization. All operations that are not <a href="#grantless-operations-1">grantless operations</a> require seller authorization. If you include refreshToken, do not include withScopes.</p></td>
+<td><p>No. Include refreshToken if the operation that you call in the following step requires seller authorization. All operations that are not <a href="#grantless-operations">grantless operations</a> require seller authorization. If you include refreshToken, do not include withScopes.</p></td>
 </tr>
 <tr class="even">
 <td><strong>withScopes</strong></td>
@@ -1052,7 +1093,7 @@ Create an instance of `LWAAuthorizationCredentials`, using the following paramet
 <li><em>SCOPE_MIGRATION_API</em>. For the Authorization API.</li>
 </ul>
 </td>
-<td>No. Include withScopes if the operation that you call in the following step is a <a href="#grantless-operations-1">grantless</a> <a href="#grantless-operations-1">operation</a>. If you include withScopes, do not include refreshToken.</td>
+<td>No. Include withScopes if the operation that you call in the following step is a <a href="#grantless-operations">grantless</a> <a href="#grantless-operations-1">operation</a>. If you include withScopes, do not include refreshToken.</td>
 </tr>
 <tr class="odd">
 <td><strong>endpoint</strong></td>
@@ -1150,7 +1191,7 @@ After you have generated your client library you can use it to help you make cal
 
 Before your application can connect to the Selling Partner API, you must register it and it must be authorized by a seller. See [Registering your Selling Partner API application](#registering-as-a-developer) and [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications).
 
-These instructions show you the steps for making a call to the Selling Partner API. For help with constructing a Selling Partner API URI and adding headers to it, see [Generating a Java client library](#Generating_a_Java_client_library). For a more complete solution that includes code for exchanging LWA tokens and authentication, see [Generating a Java SDK with LWA token exchange](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication) [and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication).
+These instructions show you the steps for making a call to the Selling Partner API. For help with constructing a Selling Partner API URI and adding headers to it, see [Generating a Java client library](#Generating-a-Java-client-library). For a more complete solution that includes code for exchanging LWA tokens and authentication, see [Generating a Java SDK with LWA token exchange](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication) [and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication).
 
 **Steps**
 
@@ -1181,8 +1222,8 @@ To request an LWA access token, make a secure HTTP POST to the LWA authenticatio
 <td><strong>grant_type</strong></td>
 <td><p>The type of access grant requested. Values:</p>
 <ul>
-<li><p><em>refresh_token</em>. Use this for calling operations that require authorization from a seller. All operations that are not   <a href="#grantless-operations-1">grantless operations</a> require authorization from a seller. When specifying this value, include the <em>refresh_token</em> parameter.</p></li>
-<li><p><em>client_credentials</em>. Use this for calling <a href="#grantless-operations-1">grantless operations</a>. When specifying this value, include the <code>scope</code> parameter.</p></li>
+<li><p><em>refresh_token</em>. Use this for calling operations that require authorization from a seller. All operations that are not   <a href="#grantless-operations">grantless operations</a> require authorization from a seller. When specifying this value, include the <em>refresh_token</em> parameter.</p></li>
+<li><p><em>client_credentials</em>. Use this for calling <a href="#grantless-operations">grantless operations</a>. When specifying this value, include the <code>scope</code> parameter.</p></li>
 </ul></td>
 <td>Yes</td>
 </tr>
@@ -1198,7 +1239,7 @@ To request an LWA access token, make a secure HTTP POST to the LWA authenticatio
 <li><p><em>sellingpartnerapi::notifications</em>. For the Notifications API.</p></li>
 <li><p><em>sellingpartnerapi::migration</em>. For the Authorization API.</p></li>
 </ul></td>
-<td>No. Include scope for calling a <a href="#grantless-operations-1">grantless</a> <a href="#grantless-operations-1">operation</a>. If you include scope, do not include refresh_token.</td>
+<td>No. Include scope for calling a <a href="#grantless-operations">grantless operation</a>. If you include scope, do not include refresh_token.</td>
 </tr>
 <tr class="even">
 <td><strong>client_id</strong></td>
@@ -1266,7 +1307,7 @@ Here are the components of a Selling Partner API URI.
 | **Name**       | **Description**    | **Example**   |
 | -------------- | ---------------------- | ------------ |
 | HTTP method    | One of the [Selling Partner API HTTP methods](#selling-partner-api-http-methods). | `GET` |
-| Endpoint | A [Selling Partner API endpoint](#Selling_Partner_API_endpoints). | `https://sellingpartnerapi-na.amazon.com` |
+| Endpoint | A [Selling Partner API endpoint](#Selling-Partner-API-endpoints). | `https://sellingpartnerapi-na.amazon.com` |
 | Path   | The Selling Partner API section/version. number of the section/resource. | `/fba/inbound/v0/shipments/{shipmentId}/preorder/confirm` |
 | Query string   | The query parameters.  | `?marketplace=ATVPDKIKX0DER`   |
 | Path parameter | The path parameters  | `shipmentId1`  |
@@ -1301,7 +1342,7 @@ To sign a request to the Selling Partner API, see [Step 4. Create and sign your 
 
 ## Step 4. Create and sign your request
 
-The Selling Partner API uses the AWS [Signature Version 4 Signing Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) for authenticating requests. When you send HTTP requests to the Selling Partner API, you sign the requests so that Amazon can identify who sent them. You sign requests using your AWS access key, which consists of an access key ID and a secret access key. For information about getting your AWS access key, see [Step 2. Create an IAM user](#step-4-create-an-iam-role).
+The Selling Partner API uses the AWS [Signature Version 4 Signing Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) for authenticating requests. When you send HTTP requests to the Selling Partner API, you sign the requests so that Amazon can identify who sent them. You sign requests using your AWS access keys, which consists of an access key ID and a secret access key. Amazon recommends using the [AWS Security Token Service (AWS STS)](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) to request temporary AWS access keys to sign your requests. See [Registering your Selling Partner API application](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#registering-your-selling-partner-api-application) to create an IAM user (with an AWS STS policy attached) that assumes an IAM role. You then register your application using the IAM role. For more information about using AWS STS and the AWS SDKs that can help with your implementation, see [Requesting temporary security credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) in the AWS documentation.
 
 **Note:** You need to learn how to sign HTTP requests only when you manually create them. When you use the one of the AWS SDKs to calculate signatures for you, the SDK automatically signs the requests with the AWS access key that you specify when you configure it. When you use an SDK you don't need to learn how to sign requests yourself. Java developers, for example, can use [AWS4Signer.java](https://github.com/aws/aws-sdk-java/blob/master/aws-java-sdk-core/src/main/java/com/amazonaws/auth/AWS4Signer.java) from the AWS SDK for Java as a model for calculating a signature. You can find SDKs for other languages in the [AWS GitHub repository](https://github.com/aws).
 
@@ -1380,7 +1421,7 @@ Here are the components of an Authorization header:
 | **Component**                  | **Description**                                              |
 | ------------------------------ | ------------------------------------------------------------ |
 | The algorithm used for signing | The hash algorithm used throughout the signing process. The Selling Partner API requires SHA-256. You specify this in [Step 4. Create and sign your request](#step-4-create-and-sign-your-request). |
-| Credential                     | Your AWS access key ID plus the [Credential scope](#credential-scope). You get your AWS access key ID in [Step](#step-4-create-an-iam-role) [3. Create an IAM user](#step-4-create-an-iam-role). |
+| Credential                     | Your AWS access key ID plus the [Credential scope](#credential-scope). You get your AWS access key ID in [Step 2. Create an IAM user](#step-2-create-an-iam-user). |
 | SignedHeaders                  | A list of all the HTTP headers that you included with the signed request. For an example, see [Step 3. Add headers to the URI](#step-3-add-headers-to-the-uri). |
 | Signature                      | The signature calculated in [Step 4. Create and sign your request](#step-4-create-and-sign-your-request). |
 
@@ -1453,7 +1494,7 @@ x-amzn-RequestId: a8c8d99a-6ab5-11e8-b0f8-19363980175b
 
 # Grantless operations
 
-A grantless operation is an operation that you can call without explicit authorization from a selling partner. This means that when you [request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token) prior to calling a grantless operation, you don't need to provide a refresh token. Instead, you use the **scope** parameter to provide the scope of the LWA authorization grant. If you use a generated Java SDK (see [Connecting to the Selling Partner API using a generated Java SDK](#Connecting_to_Selling_Partner_API_using_)) to call grantless operations, use the **withScopes** parameter to set one or more scopes for the LWA authorization grant when you configure your LWA credentials.
+A grantless operation is an operation that you can call without explicit authorization from a selling partner. This means that when you [request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token) prior to calling a grantless operation, you don't need to provide a refresh token. Instead, you use the **scope** parameter to provide the scope of the LWA authorization grant. If you use a generated Java SDK (see [Connecting to the Selling Partner API using a generated Java SDK](#Connecting-to-the-Selling-Partner-API-using-a-generated-Java-SDK)) to call grantless operations, use the **withScopes** parameter to set one or more scopes for the LWA authorization grant when you configure your LWA credentials.
 
 See the following table for the grantless operations in the Selling Partner API.
 
@@ -1559,7 +1600,7 @@ Make a sandbox call to an API in the same way you would make a production call, 
 
 ## Selling Partner API sandbox endpoints
 
-The Selling Partner API has sandbox endpoints for the North America, Europe, and Far East selling regions. For more information, see [The Selling Partner API sandbox](#hybrid-selling-partner-api-applications).
+The Selling Partner API has sandbox endpoints for the North America, Europe, and Far East selling regions.
 
 | **Selling region**                                           | **Endpoint**                                      | **AWS Region** |
 | ------------------------------------------------------------ | ------------------------------------------------- | -------------- |
@@ -1573,12 +1614,12 @@ Although the Selling Partner API and Amazon Marketplace Web Service (Amazon MWS)
 
   - The Selling Partner API treats data as REST-compliant resources that can be accessed and modified via standard HTTP methods. By contrast, Amazon MWS exposes data using operations that are specific to Amazon MWS.
 
-  - The Selling Partner API authorization leverages LWA, Amazon's implementation of OAuth 2.0. This model eliminates the need for the manual exchange of auth tokens, as required by Amazon MWS. See [Authorizing your Selling Partner API application](#website-workflow).
+  - The Selling Partner API authorization leverages LWA, Amazon's implementation of OAuth 2.0. This model eliminates the need for the manual exchange of auth tokens, as required by Amazon MWS. See [Authorizing Selling Partner API applications](#Authorizing-Selling-Partner-API-applications).
 
   - With Amazon MWS, sellers authorize developers. With the Selling Partner API, sellers authorize applications. Using the Selling Partner API, developers can create multiple applications that require varying levels of access to seller data.
 
   - The Selling Partner API provides finer grain data access control than Amazon MWS. Developers can request access to only the data they need, and sellers can grant permissions at the API section, operation, or data resource level.
 
-  - The Selling Partner API lets you directly procure and manage your own authentication credentials using AWS Identity and Access Management (IAM). With Amazon MWS, you receive authentication credentials provided by Amazon using a special registration workflow, and you get new credentials by opening a contact with Amazon MWS support. See [Step 2. Create an IAM user](#step-4-create-an-iam-role).
+  - The Selling Partner API lets you directly procure and manage your own authentication credentials using AWS Identity and Access Management (IAM). With Amazon MWS, you receive authentication credentials provided by Amazon using a special registration workflow, and you get new credentials by opening a contact with Amazon MWS support. See [Step 2. Create an IAM user](#step-2-create-an-iam-user).
 
   - The Selling Partner API uses AWS Signature Version 4 for authentication. Amazon MWS uses Signature Version 2. See [ Step 4. Create and sign your request](#step-4-create-and-sign-your-request).

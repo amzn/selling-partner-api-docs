@@ -11,8 +11,6 @@ The [guides](https://github.com/amzn/selling-partner-api-docs/tree/main/guides) 
 
 The [references](https://github.com/amzn/selling-partner-api-docs/tree/main/references) directory contains API references for all available Selling Partner APIs. In order to use these APIs you must be a registered developer with Amazon Marketplace. Not all APIs are accessible by all registered developers and you must have approval from Amazon before you can access these APIs.
 
-The [sample-code](https://github.com/amzn/selling-partner-api-docs/tree/main/sample-code) directory contains sample code for using Selling Partner API. Currently, we have sample Java code available for using the Messaging API and the Solicitations API. Keep an eye out for more to come!
-
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.

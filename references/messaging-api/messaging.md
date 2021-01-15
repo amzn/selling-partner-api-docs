@@ -68,15 +68,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Returns hypermedia links under the _links.actions key that specify which messaging actions are allowed for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**200**|Returns hypermedia links under the _links.actions key that specify which messaging actions are allowed for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetMessagingActionsForOrderResponse](#getmessagingactionsfororderresponse)|
 
 
 <a name="confirmcustomizationdetails"></a>
@@ -108,15 +108,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
+|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmCustomizationDetailsResponse](#createconfirmcustomizationdetailsresponse)|
 
 
 <a name="createconfirmdeliverydetails"></a>
@@ -148,15 +148,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
+|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmDeliveryDetailsResponse](#createconfirmdeliverydetailsresponse)|
 
 
 <a name="createlegaldisclosure"></a>
@@ -188,15 +188,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The legal disclosure message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
+|**201**|The legal disclosure message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateLegalDisclosureResponse](#createlegaldisclosureresponse)|
 
 
 <a name="createnegativefeedbackremoval"></a>
@@ -227,15 +227,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The negativeFeedbackRemoval message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
+|**201**|The negativeFeedbackRemoval message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateNegativeFeedbackRemovalResponse](#createnegativefeedbackremovalresponse)|
 
 
 <a name="createconfirmorderdetails"></a>
@@ -267,15 +267,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
+|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmOrderDetailsResponse](#createconfirmorderdetailsresponse)|
 
 
 <a name="createconfirmservicedetails"></a>
@@ -307,15 +307,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
+|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateConfirmServiceDetailsResponse](#createconfirmservicedetailsresponse)|
 
 
 <a name="createamazonmotors"></a>
@@ -347,15 +347,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
+|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateAmazonMotorsResponse](#createamazonmotorsresponse)|
 
 
 <a name="createwarranty"></a>
@@ -387,15 +387,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
+|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateWarrantyResponse](#createwarrantyresponse)|
 
 
 <a name="getattributes"></a>
@@ -424,15 +424,15 @@ Returns a response containing attributes related to an order. This includes buye
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Response has successfully been returned.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**200**|Response has successfully been returned.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[GetAttributesResponse](#getattributesresponse)|
 
 
 <a name="createdigitalaccesskey"></a>
@@ -464,15 +464,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
+|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateDigitalAccessKeyResponse](#createdigitalaccesskeyresponse)|
 
 
 <a name="createunexpectedproblem"></a>
@@ -504,15 +504,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
-|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
+|**201**|The message was created for the order.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateUnexpectedProblemResponse](#createunexpectedproblemresponse)|
 
 
 <a name="definitions"></a>
@@ -636,7 +636,7 @@ The request schema for the confirmCustomizationDetails operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to customization details are allowed. Do not include HTML or email addresses.<br>**minLength** : 1<br>**maxLength** : 800|string|
+|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to customization details are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.<br>**minLength** : 1<br>**maxLength** : 800|string|
 |**attachments**  <br>*optional*|Attachments to include in the message to the buyer.|< [Attachment](#attachment) > array|
 
 
@@ -657,7 +657,7 @@ The request schema for the createConfirmDeliveryDetails operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to order delivery are allowed. Do not include HTML or email addresses.<br>**minLength** : 1<br>**maxLength** : 2000|string|
+|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to order delivery are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.<br>**minLength** : 1<br>**maxLength** : 2000|string|
 
 
 <a name="createconfirmdeliverydetailsresponse"></a>
@@ -687,7 +687,7 @@ The request schema for the createLegalDisclosure operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**attachments**  <br>*optional*|Attachments to include in the message to the buyer.|< [Attachment](#attachment) > array|
+|**attachments**  <br>*optional*|Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.|< [Attachment](#attachment) > array|
 
 
 <a name="createlegaldisclosureresponse"></a>
@@ -707,7 +707,7 @@ The request schema for the createConfirmOrderDetails operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to order completion are allowed. Do not include HTML or email addresses.<br>**minLength** : 1<br>**maxLength** : 2000|string|
+|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to order completion are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.<br>**minLength** : 1<br>**maxLength** : 2000|string|
 
 
 <a name="createconfirmorderdetailsresponse"></a>
@@ -727,7 +727,7 @@ The request schema for the createConfirmServiceDetails operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to Home Service calls are allowed. Do not include HTML or email addresses.<br>**minLength** : 1<br>**maxLength** : 2000|string|
+|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to Home Service calls are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.<br>**minLength** : 1<br>**maxLength** : 2000|string|
 
 
 <a name="createconfirmservicedetailsresponse"></a>
@@ -747,7 +747,7 @@ The request schema for the createAmazonMotors operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**attachments**  <br>*optional*|Attachments to include in the message to the buyer.|< [Attachment](#attachment) > array|
+|**attachments**  <br>*optional*|Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.|< [Attachment](#attachment) > array|
 
 
 <a name="createamazonmotorsresponse"></a>
@@ -767,7 +767,7 @@ The request schema for the createWarranty operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**attachments**  <br>*optional*|Attachments to include in the message to the buyer.|< [Attachment](#attachment) > array|
+|**attachments**  <br>*optional*|Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.|< [Attachment](#attachment) > array|
 |**coverageStartDate**  <br>*optional*|The start date of the warranty coverage to include in the message to the buyer.|string (date-time)|
 |**coverageEndDate**  <br>*optional*|The end date of the warranty coverage to include in the message to the buyer.|string (date-time)|
 
@@ -807,7 +807,7 @@ The request schema for the createDigitalAccessKey operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to the digital access key are allowed. Do not include HTML or email addresses.<br>**minLength** : 1<br>**maxLength** : 400|string|
+|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to the digital access key are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.<br>**minLength** : 1<br>**maxLength** : 400|string|
 |**attachments**  <br>*optional*|Attachments to include in the message to the buyer.|< [Attachment](#attachment) > array|
 
 
@@ -828,7 +828,7 @@ The request schema for the createUnexpectedProblem operation.
 
 |Name|Description|Schema|
 |---|---|---|
-|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to unexpected problem calls are allowed. Do not include HTML or email addresses.<br>**minLength** : 1<br>**maxLength** : 2000|string|
+|**text**  <br>*optional*|The text to be sent to the buyer. Only links related to unexpected problem calls are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.<br>**minLength** : 1<br>**maxLength** : 2000|string|
 
 
 <a name="createunexpectedproblemresponse"></a>

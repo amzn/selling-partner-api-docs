@@ -18,12 +18,13 @@ Version: 1.0
 - [Notification structure](#notification-structure)
 
 - [notificationType](#notificationtype)
-  - [BRANDED_ITEM_CONTENT_CHANGE](#branded_item_content_change)
-  - [ITEM_PRODUCT_TYPE_CHANGE](#item_product_type_change)
   - [ANY_OFFER_CHANGED](#any_offer_changed)
-  - [FEE_PROMOTION](#fee_promotion)
+  - [B2B_ANY_OFFER_CHANGED](#B2B_ANY_OFFER_CHANGED)
+  - [BRANDED_ITEM_CONTENT_CHANGE](#branded_item_content_change)
   - [FBA_OUTBOUND_SHIPMENT_STATUS](#fba_outbound_shipment_status)
+  - [FEE_PROMOTION](#fee_promotion)
   - [FULFILLMENT_ORDER_STATUS](#fulfillment_order_status)
+  - [ITEM_PRODUCT_TYPE_CHANGE](#item_product_type_change)
 - [Common types](#common-types)
   - [AvailabilityType](#availabilitytype)
   - [FulfillmentChannelType](#fulfillmentchanneltype)
@@ -62,11 +63,13 @@ See [Tutorial: Set up notifications (Amazon EventBridge workflow)](#tutorial-set
 
 Use this workflow to receive the following notification types:
 
-  - [ANY_OFFER_CHANGED](#any_offer_changed). Sent whenever there is a listing change for any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item listed by the seller.
+  - [ANY_OFFER_CHANGED](#any_offer_changed). Sent whenever there is a change to any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item listed by the seller.
 
-  - [FEE_PROMOTION](#fee_promotion). Sent when a promotion becomes active.
+  - [B2B_ANY_OFFER_CHANGED](#B2B_ANY_OFFER_CHANGED). Sent whenever there is a change in any of the top 20 B2B offers, in the form of any price change (either single unit or quantity discount tier prices) for an item listed by the seller.
 
   - [FBA_OUTBOUND_SHIPMENT_STATUS](#fba_outbound_shipment_status). Sent whenever we create or cancel a Fulfillment by Amazon shipment for a seller.
+
+  - [FEE_PROMOTION](#fee_promotion). Sent when a promotion becomes active.
 
   - [FULFILLMENT_ORDER_STATUS](#fulfillment_order_status). Sent whenever there is a change in the status of a Multi-Channel Fulfillment order.
 
@@ -159,7 +162,7 @@ A successful response includes the following elements:
 <tr class="odd">
 <td>resource</td>
 <td><p>The resource that will receive notifications associated with this destination.</p>
-<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/notifications-api/notifications.md#destinationresource">resource</a></p></td>
+<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/notifications-api/notifications.md#destinationresource">DestinationResource</a></p></td>
 </tr>
 <tr class="even">
 <td>destinationId</td>
@@ -173,6 +176,7 @@ A successful response includes the following elements:
 </tr>
 </tbody>
 </table>
+
 Response example
 ```
 {
@@ -200,15 +204,17 @@ Response example
 
 Associate an event bus with your partner event source. For definitions, see [Terminology](#terminology).
 
-1.  Go to the [Amazon EventBridge console](https://console.aws.amazon.com/events) and sign in with your AWS credentials.
+1. Go to [Amazon EventBridge](https://console.aws.amazon.com/events) and sign into the AWS console using the AWS Account ID that you specified when you called the **createDestination** operation in  [Step 1. Create a destination](#step-1-create-a-destination).
 
-2.  In the navigation pane, click **Partner event sources**.
+2.  In the console, ensure that the AWS region that you specified when you called the **createDestination** operation is selected.
 
-3.  In the **Partner event sources** area, under **Name**, click the partner event source that matches the **resource:eventBridge:name** value returned in [Step 1. Create a destination](#step-1-create-a-destination). The partner event source is in this format: aws.partner/sellingpartnerapi.amazon.com/{AWS Account Id}/{Application Id}
+3.  In the navigation pane, click **Partner event sources**.
 
-4.  On the new page that appears, click the **Associate with event bus** button.
+4.  In the **Partner event sources** area, under **Name**, click the partner event source that matches the **resource:eventBridge:name** value returned in [Step 1. Create a destination](#step-1-create-a-destination). The partner event source is in this format: aws.partner/sellingpartnerapi.amazon.com/{AWS Account Id}/{Application Id}
 
-5.  On the **Associate with event bus** page, leave the checkboxes cleared and click the **Associate** button.
+5.  On the new page that appears, click the **Associate with event bus** button.
+
+6.  On the **Associate with event bus** page, leave the checkboxes cleared and click the **Associate** button.
 
 You have created a partner event bus and associated it with your partner event source. Go to [Step 3. Create a rule that triggers on a notification event](#step-3-create-a-rule-that-triggers-on-a-notification-event).
 
@@ -216,19 +222,23 @@ You have created a partner event bus and associated it with your partner event s
 
 Create a rule that watches for specific notification events and routes them to the target resource of your choice.
 
-1.  If you are not already signed in, go to the [Amazon EventBridge console](https://console.aws.amazon.com/events) and sign in with your AWS credentials.
+1.  Go to [Amazon EventBridge](https://console.aws.amazon.com/events). If you are not already signed into the AWS console, sign in using the AWS Account ID that you specified when you called the **createDestination** operation in  [Step 1. Create a destination](#step-1-create-a-destination).
 
-2.  In the navigation pane, click **Rules**.
+2. In the console, ensure that the AWS region that you specified when you called the **createDestination** operation is selected.
 
-3.  Click the **Create rule** button.
+3.  In the navigation pane, click **Rules**.
 
-4.  Enter a name and optional description for the rule.
+4.  Click the **Create rule** button.
 
-5.  In the **Define pattern** area, select **Event pattern**.
+5.  Enter a name and optional description for the rule.
 
-6.  Select **Pre-defined pattern by service**.
+6.  In the **Define pattern** area, select **Event pattern**.
 
-7.  Under **Service provider**, select **All Events**.
+7.  Select **Pre-defined pattern by service**.
+
+8.  Under **Service provider**, select **Service partners**.
+
+9.  Under **Service name**, select **Amazon Selling Partner APIs**.
 
 The event pattern that displays should be similar to the following, which indicates that you will receive all events emitted by sellingpartnerapi.amazon.com:
 ```
@@ -238,7 +248,7 @@ The event pattern that displays should be similar to the following, which indica
   ]
 }
 ```
-8.  (Optional) Edit the event pattern to include rules that match only the notification events that you want. The following event pattern contains a rule that matches only BRANDED_ITEM_CONTENT_CHANGE events from sellingpartnerapi.amazon.com:
+10.  (Optional) Edit the event pattern to include rules that match only the notification events that you want. The following event pattern contains a rule that matches only BRANDED_ITEM_CONTENT_CHANGE events from sellingpartnerapi.amazon.com:
 ```
 {
   "account": [
@@ -251,9 +261,9 @@ The event pattern that displays should be similar to the following, which indica
 ```
 For information about creating more complex rules, see [Event Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html) in the AWS documentation.
 
-9.  In the **Select event bus** area, select **Custom or partner event bus** and then select the partner event bus that you configured in [Step 2. Configure Amazon EventBridge to handle notifications](#step-2-configure-amazon-eventbridge-to-handle-notifications).
+11.  In the **Select event bus** area, select **Custom or partner event bus** and then select the partner event bus that you configured in [Step 2. Configure Amazon EventBridge to handle notifications](#step-2-configure-amazon-eventbridge-to-handle-notifications).
 
-10. In the **Select targets** area, select the AWS service that is to act when an event of the selected type is detected. Enter other information specific to this target type, if required.
+12. In the **Select targets** area, select the AWS service that is to act when an event of the selected type is detected. Enter other information specific to this target type, if required.
 
     **Note.** For many target types, EventBridge needs permissions to send events to the target. In these cases, you can create a new IAM role or you can use an existing IAM role. Do one of the following:
 
@@ -261,11 +271,11 @@ For information about creating more complex rules, see [Event Patterns](https://
 
     - To use an IAM role that you have already created, select **Use existing role**.
 
-11. (Optional) Click **Add target** to add another target for this rule.
+13. (Optional) Click **Add target** to add another target for this rule.
 
-12. (Optional) Enter one or more tags for the rule. For more information, see [Tagging Your Amazon EventBridge Resources](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-tagging.html) in the AWS documentation.
+14. (Optional) Enter one or more tags for the rule. For more information, see [Tagging Your Amazon EventBridge Resources](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-tagging.html) in the AWS documentation.
 
-13. Click the **Create** button.
+15. Click the **Create** button.
 
 Troubleshooting:
 
@@ -447,6 +457,7 @@ Call the **createDestination** operation to create an Amazon Simple Queue Servic
 </tr>
 </tbody>
 </table>
+
 **Note:** Calling the **createDestination** operation does not require authorization from any selling partner. In this respect, this operation is a "grantless" operation and has a different authorization model from most other Selling Partner API operations. For more information, see [Grantless operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#grantless-operations-1) in the Selling Partner API Developer Guide.
 
 Request example:
@@ -687,12 +698,13 @@ Notification example:
 You can subscribe to various notifications, depending on the selling partner information that you want to receive.
 
 The following **notificationType** values indicate the notification type:
+  - [ANY_OFFER_CHANGED](#any_offer_changed). Sent whenever there is a change in any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item listed by the seller.
+
+  - [B2B_ANY_OFFER_CHANGED](#B2B_ANY_OFFER_CHANGED). Sent whenever there is a change in any of the top 20 B2B offers, in the form of any price change (either single unit or quantity discount tier prices) for an item listed by the seller.
 
   - [BRANDED_ITEM_CONTENT_CHANGE](#branded_item_content_change). Sent whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with.
 
   - [ITEM_PRODUCT_TYPE_CHANGE](#item_product_type_change). Sent whenever there is a change to the product type name of any ASIN that the selling partner has a brand relationship with.
-
-  - [ANY_OFFER_CHANGED](#any_offer_changed). Sent whenever there is a listing change for any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item listed by the seller.
 
   - [FEE_PROMOTION](#fee_promotion). Sent when a promotion becomes active.
 
@@ -700,86 +712,9 @@ The following **notificationType** values indicate the notification type:
 
   - [FULFILLMENT_ORDER_STATUS](#fulfillment_order_status). Sent whenever there is a change in the status of a Multi-Channel Fulfillment order.
 
-
-## BRANDED_ITEM_CONTENT_CHANGE
-
-Amazon sends a **BRANDED_ITEM_CONTENT_CHANGE** notification whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with. A selling partner has a brand relationship with an ASIN, as defined in the Amazon Registered Brands program, when they are a Brand Representative or an Authorized Reseller. The selling partner is the party who authorizes an application to call the Notifications API on their behalf, for the purpose of creating and managing notification subscriptions. Amazon sends **BRANDED_ITEM_CONTENT_CHANGE** notifications for items listed in any Amazon marketplace.
-
-**BRANDED_ITEM_CONTENT_CHANGE Payload schema: Version 1.0**
-
-A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* includes the following objects in the **Payload** object.
-
-| **Object**    | **Description**                             |
-| ------------- | ------------------------------------------- |
-| MarketplaceId | The marketplace that the item is listed in. |
-| BrandName     | The brand name of the item.                 |
-| Asin          | The ASIN of the item.                       |
-
-**Notification schema:** [BrandedItemContentChangeNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/BrandedItemContentChangeNotification.json)
-
-**Notification example:**
-```
-{
-  "NotificationVersion": "1.0",
-  "NotificationType": "BRANDED_ITEM_CONTENT_CHANGE",
-  "PayloadVersion": "1.0",
-  "EventTime": "2019-03-20T18:59:30.194Z",
-  "Payload":
-  {
-    "MarketplaceId": "ATVPDKIKX0DER",
-    "BrandName": "Great Brand",
-    "Asin": "B1234567"
-  },
-  "NotificationMetadata":
-  {
-    "ApplicationId": "amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
-    "SubscriptionId": "93b098e1-c42-2f45-93a1-78910a6a8369",
-    "PublishTime": "2019-03-20T18:59:48.768Z",
-    "NotificationId": "8e009934-da2c-4f9c-9bc7-93f23b7e1f60"
-  }
-}
-```
-## ITEM_PRODUCT_TYPE_CHANGE
-
-Amazon sends an **ITEM_PRODUCT_TYPE_CHANGE** notification whenever there is a change to the product type of any item that the selling partner has a brand relationship with. A selling partner has a brand relationship with an item, as defined in the Amazon Registered Brands program, when they are a Brand Representative or an Authorized Reseller. The selling partner is the party who authorizes an application to call the Notifications API on their behalf, for the purpose of creating and managing notification subscriptions. Amazon sends **ITEM_PRODUCT_TYPE_CHANGE** notifications for items listed in any Amazon marketplace.
-
-**ITEM_PRODUCT_TYPE_CHANGE Payload schema: Version 1.0**
-
-An **ITEM_PRODUCT_TYPE_CHANGE** notification with **PayloadVersion**=*1.0* includes the following objects in the **Payload** object.
-
-| **Object**          | **Description**                             |
-| ------------------- | ------------------------------------------- |
-| MarketplaceId       | The marketplace that the item is listed in. |
-| Asin                | The ASIN of the item.                       |
-| PreviousProductType | The previous product type.                  |
-| CurrentProductType  | The current product type.                   |
-
-**Notification schema:** [ItemProductTypeChangeNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/ItemProductTypeChangeNotification.json)
-
-**Notification example:**
-```
-{
-  "NotificationVersion":"1.0",
-  "NotificationType":"ITEM_PRODUCT_TYPE_CHANGE",
-  "PayloadVersion":"1.0",
-  "EventTime":"2019-03-20T18:59:30.194Z",
-  "Payload":{ 
-    "MarketplaceId": "ATVPDKIKX0DER",
-    "Asin": "B1234567",
-    "PreviousProductType": "PET_HEALTH_CARE",
-    "CurrentProductType": "PET_APPAREL"
-  },
-  "NotificationMetadata":{
-    "ApplicationId":"amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
-    "SubscriptionId":"93b098e1-c42-2f45-93a1-78910a6a8369",
-    "PublishTime":"2019-03-20T18:59:48.768Z",
-    "NotificationId":"0e999936-da2c-4f9c-9fc2-02b67bae5f49"
-  }
-}
-```
 ## ANY_OFFER_CHANGED
 
-The **ANY_OFFER_CHANGED** notification is sent whenever there is a listing change for any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item that you sell. The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points. If multiple sellers are charging the same landed price, the results will be returned in random order.
+The **ANY_OFFER_CHANGED** notification is sent whenever there is a change to any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item that you sell. The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points. If multiple sellers are charging the same landed price, the results will be returned in random order.
 
 You will only receive **ANY_OFFER_CHANGED** notifications for items for which you have active offers. You cannot subscribe to notifications for items for which you do not have active offers.
 
@@ -795,20 +730,20 @@ The following table shows the child elements of the AnyOfferChangedNotification 
 <tbody>
 <tr class="odd">
 <td>OfferChangeTrigger</td>
-<td><p>The event that caused the notification to be sent. Required.</p>
-<p>Type: <a href="#offerchangetrigger">OfferChangeTrigger</a></p></td>
+<td><p>The event that caused the notification to be sent.</p><p>Required.</p>
+<p>Type: <a href="#OfferChangeTrigger_AnyOfferChanged">OfferChangeTrigger</a></p></td>
 </tr>
 <tr class="even">
 <td>Summary</td>
 <td><p>Information about the product that had the offer change. The information in this summary applies to all conditions of the product.</p>
 <p>Required.</p>
-<p>Type: <a href="#summary">Summary</a></p></td>
+<p>Type: <a href="#Summary_AnyOfferChanged">Summary</a></p></td>
 </tr>
 <tr class="odd">
 <td>Offers</td>
 <td><p>The top 20 competitive offers for the item and condition that triggered the notification.</p>
 <p>Required.</p>
-<p>Type: List of <a href="#offer">Offer</a></p></td>
+<p>Type: List of <a href="#Offer_AnyOfferChanged">Offer</a></p></td>
 </tr>
 <tr class="even">
 <td>SellerId</td>
@@ -818,7 +753,8 @@ The following table shows the child elements of the AnyOfferChangedNotification 
 </tr>
 </tbody>
 </table>
-### BuyBoxPrice
+
+<h3 id="BuyBoxPrice_AnyOfferChanged">BuyBoxPrice</h3>
 
 The following table shows the child elements of the BuyBoxPrice element:
 
@@ -853,7 +789,7 @@ The following table shows the child elements of the BuyBoxPrice element:
 <td><p>The number of Amazon Points offered with the purchase of an item.</p>
 <p>Optional.</p>
 <p>Note: The Points element is only returned in Japan (JP).</p>
-<p>Type: <a href="#points">Points</a></p></td>
+<p>Type: <a href="#Points_AnyOfferChanged">Points</a></p></td>
 </tr>
 <tr class="odd">
 <td>Condition</td>
@@ -864,7 +800,7 @@ The following table shows the child elements of the BuyBoxPrice element:
 </tbody>
 </table>
 
-### LowestPrice
+<h3 id="LowestPrice_AnyOfferChanged">LowestPrice</h3>
 
 The following table shows the child elements of the LowestPrice element:
 
@@ -899,7 +835,7 @@ The following table shows the child elements of the LowestPrice element:
 <td><p>The number of Amazon Points offered with the purchase of an item.</p>
 <p>Optional.</p>
 <p>Note: The Points element is only returned in Japan (JP).</p>
-<p>Type: <a href="#points">Points</a></p></td>
+<p>Type: <a href="#Points_AnyOfferChanged">Points</a></p></td>
 </tr>
 <tr class="odd">
 <td>Condition</td>
@@ -916,7 +852,7 @@ The following table shows the child elements of the LowestPrice element:
 </tbody>
 </table>
 
-### Offer
+<h3 id="Offer_AnyOfferChanged">Offer</h3>
 
 The following table shows the child elements of the Offer element:
 
@@ -944,13 +880,13 @@ The following table shows the child elements of the Offer element:
 <td>SellerFeedbackRating</td>
 <td><p>Information about the seller's feedback, including the percentage of positive feedback, and the total count of feedback received.</p>
 <p>Optional.</p>
-<p>Type: <a href="#sellerfeedbackrating">SellerFeedbackRating</a></p></td>
+<p>Type: <a href="#SellerFeedbackRating_AnyOfferChanged">SellerFeedbackRating</a></p></td>
 </tr>
 <tr class="even">
 <td>ShippingTime</td>
 <td><p>The minimum and maximum time, in hours, that the item will likely be shipped after the order has been placed.</p>
 <p>Required.</p>
-<p>Type: <a href="#shippingtime">ShippingTime</a></p></td>
+<p>Type: <a href="#ShippingTime_AnyOfferChanged">ShippingTime</a></p></td>
 </tr>
 <tr class="odd">
 <td>ListingPrice</td>
@@ -963,7 +899,7 @@ The following table shows the child elements of the Offer element:
 <td><p>The number of Amazon Points offered with the purchase of an item.</p>
 <p>Optional.</p>
 <p>Note: The Points element is only returned in Japan (JP).</p>
-<p>Type: <a href="#points">Points</a></p></td>
+<p>Type: <a href="#Points_AnyOfferChanged">Points</a></p></td>
 </tr>
 <tr class="odd">
 <td>Shipping</td>
@@ -975,7 +911,7 @@ The following table shows the child elements of the Offer element:
 <td>ShipsFrom</td>
 <td><p>The state and country from where the item is shipped.</p>
 <p>Optional.</p>
-<p>Type: <a href="#shipsfrom">ShipsFrom</a></p></td>
+<p>Type: <a href="#ShipsFrom_AnyOfferChanged">ShipsFrom</a></p></td>
 </tr>
 <tr class="odd">
 <td>IsFulfilledByAmazon</td>
@@ -999,7 +935,7 @@ The following table shows the child elements of the Offer element:
 <td>PrimeInformation</td>
 <td><p>Amazon Prime information.</p>
 <p>Optional.</p>
-<p>Type: <a href="#primeinformation">PrimeInformation</a></p></td>
+<p>Type: <a href="#PrimeInformation_AnyOfferChanged">PrimeInformation</a></p></td>
 </tr>
 <tr class="odd">
 <td>IsExpeditedShippingAvailable</td>
@@ -1022,7 +958,7 @@ The following table shows the child elements of the Offer element:
 </tbody>
 </table>
 
-### OfferChangeTrigger
+<h3 id="OfferChangeTrigger_AnyOfferChanged">OfferChangeTrigger</h3>
 
 The following table shows the child elements of the OfferChangeTrigger element:
 
@@ -1070,7 +1006,7 @@ The following table shows the child elements of the OfferChangeTrigger element:
 </tbody>
 </table>
 
-### OfferCount
+<h3 id="OfferCount_AnyOfferChanged">OfferCount</h3>
 
 The following table shows the child elements of the OfferCount element:
 
@@ -1102,7 +1038,7 @@ The following table shows the child elements of the OfferCount element:
 </tbody>
 </table>
 
-### Points
+<h3 id="Points_AnyOfferChanged">Points</h3>
 
 The following table shows the child elements of the Points element:
 
@@ -1123,7 +1059,7 @@ The following table shows the child elements of the Points element:
 </tbody>
 </table>
 
-### PrimeInformation
+<h3 id="PrimeInformation_AnyOfferChanged">PrimeInformation</h3>
 
 The following table shows the child elements of the PrimeInformation element:
 
@@ -1150,7 +1086,7 @@ The following table shows the child elements of the PrimeInformation element:
 </tbody>
 </table>
 
-### SalesRank
+<h3 id="SalesRank_AnyOfferChanged">SalesRank</h3>
 
 The following table shows the child elements of the SalesRank element:
 
@@ -1177,7 +1113,7 @@ The following table shows the child elements of the SalesRank element:
 </tbody>
 </table>
 
-### SellerFeedbackRating
+<h3 id="SellerFeedbackRating_AnyOfferChanged">SellerFeedbackRating</h3>
 
 The following table shows the child elements of the SellerFeedbackRating element:
 
@@ -1204,7 +1140,7 @@ The following table shows the child elements of the SellerFeedbackRating element
 </tbody>
 </table>
 
-### ShippingTime
+<h3 id="ShippingTime_AnyOfferChanged">ShippingTime</h3>
 
 The following table shows the child elements of the ShippingTime element:
 
@@ -1242,7 +1178,8 @@ The following table shows the child elements of the ShippingTime element:
 </tr>
 </tbody>
 </table>
-### ShipsFrom
+
+<h3 id="ShipsFrom_AnyOfferChanged">ShipsFrom</h3>
 
 The following table shows the child elements of the ShipsFrom element:
 
@@ -1275,7 +1212,7 @@ The following table shows the child elements of the ShipsFrom element:
 </tbody>
 </table>
 
-### Summary
+<h3 id="Summary_AnyOfferChanged">Summary</h3>
 
 The following table shows the child elements of the Summary element:
 
@@ -1291,19 +1228,19 @@ The following table shows the child elements of the Summary element:
 <td>NumberOfOffers</td>
 <td><p>A list that contains the total number of offers for the item for the given conditions and fulfillment channels.</p>
 <p>Required.</p>
-<p>Type: List of <a href="#offercount">OfferCount</a></p></td>
+<p>Type: List of <a href="#OfferCount_AnyOfferChanged">OfferCount</a></p></td>
 </tr>
 <tr class="even">
 <td>LowestPrices</td>
 <td><p>A list that contains the lowest prices of the item for the given conditions and fulfillment channels.</p>
 <p>Required.</p>
-<p>Type: List of <a href="#_LowestPrice">LowestPrice</a></p></td>
+<p>Type: List of <a href="#LowestPrice_AnyOfferChanged">LowestPrice</a></p></td>
 </tr>
 <tr class="odd">
 <td>BuyBoxPrices</td>
 <td><p>A list that contains the Buy Box price of the item for the given conditions.</p>
 <p>Optional.</p>
-<p>Type: List of <a href="#buyboxprice">BuyBoxPrice</a></p></td>
+<p>Type: List of <a href="#BuyBoxPrice_AnyOfferChanged">BuyBoxPrice</a></p></td>
 </tr>
 <tr class="even">
 <td>ListPrice</td>
@@ -1321,13 +1258,13 @@ The following table shows the child elements of the Summary element:
 <td>SalesRankings</td>
 <td><p>A list that contains the sales rank of the item in the given product categories.</p>
 <p>Optional.</p>
-<p>Type: List of <a href="#primeinformation">SalesRank</a></p></td>
+<p>Type: List of <a href="#SalesRank_AnyOfferChanged">SalesRank</a></p></td>
 </tr>
 <tr class="odd">
 <td>NumberOfBuyBoxEligibleOffers</td>
 <td><p>A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.</p>
 <p>Required.</p>
-<p>Type: List of <a href="#offercount">OfferCount</a></p></td>
+<p>Type: List of <a href="#OfferCount_AnyOfferChanged">OfferCount</a></p></td>
 </tr>
 <tr class="even">
 <td>CompetitivePriceThreshold</td>
@@ -1337,6 +1274,7 @@ The following table shows the child elements of the Summary element:
 </tr>
 </tbody>
 </table>
+
 **Notification schema:** [AnyOfferChangedNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/AnyOfferChangedNotification.json)
 
 **Notification example:**
@@ -1509,6 +1447,678 @@ The following table shows the child elements of the Summary element:
   }
 }
 ```
+## B2B_ANY_OFFER_CHANGED
+
+
+The **B2B_ANY_OFFER_CHANGED** notification is sent whenever there is a change in any of the top 20 B2B offers, in the form of any price change (either single unit or quantity discount tier prices) for an item listed by the seller. The top 20 B2B offers are determined by the single-unit landed price, which is the price plus shipping. If multiple sellers are charging the same landed price, the results will be returned in random order.
+
+You will only receive **B2B_ANY_OFFER_CHANGED** notifications for items for which the seller has active offers. You cannot subscribe to notifications for items for which the seller does not have active offers.
+
+The following table shows the child elements of the B2B AnyOfferChangedNotification element:
+
+<table>
+<thead>
+<tr class="header">
+<th><b>Name</b></th>
+<th><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OfferChangeTrigger</td>
+<td><p>The event that caused the notification to be sent.</p> <p>Required.</p>
+<p>Type: <a href="#offerchangetrigger">OfferChangeTrigger</a></p></td>
+</tr>
+<tr class="even">
+<td>Summary</td>
+<td><p>Information about the product that had the offer change. The information in this summary applies to all conditions of the product.</p>
+<p>Required.</p>
+<p>Type: <a href="#summary">Summary</a></p></td>
+</tr>
+<tr class="odd">
+<td>Offers</td>
+<td><p>The top 20 competitive B2B offers for the item and condition that triggered the notification.</p>
+<p>Required.</p>
+<p>Type: List of <a href="#offer">Offer</a></p></td>
+</tr>
+<tr class="even">
+<td>SellerId</td>
+<td><p>The seller identifier for the offer.</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+</tbody>
+</table>
+
+
+### BuyBoxPrice
+
+The following table shows the child elements of the BuyBoxPrice element.
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>LandedPrice</td>
+<td><p>ListingPrice + Shipping.</p>
+<p>Optional.</p>
+<p>Type: <a href="#moneytype">MoneyType</a></p></td>
+</tr>
+<tr class="even">
+<td>ListingPrice</td>
+<td><p>The price of the item.</p>
+<p>Required.</p>
+<p>Type: <a href="#moneytype">MoneyType</a></p></td>
+</tr>
+<tr class="odd">
+<td>Shipping</td>
+<td><p>The shipping cost.</p>
+<p>Optional.</p>
+<p>Type: <a href="#moneytype">MoneyType</a></p></td>
+</tr>
+<tr class="even">
+<td>OfferType</td>
+<td><p>Indicates whether the offer is a B2B offer or a B2C offer</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="odd">
+<td>QuantityTier</td>
+<td><p>The quantity tier for the offer</p>
+<p>Required.</p>
+<p>Type: int</p></td>
+</tr>
+<tr class="even">
+<td>DiscountType</td>
+<td><p>Indicates whether the quantity tier is for Quantity Discount or Progressive Discount.</p>
+<p>Optional.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="odd">
+<td>Condition</td>
+<td><p>Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+</tbody>
+</table>
+
+
+### LowestPrice
+
+The following table shows the child elements of the LowestPrice type under Summary element:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>LandedPrice</td>
+<td><p>ListingPrice + Shipping.</p>
+<p>Optional.</p>
+<p>Type: <a href="#moneytype">MoneyType</a></p></td>
+</tr>
+<tr class="even">
+<td>ListingPrice</td>
+<td><p>The price of the item.</p>
+<p>Required.</p>
+<p>Type: <a href="#moneytype">MoneyType</a></p></td>
+</tr>
+<tr class="odd">
+<td>Shipping</td>
+<td><p>The shipping cost.</p>
+<p>Optional.</p>
+<p>Type: <a href="#moneytype">MoneyType</a></p></td>
+</tr>
+<tr class="even">
+<td>OfferType</td>
+<td><p>Indicates whether the offer is a B2B offer or a B2C offer</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="odd">
+<td>QuantityTier</td>
+<td><p>The quantity tier for the offer</p>
+<p>Required.</p>
+<p>Type: int</p></td>
+</tr>
+<tr class="even">
+<td>DiscountType</td>
+<td><p>Indicates whether the quantity tier is for Quantity Discount or Progressive Discount.</p>
+<p>Optional.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="odd">
+<td>Condition</td>
+<td><p>Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="even">
+<td>FulfillmentChannel</td>
+<td><p>Indicates whether the item is fulfilled by Amazon or by the seller.</p>
+<p>Required.</p>
+<p>Type: <a href="#FulfillmentChannelType">FulfillmentChannelType</a></p></td>
+</tr>
+</tbody>
+</table>
+
+
+### Offer
+
+The following table shows the child elements of the Offer element:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SellerId</td>
+<td><p>The seller identifier for the offer.</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="even">
+<td>SubCondition</td>
+<td><p>The subcondition of the item. For example: <em>New</em>, <em>Mint</em>, <em>Very Good</em>, <em>Good</em>, <em>Acceptable</em>, <em>Poor</em>, <em>Club</em>, <em>OEM</em>, <em>Warranty</em>, <em>Refurbished Warranty</em>, <em>Refurbished</em>, <em>Open Box</em>, or <em>Other</em>.</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="odd">
+<td>SellerFeedbackRating</td>
+<td><p>Information about the seller's feedback, including the percentage of positive feedback, and the total count of feedback received.</p>
+<p>Optional.</p>
+<p>Type: <a href="#SellerFeedbackRating">SellerFeedbackRating</a></p></td>
+</tr>
+<tr class="even">
+<td>ShippingTime</td>
+<td><p>The minimum and maximum time, in hours, that the item will likely be shipped after the order has been placed.</p>
+<p>Required.</p>
+<p>Type: <a href="#ShippingTime">ShippingTime</a></p></td>
+</tr>
+<tr class="odd">
+<td>ListingPrice</td>
+<td><p>The price of the item.</p>
+<p>Required.</p>
+<p>Type: <a href="#moneytype">MoneyType</a></p></td>
+</tr>
+<tr class="even">
+<td>Shipping</td>
+<td><p>The shipping cost.</p>
+<p>Required.</p>
+<p>Type: <a href="#moneytype">MoneyType</a></p></td>
+</tr>
+<tr class="odd">
+<td>ShipsFrom</td>
+<td><p>The country from where the item is shipped.</p>
+<p>Optional.</p>
+<p>Type: <a href="#ShipsFrom">ShipsFrom</a></p></td>
+</tr>
+<tr class="even">
+<td>IsFulfilledByAmazon</td>
+<td><p>Indicates whether the offer is fulfilled by Amazon.</p>
+<p>Required.</p>
+<p>Type: boolean</p></td>
+</tr>
+<tr class="odd">
+<td>IsBuyBoxWinner</td>
+<td><p>Indicates whether the offer is currently in the Buy Box. There can be up to two Buy Box winners at any time per ASIN, one that is eligible for Prime and one that is not eligible for Prime.</p>
+<p>Optional.</p>
+<p>Type: boolean</p></td>
+</tr>
+<tr class="even">
+<td>ConditionNotes</td>
+<td><p>Information about the condition of the item.</p>
+<p>Optional.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="odd">
+<td>PrimeInformation</td>
+<td><p>Amazon Prime information.</p>
+<p>Optional.</p>
+<p>Type: <a href="#PrimeInformation">PrimeInformation</a></p></td>
+</tr>
+<tr class="even">
+<td>IsFeaturedMerchant</td>
+<td><p>Indicates whether the seller of the item is eligible to win the Buy Box.</p>
+<p>Optional.</p>
+<p>Type: boolean</p></td>
+</tr>
+</tbody>
+</table>
+
+
+### OfferChangeTrigger
+
+The following table shows the child elements of the OfferChangeTrigger element:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MarketplaceId</td>
+<td><p>The marketplace identifier of the item that had an offer change.</p>
+<p>Required.</p>
+<p>Type: <a href="#MarketplaceType">MarketplaceType</a></p></td>
+</tr>
+<tr class="even">
+<td>ASIN</td>
+<td><p>The ASIN for the item that had an offer change.</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="odd">
+<td>ItemCondition</td>
+<td><p>The condition of the item that had an offer change. For example, if a used offer changes, the list of offers in the Offers element will be only used items. The Summary element provides a summary for the other conditions that can be used for repricing.</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="even">
+<td>TimeOfOfferChange</td>
+<td><p>The update time for the offer that caused this notification.</p>
+<p>Required.</p>
+<p>Type: dateTime</p></td>
+</tr>
+</tbody>
+</table>
+
+
+### OfferCount
+
+The following table shows the child elements of the OfferCount type:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Condition</td>
+<td><p>Indicates the condition of the item. For example: <em>New</em>, <em>Used</em>, <em>Collectible</em>, <em>Refurbished</em>, or <em>Club</em>.</p>
+<p>Required.</p>
+<p>Type: string</p></td>
+</tr>
+<tr class="even">
+<td>FulfillmentChannel</td>
+<td><p>Indicates whether the item is fulfilled by Amazon or by the seller.</p>
+<p>Required.</p>
+<p>Type: <a href="#FulfillmentChannelType">FulfillmentChannelType</a></p></td>
+</tr>
+<tr class="odd">
+<td>OfferCount</td>
+<td><p>The total number of offers for the specified condition and fulfillment channel.</p>
+<p>Type: int</p></td>
+</tr>
+</tbody>
+</table>
+
+
+### PrimeInformation
+
+The following table shows the child elements of the PrimeInformation element:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IsNationalPrime</td>
+<td><p>Indicates whether the offer is an Amazon Prime offer throughout the entire marketplace where it is listed.</p>
+<p>Required.</p>
+<p>Type: boolean</p></td>
+</tr>
+<tr class="even">
+<td>IsPrime</td>
+<td><p>Indicates whether the offer is an Amazon Prime offer.</p>
+<p>Required.</p>
+<p>Type: boolean</p></td>
+</tr>
+</tbody>
+</table>
+
+### SellerFeedbackRating
+
+The following table shows the child elements of the SellerFeedbackRating element:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SellerPositiveFeedbackRating</td>
+<td><p>The percentage of positive feedback for the seller in the past 365 days.</p>
+<p>Optional.</p>
+<p>Type: double</p></td>
+</tr>
+<tr class="even">
+<td>FeedbackCount</td>
+<td><p>The count of feedback received about the seller.</p>
+<p>Required.</p>
+<p>Type: long</p></td>
+</tr>
+</tbody>
+</table>
+
+### ShippingTime
+
+The following table shows the child elements of the ShippingTime element:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>MinimumHours</em></td>
+<td><p>The minimum time, in hours, that the item will likely be shipped after the order has been placed.</p>
+<p>Optional.</p>
+<p>Type: short</p></td>
+</tr>
+<tr class="even">
+<td>MaximumHours</td>
+<td><p>The maximum time, in hours, that the item will likely be shipped after the order has been placed.</p>
+<p>Optional.</p>
+<p>Type: short</p></td>
+</tr>
+<tr class="odd">
+<td>AvailableDate</td>
+<td><p>The date when the item will be available for shipping. Only displayed for items that are not currently available for shipping.</p>
+<p>Optional.</p>
+<p>Type: dateTime</p></td>
+</tr>
+<tr class="even">
+<td>AvailabilityType</td>
+<td><p>Indicates whether the item is available for shipping now, or on a known or an unknown date in the future. If known, the <em>availableDate</em> attribute indicates the date that the item will be available for shipping.</p>
+<p>Optional.</p>
+<p>Type: <a href="#AvailabilityType">AvailabilityType</a></p></td>
+</tr>
+</tbody>
+</table>
+
+
+### ShipsFrom
+
+The following table shows the child elements of the ShipsFrom element:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Country</td>
+<td><p>The country from where the item is shipped.</p>
+<p>Optional.</p>
+<p>Type: string</p></td>
+</tr>
+</tbody>
+</table>
+
+### Summary
+
+The following table shows the child elements of the Summary element:
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NumberOfOffers</td>
+<td><p>A list that contains the total number of B2B offers for the item for the given conditions and fulfillment channels.</p>
+<p>Required.</p>
+<p>Type: List of <a href="#OfferCount">OfferCount</a></p></td>
+</tr>
+<tr class="even">
+<td>LowestPrices</td>
+<td><p>A list that contains the lowest prices of the item for the given conditions, fulfillment channels, quantity tiers, and discount types.</p>
+<p>The seven pre-defined quantity tiers for discount type “Quantity Discounts” are 2, 3, 5, 10, 20, 30 and 50.</p>
+<p>Required.</p>
+<p>Type: List of <a href="#LowestPrice">LowestPrice</a></p></td>
+</tr>
+<tr class="odd">
+<td>BuyBoxPrices</td>
+<td><p>A list that contains the Buy Box price of the item for the given conditions, quantity tiers, and discount types.</p>
+<p>The seven pre-defined quantity tiers for discount type “Quantity Discounts” are 2, 3, 5, 10, 20, 30 and 50.</p>
+<p>Optional.</p>
+<p>Type: List of <a href="#BuyBoxPrice">BuyBoxPrice</a></p></td>
+</tr>
+<tr class="even">
+<td>BuyBoxEligibleOffers</td>
+<td><p>A list that contains the total number of B2B offers that are eligible for the Buy Box for the given conditions and fulfillment channels.</p>
+<p>Required.</p>
+<p>Type: List of <a href="#OfferCount">OfferCount</a></p></td>
+</tr>
+</tbody>
+</table>
+
+**Notification schema:** [B2bAnyOfferChangedNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/B2bAnyOfferChangedNotification.json)
+
+**Notification example:**
+```
+{
+  "notificationVersion": "1.0",
+  "notificationType": "B2B_ANY_OFFER_CHANGED",
+  "payloadVersion": "1.0",
+  "eventTime": "2020-09-23T21:30:13.713Z",
+  "notificationMetadata": {
+    "applicationId": "amzn1.sellerapps.app.1da85d14-a68d-4ff3-9ff0-df6429e00d9a",
+    "subscriptionId": "e3a059ca-677a-442a-8d39-05b2848971b6",
+    "publishTime": "2020-09-23T21:30:16.903Z",
+    "notificationId": "23ae41cd-3537-4676-af46-6ee9abf8802e"
+  },
+  "payload": {
+    "b2bAnyOfferChangedNotification": {
+      "sellerId": "A3EZFOFNDPFB8R",
+      "offerChangeTrigger": {
+        "marketplaceId": "ATVPDKIKX0DER",
+        "asin": "B007IBIWZY",
+        "itemCondition": "new",
+        "timeOfOfferChange": "2020-09-23T21:30:13.409Z"
+      },
+      "summary": {
+        "numberOfOffers": [{
+            "condition": "new",
+            "fulfillmentChannel": "Merchant",
+            "offerCount": 3
+          }
+        ],
+        "buyBoxEligibleOffers": [{
+            "condition": "new",
+            "fulfillmentChannel": "Merchant",
+            "offerCount": 3
+          }
+        ],
+        "lowestPrices": [{
+            "condition": "new",
+            "fulfillmentChannel": "Merchant",
+            "offerType": "B2B",
+            "quantityTier": 1,
+            "listingPrice": {
+              "amount": 8184.23,
+              "currencyCode": "USD"
+            },
+            "shipping": {
+              "amount": 4.49,
+              "currencyCode": "USD"
+            },
+            "landedPrice": {
+              "amount": 8188.72,
+              "currencyCode": "USD"
+            }
+          }, {
+            "condition": "new",
+            "fulfillmentChannel": "Merchant",
+            "offerType": "B2B",
+            "quantityTier": 20,
+            "listingPrice": {
+              "amount": 7500,
+              "currencyCode": "USD"
+            }
+          }, {
+            "condition": "new",
+            "fulfillmentChannel": "Merchant",
+            "offerType": "B2B",
+            "quantityTier": 30,
+            "discountType": "QUANTITY_DISCOUNT",
+            "listingPrice": {
+              "amount": 6975,
+              "currencyCode": "USD"
+            }
+          }
+        ],
+        "buyBoxPrices": [{
+            "condition": "new",
+            "offerType": "B2B",
+            "quantityTier": 1,
+            "listingPrice": {
+              "amount": 8184.23,
+              "currencyCode": "USD"
+            },
+            "shipping": {
+              "amount": 4.49,
+              "currencyCode": "USD"
+            },
+            "landedPrice": {
+              "amount": 8188.72,
+              "currencyCode": "USD"
+            }
+          }, {
+            "condition": "new",
+            "offerType": "B2B",
+            "quantityTier": 20,
+            "discountType": "QUANTITY_DISCOUNT",
+            "listingPrice": {
+              "amount": 8000,
+              "currencyCode": "USD"
+            }
+          }, {
+            "condition": "new",
+            "offerType": "B2B",
+            "quantityTier": 30,
+            "discountType": "QUANTITY_DISCOUNT",
+            "listingPrice": {
+              "amount": 7800,
+              "currencyCode": "USD"
+            }
+          }
+        ]
+      },
+      "offers": [{
+          "sellerId": "A2VUIDM8BZ902A",
+          "subCondition": "new",
+          "sellerFeedbackRating": {
+            "feedbackCount": 1,
+            "sellerPositiveFeedbackRating": 0
+          },
+          "shippingTime": {
+            "minimumHours": 24,
+            "maximumHours": 48,
+            "availabilityType": "available",
+            "availableDate": "2020-07-13T19:42:04.284Z"
+          },
+          "listingPrice": {
+            "amount": 8184.23,
+            "currencyCode": "USD"
+          },
+          "shipping": {
+            "amount": 4.49,
+            "currencyCode": "USD"
+          },
+          "shipsFrom": {
+            "country": "US"
+          },
+          "isFulfilledByAmazon": false,
+          "isBuyBoxWinner": true,
+          "conditionNotes": "New in box",
+          "primeInformation": {
+            "isPrime": true,
+            "isNationalPrime": true
+          },
+          "isFeaturedMerchant": true
+        }
+      ]
+    }
+  }
+}
+
+
+```
+## BRANDED_ITEM_CONTENT_CHANGE
+
+Amazon sends a **BRANDED_ITEM_CONTENT_CHANGE** notification whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with. A selling partner has a brand relationship with an ASIN, as defined in the Amazon Registered Brands program, when they are a Brand Representative or an Authorized Reseller. The selling partner is the party who authorizes an application to call the Notifications API on their behalf, for the purpose of creating and managing notification subscriptions. Amazon sends **BRANDED_ITEM_CONTENT_CHANGE** notifications for items listed in any Amazon marketplace.
+
+**BRANDED_ITEM_CONTENT_CHANGE Payload schema: Version 1.0**
+
+A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* includes the following objects in the **Payload** object.
+
+| **Object**    | **Description**                             |
+| ------------- | ------------------------------------------- |
+| MarketplaceId | The marketplace that the item is listed in. |
+| BrandName     | The brand name of the item.                 |
+| Asin          | The ASIN of the item.                       |
+
+**Notification schema:** [BrandedItemContentChangeNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/BrandedItemContentChangeNotification.json)
+
+**Notification example:**
+```
+{
+  "NotificationVersion": "1.0",
+  "NotificationType": "BRANDED_ITEM_CONTENT_CHANGE",
+  "PayloadVersion": "1.0",
+  "EventTime": "2019-03-20T18:59:30.194Z",
+  "Payload": {
+    "MarketplaceId": "ATVPDKIKX0DER",
+    "BrandName": "Great Brand",
+    "Asin": "B1234567",
+    "AttributesChanged": ["bullet_point", "item_name", "product_description"]
+  },
+  "NotificationMetadata": {
+    "ApplicationId": "amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
+    "SubscriptionId": "93b098e1-c42-2f45-93a1-78910a6a8369",
+    "PublishTime": "2019-03-20T18:59:48.768Z",
+    "NotificationId": "8e009934-da2c-4f9c-9bc7-93f23b7e1f60"
+  }
+}
+```
 ## FEE_PROMOTION
 
 Sellers using  Selling Partner API can benefit from time-limited fee promotions. To receive notification of available fee promotions, sellers must subscribe to FEE_PROMOTION notification. When the seller initially signs up for the subscription and *isEnabled* is set to *true*, the seller receives all currently active promotions. Each promotion is sent as a single message. Subsequent promotion notifications are sent when the promotion becomes active.
@@ -1571,6 +2181,7 @@ The following table shows the attributes of a FeeDetail element:
 </tr>
 </tbody>
 </table>
+
 ### FeesEstimate
 
 The following table shows the child elements of the FeesEstimate element:
@@ -1641,6 +2252,7 @@ Each FeePromotionNotification element is made up of the following data objects:
 </tr>
 </tbody>
 </table>
+
 ### Identifier
 
 The following table describes the attributes of an item from the IdentifierList element:
@@ -1671,6 +2283,7 @@ The following table describes the attributes of an item from the IdentifierList 
 </tr>
 </tbody>
 </table>
+
 ### IdentifierValue
 
 A description of identifier values to which this promotion applies.
@@ -1700,6 +2313,7 @@ A description of identifier values to which this promotion applies.
 </tr>
 </tbody>
 </table>
+
 ### PromotionInformation
 
 The following table shows the child elements of the PromotionInformation element:
@@ -1756,6 +2370,7 @@ The following table shows the child elements of the PromotionInformation element
 </tr>
 </tbody>
 </table>
+
 ### PromotionActiveTimeRange
 
 The following table shows the child elements of the PromotionActiveTimeRange element:
@@ -1883,6 +2498,7 @@ The following table shows the child elements of the FBAOutboundShipmentStatusNot
 </tr>
 </tbody>
 </table>
+
 **Notification schema:** [FBAOutboundShipmentStatusNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/FBAOutboundShipmentStatusNotification.json)
 
 **Notification example:**
@@ -2035,6 +2651,7 @@ The following table shows the child elements of the FulfillmentReturnItem elemen
 </tr>
 </tbody>
 </table>
+
 ### FulfillmentShipment
 
 The following table shows the child elements of the FulfillmentShipment element:
@@ -2080,6 +2697,7 @@ The following table shows the child elements of the FulfillmentShipment element:
 </tr>
 </tbody>
 </table>
+
 ### FulfillmentShipmentPackage
 
 The following table shows the child elements of the FulfillmentShipmentPackage element:
@@ -2112,6 +2730,7 @@ The following table shows the child elements of the FulfillmentShipmentPackage e
 </tr>
 </tbody>
 </table>
+
 **Notification schema:** [FulfillmentOrderStatusNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/FulfillmentOrderStatusNotification.json)
 
 **Notification example:**
@@ -2151,6 +2770,44 @@ The following table shows the child elements of the FulfillmentShipmentPackage e
     "SubscriptionId": "7d78cc50-95c8-4641-add7-10af4b1fedc9",
     "PublishTime": "2020-01-11T00:02:50.501Z",
     "NotificationId": " 2012e8e5-b365-4cb1-9fd8-be9dfc6d5eaf"
+  }
+}
+```
+## ITEM_PRODUCT_TYPE_CHANGE
+
+Amazon sends an **ITEM_PRODUCT_TYPE_CHANGE** notification whenever there is a change to the product type of any item that the selling partner has a brand relationship with. A selling partner has a brand relationship with an item, as defined in the Amazon Registered Brands program, when they are a Brand Representative or an Authorized Reseller. The selling partner is the party who authorizes an application to call the Notifications API on their behalf, for the purpose of creating and managing notification subscriptions. Amazon sends **ITEM_PRODUCT_TYPE_CHANGE** notifications for items listed in any Amazon marketplace.
+
+**ITEM_PRODUCT_TYPE_CHANGE Payload schema: Version 1.0**
+
+An **ITEM_PRODUCT_TYPE_CHANGE** notification with **PayloadVersion**=*1.0* includes the following objects in the **Payload** object.
+
+| **Object**          | **Description**                             |
+| ------------------- | ------------------------------------------- |
+| MarketplaceId       | The marketplace that the item is listed in. |
+| Asin                | The ASIN of the item.                       |
+| PreviousProductType | The previous product type.                  |
+| CurrentProductType  | The current product type.                   |
+
+**Notification schema:** [ItemProductTypeChangeNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/ItemProductTypeChangeNotification.json)
+
+**Notification example:**
+```
+{
+  "NotificationVersion":"1.0",
+  "NotificationType":"ITEM_PRODUCT_TYPE_CHANGE",
+  "PayloadVersion":"1.0",
+  "EventTime":"2019-03-20T18:59:30.194Z",
+  "Payload":{ 
+    "MarketplaceId": "ATVPDKIKX0DER",
+    "Asin": "B1234567",
+    "PreviousProductType": "PET_HEALTH_CARE",
+    "CurrentProductType": "PET_APPAREL"
+  },
+  "NotificationMetadata":{
+    "ApplicationId":"amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
+    "SubscriptionId":"93b098e1-c42-2f45-93a1-78910a6a8369",
+    "PublishTime":"2019-03-20T18:59:48.768Z",
+    "NotificationId":"0e999936-da2c-4f9c-9fc2-02b67bae5f49"
   }
 }
 ```
