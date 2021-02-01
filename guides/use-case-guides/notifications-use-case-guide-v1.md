@@ -714,7 +714,7 @@ The following **notificationType** values indicate the notification type:
 
 ## ANY_OFFER_CHANGED
 
-The **ANY_OFFER_CHANGED** notification is sent whenever there is a change to any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item that you sell. The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points. If multiple sellers are charging the same landed price, the results will be returned in random order.
+The **ANY_OFFER_CHANGED** notification is sent whenever there is a change to any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item that you sell, or if there is a change to which offer wins the BuyBox, or a change to the BuyBox price. The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points. If multiple sellers are charging the same landed price, the results will be returned in random order.
 
 You will only receive **ANY_OFFER_CHANGED** notifications for items for which you have active offers. You cannot subscribe to notifications for items for which you do not have active offers.
 
@@ -998,8 +998,9 @@ The following table shows the child elements of the OfferChangeTrigger element:
 <td>OfferChangeType</td>
 <td><p>The type of offer that changed and triggered this notification.</p>
 <p>OfferChangeType values:</p>
-<p><em>External</em> - An offer from a non-Amazon seller. The CompetitivePriceThreshold in the Summary element has changed.</p>
-<p><em>Internal</em> - An offer from an Amazon seller. The price of an offer on Amazon's retail website has changed.</p>
+<p><em>External</em> - The CompetitivePriceThreshold in the Summary element has changed, triggered by a new offer from a non-Amazon seller.</p>
+<p><em>Internal</em> - The price of an offer on Amazon's retail website has changed.</p>
+<p><em>Featured Offer</em> - The BuyBox winner or BuyBox price has changed.</p>
 <p>Required.</p>
 <p>Type: string</p></td>
 </tr>
