@@ -11,6 +11,12 @@ The [guides](https://github.com/amzn/selling-partner-api-docs/tree/main/guides) 
 
 The [references](https://github.com/amzn/selling-partner-api-docs/tree/main/references) directory contains API references for all available Selling Partner APIs. In order to use these APIs you must be a registered developer with Amazon Marketplace. Not all APIs are accessible by all registered developers and you must have approval from Amazon before you can access these APIs.
 
+Unofficial Open Source Libraries in other programming languages:
+
+Python:
+
+[python-amazon-sp-api](https://github.com/saleweaver/python-amazon-sp-api)
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
