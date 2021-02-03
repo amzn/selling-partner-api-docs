@@ -49,13 +49,14 @@ Returns the estimated fees for the item indicated by the specified seller SKU in
 
 You can call getMyFeesEstimateForSKU for an item on behalf of a seller before the seller sets the item's price. They can then take estimated fees into account. With each fees estimate request, you must include an original identifier. This identifier is included in the fees estimate so you can correlate a fees estimate with the original request.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 1 | 1 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -70,7 +71,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 
 For error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 <a name="getmyfeesestimateforasin"></a>
@@ -82,13 +83,14 @@ Returns the estimated fees for the item indicated by the specified Asin in the m
 
 You can call getMyFeesEstimateForASIN for an item on behalf of a seller before the seller sets the item's price. They can then take estimated fees into account. With each product fees request, you must include an original identifier. This identifier is included in the fees estimate so you can correlate a fees estimate with the original request.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 1 | 1 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -103,7 +105,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 
 For error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 
@@ -115,13 +117,13 @@ This table contains HTTP status codes and associated information for error respo
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 |**404**|The specified resource does not exist.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 
 
 <a name="definitions"></a>
@@ -145,7 +147,8 @@ Request schema.
 |**MarketplaceId**  <br>*required*|A marketplace identifier.|string|
 |**IsAmazonFulfilled**  <br>*optional*|When true, the offer is fulfilled by Amazon.|boolean|
 |**PriceToEstimateFees**  <br>*required*|The product price that the fee estimate is based on.|[PriceToEstimateFees](#pricetoestimatefees)|
-|**Identifier**  <br>*required*|The product price on which the fee estimate is based.|string|
+|**Identifier**  <br>*required*|A unique identifier provided by the caller to track this request.|string|
+|**OptionalFulfillmentProgram**  <br>*optional*|An optional enrollment program for which to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).|[OptionalFulfillmentProgram](#optionalfulfillmentprogram)|
 
 
 <a name="getmyfeesestimateresponse"></a>
@@ -220,6 +223,7 @@ An item identifier, marketplace, time of request, and other details that identif
 |**IsAmazonFulfilled**  <br>*optional*|When true, the offer is fulfilled by Amazon.|boolean|
 |**PriceToEstimateFees**  <br>*optional*|The item price on which the fee estimate is based.|[PriceToEstimateFees](#pricetoestimatefees)|
 |**SellerInputIdentifier**  <br>*optional*|A unique identifier provided by the caller to track this request.|string|
+|**OptionalFulfillmentProgram**  <br>*optional*|An optional enrollment program for which to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).|[OptionalFulfillmentProgram](#optionalfulfillmentprogram)|
 
 
 <a name="pricetoestimatefees"></a>
@@ -241,7 +245,7 @@ The total estimated fees for an item and a list of details.
 
 |Name|Description|Schema|
 |---|---|---|
-|**TimeOfFeesEstimation**  <br>*required*|The time for which the fees were estimated. This defaults to the time the request is made.|string (date-time)|
+|**TimeOfFeesEstimation**  <br>*required*|The time at which the fees were estimated. This defaults to the time the request is made.|string (date-time)|
 |**TotalFeesEstimate**  <br>*optional*|Total estimated fees for a given item, price, and fulfillment channel.|[MoneyType](#moneytype)|
 |**FeeDetailList**  <br>*optional*|A list of other fees that contribute to a given fee.|[FeeDetailList](#feedetaillist)|
 
@@ -262,7 +266,7 @@ An unexpected error occurred during this operation.
 |---|---|---|
 |**Type**  <br>*required*|An error type, identifying either the receiver or the sender as the originator of the error.|string|
 |**Code**  <br>*required*|An error code that identifies the type of error that occurred.|string|
-|**Message**  <br>*required*|A message that describes the error condition in a human-readable form.|string|
+|**Message**  <br>*required*|A message that describes the error condition.|string|
 |**Detail**  <br>*required*|Additional information that can help the caller understand or fix the issue.|[FeesEstimateErrorDetail](#feesestimateerrordetail)|
 
 
@@ -316,4 +320,18 @@ The type of fee, fee amount, and other details.
 |---|---|---|
 |**CurrencyCode**  <br>*optional*|The currency code in ISO 4217 format.|string|
 |**Amount**  <br>*optional*|The monetary value.|number|
+
+
+<a name="optionalfulfillmentprogram"></a>
+### OptionalFulfillmentProgram
+An optional enrollment program for which to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**FBA_CORE**|Returns the standard Amazon fulfillment fees for the offer. This is the default.|
+|**FBA_SNL**|Returns the Small and Light fees for the offer. The FBA Small and Light program offers reduced fulfillment costs on qualified items.|
+|**FBA_EFN**|Returns the cross-border European Fulfillment Network fees across EU countries for the offer.|
 
