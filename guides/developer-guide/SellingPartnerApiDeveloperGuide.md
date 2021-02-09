@@ -456,7 +456,7 @@ You will need an OAuth authorization URI for every marketplace where you want se
 
 **Note.** For sellers who sell in the Spain, UK, France, Germany, and Italy marketplaces, you can use the Seller Central URL for Europe when creating an OAuth authorization URI. Example: `https://sellercentral-europe.amazon.com/apps/authorize/consent?application_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28`
 
-If you are creating an OAuth authorization URI for testing your authorization workflow, add the version=beta parameter. This indicates that the authorization workflow is for an application in draft status. Example: `https://sellercentral-europe.amazon.com/apps/authorize/consent?application\_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28&version=beta`
+If you are creating an OAuth authorization URI for testing your authorization workflow, add the version=beta parameter. This indicates that the authorization workflow is for an application in draft status. Example: `https://sellercentral-europe.amazon.com/apps/authorize/consent?application_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28&version=beta`
 
 For information about creating and testing an authorization workflow, see [Marketplace Appstore workflow](#marketplace-appstore-workflow) and [Website workflow](#website-workflow).
 
