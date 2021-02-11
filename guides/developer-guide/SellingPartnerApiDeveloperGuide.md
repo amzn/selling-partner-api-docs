@@ -1568,7 +1568,7 @@ If a selling partner has authorized you to make calls to Amazon Marketplace Web 
 
 The Selling Partner API provides a sandbox environment that allows you to test your applications without affecting production data or triggering real-world events. Making sandbox calls to the Selling Partner API is identical to making production calls except you direct the calls to the [Selling Partner API sandbox endpoints](#selling-partner-api-sandbox-endpoints). Calling the sandbox endpoints returns static, mocked responses for all Selling Partner APIs. You can refer to these mocked responses in the Swagger model JSON file for the API that you want to call. For more information, see [How to make a sandbox call to the Selling Partner API](#how-to-make-a-sandbox-call-to-the-selling-partner-api).
 
-The Selling Partner API sandbox works like many mocking frameworks, in that it uses pattern matching to return a specified response when the specified parameters are present. A developer receives a response defined in the x- amazon-spds-sandbox-behaviors object when they send a request that matches the specified parameters. If the API requires any parameters that aren't specified in the x-amazon-spds-sandbox-behaviors object, the sandbox provides the response regardless of the parameter values in the request, as long as the request is valid.
+The Selling Partner API sandbox works like many mocking frameworks, in that it uses pattern matching to return a specified response when the specified parameters are present. A developer receives a response defined in the `x-amazon-spds-sandbox-behaviors` object when they send a request that includes the specified parameters. Note that while the `x-amazon-spds-sandbox-behaviors` section contains the parameters that are needed to match a mock response, it does not necessarily contain all of the parameters that are required for a successful response. To get a successful response, be sure to that your request is valid and includes all required parameters as defined in the corresponding Swagger model.
 
 **Important:** The sandbox is for testing functionality, not scalability testing. Calls to sandbox endpoints are subject to these throttling limits: **rate** = five requests per second; **burst** = 15. For more information about throttling see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -1580,23 +1580,23 @@ The Selling Partner API sandbox works like many mocking frameworks, in that it u
 
 2.  Open the folder for the API for which you want to make a sandbox call.
 
-3.  Click the JSON file for the API that you want.
+3.  Click the Swagger model JSON file for the API that you want.
 
     The JSON code displays.
 
-4.  Search the code for "x-amazon-spds-sandbox-behaviors".
+4.  Search the code for `x-amazon-spds-sandbox-behaviors`.
 
-The x-amazon-spds-sandbox-behaviors objects of the JSON file contain request and response examples for sandbox calls to the API. If the request example contains parameters, use them in the following step.
+The `x-amazon-spds-sandbox-behaviors` objects of the JSON file contain request and response examples for sandbox calls to the API. If the request example contains parameters, use them in the following step.
 
 ### Step 2. Make a sandbox call to an API
 
 Make a sandbox call to an API in the same way you would make a production call, with these differences:
 
-1.  If the request object in the x-amazon-spds-sandbox-behaviors object of the JSON file contains one or more parameter/value pairs, specify these in your call.
+1.  If the `x-amazon-spds-sandbox-behaviors` object of the Swagger model JSON file contains one or more parameters, include these in your call. If the API requires parameters in addition to those contained in the `x-amazon-spds-sandbox-behaviors` object, be sure to also include those required parameters in your call.
 
 2.  Direct your call to one of the [selling Partner API sandbox endpoints](#selling-partner-api-sandbox-endpoints).
 
-    You should receive a response that matches the payload object contained in the x-amazon-spds-sandbox-behaviors object of the JSON file.
+    You should receive a response that matches the payload object contained in the `x-amazon-spds-sandbox-behaviors` object of the JSON file.
 
 ## Selling Partner API sandbox endpoints
 
