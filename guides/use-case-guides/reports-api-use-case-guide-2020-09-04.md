@@ -12,13 +12,13 @@ API Version: 2020-09-04
 
   - [Prerequisites](#prerequisites)
 
-  - [Step 1. Request a report](#_Toc51925894)
+  - [Step 1. Request a report](#step-1-request-a-report)
 
   - [Step 2. Confirm that report processing has completed](#step-2-confirm-that-report-processing-has-completed)
 
   - [Step 3. Retrieve the report](#step-3-retrieve-the-report)
 
-- [Tutorial: Schedule and retrieve reports 7](#tutorial-schedule-and-retrieve-reports)
+- [Tutorial: Schedule and retrieve reports](#tutorial-schedule-and-retrieve-reports)
 
   - [Prerequisites](#prerequisites-1)
 
@@ -106,9 +106,9 @@ Request a report by specifying the report type and marketplaces that you are req
 
 - Call the [createReport](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#createreport) operation, passing the following parameters:
 
-Body parameters:
+Request body:
 
-<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>reportOptions</td><td><p>Additional information passed to reports. This varies by report type.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#reportoptions">ReportOptions</a></p></td><td>No</td></tr><tr class="even"><td>reportType</td><td><p>The report type. For more information, see <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md">reportType values</a>.</p><p>Type: string</p></td><td>Yes</td></tr><tr class="odd"><td>dataStartTime</td><td><p>The start of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.</p><p>Type: string (date-time)</p></td><td>No</td></tr><tr class="even"><td>dataEndTime</td><td><p>The end of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.</p><p>Type: string (date-time)</p></td><td>No</td></tr><tr class="odd"><td>marketplaceIds</td><td><p>A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.</p><p>Type: &lt; string &gt; array</p></td><td>Yes</td></tr></tbody></table>
+<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>reportOptions</td><td>Additional information passed to reports. This varies by report type.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#reportoptions">ReportOptions</a></p></td><td>No</td></tr><tr class="even"><td>reportType</td><td>The report type. For more information, see <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md">reportType values</a>.<p>Type: string</p></td><td>Yes</td></tr><tr class="odd"><td>dataStartTime</td><td>The start of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.<p>Type: string (date-time)</p></td><td>No</td></tr><tr class="even"><td>dataEndTime</td><td>The end of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.<p>Type: string (date-time)</p></td><td>No</td></tr><tr class="odd"><td>marketplaceIds</td><td>A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.<p>Type: &lt; string &gt; array</p></td><td>Yes</td></tr></tbody></table>
 
 #### Request example:
 
@@ -128,11 +128,11 @@ POST https://sellingpartnerapi-na.amazon.com/reports/2020-09-04/reports
 
 A successful response includes the following property:
 
-<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><strong>reportId</strong></td><td><p>The identifier for the report. This identifier is unique only in combination with a seller ID.</p><p>Type: string</p></td></tr></tbody></table>
+<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><strong>reportId</strong></td><td>The identifier for the report. This identifier is unique only in combination with a seller ID.<p>Type: string</p></td></tr></tbody></table>
 
 #### Response example:
 
-```
+```json
 {
   "payload":
   {
@@ -165,11 +165,11 @@ After you call the createReport operation, Amazon receives the request and begin
 
 Path parameter:
 
-<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>reportId</td><td><p>The identifier for the report. This identifier is unique only in combination with a seller ID.</p><p>Type: string</p></td><td>Yes</td></tr></tbody></table>
+<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>reportId</td><td>The identifier for the report. This identifier is unique only in combination with a seller ID.<p>Type: string</p></td><td>Yes</td></tr></tbody></table>
 
 #### Request example:
 
-```
+```plain
 GET https://sellingpartnerapi-na.amazon.com/reports/2020-09-04/reports/ID323
 ```
 
@@ -181,7 +181,7 @@ A successful response includes the following:
 
 #### Response example
 
-```
+```json
 {
   "payload": {
     "reportId": "ID323",
@@ -274,7 +274,7 @@ A successful response includes the following:
 
 #### Response example:
 
-```
+```json
 {
   "payload":
   {
@@ -295,7 +295,7 @@ Query parameters:
 
 #### Request example:
 
-```
+```plain
 GET https://sellingpartnerapi-na.amazon.com/reports/2020-09-04/reports?reportTypes=GET_XML_BROWSE_TREE_DATA
 ```
 
@@ -313,7 +313,7 @@ The **ReportList** array in the response payload contains a [Report](https://git
 
 #### Response example:
 
-```
+```json
 {
   "nextToken": "VGhpcyB0b2tlbiBpcyBvcGFxdWUgYW5kIGludGVudGlvbmFsbHkgb2JmdXNjYXRlZA==",
   "payload": [
@@ -356,11 +356,11 @@ Call the getReportDocument operation to get the information required for retriev
 
 Path parameter:
 
-<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>reportDocumentId</td><td><p>The identifier for the report document.</p><p>Type: string</p></td><td>Yes</td></tr></tbody></table>
+<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>reportDocumentId</td><td>The identifier for the report document.<p>Type: string</p></td><td>Yes</td></tr></tbody></table>
 
 #### Request example:
 
-```
+```plain
 GET https://sellingpartnerapi-na.amazon.com/reports/2020-09-04/documents/DOC-b8b0-4226-b4b9-0ee058ea5760
 ```
 
@@ -368,11 +368,11 @@ GET https://sellingpartnerapi-na.amazon.com/reports/2020-09-04/documents/DOC-b8b
 
 A successful response includes the following elements:
 
-<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>reportDocumentId</td><td>The identifier for the report document. This identifier is unique only in combination with a seller ID.</td></tr><tr class="even"><td>url</td><td><p>A pre-signed URL for the report document. This URL expires after 5 minutes.</p><p>Type: string</p></td></tr><tr class="odd"><td>encryptionDetails</td><td><p>Encryption details required for decryption of a report document's contents.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#reportdocumentencryptiondetails">ReportDocumentEncryptionDetails</a></p></td></tr><tr class="even"><td>compressionAlgorithm</td><td><p>If present, the report document contents have been compressed with the provided algorithm.</p><p>Type: enum (<a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#compressionalgorithm">CompressionAlgorithm</a>)</p></td></tr></tbody></table>
+<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>reportDocumentId</td><td>The identifier for the report document. This identifier is unique only in combination with a seller ID.</td></tr><tr class="even"><td>url</td><td><p>A pre-signed URL for the report document. This URL expires after 5 minutes.</p><p>Type: string</p></td></tr><tr class="odd"><td>encryptionDetails</td><td>Encryption details required for decryption of a report document's contents.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#reportdocumentencryptiondetails">ReportDocumentEncryptionDetails</a></p></td></tr><tr class="even"><td>compressionAlgorithm</td><td>If present, the report document contents have been compressed with the provided algorithm.<p>Type: enum (<a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#compressionalgorithm">CompressionAlgorithm</a>)</p></td></tr></tbody></table>
 
 #### Response example:
 
-```
+```json
 {
   "payload": {
     "reportDocumentId": "DOC-b8b0-4226-b4b9-0ee058ea5760",
