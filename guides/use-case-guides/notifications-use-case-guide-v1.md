@@ -1276,7 +1276,7 @@ The following table shows the child elements of the Summary element:
 </tbody>
 </table>
 
-**Notification schema:** [AnyOfferChangedNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/AnyOfferChangedNotification.json)
+**Notification schema:** [AnyOfferChangedNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/AnyOfferChangedNotification.json)
 
 **Notification example:**
 ```
@@ -1931,7 +1931,7 @@ The following table shows the child elements of the Summary element:
 </tbody>
 </table>
 
-**Notification schema:** [B2bAnyOfferChangedNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/B2bAnyOfferChangedNotification.json)
+**Notification schema:** [B2bAnyOfferChangedNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/B2bAnyOfferChangedNotification.json)
 
 **Notification example:**
 ```
@@ -2097,7 +2097,7 @@ A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* inc
 | BrandName     | The brand name of the item.                 |
 | Asin          | The ASIN of the item.                       |
 
-**Notification schema:** [BrandedItemContentChangeNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/BrandedItemContentChangeNotification.json)
+**Notification schema:** [BrandedItemContentChangeNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/BrandedItemContentChangeNotification.json)
 
 **Notification example:**
 ```
@@ -2381,7 +2381,7 @@ The following table shows the child elements of the PromotionActiveTimeRange ele
 | EffectiveFromDate    | Date (inclusive) when the promotion becomes active. | Yes          | *Type: dateTime* |
 | EffectiveThroughDate | Date (exclusive) when the promotion has ended.      | *Yes*        | *Type: dateTime* |
 
-**Notification schema:** [FeePromotionNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/FeePromotionNotification.json)
+**Notification schema:** [FeePromotionNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/FeePromotionNotification.json)
 
 **Notification example:**
 ```
@@ -2500,7 +2500,7 @@ The following table shows the child elements of the FBAOutboundShipmentStatusNot
 </tbody>
 </table>
 
-**Notification schema:** [FBAOutboundShipmentStatusNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/FBAOutboundShipmentStatusNotification.json)
+**Notification schema:** [FBAOutboundShipmentStatusNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/FBAOutboundShipmentStatusNotification.json)
 
 **Notification example:**
 
@@ -2732,7 +2732,7 @@ The following table shows the child elements of the FulfillmentShipmentPackage e
 </tbody>
 </table>
 
-**Notification schema:** [FulfillmentOrderStatusNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/FulfillmentOrderStatusNotification.json)
+**Notification schema:** [FulfillmentOrderStatusNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/FulfillmentOrderStatusNotification.json)
 
 **Notification example:**
 ```
@@ -2789,7 +2789,7 @@ An **ITEM_PRODUCT_TYPE_CHANGE** notification with **PayloadVersion**=*1.0* inclu
 | PreviousProductType | The previous product type.                  |
 | CurrentProductType  | The current product type.                   |
 
-**Notification schema:** [ItemProductTypeChangeNotification.json](https://s3.amazonaws.com/amazonservicesstatic.com/json-schemas/notifications/ItemProductTypeChangeNotification.json)
+**Notification schema:** [ItemProductTypeChangeNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/ItemProductTypeChangeNotification.json)
 
 **Notification example:**
 ```
