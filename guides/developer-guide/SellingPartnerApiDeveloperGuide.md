@@ -466,7 +466,7 @@ A grantless operation is an operation that you can call without explicit authori
 
 ## Migrating authorization from Amazon Marketplace Web Service
 
-If a selling partner has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a hybrid Selling Partner API application. This eliminates the need to request authorization from the selling partner again. For more information, see the Authorization API User Guide.
+If a selling partner has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a hybrid Selling Partner API application. This eliminates the need to request authorization from the selling partner again. For more information, see the [Authorization API User Guide](../../references/authorization-api/authorization.md).
 
 ## Marketplace Appstore workflow
 
@@ -1562,7 +1562,7 @@ After creating a hybrid application you can set up and test an OAuth authorizati
 
 ### Migrating authorization from Amazon Marketplace Web Service
 
-If a selling partner has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a hybrid Selling Partner API application. This eliminates the need to request authorization from the selling partner again. For more information, see the Authorization API User Guide.
+If a selling partner has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a hybrid Selling Partner API application. This eliminates the need to request authorization from the selling partner again. For more information, see the [Authorization API User Guide](../../references/authorization-api/authorization.md).
 
 # The Selling Partner API sandbox
 
