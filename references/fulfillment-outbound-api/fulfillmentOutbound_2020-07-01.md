@@ -528,8 +528,8 @@ A physical address.
 |**addressLine2**  <br>*optional*|Additional address information, if required.|string|
 |**addressLine3**  <br>*optional*|Additional address information, if required.|string|
 |**city**  <br>*optional*|The city where the person, business, or institution is located.|string|
-|**districtOrCounty**  <br>*required*|The district or county where the person, business, or institution is located.|string|
-|**stateOrRegion**  <br>*optional*|The state or region where the person, business or institution is located.|string|
+|**districtOrCounty**  <br>*optional*|The district or county where the person, business, or institution is located.|string|
+|**stateOrRegion**  <br>*required*|The state or region where the person, business or institution is located.|string|
 |**postalCode**  <br>*optional*|The postal code of the address.|string|
 |**countryCode**  <br>*required*|The two digit country code. In ISO 3166-1 alpha-2 format.|string|
 |**phone**  <br>*optional*|The phone number of the person, business, or institution located at the address.|string|
