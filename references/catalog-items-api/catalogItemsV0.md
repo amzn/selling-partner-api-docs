@@ -434,6 +434,7 @@ Specific variations of the item.
 
 |Name|Description|Schema|
 |---|---|---|
+|**Identifiers**  <br>*optional*|The identifiers that uniquely identify the item that is related.|[IdentifierType](#identifiertype)|
 |**Color**  <br>*optional*|The color variation of the item.|string|
 |**Edition**  <br>*optional*|The edition variation of the item.|string|
 |**Flavor**  <br>*optional*|The flavor variation of the item.|string|
