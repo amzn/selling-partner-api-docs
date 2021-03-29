@@ -47,13 +47,14 @@ The Selling Partner API for Catalog Items helps you programmatically retrieve it
 #### Description
 Returns a list of items and their attributes, based on a search query or item identifiers that you specify. When based on a search query, provide the Query parameter and optionally, the QueryContextId parameter. When based on item identifiers, provide a single appropriate parameter based on the identifier type, and specify the associated item value. MarketplaceId is always required.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 6 | 40 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -74,14 +75,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
 |**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogItemsResponse](#listcatalogitemsresponse)|
 
 
 <a name="getcatalogitem"></a>
@@ -91,13 +92,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 #### Description
 Returns a specified item and its attributes.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 2 | 20 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -112,14 +114,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
 |**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetCatalogItemResponse](#getcatalogitemresponse)|
 
 
 <a name="listcatalogcategories"></a>
@@ -129,13 +131,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 #### Description
 Returns the parent categories to which an item belongs, based on the specified ASIN or SellerSKU.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 1 | 40 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -151,14 +154,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
 |**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[ListCatalogCategoriesResponse](#listcatalogcategoriesresponse)|
 
 
 <a name="definitions"></a>
