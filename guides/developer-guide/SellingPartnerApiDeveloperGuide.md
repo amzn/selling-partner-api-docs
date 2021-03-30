@@ -482,7 +482,7 @@ Before listing your application on the Marketplace Appstore, you should test you
 
 2.  Construct one or more OAuth authorization URIs for testing purposes. Include the version=beta parameter in the OAuth URI(s) to indicate that the workflow is for authorizing an application in draft status. For more information, see [OAuth authorization URIs](#oauth-authorization-uris).
 
-3.  At [Step 3. The seller signs into your website](#step-3.-the-seller-signs-into-your-website), be sure that your workflow adds the `version=beta` parameter to the Amazon callback URI to indicate that the workflow is for authorizing an application in draft status.
+3.  At [Step 3. The seller signs into your website](#step-3-the-seller-signs-into-your-website), be sure that your workflow adds the `version=beta` parameter to the Amazon callback URI to indicate that the workflow is for authorizing an application in draft status.
 
 You are now ready to test your authorization workflow with a trusted seller who works with you. Alternatively, you can test the workflow yourself, using your own selling account credentials. Instead of starting at [Step 1. The seller initiates authorization from the Marketplace Appstore](#step-1.-the-seller-initiates-authorization-from-the-marketplace-appstore), the seller starts the test workflow by navigating to an OAuth authorization URI that you constructed previously.
 
