@@ -13,52 +13,26 @@ Version: 2020-09-04
 
 -  [Step 1. Create a feed document](#step-1-create-a-feed-document)
 
-  
-
 -  [Step 2. Encrypt and upload the feed data](#step-2-encrypt-and-upload-the-feed-data)
-
-  
-
--  [Encrypt and upload sample code (Java)](#encrypt-and-upload-sample-code-java)
-
--  [Encrypt and upload sample code (NodeJS)](#encrypt-and-upload-sample-code-nodejs)
-
-  
+    -  [Encrypt and upload sample code (Java)](#encrypt-and-upload-sample-code-java)
+    -  [Encrypt and upload sample code (NodeJS)](#encrypt-and-upload-sample-code-nodejs)
 
 -  [Step 3. Create a feed](#step-3-create-a-feed)
 
-  
-
 -  [Step 4. Confirm feed processing](#step-4-confirm-feed-processing)
-
-  
 
 -  [Step 5. Get information for retrieving the feed processing report](#step-5-get-information-for-retrieving-the-feed-processing-report)
 
-  
-
 -  [Step 6. Download and decrypt the feed processing report](#step-6-download-and-decrypt-the-feed-processing-report)
-
-  
-
--  [Download and decrypt sample code (Java)](#download-and-decrypt-sample-code-java)
-
--  [Decrypt sample code (NodeJs)](#decrypt-sample-code-nodejs)
-
-  
+    -  [Download and decrypt sample code (Java)](#download-and-decrypt-sample-code-java)
+    -  [Decrypt sample code (NodeJs)](#decrypt-sample-code-nodejs)
 
 -  [Step 7. Check the feed processing report for errors](#step-7-check-the-feed-processing-report-for-errors)
 
-  
-
--  [Best practices](#best-practices)
-
-  
-  
 
 ##  Step 1. Create a feed document
 
-  
+
 
 Call the createFeedDocument operation to create a feed document.
 
@@ -113,22 +87,14 @@ Request example:
 ```
 
 POST https://sellingpartnerapi-na.amazon.com/feeds/2020-09-04/documents
-
 {
-
 "contentType":"application/pdf; charset=UTF-8"
-
 }
-
 ```
 
 **Response**
 
-  
-
 A successful response includes the following:
-
-  
 
 <table>
 
@@ -193,31 +159,18 @@ A successful response includes the following:
 Response example:
 
 ```
-
 {
-
-"payload":
-
-{
-
-"feedDocumentId":"amzn1.tortuga.3.920614b0-fc4c-4393-b0d9-fff175300000.T29XK4YL08B2VM",
-
-"url":"https://tortuga-prod-na.s3.amazonaws.com/%2FNinetyDays/amzn1.tortuga.3.920614b0-fc4c-4393-b0d9-fff175300000.T29XK4YL08B2VM?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200919T035824Z&X-Amz-SignedHeaders=<headers>&X-Amz-Expires=300&X-Amz-Credential=<credential>&X-Amz-Signature=<signature>",
-
-"encryptionDetails":
-
-{
-
-"standard":"AES",
-
-"initializationVector":"kF3bZt0FSv6JQEimfEJD8g==",
-
-"key":"5EZo/P06OGF0UAy8QuOnMIaQbkAvYBru6EGsFvK8wJ2="
-
-}
-
-}
-
+  "payload":
+  {
+    "feedDocumentId":"amzn1.tortuga.3.920614b0-fc4c-4393-b0d9-fff175300000.T29XK4YL08B2VM",
+    "url":"https://tortuga-prod-na.s3.amazonaws.com/%2FNinetyDays/amzn1.tortuga.3.920614b0-fc4c-4393-b0d9-fff175300000.T29XK4YL08B2VM?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200919T035824Z&X-Amz-SignedHeaders=<headers>&X-Amz-Expires=300&X-Amz-Credential=<credential>&X-Amz-Signature=<signature>",
+    "encryptionDetails":
+    {
+      "standard":"AES",
+      "initializationVector":"kF3bZt0FSv6JQEimfEJD8g==",
+      "key":"5EZo/P06OGF0UAy8QuOnMIaQbkAvYBru6EGsFvK8wJ2="
+    }
+  }
 ```
 
 2. Save the following values:
@@ -267,171 +220,88 @@ The sample code has methods for creating an input stream from a string and creat
 ###  Encrypt and upload sample code (Java)
 
 ```JAVA
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+import java.nio.charset.StandardCharsets;
 
-import  java.io.ByteArrayInputStream;
+import com.amazon.spapi.documents.UploadHelper;
+import com.amazon.spapi.documents.UploadSpecification;
+import com.amazon.spapi.documents.exception.CryptoException;
+import com.amazon.spapi.documents.exception.HttpResponseException;
+import com.amazon.spapi.documents.impl.AESCryptoStreamFactory;
 
-import  java.io.IOException;
-
-import  java.io.InputStream;
-
-import  java.io.PipedInputStream;
-
-import  java.io.PipedOutputStream;
-
-import  java.nio.charset.StandardCharsets;
-
-  
-
-import  com.amazon.spapi.documents.UploadHelper;
-
-import  com.amazon.spapi.documents.UploadSpecification;
-
-import  com.amazon.spapi.documents.exception.CryptoException;
-
-import  com.amazon.spapi.documents.exception.HttpResponseException;
-
-import  com.amazon.spapi.documents.impl.AESCryptoStreamFactory;
-
-  
-
-/* We want to maintain encryption at rest, so do not write unencrypted data to disk. This is bad:
-
+/* We want to maintain encryption at rest, so do not write unencrypted data to disk.  This is bad:
 InputStream source = new FileInputStream(new File("/path/to/myFeed.xml"));
 
-  
-
 Instead, if your data can fit in memory, you can create an InputStream from a String (see encryptAndUpload_fromString()).
-
 Otherwise, you can pipe data into an InputStream using Piped streams (see encryptAndUpload_fromPipedInputStream()).
+ */
+public class UploadExample {
+  private final UploadHelper uploadHelper = new UploadHelper.Builder().build();
 
-*/
+  // key, initializationVector, and url are returned by the createFeedDocument operation.
+  public void encryptAndUpload_fromString(String key, String initializationVector, String url) {
+    AESCryptoStreamFactory aesCryptoStreamFactory =
+      new AESCryptoStreamFactory.Builder(key, initializationVector)
+      .build();
 
-public  class  UploadExample  {
+    // This contentType must be the same value that was provided to createFeedDocument.
+    String contentType = String.format("text/plain; charset=%s", StandardCharsets.UTF_8);
 
-private  final  UploadHelper  uploadHelper  =  new UploadHelper.Builder().build();
+    // The character set must be the same one that is specified in contentType.
+    try
+      (InputStream source = new ByteArrayInputStream("my feed data".getBytes(StandardCharsets.UTF_8))) {
+        UploadSpecification uploadSpec =
+          new UploadSpecification.Builder(contentType, aesCryptoStreamFactory, source, url)
+          .build();
 
-  
+        uploadHelper.upload(uploadSpec);
+      }
+    catch (CryptoException | HttpResponseException | IOException e) {
+      // Handle exception.
+    }
+  }
 
-// key, initializationVector, and url are returned by the createFeedDocument operation.
+  // key, initializationVector, and url are returned from createFeedDocument.
+  public void encryptAndUpload_fromPipedInputStream(String key, String initializationVector, String url) {
+    AESCryptoStreamFactory aesCryptoStreamFactory =
+      new AESCryptoStreamFactory.Builder(key, initializationVector)
+      .build();
 
-public  void  encryptAndUpload_fromString(String  key,  String  initializationVector,  String  url) {
+    // This contentType must be the same value that was provided to createFeedDocument.
+    String contentType = String.format("text/plain; charset=%s", StandardCharsets.UTF_8);
 
-AESCryptoStreamFactory  aesCryptoStreamFactory  =
+    try
+      (PipedInputStream source = new PipedInputStream()) {
+        new Thread(
+          new Runnable() {
+          public void run() {
+            try
+              (PipedOutputStream feedContents = new PipedOutputStream(source)) {
+                // The character set must be the same one that is specified in contentType.
+                feedContents.write("my feed data\n".getBytes(StandardCharsets.UTF_8));
+                feedContents.write("more feed data".getBytes(StandardCharsets.UTF_8));
+              }
+            catch (IOException e) {
+              // Handle exception.
+            }
+          }
+        }).start();
 
-new AESCryptoStreamFactory.Builder(key, initializationVector)
+        UploadSpecification uploadSpec =
+          new UploadSpecification.Builder(contentType, aesCryptoStreamFactory, source, url)
+          .build();
 
-.build();
-
-  
-
-// This contentType must be the same value that was provided to createFeedDocument.
-
-String  contentType  =  String.format("text/plain; charset=%s",  StandardCharsets.UTF_8);
-
-  
-
-// The character set must be the same one that is specified in contentType.
-
-try
-
-(InputStream  source  =  new  ByteArrayInputStream("my feed data".getBytes(StandardCharsets.UTF_8)))  {
-
-UploadSpecification  uploadSpec  =
-
-new UploadSpecification.Builder(contentType, aesCryptoStreamFactory, source, url)
-
-.build();
-
-  
-
-uploadHelper.upload(uploadSpec);
-
+        uploadHelper.upload(uploadSpec);
+      }
+    catch (CryptoException | HttpResponseException | IOException e) {
+      // Handle exception.
+    }
+  }
 }
-
-catch (CryptoException  |  HttpResponseException  |  IOException  e) {
-
-// Handle exception.
-
-}
-
-}
-
-  
-
-// key, initializationVector, and url are returned from createFeedDocument.
-
-public  void  encryptAndUpload_fromPipedInputStream(String  key,  String  initializationVector,  String  url) {
-
-AESCryptoStreamFactory  aesCryptoStreamFactory  =
-
-new AESCryptoStreamFactory.Builder(key, initializationVector)
-
-.build();
-
-  
-
-// This contentType must be the same value that was provided to createFeedDocument.
-
-String  contentType  =  String.format("text/plain; charset=%s",  StandardCharsets.UTF_8);
-
-  
-
-try
-
-(PipedInputStream  source  =  new  PipedInputStream())  {
-
-new  Thread(
-
-new  Runnable() {
-
-public  void  run() {
-
-try
-
-(PipedOutputStream  feedContents  =  new  PipedOutputStream(source))  {
-
-// The character set must be the same one that is specified in contentType.
-
-feedContents.write("my feed data\n".getBytes(StandardCharsets.UTF_8));
-
-feedContents.write("more feed data".getBytes(StandardCharsets.UTF_8));
-
-}
-
-catch (IOException  e) {
-
-// Handle exception.
-
-}
-
-}
-
-}).start();
-
-  
-
-UploadSpecification  uploadSpec  =
-
-new UploadSpecification.Builder(contentType, aesCryptoStreamFactory, source, url)
-
-.build();
-
-  
-
-uploadHelper.upload(uploadSpec);
-
-}
-
-catch (CryptoException  |  HttpResponseException  |  IOException  e) {
-
-// Handle exception.
-
-}
-
-}
-
-}
-
 ```
 
 ###  Encrypt and upload sample code (NodeJs)
@@ -439,34 +309,20 @@ catch (CryptoException  |  HttpResponseException  |  IOException  e) {
 ```JAVASCRIPT
 
 const  fs  =  require("fs");
-
 const  axios  =  require('axios');
-
 const  aes  =  require("js-crypto-aes");
 
-  
-
 // createFeedDocument request from first step
-
 const  createFeedDocumentResponse  =  createFeedDocumentRequest();
 
 // Get Invoice PDF File as buffer
-
 const  fileBuffer  = fs.readFile("PATH_TO_INVOICE");
 
-  
-
 // Get encryption key and IV from createFeedDocumentResponse
-
 const  key  =  Buffer.from(createFeedDocumentResponse.encryptionDetails.key, 'base64');
-
-const  IV  =  Buffer.from(createFeedDocumentResponse.encryptionDetails.initializationVector, 'base64');
-
-  
+const  IV  =  Buffer.from(createFeedDocumentResponse.encryptionDetails.initializationVector, 'base64'); 
 
 const  encryptedFile  =  await aes.encrypt(fileBuffer, key, {name:  'AES-CBC', iv:  IV});
-
-  
 
 ```
 ##  Step 3. Create a feed
@@ -576,29 +432,17 @@ Request example:
 ```
 
 POST https://sellingpartnerapi-na.amazon.com/feeds/2020-09-04/feeds
-
 {
-
-"feedType":"UPLOAD_VAT_INVOICE",
-
-"marketplaceIds":["A21TJRUUN4KGV"],
-
-"inputFeedDocumentId":"amzn1.tortuga.3.920614b0-fc4c-4393-b0d9-fff175300000.T29XK4YL08B2VM",
-
-feedOptions: {
-
-"metadata:orderid": "102-1111111-111111111",
-
-"metadata:documenttype: "Invoice",
-
-"metadata:invoicenumber": "INVOICE_100001",
-
-"metadata:totalamount": "10.99",
-
-"metadata:totalvatamount": "1.75",
-
-}
-
+    "feedType":"UPLOAD_VAT_INVOICE",
+    "marketplaceIds":["A21TJRUUN4KGV"],
+    "inputFeedDocumentId":"amzn1.tortuga.3.920614b0-fc4c-4393-b0d9-fff175300000.T29XK4YL08B2VM",
+    feedOptions: {
+        "metadata:orderid": "102-1111111-111111111",
+        "metadata:documenttype: "Invoice",
+        "metadata:invoicenumber": "INVOICE_100001",
+        "metadata:totalamount": "10.99",
+        "metadata:totalvatamount": "1.75",
+    }
 }
 
 ```
@@ -654,15 +498,10 @@ Response example:
 ```
 
 {
-
-"payload":
-
-{
-
-"feedId": "23492394"
-
-}
-
+    "payload":
+    {
+        "feedId": "23492394"
+    }
 }
 
 ```
@@ -864,33 +703,19 @@ Response Example:
 ```
 
 {
-
-"payload":
-
-{
-
-"processingEndTime":"2020-08-10T16:56:55+00:00",
-
-"processingStatus":"DONE",
-
-"marketplaceIds":[
-
-"ATVPDKIKX0DER"
-
-],
-
-"feedId":"23492394",
-
-"feedType":"UPLOAD_VAT_INVOICE",
-
-"createdTime":"2020-08-10T16:55:32+00:00",
-
-"processingStartTime":"2020-08-10T16:55:40+00:00",
-
-"resultFeedDocumentId":"amzn1.tortuga.3.ed4cd0d8-447b-4c22-96b5-52da8ace1207.T3YUVYPGKE9BMY"
-
-}
-
+    "payload":
+    {
+        "processingEndTime":"2020-08-10T16:56:55+00:00",
+        "processingStatus":"DONE",
+        "marketplaceIds":[
+            "ATVPDKIKX0DER"
+        ],
+        "feedId":"23492394",
+        "feedType":"UPLOAD_VAT_INVOICE",
+        "createdTime":"2020-08-10T16:55:32+00:00",
+        "processingStartTime":"2020-08-10T16:55:40+00:00",
+        "resultFeedDocumentId":"amzn1.tortuga.3.ed4cd0d8-447b-4c22-96b5-52da8ace1207.T3YUVYPGKE9BMY"
+    }
 }
 
 ```
@@ -1068,25 +893,15 @@ Response example:
 {
 
 "payload":
-
 {
-
-"feedDocumentId":"amzn1.tortuga.3.ed4cd0d8-447b-4c22-96b5-52da8ace1207.T3YUVYPGKE9BMY",
-
-"url":"https://tortuga-prod-na.s3.amazonaws.com/%2FNinetyDays/amzn1.tortuga.3.920614b0-fc4c-4393-b0d9-fff175300000.T29XK4YL08B2VM?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200919T035824Z&X-Amz-SignedHeaders=<headers>&X-Amz-Expires=300&X-Amz-Credential=<credential>&X-Amz-Signature=<signature>",
-
-"encryptionDetails":
-
-{
-
-"standard":"AES",
-
-"initializationVector":"kF3bZt0FSv6JQEimfEJD8g==",
-
-"key":"5EZo/P06OGF0UAy8QuOnMIaQbkAvYBru6EGsFvK8wJ2="
-
-}
-
+    "feedDocumentId":"amzn1.tortuga.3.ed4cd0d8-447b-4c22-96b5-52da8ace1207.T3YUVYPGKE9BMY",
+    "url":"https://tortuga-prod-na.s3.amazonaws.com/%2FNinetyDays/amzn1.tortuga.3.920614b0-fc4c-4393-b0d9-fff175300000.T29XK4YL08B2VM?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200919T035824Z&X-Amz-SignedHeaders=<headers>&X-Amz-Expires=300&X-Amz-Credential=<credential>&X-Amz-Signature=<signature>",
+    "encryptionDetails":
+    {
+        "standard":"AES",
+        "initializationVector":"kF3bZt0FSv6JQEimfEJD8g==",
+        "key":"5EZo/P06OGF0UAy8QuOnMIaQbkAvYBru6EGsFvK8wJ2="
+    }
 }
 
 ```
@@ -1116,81 +931,48 @@ You can download and decrypt the feed processing report using the information re
   
 
 ###  Decrypt sample code (Java)
-
-```
-
+```JAVA
 // DownloadExample.java
-
 import java.io.BufferedReader;
-
 import java.io.IOException;
-
+ 
 import com.amazon.spapi.documents.CompressionAlgorithm;
-
 import com.amazon.spapi.documents.DownloadBundle;
-
 import com.amazon.spapi.documents.DownloadHelper;
-
 import com.amazon.spapi.documents.DownloadSpecification;
-
 import com.amazon.spapi.documents.exception.CryptoException;
-
 import com.amazon.spapi.documents.exception.HttpResponseException;
-
 import com.amazon.spapi.documents.exception.MissingCharsetException;
-
 import com.amazon.spapi.documents.impl.AESCryptoStreamFactory;
-
+ 
 public class DownloadExample {
-
-final DownloadHelper downloadHelper = new DownloadHelper.Builder().build();
-
-// key, initializationVector, url, and compressionAlgorithm are returned by the getReportDocument operation.
-
-public void downloadAndDecrypt(String key, String initializationVector, String url, String compressionAlgorithm) {
-
-AESCryptoStreamFactory aesCryptoStreamFactory =
-
-new AESCryptoStreamFactory.Builder(key, initializationVector).build();
-
-DownloadSpecification downloadSpec = new DownloadSpecification.Builder(aesCryptoStreamFactory, url)
-
-.withCompressionAlgorithm(CompressionAlgorithm.fromEquivalent(compressionAlgorithm))
-
-.build();
-
-try (DownloadBundle downloadBundle = downloadHelper.download(downloadSpec)) {
-
-// This example assumes that the downloaded file has a charset in the content type, e.g.
-
-// text/plain; charset=UTF-8
-
-try (BufferedReader reader = downloadBundle.newBufferedReader()) {
-
-String line;
-
-do {
-
-line = reader.readLine();
-
-// Process the decrypted line.
-
-} while (line != null);
-
+  final DownloadHelper downloadHelper = new DownloadHelper.Builder().build();
+ 
+  // key, initializationVector, url, and compressionAlgorithm are returned by the getReportDocument operation.
+  public void downloadAndDecrypt(String key, String initializationVector, String url, String compressionAlgorithm) {
+    AESCryptoStreamFactory aesCryptoStreamFactory =
+      new AESCryptoStreamFactory.Builder(key, initializationVector).build();
+ 
+    DownloadSpecification downloadSpec = new DownloadSpecification.Builder(aesCryptoStreamFactory, url)
+      .withCompressionAlgorithm(CompressionAlgorithm.fromEquivalent(compressionAlgorithm))
+      .build();
+ 
+    try (DownloadBundle downloadBundle = downloadHelper.download(downloadSpec)) {
+      // This example assumes that the downloaded file has a charset in the content type, e.g. 
+      // text/plain; charset=UTF-8
+      try (BufferedReader reader = downloadBundle.newBufferedReader()) {
+        String line;
+        do {
+          line = reader.readLine();
+          // Process the decrypted line.
+        } while (line != null);
+      }
+    } 
+    catch (CryptoException | HttpResponseException | IOException | MissingCharsetException e) {
+        // Handle exception.
+    }
+  }
 }
-
-}
-
-catch (CryptoException | HttpResponseException | IOException | MissingCharsetException e) {
-
-// Handle exception.
-
-}
-
-}
-
-}
-
 ```
 
   
@@ -1198,41 +980,24 @@ catch (CryptoException | HttpResponseException | IOException | MissingCharsetExc
 ###  Decrypt sample code (NodeJs)
 
 ```JAVASCRIPT
-
 const  fs  =  require("fs");
-
 const  axios  =  require('axios');
-
 const  aes  =  require("js-crypto-aes");
 
-  
-
 // getFeedDocumentRequest request from step 5
-
 const  getFeedProcessingReportResponse  =  getFeedProcessingReportRequest();
 
-  
-
 // Get Feed Processing Report File as buffer
-
 const  FeedProcessingReportFileBuffer  =  await axios.get(getFeedProcessingReportResponse.url, {responseType:  'arraybuffer'}).then(r  =>  Buffer.from(r.data, "binary"));
 
-  
-
 // Get decryption key and IV from getFeedDocumentResponse
-
 const  key  =  Buffer.from(getFeedProcessingReportResponse.encryptionDetails.key, 'base64');
-
 const  IV  =  Buffer.from(getFeedProcessingReportResponse.encryptionDetails.initializationVector, 'base64');
-
-  
 
 const  decryptedFile  =  await aes.decrypt(FeedProcessingReportFileBuffer, key, {name:  'AES-CBC', iv:  IV});
 
-  
 
 // Convert UFT8 array to string
-
 const  decryptedFileString  =  Utf8ArrayToStr(decryptedFile);
 
   
