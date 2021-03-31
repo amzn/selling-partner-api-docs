@@ -9,6 +9,8 @@ Version: 2020-09-04
   - [Step 2. Encrypt and upload the feed data](#step-2-encrypt-and-upload-the-feed-data)
 
     - [Encrypt and upload sample code (Java)](#encrypt-and-upload-sample-code-java)
+    
+    - [Encrypt and upload sample code (NodeJS)](#encrypt-and-upload-sample-code-nodejs)
 
   - [Step 3. Create a feed](#step-3-create-a-feed)
 
@@ -19,6 +21,7 @@ Version: 2020-09-04
   - [Step 6. Download and decrypt the feed processing report](#step-6-download-and-decrypt-the-feed-processing-report)
 
     - [Download and decrypt sample code (Java)](#download-and-decrypt-sample-code-java)
+    - [Decrypt sample code (NodeJs)](#decrypt-sample-code-nodejs)
 
   - [Step 7. Check the feed processing report for errors](#step-7-check-the-feed-processing-report-for-errors)
 
@@ -573,13 +576,13 @@ Body parameters:
 <tr class="even">
 <td>feedOptions</td>
 <td><p>Additional options to provide metadata for the invoice.</p>
-<p> **metadata:orderid** : The order id for which the invoice is being submitted.</p>
-<p> **metadata:documenttype** : The value in this key can be either ‘Invoice’ or ‘CreditNote’. If the document that is being uploaded is an Invoice, then input the text ‘Invoice’. If the document that is being uploaded is a credit note for a refund or a return, then input the text ‘CreditNote’. If no value is provided for DocumentType, the default ‘Invoice’ will be used.</p>
-<p> **metadata:invoicenumber** : The order id for which the invoice is being submitted.</p>
-<p> **metadata:totalamount** : The total amount on the invoice. This is VAT inclusive item + VAT inclusive gift wrap + VAT inclusive shipping – VAT inclusive promotion on item – VAT inclusive promotion on shipping – VAT inclusive promotion on gift wrap.</p>
-<p> **metadata:totalvatamount** : The total VAT amount on the invoice. This is VAT on the item + VAT on gift wrap + VAT on shipping – VAT on item promotion – VAT on shipping promotion – VAT on gift wrap promotion.</p>
+<p> metadata:orderid : The order id for which the invoice is being submitted.</p>
+<p> metadata:documenttype : The value in this key can be either ‘Invoice’ or ‘CreditNote’. If the document that is being uploaded is an Invoice, then input the text ‘Invoice’. If the document that is being uploaded is a credit note for a refund or a return, then input the text ‘CreditNote’. If no value is provided for DocumentType, the default ‘Invoice’ will be used.</p>
+<p> metadata:invoicenumber : The order id for which the invoice is being submitted.</p>
+<p> metadata:totalamount : The total amount on the invoice. This is VAT inclusive item + VAT inclusive gift wrap + VAT inclusive shipping – VAT inclusive promotion on item – VAT inclusive promotion on shipping – VAT inclusive promotion on gift wrap.</p>
+<p> metadata:totalvatamount : The total VAT amount on the invoice. This is VAT on the item + VAT on gift wrap + VAT on shipping – VAT on item promotion – VAT on shipping promotion – VAT on gift wrap promotion.</p>
 <p>Type: object</p></td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
