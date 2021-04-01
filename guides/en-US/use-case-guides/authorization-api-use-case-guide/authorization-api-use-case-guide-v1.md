@@ -26,7 +26,7 @@ This tutorial assumes that you have a hybrid Selling Partner API application pub
 3.  You converted your Amazon MWS application to a draft hybrid Selling Partner API application.
 4.  You published your hybrid Selling Partner API application to the Marketplace Appstore.
 
-For more information, see [Hybrid Selling Partner API applications](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#hybrid-selling-partner-api-applications) in the Amazon Selling Partner API Developer Guide.
+For more information, see [Hybrid Selling Partner API applications](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#hybrid-selling-partner-api-applications) in the Amazon Selling Partner API Developer Guide.
 
 **Steps**
 
@@ -76,11 +76,11 @@ Response example:
       }
     }
 
-**Note:** While the getAuthorizationCode operation gets you authorization to make calls to Selling Partner API on behalf of a seller, calling the operation itself does not require authorization from any seller. In this respect, the getAuthorizationCode operation is a "grantless" operation and has a different authorization model from other Selling Partner API operations. For information about calling the getAuthorizationCode operation, see [Grantless operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#grantless-operations-1) in the Amazon Selling Partner API Developer Guide.
+**Note:** While the getAuthorizationCode operation gets you authorization to make calls to Selling Partner API on behalf of a seller, calling the operation itself does not require authorization from any seller. In this respect, the getAuthorizationCode operation is a "grantless" operation and has a different authorization model from other Selling Partner API operations. For information about calling the getAuthorizationCode operation, see [Grantless operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#grantless-operations-1) in the Amazon Selling Partner API Developer Guide.
 
 ## Step 2. Exchange the LWA authorization code for an LWA refresh token
 
 Call the LWA authorization server to exchange the LWA authorization code for an LWA refresh token. Upon receiving the refresh token, your application is authorized to make calls to Selling Partner API operations on the seller's behalf.
 
-For more information, see [Authorizing Selling Partner API applications](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#authorizing-selling-partner-api-applications) in the Selling Partner API Developer Guide.
+For more information, see [Authorizing Selling Partner API applications](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#authorizing-selling-partner-api-applications) in the Selling Partner API Developer Guide.
 

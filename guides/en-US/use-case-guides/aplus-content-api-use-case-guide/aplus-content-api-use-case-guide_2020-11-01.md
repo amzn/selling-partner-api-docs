@@ -47,7 +47,7 @@ Prerequisites
 
 To complete this tutorial you will need:
 
-1.  Authorization from the selling partner for whom you are making calls. See [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+1.  Authorization from the selling partner for whom you are making calls. See [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 2.  One or more ASINs to which you would like to publish content.
 3.  Content that you want to publish.
 

@@ -77,7 +77,7 @@ To complete this tutorial, you will need:
 
 1.  A feed to submit. See [feedType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feedType_string_array_values.md) for a list of available feed types.
 
-1.  Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+1.  Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
 1.  A working Java Development Kit (JDK) installation, including the javax.crypto library.
 

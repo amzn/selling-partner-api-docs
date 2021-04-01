@@ -92,7 +92,7 @@ If you want to receive any other notification type, skip this tutorial and go to
 
 To complete this tutorial you will need:
 
-  - Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+  - Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
   - An AWS Account. This AWS account will be responsible for charges related to receiving notifications. If you are not already an AWS customer, you can create a free AWS account. For more information, see [AWS Free Tier](https://aws.amazon.com/free).
 
@@ -130,7 +130,7 @@ Call the **createDestination** operation to create an Amazon EventBridge destina
 </tbody>
 </table>
 
-**Note:** Calling the **createDestination** operation does not require authorization from any selling partner. In this respect, this operation is a "grantless" operation and has a different authorization model from most other Selling Partner API operations. For more information, see [Grantless operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#grantless-operations-1) in the Selling Partner API Developer Guide.
+**Note:** Calling the **createDestination** operation does not require authorization from any selling partner. In this respect, this operation is a "grantless" operation and has a different authorization model from most other Selling Partner API operations. For more information, see [Grantless operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#grantless-operations-1) in the Selling Partner API Developer Guide.
 
 Request example:
 ```
@@ -404,7 +404,7 @@ Use this tutorial to set up your system to receive any of the following notifica
 
 To complete this tutorial you will need:
 
-  - Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+  - Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
   - An AWS Account. If you are not already an AWS customer, you can create a free AWS account. For more information, see [AWS Free Tier](https://aws.amazon.com/free).
 
@@ -458,7 +458,7 @@ Call the **createDestination** operation to create an Amazon Simple Queue Servic
 </tbody>
 </table>
 
-**Note:** Calling the **createDestination** operation does not require authorization from any selling partner. In this respect, this operation is a "grantless" operation and has a different authorization model from most other Selling Partner API operations. For more information, see [Grantless operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#grantless-operations-1) in the Selling Partner API Developer Guide.
+**Note:** Calling the **createDestination** operation does not require authorization from any selling partner. In this respect, this operation is a "grantless" operation and has a different authorization model from most other Selling Partner API operations. For more information, see [Grantless operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#grantless-operations-1) in the Selling Partner API Developer Guide.
 
 Request example:
 ```

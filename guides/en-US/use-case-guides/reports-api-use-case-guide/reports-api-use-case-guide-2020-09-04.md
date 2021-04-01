@@ -84,7 +84,7 @@ To complete this tutorial, you will need:
 
 - A report type to request. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md) for a list of the available report types.
 
-- Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/tree/main/guides/developer-guide) for more information.
+- Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
 - An understanding of client-side encryption using the cipher block chaining (CBC). For definitions, see [Terminology](#terminology).
 
@@ -231,7 +231,7 @@ To complete this tutorial, you will need:
 
 - A report type to schedule. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md) for a list of the available report types.
 
-- Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/tree/main/guides/developer-guide) for more information.
+- Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
 - An understanding of client-side encryption using the cipher block chaining (CBC). For definitions, see [Terminology](#terminology).
 
