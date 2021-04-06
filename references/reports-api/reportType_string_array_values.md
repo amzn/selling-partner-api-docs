@@ -403,9 +403,15 @@ These pending order reports are only available in the Japan marketplace.
 <td><p><strong>XML Customer Metrics Report</strong></p>
 <p><strong>reportType</strong> value: GET_V1_SELLER_PERFORMANCE_REPORT</p>
 </td>
-<td>XML report that contains the individual performance metrics data from the Seller Central dashboard. For all sellers.
+<td>XML report that contains select, individual performance metrics data from the Seller Central dashboard. For all sellers.
 <p>Can be requested.</p></td>
 </tr>
+<tr class="odd">
+<td><p><strong>Seller Performance Report</strong></p>
+<p><strong>reportType</strong> value: GET_V2_SELLER_PERFORMANCE_REPORT</p>
+</td>
+<td>Report that contains the individual performance metrics data from the Seller Central Account Health dashboard. For all sellers.
+<p>Can be requested</p></td>
 </tbody>
 </table>
 
