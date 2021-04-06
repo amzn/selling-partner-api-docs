@@ -240,7 +240,7 @@ With this SDK you can make calls to the Tokens API with the following code alrea
 
 6.  Copy **swagger-codegen-cli.jar** into a directory structure that makes sense for you. For this example, we'll copy it to C:\SwaggerToCL.
 
-7.  Navigate to **tokens_2021-03-01.json** in the **selling-partner-api-models\models\sellers-api-model** folder of your local copy of the repository.
+7.  Navigate to **tokens_2021-03-01.json** in the **selling-partner-api-models\models\tokens-api-model** folder of your local copy of the repository.
 
 8.  Copy **tokens_2021-03-01.json** into C:\SwaggerToCL.
 
@@ -248,7 +248,7 @@ With this SDK you can make calls to the Tokens API with the following code alrea
 
     For example:
     ```
-    java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate -i C:\SwaggerToCL\Sellers.json -l java -t [path to selling-partner-api-models\clients\sellingpartner-api-aa-java folder]\resources\swagger-codegen\templates\ -o C:\SwaggerToCL\Tokens_JavaCL
+    java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate -i C:\SwaggerToCL\tokens_2021-03-01.json -l java -t [path to selling-partner-api-models\clients\sellingpartner-api-aa-java folder]\resources\swagger-codegen\templates\ -o C:\SwaggerToCL\Tokens_JavaCL
     ```
     The SDK is copied to C:\SwaggerToCL\Tokens_JavaCL
 
