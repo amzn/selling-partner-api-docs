@@ -277,7 +277,7 @@ With this SDK you can make calls to the Tokens API with the following code alrea
      ```
 12.  Run **mvn package** inside the generated SDK folder.
 
-13.  Download [RestrictedDataTokenWorkflow.java](https://github.com/amzn/selling-partner-api-models/tree/main/clients/sample-code/RestrictedDataTokenWorkflow.java) and use it to build a class inside the **main/java/sampleCode/** folder of the generated client library.
+13.  Download [restricted-data-token-workflow.java](https://github.com/amzn/selling-partner-api-models/commit/63a55cee11ca54caf8242884027a863860abaaf2) and use it to build a class inside the **main/java/sampleCode/** folder of the generated client library.
 
 You can now start testing the workflow for getting an RDT and using it to call one or more restricted operations. Use this code to guide you in building your own applications.
 
