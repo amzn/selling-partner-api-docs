@@ -884,9 +884,9 @@ The refresh token is a long-lived token that you exchange for a short-lived acce
 
 # Authorization with the Restricted Data Token
 
-Operations that return restricted data (such as Personally Identifiable information, or PII) are considered restricted operations, and require special authorization in the form of a Restricted Data Token (RDT). You pass an RDT in the x-amz-access-token header when calling a restricted operation. This is in contrast to passing the LWA access token in the header, as you do with all other SP-API operations. (TBD: maybe add a link here).
+Operations that return restricted data (such as Personally Identifiable information, or PII) are considered restricted operations, and require special authorization in the form of a Restricted Data Token (RDT). You pass an RDT in the x-amz-access-token header when calling a restricted operation. This is in contrast to passing the LWA access token in the header, as you do with all other SP-API operations. For more information, see [Step 3. Add headers to the URI](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#step-3-add-headers-to-the-uri) in the Developer Guide.
 
-You can get an RDT by calling the createRestrictedDataToken operation of the Tokens API (TBD: link to the Tokens API ref). See the Tokens API Use Case Guide (TBD: link to the guide) for a list of restricted operations. The guide also contains instructions for getting an RDT and using it to authorize a call to a restricted operation.
+You can get an RDT by calling the [createRestrictedDataToken](https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#createrestricteddatatoken) operation of the Tokens API. See [Restricted operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md#restricted-operations) of the Tokens API Use Case Guide for a list of restricted operations. The guide also contains instructions for getting an RDT and using it to authorize a call to a restricted operation.
 
 # Generating a Java SDK with LWA token exchange and authentication
 
@@ -1215,7 +1215,7 @@ These instructions show you the steps for making a call to the Selling Partner A
 
 A Login with Amazon (LWA) access token authorizes your application to take certain actions on behalf of a seller. An LWA access token expires one hour after it is issued.
 
-**Note about restricted operations. ** An LWA access token must be included in calls to all operations *except* restricted operations, which return Personally Identifiable Information (PII). When calling restricted operations, instead of including an LWA access token, you include a Restricted Access Token (RDT). For information about getting RDTs and calling restricted operations, see the Tokens API Use Case Guide. (TBD - add a link to the guide).
+**Note about restricted operations. ** An LWA access token must be included in calls to all operations *except* restricted operations, which return Personally Identifiable Information (PII). When calling restricted operations, instead of including an LWA access token, you include a Restricted Access Token (RDT). For information about getting RDTs and calling restricted operations, see [Tutorial: Get an RDT and call restricted operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md#tutorial-get-an-rdt-and-call-restricted-operations) the Tokens API Use Case Guide.
 
 To request an LWA access token, make a secure HTTP POST to the LWA authentication server (`https://api.amazon.com/auth/o2/token`) with the following parameters:
 
@@ -1335,7 +1335,7 @@ Add headers to the URI that you constructed in [Step 2. Construct a Selling Part
 | **Name**     | **Description**  |
 | ---------- | ---------------- |
 | host  | The marketplace endpoint. See [Selling Partner API HTTP methods](#selling-partner-api-http-methods).   |
-| x-amz-access-token | The LWA access token. See [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token).<br>**Note about restricted operations.** If you are calling a restricted operation, pass in a Restricted Data Token (RDT) here instead of an LWA access token. For information about getting RDTs and calling restricted operations, see the Tokens API Use Case Guide. (TBD - add a link to the guide) |
+| x-amz-access-token | The LWA access token. See [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token).<br>**Note about restricted operations.** If you are calling a restricted operation, pass in a Restricted Data Token (RDT) here instead of an LWA access token. For information about getting RDTs and calling restricted operations, see the [Tutorial: Get an RDT and call restricted operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md#tutorial-get-an-rdt-and-call-restricted-operations) in the Tokens API Use Case Guide. |
 | x-amz-date   | The date and time of your request.    |
 | user-agent    | Your application name and version number, platform, and programming language. These help Amazon diagnose and fix problems you might encounter with the service. See [Include a User-Agent header in all](#include-a-user-agent-header-in-all-requests) [requests](#include-a-user-agent-header-in-all-requests). |
 
