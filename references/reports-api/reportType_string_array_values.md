@@ -926,7 +926,7 @@ A daily FBA report is generated no more than once every four hours. This means t
 <p>URL-encoded example: <code>ReportOptions=MarketplaceId%3DATVPDKIKX0DER;BrowseNodeId%3D15706661</code></p>
 <p>The Browse Tree Report is described by the following XSD: <a href="https://images-na.ssl-images-amazon.com/images/G/01/mwsportal/doc/en_US/Reports/XSDs/BrowseTreeReport.xsd"><span class="underline">BrowseTreeReport.xsd</span></a>.</p>
 
-<p><strong>Note:</strong>Amazon may update the BrowseTreeReport.xsd schema. Keep this in mind if you choose to use this schema for validation.</p>
+<p><strong>Note:</strong> Amazon may update the BrowseTreeReport.xsd schema. Keep this in mind if you choose to use this schema for validation.</p>
 <p>Can be requested or scheduled.</p></td>
 </tr>
 </tbody>
@@ -1018,3 +1018,51 @@ A daily FBA report is generated no more than once every four hours. This means t
 </tr>
 </tbody>
 </table>
+
+## B2B Product Opportunities Reports
+
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>B2B Product Opportunities - Recommended for You Report</strong>
+<p><strong>reportType</strong> value:</p>
+<p>GET_B2B_PRODUCT_OPPORTUNITIES_RECOMMENDED_FOR_YOU</p>
+</td>
+<td>Comma-separated report includes recommended products that might be a good opportunity for the selling partner's business on Amazon. Each report offers 1,000 recommendations and is refreshed weekly.
+<p>This report is only available in these marketplaces:</p>
+<ul>
+<li><p>US</p></li> 
+<li><p>UK</p></li>
+<li><p>France</p></li>
+<li><p>Spain</p></li>
+<li><p>Italy</p></li>
+<li><p>India</p></li>
+<li><p>Japan</p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td><strong>B2B Product Opportunities - Not yet on Amazon</strong>
+<p><strong>reportType</strong> value:</p>
+<p>GET_B2B_PRODUCT_OPPORTUNITIES_NOT_YET_ON_AMAZON</p>
+</td>
+<td>Comma-separated report includes a compiled a list of products that are in demand, but are not yet on Amazon. Each report offers 1,000 recommendations and is refreshed weekly.
+<p>This report is only available in these marketplaces:</p>
+<ul>
+<li><p>US</p></li> 
+<li><p>UK</p></li>
+<li><p>France</p></li>
+<li><p>Spain</p></li>
+<li><p>Italy</p></li>
+<li><p>India</p></li>
+<li><p>Japan</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
