@@ -1,5 +1,5 @@
 # Catalog Items Use Case Guide
-API Version: 2020-02-25
+API Version: 2020-12-01
 # Contents
 	 
 * [What is the Catalog Items API?](#what-is-the-catalog-items-api)
