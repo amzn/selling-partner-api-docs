@@ -942,7 +942,7 @@ mvn install:install-file -Dfile=[path to JAR file in "target" folder] -DgroupId=
 ```
 You can find the actual groupId, artifactId, and version values near the top of the **pom.xml** file in the **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** folder.
 
-3.  Add a dependency on the AA library in the **pom.xml** of the client library:
+11.  Add a dependency on the AA library in the **pom.xml** of the client library:
 
     For example:
 ```xml
