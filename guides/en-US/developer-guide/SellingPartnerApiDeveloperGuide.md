@@ -184,6 +184,7 @@ The `marketplaceId` identifies the marketplace for a request.
 | Germany              | A1PA6795UKMFR9    | DE               |
 | Italy                | APJ6JRA9NG5V4     | IT               |
 | Sweden               | A2NODRKZP88ZB9    | SE               |
+| Poland               | A1C3SOZRARQ6R3    | PL               |
 | Turkey               | A33AVAJ2PDY3EV    | TR               |
 | United Arab Emirates | A2VIGQ35RCS4UG    | AE               |
 | India                | A21TJRUUN4KGV     | IN               |
