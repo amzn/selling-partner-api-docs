@@ -450,7 +450,7 @@ If a seller authorizes your application starting from your own website (the [Web
 
 1.  Get the Seller Central URL for the marketplace where you want sellers to authorize your applications. Example: `https://sellercentral.amazon.com`
 
-2.  Combine the Seller Central URL with `/apps/authorize/consent?{your application ID}`.
+2.  Combine the Seller Central URL with `/apps/authorize/consent?application_id={your application ID}`.
 
     Example: `https://sellercentral.amazon.com/apps/authorize/consent?application_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28`
 
