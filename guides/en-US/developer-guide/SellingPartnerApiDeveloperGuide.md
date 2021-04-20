@@ -13,20 +13,19 @@
 
 - [Registering as a developer](#registering-as-a-developer)
 
-- [Registering your Selling Partner API application](#registering-your-selling-partner-api-application)
-
+- [Creating and configuring IAM policies and entities](#Creating-and-configuring-IAM-policies-and-entities)
   - [Step 1. Create an AWS account](#step-1-create-an-aws-account)
-
+  
   - [Step 2. Create an IAM user](#step-2-create-an-iam-user)
-
+  
   - [Step 3. Create an IAM policy](#step-3-create-an-iam-policy)
-
+  
   - [Step 4. Create an IAM role](#step-4-create-an-iam-role)
-
+  
   - [Step 5. Add an AWS Security Token Service policy to your IAM user](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
-
-  - [Step 6. Register your application](#step-6-register-your-application)
-
+  
+- [Registering your application](#registering-your-application)
+  
 - [Viewing your developer information](#viewing-your-developer-information)
 
 - [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications)
@@ -244,9 +243,9 @@ You need to register as a Selling Partner API developer before you can register 
 
 3.  Follow the instructions to register as a developer.
 
-After we have registered you as a developer, you can [register your Selling Partner API application](#registering-your-selling-partner-api-application). To view your developer information, see [Viewing your developer information](#viewing-your-developer-information).
+After we have registered you as a developer, you can [Create and configuring IAM policies and entities](#Creating-and-configuring-IAM-policies-and-entities). To view your developer information, see [Viewing your developer information](#viewing-your-developer-information).
 
-# Registering your Selling Partner API application
+# Creating and configuring IAM policies and entities
 
 The following steps explain how to create and configure IAM policies and entities with the end goal of creating an IAM role that you provide when you register your application. In this workflow you create an IAM user (with an [AWS STS](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) policy attached) that assumes an IAM role that has permissions to call Selling Partner API.
 
@@ -261,8 +260,6 @@ The following steps explain how to create and configure IAM policies and entitie
 [Step 4. Create an IAM role](#step-4-create-an-iam-role)
 
 [Step 5. Add an AWS Security Token Service policy to your IAM user](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
-
-[Step 6. Register your application](#step-6-register-your-application)
 
 ## Step 1. Create an AWS account
 
@@ -365,7 +362,7 @@ Create an IAM role that trusts the IAM user that you created in [Step 2. Create 
 
 9.  Save your role ARN. You will need it:
     
-    1.  When you [register your application](#step-6-register-your-application).
+    1.  When you [register your application](#Registering-your-application).
     
     2.  In [Step 5. Add an AWS Security Token Service policy to your IAM user](#step-5-Add-an-AWS-Security-Token-Service-policy-to-your-IAM-user).
 
@@ -397,9 +394,9 @@ Adding an [AWS Security Token Service (AWS STS)](https://docs.aws.amazon.com/STS
 
 11. On the **Review policy** page, enter a name for your policy in the **Name** box. Review the choices you have made. If you are ready to proceed, click the **Create policy** button.
 
-## Step 6. Register your application
+# Registering your application
 
-Register your application in Developer Central.
+Before you register your application, [create and configure your IAM policies and entities](#Creating-and-configuring-IAM-policies-and-entities).
 
 **To register your application**
 
@@ -415,7 +412,7 @@ Register your application in Developer Central.
 
 # Viewing your developer information
 
-After [registering your Selling Partner API application](#registering-your-Selling-Partner-API-application) you can sign into Developer Central to view your developer information.
+After you [register your application](#registering-your-application) you can sign into Developer Central to view your developer information.
 
 **To view your developer information**
 
@@ -860,7 +857,7 @@ If an MWS auth token was returned in [Step 3. Amazon sends you the authorization
 
 # Self authorization
 
-You can self-authorize your application in Developer Central. Before doing this you must [Registering your Selling Partner API application](#registering-your-selling-partner-api-application). You can self authorize your application in draft state; there is no reason to publish your self-authorized application to the Marketplace Appstore.
+You can self-authorize your application in Developer Central. Before doing this you must [register your application](#registering-your-application). You can self authorize your application in draft state; there is no reason to publish your self-authorized application to the Marketplace Appstore.
 
 To implement the full OAuth authorization workflow, see [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications).
 
@@ -958,7 +955,7 @@ After you have generated your SDK you can use it to make calls to the Selling Pa
 
 # Connecting to the Selling Partner API using a generated Java SDK
 
-Before your application can connect to the Selling Partner API, you must register it and it must be authorized by a seller. See [Registering your Selling Partner API application](#registering-as-a-developer) and [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications).
+Before your application can connect to the Selling Partner API, you must register it and it must be authorized by a seller. See [Registering your application](#registering-your-application) and [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications).
 
 These instructions show you how to use a generated Java SDK to make calls. The SDK exposes classes for configuring your LWA and AWS credentials and uses these to exchange LWA tokens and sign requests for you. For more information, see [Generating a Java SDK with LWA token exchange and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication).
 
@@ -1198,7 +1195,7 @@ After you have generated your client library you can use it to help you make cal
 
 # Connecting to the Selling Partner API
 
-Before your application can connect to the Selling Partner API, you must register it and it must be authorized by a seller. See [Registering your Selling Partner API application](#registering-as-a-developer) and [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications).
+Before your application can connect to the Selling Partner API, you must register it and it must be authorized by a seller. See [Registering your application](#registering-your-application) and [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications).
 
 These instructions show you the steps for making a call to the Selling Partner API. For help with constructing a Selling Partner API URI and adding headers to it, see [Generating a Java client library](#Generating-a-Java-client-library). For a more complete solution that includes code for exchanging LWA tokens and authentication, see [Generating a Java SDK with LWA token exchange](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication) [and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication).
 
@@ -1353,7 +1350,7 @@ To sign a request to the Selling Partner API, see [Step 4. Create and sign your 
 
 ## Step 4. Create and sign your request
 
-The Selling Partner API uses the AWS [Signature Version 4 Signing Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) for authenticating requests. When you send HTTP requests to the Selling Partner API, you sign the requests so that Amazon can identify who sent them. You sign requests using your AWS access keys, which consists of an access key ID and a secret access key. Amazon recommends using the [AWS Security Token Service (AWS STS)](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) to request temporary AWS access keys to sign your requests. See [Registering your Selling Partner API application](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#registering-your-selling-partner-api-application) to create an IAM user (with an AWS STS policy attached) that assumes an IAM role. You then register your application using the IAM role. For more information about using AWS STS and the AWS SDKs that can help with your implementation, see [Requesting temporary security credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) in the AWS documentation.
+The Selling Partner API uses the AWS [Signature Version 4 Signing Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) for authenticating requests. When you send HTTP requests to the Selling Partner API, you sign the requests so that Amazon can identify who sent them. You sign requests using your AWS access keys, which consists of an access key ID and a secret access key. Amazon recommends using the [AWS Security Token Service (AWS STS)](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) to request temporary AWS access keys to sign your requests. See [Creating and configuring IAM policies and entities](#Creating-and-configuring-IAM-policies-and-entities) to create an IAM user (with an AWS STS policy attached) that assumes an IAM role. You then register your application using the IAM role. For more information about using AWS STS and the AWS SDKs that can help with your implementation, see [Requesting temporary security credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) in the AWS documentation.
 
 **Note:** You need to learn how to sign HTTP requests only when you manually create them. When you use the one of the AWS SDKs to calculate signatures for you, the SDK automatically signs the requests with the AWS access key that you specify when you configure it. When you use an SDK you don't need to learn how to sign requests yourself. Java developers, for example, can use [AWS4Signer.java](https://github.com/aws/aws-sdk-java/blob/master/aws-java-sdk-core/src/main/java/com/amazonaws/auth/AWS4Signer.java) from the AWS SDK for Java as a model for calculating a signature. You can find SDKs for other languages in the [AWS GitHub repository](https://github.com/aws).
 
