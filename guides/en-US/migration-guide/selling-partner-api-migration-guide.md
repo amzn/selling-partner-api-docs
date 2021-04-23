@@ -6,7 +6,7 @@
 - [What is the Selling Partner API?](#What-is-the-Selling-Partner-API?)
   - [Selling Partner API features](#Selling-Partner-API-features)
   - [Mapping APIs from Amazon MWS to the Selling Partner API](#Mapping-APIs-from-Amazon-MWS-to-the-Selling-Partner-API)
-- [Tutorial: Convert an Amazon MWS application into an Selling Partner API application](#Tutorial:-Convert-an-Amazon-MWS-application-into-an-Selling-Partner-API-application)
+- [Tutorial: Convert an Amazon MWS application into an Selling Partner API application](#Tutorial-Convert-an-Amazon-MWS-application-into-an-Selling-Partner-API-application)
 - [Roles in the Selling Partner API](#Roles-in-the-Selling-Partner-API)
 - [The Restricted Data Token](#The-Restricted-Data-Token)
 - [The Selling Partner API sandbox](#the-selling-partner-api-sandbox)
