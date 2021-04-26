@@ -724,7 +724,7 @@ Setting up your “Authorize” button(s) is a one-time task.
 <tbody>
 <tr class="odd">
 <td><strong>redirect_uri</strong></td>
-<td>A URI for redirecting the browser to your application. This must an OAuth Redirect URI that you specified when you <a href="#step-6-register-your-application">registered your application</a>. If you do not include the <strong>redirect_uri</strong> parameter, the default is the first OAuth Redirect URI that you specified when you registered your application.<p>Optional</p></td>
+<td>A URI for redirecting the browser to your application. This must an OAuth Redirect URI that you specified when you <a href="#registering-your-application">registered your application</a>. If you do not include the <strong>redirect_uri</strong> parameter, the default is the first OAuth Redirect URI that you specified when you registered your application.<p>Optional</p></td>
 </tr>
 <tr class="even">
 <td><strong>state</strong></td>
