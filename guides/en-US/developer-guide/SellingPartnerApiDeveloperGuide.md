@@ -184,6 +184,7 @@ The `marketplaceId` identifies the marketplace for a request.
 | Italy                | APJ6JRA9NG5V4     | IT               |
 | Sweden               | A2NODRKZP88ZB9    | SE               |
 | Poland               | A1C3SOZRARQ6R3    | PL               |
+| Egypt                | ARBP9OOSHTCHU     | EG               |
 | Turkey               | A33AVAJ2PDY3EV    | TR               |
 | United Arab Emirates | A2VIGQ35RCS4UG    | AE               |
 | India                | A21TJRUUN4KGV     | IN               |
@@ -551,7 +552,7 @@ Your website's sign-in page appears.
 <tbody>
 <tr class="odd">
 <td><strong>redirect_uri</strong></td>
-<td>A URI for redirecting the browser to your application. This must an OAuth Redirect URI that you specified when you <a href="#step-6-register-your-application">registered your application</a>. If you do not include the <strong>redirect_uri</strong> parameter, the default is the first OAuth Redirect URI that you specified when you registered your application.<p>Optional</p></td>
+<td>A URI for redirecting the browser to your application. This must an OAuth Redirect URI that you specified when you <a href="#registering-your-application">registered your application</a>. If you do not include the <strong>redirect_uri</strong> parameter, the default is the first OAuth Redirect URI that you specified when you registered your application.<p>Optional</p></td>
 </tr>
 <tr class="even">
 <td><strong>amazon_state</strong></td>
@@ -579,7 +580,7 @@ https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d1
 
 Seller Central briefly displays a page indicating that Amazon is authorizing you to access the seller's data. While this page is displayed, the following actions take place:
 
-1.  Amazon loads your OAuth Redirect URI into the browser (the first one you specified when you [registered you application](#Step-6-Register-your-application)), adding the following query parameters:
+1.  Amazon loads your OAuth Redirect URI into the browser (the first one you specified when you [registered you application](#Registering-your-application)), adding the following query parameters:
 
 | **Parameter**| **Description**|
 | ------------------------ | -----------------------|
@@ -756,7 +757,7 @@ The seller arrives at the sign-in page of Seller Central.
 
 Seller Central briefly displays a page indicating that Amazon is authorizing you to access the seller's data. While that page is displayed, the following actions take place:
 
-1.  Amazon loads your OAuth Redirect URI into the browser (the first one you specified when you [registered you application](#Step-6-Register-your-application)), adding the following query parameters:
+1.  Amazon loads your OAuth Redirect URI into the browser (the first one you specified when you [registered you application](#Registering-your-application)), adding the following query parameters:
 
 | **Parameter**| **Description**|
 | ------------------------ | ---------------------- |
