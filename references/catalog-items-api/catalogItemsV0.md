@@ -47,6 +47,8 @@ The Selling Partner API for Catalog Items helps you programmatically retrieve it
 #### Description
 Returns a list of items and their attributes, based on a search query or item identifiers that you specify. When based on a search query, provide the Query parameter and optionally, the QueryContextId parameter. When based on item identifiers, provide a single appropriate parameter based on the identifier type, and specify the associated item value. MarketplaceId is always required.
 
+This operation returns a maximum of ten products and does not return non-buyable products.
+                                                                                                                              
 **Usage Plans:**
 
 | Plan type | Rate (requests per second) | Burst |
