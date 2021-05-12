@@ -785,7 +785,7 @@ The status of the buyer's purchase order for this order.
 |**OPEN**|Buyer has not yet received all of the items in the purchase order.|
 |**CLOSED**|Buyer has received all of the items in the purchase order.|
 
-<a id="purchaseorderstatus-subgroup-2"></a>**For use with the operation(s): [GetPurchaseOrdersStatus](#getpurchaseordersstatus)**
+<a id="purchaseorderstatus-subgroup-2"></a>**For use with the operation(s): [getPurchaseOrdersStatus](#getpurchaseordersstatus)**
 Filters purchase orders based on the specified purchase order status. If not included in filter, this will return purchase orders for all statuses.
 
 |Value|Description|
@@ -798,7 +798,7 @@ Filters purchase orders based on the specified purchase order status. If not inc
 ### PurchaseOrderState
 *Type* : enum
 
-<a id="purchaseorderstate-subgroup-1"></a>**For use with the operation(s): [GetPurchaseOrders](#getpurchaseorders)**
+<a id="purchaseorderstate-subgroup-1"></a>**For use with the operation(s): [getPurchaseOrders](#getpurchaseorders)**
 Filters purchase orders based on the purchase order state.
 
 |Value|Description|

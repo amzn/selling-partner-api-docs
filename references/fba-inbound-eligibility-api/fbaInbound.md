@@ -69,7 +69,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
 
 For error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 
@@ -81,13 +81,13 @@ This table contains HTTP status codes and associated information for error respo
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
 |**403**|403 can be caused for reasons like Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
-|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetItemEligibilityPreviewResponse](#getitemeligibilitypreviewresponse)|
 
 
 <a name="definitions"></a>
@@ -198,11 +198,11 @@ The program for which eligibility was determined.
 |**INBOUND**|Inbound shipment.|
 |**COMMINGLING**|Using the manufacturer barcode for FBA inventory tracking.|
 
-<a id="program-subgroup-2"></a>**For use with the operation(s): [GetItemEligibilityPreview](#getitemeligibilitypreview)**
+<a id="program-subgroup-2"></a>**For use with the operation(s): [getItemEligibilityPreview](#getitemeligibilitypreview)**
 The program that you want to check eligibility against.
 
 |Value|Description|
 |---|---|
-|**INBOUND**|Inbound shipment.|
-|**COMMINGLING**|Using the manufacturer barcode for FBA inventory tracking.|
+|**INBOUND**|-|
+|**COMMINGLING**|-|
 

@@ -380,7 +380,7 @@ This table contains HTTP status codes and associated information for error respo
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
-|**404**|The specified resource does not exist.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
+|**404**|The specified resource does not exist.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**410**|The specified resource no longer exists.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
@@ -1342,14 +1342,14 @@ The type of data to include in the response, such as metadata about the related 
 ### IncludedDataSet
 *Type* : enum
 
-<a id="includeddataset-subgroup-1"></a>**For use with the definition(s): [GetContentDocument](#getcontentdocument)**
+<a id="includeddataset-subgroup-1"></a>**For use with the operation(s): [getContentDocument](#getcontentdocument)**
 
 |Value|Description|
 |---|---|
 |**CONTENTS**|The contents of the content document.|
 |**METADATA**|The metadata of the content document.|
 
-<a id="includeddataset-subgroup-2"></a>**For use with the definition(s): [ListContentDocumentAsinRelations](#listcontentdocumentasinrelations)**
+<a id="includeddataset-subgroup-2"></a>**For use with the operation(s): [listContentDocumentAsinRelations](#listcontentdocumentasinrelations)**
 
 |Value|Description|
 |---|---|

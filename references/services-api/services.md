@@ -36,7 +36,7 @@ With the Services API, you can build applications that help service providers ge
 
 
 ### Operations
-[getServiceJobByServiceJobId](#getservicejobbyservicejobid)<br>[cancelServiceJobByServiceJobId](#cancelservicejobbyservicejobid)<br>[completeServiceJobByServiceJobId](#completeservicejobbyservicejobid)<br>[getServiceJobs](#getservicejobs)<br>[addAppointmentForServiceJobByServiceJobId](#addappointmentforservicejobbyservicejobid)<br>[rescheduleAppointmentForServiceJobByServiceJobId](#rescheduleappointmentforservicejobbyservicejobid)<br>
+[getServiceJobByServiceJobId](#getservicejobbyservicejobid)<br>[cancelServiceJobByServiceJobId](#cancelservicejobbyservicejobid)<br>[completeServiceJobByServiceJobId](#completeservicejobbyservicejobid)<br>[getServiceJobs](#getservicejobs)<br>[addAppointmentForServiceJobByServiceJobId](#addappointmentforservicejobbyservicejobid)<br>[rescheduleAppointmentForServiceJobByServiceJobId](#rescheduleappointmentforservicejobbyservicejobid)<br>[assignAppointmentResources](#assignappointmentresources)<br>[setAppointmentFulfillmentData](#setappointmentfulfillmentdata)<br>[updateSchedule](#updateschedule)<br>[createReservation](#createreservation)<br>[updateReservation](#updatereservation)<br>[cancelReservation](#cancelreservation)<br>[createServiceDocumentUploadDestination](#createservicedocumentuploaddestination)<br>
 <a name="paths"></a>
 ## Paths
 
@@ -67,16 +67,16 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
-|**422**|Unprocessable Entity. Unable to process the contained instructions.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobByServiceJobIdResponse](#getservicejobbyservicejobidresponse)|
 
 
 <a name="cancelservicejobbyservicejobid"></a>
@@ -107,16 +107,16 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CancelServiceJobByServiceJobIdResponse](#cancelservicejobbyservicejobidresponse)|
 
 
 <a name="completeservicejobbyservicejobid"></a>
@@ -146,16 +146,16 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CompleteServiceJobByServiceJobIdResponse](#completeservicejobbyservicejobidresponse)|
 
 
 <a name="getservicejobs"></a>
@@ -181,7 +181,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**Query**|**serviceOrderIds**  <br>*optional*|List of service order ids for the query you want to perform.Max values supported 20.  <br>**Min count** : 1<br>**Max count** : 20|< string > array|-|
 |**Query**|**serviceJobStatus**  <br>*optional*|A list of one or more job status by which to filter the list of jobs.|< enum ([ServiceJobStatus](#servicejobstatus-subgroup-2)) > array|-|
 |**Query**|**pageToken**  <br>*optional*|String returned in the response of your previous request.|string|-|
-|**Query**|**pageSize**  <br>*optional*|A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. <br>**Minimum** : 1<br>**Maximum** : 20|integer|`20`|
+|**Query**|**pageSize**  <br>*optional*|A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20.<br>**Minimum** : 1<br>**Maximum** : 20|integer|`20`|
 |**Query**|**sortField**  <br>*optional*|Sort fields on which you want to sort the output.|enum ([SortField](#sortfield))|-|
 |**Query**|**sortOrder**  <br>*optional*|Sort order for the query you want to perform.|enum ([SortOrder](#sortorder))|-|
 |**Query**|**createdAfter**  <br>*optional*|A date used for selecting jobs created after (or at) a specified time must be in ISO 8601 format. Required if LastUpdatedAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error.|string|-|
@@ -197,15 +197,15 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetServiceJobsResponse](#getservicejobsresponse)|
 
 
 <a name="addappointmentforservicejobbyservicejobid"></a>
@@ -236,16 +236,16 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
 
 
 <a name="rescheduleappointmentforservicejobbyservicejobid"></a>
@@ -277,16 +277,247 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SetAppointmentResponse](#setappointmentresponse)|
+
+
+<a name="assignappointmentresources"></a>
+### PUT /service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources
+**Operation: assignAppointmentResources**
+
+#### Description
+Assigns new resource(s) or overwrite/update the existing one(s) to a service job appointment.
+
+**Usage Plan:**
+
+| Rate (requests per second) | Burst |
+| ---- | ---- |
+| 1 | 2 |
+
+For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**serviceJobId**  <br>*required*|An Amazon-defined service job identifier. Get this value by calling getServiceJobs operation of the services API.<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Path**|**appointmentId**  <br>*required*|An Amazon-defined identifier of active service job appointment.<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Body**|**body**  <br>*required*|Request schema for AssignAppointmentResources operation.|[AssignAppointmentResourcesRequest](#assignappointmentresourcesrequest)|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[AssignAppointmentResourcesResponse](#assignappointmentresourcesresponse)|
+
+
+<a name="setappointmentfulfillmentdata"></a>
+### PUT /service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment
+**Operation: setAppointmentFulfillmentData**
+
+#### Description
+Captures the appointment fulfillment data.
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**serviceJobId**  <br>*required*|An Amazon-defined service job identifier. Get this value by calling getServiceJobs operation of the services API.<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Path**|**appointmentId**  <br>*required*|An Amazon-defined identifier of active service job appointment.<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Body**|**body**  <br>*required*|Appointment fulfillment data collection details.|[SetAppointmentFulfillmentDataRequest](#setappointmentfulfillmentdatarequest)|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**204**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|string|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ErrorList](#errorlist)|
+|**403**|403 can be caused for reasons like Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[ErrorList](#errorlist)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[ErrorList](#errorlist)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[ErrorList](#errorlist)|
+|**415**|The entity of the request is in a format not supported by the requested resource.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[ErrorList](#errorlist)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[ErrorList](#errorlist)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[ErrorList](#errorlist)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[ErrorList](#errorlist)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[ErrorList](#errorlist)|
+
+
+<a name="updateschedule"></a>
+### PUT /service/v1/serviceResources/{resourceId}/schedules
+**Operation: updateSchedule**
+
+#### Description
+Update a schedule
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**resourceId**  <br>*required*|Resource (store) Identifier<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Body**|**body**  <br>*required*|Schedule details|[UpdateScheduleRequest](#updateschedulerequest)|
+|**Query**|**marketplaceIds**  <br>*required*|An identifier for the marketplace in which the resource operates<br>**Max count** : 1|< string > array|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateScheduleResponse](#updatescheduleresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateScheduleResponse](#updatescheduleresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateScheduleResponse](#updatescheduleresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateScheduleResponse](#updatescheduleresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateScheduleResponse](#updatescheduleresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateScheduleResponse](#updatescheduleresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateScheduleResponse](#updatescheduleresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateScheduleResponse](#updatescheduleresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateScheduleResponse](#updatescheduleresponse)|
+
+
+<a name="createreservation"></a>
+### POST /service/v1/reservation
+**Operation: createReservation**
+
+#### Description
+Create a reservation
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Body**|**body**  <br>*required*|Reservation details|[CreateReservationRequest](#createreservationrequest)|
+|**Query**|**marketplaceIds**  <br>*required*|An identifier for the marketplace in which the resource operates<br>**Max count** : 1|< string > array|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateReservationResponse](#createreservationresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateReservationResponse](#createreservationresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateReservationResponse](#createreservationresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateReservationResponse](#createreservationresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateReservationResponse](#createreservationresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateReservationResponse](#createreservationresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateReservationResponse](#createreservationresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateReservationResponse](#createreservationresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateReservationResponse](#createreservationresponse)|
+
+
+<a name="updatereservation"></a>
+### PUT /service/v1/reservation/{reservationId}
+**Operation: updateReservation**
+
+#### Description
+Update a reservation
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**reservationId**  <br>*required*|Reservation Identifier<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Body**|**body**  <br>*required*|Reservation details|[UpdateReservationRequest](#updatereservationrequest)|
+|**Query**|**marketplaceIds**  <br>*required*|An identifier for the marketplace in which the resource operates<br>**Max count** : 1|< string > array|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**200**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateReservationResponse](#updatereservationresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateReservationResponse](#updatereservationresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateReservationResponse](#updatereservationresponse)|
+|**404**|The reservation specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateReservationResponse](#updatereservationresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateReservationResponse](#updatereservationresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateReservationResponse](#updatereservationresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateReservationResponse](#updatereservationresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateReservationResponse](#updatereservationresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[UpdateReservationResponse](#updatereservationresponse)|
+
+
+<a name="cancelreservation"></a>
+### DELETE /service/v1/reservation/{reservationId}
+**Operation: cancelReservation**
+
+#### Description
+Cancel a reservation
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**reservationId**  <br>*required*|Reservation Identifier<br>**minLength** : 1<br>**maxLength** : 100|string|
+|**Query**|**marketplaceIds**  <br>*required*|An identifier for the marketplace in which the resource operates<br>**Max count** : 1|< string > array|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**204**|Success response  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelReservationResponse](#cancelreservationresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelReservationResponse](#cancelreservationresponse)|
+|**403**|403 can be caused for reasons like Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelReservationResponse](#cancelreservationresponse)|
+|**404**|The reservation specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelReservationResponse](#cancelreservationresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelReservationResponse](#cancelreservationresponse)|
+|**415**|The entity of the request is in a format not supported by the requested resource.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelReservationResponse](#cancelreservationresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelReservationResponse](#cancelreservationresponse)|
+|**500**|Encountered an unexpected condition which prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelReservationResponse](#cancelreservationresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CancelReservationResponse](#cancelreservationresponse)|
+
+
+<a name="createservicedocumentuploaddestination"></a>
+### POST /service/v1/documents
+**Operation: createServiceDocumentUploadDestination**
+
+#### Description
+Creates an upload destination.
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Body**|**body**  <br>*required*|upload document operation input details.|[ServiceUploadDocument](#serviceuploaddocument)|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**200**|Successfully created an upload destination for the given resource.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestId` (string) : Unique request reference identifier.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
+|**415**|The request's Content-Type header is invalid.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference identifier.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
+|**422**|Unprocessable Entity. Unable to process the contained instructions  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-requestid` (string) : Unique request reference ID.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference id.|[CreateServiceDocumentUploadDestination](#createservicedocumentuploaddestination)|
 
 
 <a name="definitions"></a>
@@ -346,6 +577,34 @@ Response schema for add or reschedule appointment operation.
 |**errors**  <br>*optional*|Errors occurred during during add or reschedule appointment operation.|[ErrorList](#errorlist)|
 
 
+<a name="assignappointmentresourcesresponse"></a>
+### AssignAppointmentResourcesResponse
+Response schema for AssignAppointmentResources operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**payload**  <br>*optional*|The payload for the Assign Appointment Resource operation.|[payload](#assignappointmentresourcesresponse-payload)|
+|**errors**  <br>*optional*|Errors occurred during during assign appointment resources operation.|[ErrorList](#errorlist)|
+
+<a name="assignappointmentresourcesresponse-payload"></a>
+**payload**
+
+|Name|Description|Schema|
+|---|---|---|
+|**warnings**  <br>*optional*|Warnings generated during assign appointment resources operation.|[WarningList](#warninglist)|
+
+
+<a name="assignappointmentresourcesrequest"></a>
+### AssignAppointmentResourcesRequest
+Request schema for AssignAppointmentResources operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**resources**  <br>*required*|List of resource objects to be assigned.|[AppointmentResources](#appointmentresources)|
+
+
 <a name="joblisting"></a>
 ### JobListing
 The payload for the GetJobs operation.
@@ -354,8 +613,8 @@ The payload for the GetJobs operation.
 |Name|Description|Schema|
 |---|---|---|
 |**totalResultSize**  <br>*optional*|Total result size of the query result.|integer|
-|**nextPageToken**  <br>*optional*|A generated string used to pass information to your next request.If nextPageToken is returned, pass the value of nextPageToken to the pageToken to get next results.|string|
-|**previousPageToken**  <br>*optional*|A generated string used to pass information to your next request.If previousPageToken is returned, pass the value of previousPageToken to the pageToken to get previous page results.|string|
+|**nextPageToken**  <br>*optional*|A generated string used to pass information to your next request. If nextPageToken is returned, pass the value of nextPageToken to the pageToken to get next results.|string|
+|**previousPageToken**  <br>*optional*|A generated string used to pass information to your next request. If previousPageToken is returned, pass the value of previousPageToken to the pageToken to get previous page results.|string|
 |**jobs**  <br>*optional*|List of job details for the given input.|< [ServiceJob](#servicejob) > array|
 
 
@@ -652,6 +911,292 @@ Warning returned when the request is successful but execution have some importan
 |**details**  <br>*optional*|Additional details that can help the caller understand or address the warning.|string|
 
 
+<a name="updatescheduleresponse"></a>
+### UpdateScheduleResponse
+Response schema for UpdateSchedule operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**payload**  <br>*optional*|Contains the UpdateScheduleRecords for which the error/warning has occurred.|< [UpdateScheduleRecord](#updateschedulerecord) > array|
+|**errors**  <br>*optional*|Errors encountered, if any.|[ErrorList](#errorlist)|
+
+
+<a name="setappointmentfulfillmentdatarequest"></a>
+### SetAppointmentFulfillmentDataRequest
+Input for set appointment fulfillment data operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**fulfillmentTime**  <br>*optional*|Input appointment time details.|[FulfillmentTime](#fulfillmenttime)|
+|**appointmentResources**  <br>*optional*|Resources involved in appointment fulfillment.|[AppointmentResources](#appointmentresources)|
+|**fulfillmentDocuments**  <br>*optional*|Documents specific to appointment fulfillment.|[FulfillmentDocuments](#fulfillmentdocuments)|
+
+
+<a name="fulfillmenttime"></a>
+### FulfillmentTime
+Input for fulfillment time details
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**startTime**  <br>*optional*|The date, time in UTC of the fulfillment start time in ISO 8601 format.|string (date-time)|
+|**endTime**  <br>*optional*|The date, time in UTC of the fulfillment end time in ISO 8601 format.|string (date-time)|
+
+
+<a name="fulfillmentdocuments"></a>
+### FulfillmentDocuments
+List of documents captured during service appointment fulfillment.
+
+*Type* : < [FulfillmentDocument](#fulfillmentdocument) > array
+
+
+<a name="fulfillmentdocument"></a>
+### FulfillmentDocument
+Document that captured during service appointment fulfillment that portrays proof of completion
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**uploadDestinationId**  <br>*optional*|The identifier of the upload destination. Get this value by calling the createServiceDocumentUploadDestination operation of the services API.|string|
+|**contentSha256**  <br>*optional*|Sha256 hash of the file content. This value is used to determine if the file has been corrupted or tampered with during transit.|string|
+
+
+<a name="appointmentresources"></a>
+### AppointmentResources
+List of resources that performs or performed job appointment fulfillment.
+
+*Type* : < [AppointmentResource](#appointmentresource) > array
+
+
+<a name="appointmentresource"></a>
+### AppointmentResource
+The resource that performs or performed appointment fulfillment.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**resourceId**  <br>*optional*|The resource identifier.|string|
+
+
+<a name="createreservationresponse"></a>
+### CreateReservationResponse
+Response schema for CreateReservation operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**payload**  <br>*optional*|CreateReservationRecord contains only the new reservationId if the operation was successful. Otherwise it would contain the Reservation entity with warnings/errors.|[CreateReservationRecord](#createreservationrecord)|
+|**errors**  <br>*optional*|Errors encountered, if any.|[ErrorList](#errorlist)|
+
+
+<a name="updatereservationresponse"></a>
+### UpdateReservationResponse
+Response schema for the UpdateReservation operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**payload**  <br>*optional*|UpdateReservationRecord contains only the new reservationId if the operation was successful. Otherwise it would contain the Reservation entity with warnings/errors.|[UpdateReservationRecord](#updatereservationrecord)|
+|**errors**  <br>*optional*|Errors encountered, if any.|[ErrorList](#errorlist)|
+
+
+<a name="cancelreservationresponse"></a>
+### CancelReservationResponse
+Response schema for CancelReservation operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**errors**  <br>*optional*|Errors encountered, if any|[ErrorList](#errorlist)|
+
+
+<a name="dayofweek"></a>
+### DayOfWeek
+The day of the week.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**MONDAY**|Monday|
+|**TUESDAY**|Tuesday|
+|**WEDNESDAY**|Wednesday|
+|**THURSDAY**|Thursday|
+|**FRIDAY**|Friday|
+|**SATURDAY**|Saturday|
+|**SUNDAY**|Sunday|
+
+
+<a name="recurrence"></a>
+### Recurrence
+Repeated occurrence of an event in a time range.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**endTime**  <br>*required*|End time of the recurrence.|string (date-time)|
+|**daysOfWeek**  <br>*optional*|Days of the week when recurrence is valid. If the schedule is valid every Monday, input will contain a single item in the list - "MONDAY".|< [DayOfWeek](#dayofweek) > array|
+|**daysOfMonth**  <br>*optional*|Days of the month when recurrence is valid.|< integer > array|
+
+
+<a name="availabilityrecord"></a>
+### AvailabilityRecord
+AvailabilityRecord to represent the capacity of a resource over a time range.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**startTime**  <br>*required*|Denotes the time from when the resource is available in a day, ISO-8601 format is followed.|string (date-time)|
+|**endTime**  <br>*required*|Denotes the time till when the resource is available in a day, ISO-8601 format is followed.|string (date-time)|
+|**recurrence**  <br>*optional*|Recurrence object containing the recurrence pattern of schedule.|[Recurrence](#recurrence)|
+|**capacity**  <br>*optional*|Signifies the capacity of a resource which is available.  <br>**Minimum value** : `1`|integer|
+
+
+<a name="availabilityrecords"></a>
+### AvailabilityRecords
+List of AvailabilityRecords to represent the capacity of a resource over a time range.
+
+*Type* : < [AvailabilityRecord](#availabilityrecord) > array
+
+
+<a name="reservation"></a>
+### Reservation
+Reservation object reduces the capacity of a resource.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**reservationId**  <br>*optional*|Unique identifier for a reservation. If present, we treat it as an update reservation request and update the corresponding reservation. Otherwise, it's a new create reservation request.|string|
+|**type**  <br>*required*|Type of reservation.|enum ([Type](#type))|
+|**availability**  <br>*required*|AvailabilityRecord to represent the capacity of a resource over a time range.|[AvailabilityRecord](#availabilityrecord)|
+
+
+<a name="reservations"></a>
+### Reservations
+List of reservations.
+
+*Type* : < [Reservation](#reservation) > array
+
+
+<a name="updateschedulerecord"></a>
+### UpdateScheduleRecord
+UpdateScheduleRecord entity contains the AvailabilityRecord if there is an error/warning while performing the requested operation on it.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**availability**  <br>*optional*|Availability record if the operation failed.|[AvailabilityRecord](#availabilityrecord)|
+|**warnings**  <br>*optional*|Warnings encountered, if any.|[WarningList](#warninglist)|
+|**errors**  <br>*optional*|Errors encountered, if any.|[ErrorList](#errorlist)|
+
+
+<a name="createreservationrecord"></a>
+### CreateReservationRecord
+CreateReservationRecord entity contains the Reservation if there is an error/warning while performing the requested operation on it, otherwise it will contain the new reservationId.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**reservation**  <br>*optional*|Reservation record if the operation failed. It will only contain the new reservationId if the operation is successful.|[Reservation](#reservation)|
+|**warnings**  <br>*optional*|Warnings encountered, if any.|[WarningList](#warninglist)|
+|**errors**  <br>*optional*|Errors encountered, if any.|[ErrorList](#errorlist)|
+
+
+<a name="updatereservationrecord"></a>
+### UpdateReservationRecord
+UpdateReservationRecord entity contains the Reservation if there is an error/warning while performing the requested operation on it, otherwise it will contain the new reservationId.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**reservation**  <br>*optional*|Reservation record if the operation failed. It will only contain the new reservationId if the operation is successful.|[Reservation](#reservation)|
+|**warnings**  <br>*optional*|Warnings encountered, if any.|[WarningList](#warninglist)|
+|**errors**  <br>*optional*|Errors encountered, if any.|[ErrorList](#errorlist)|
+
+
+<a name="updateschedulerequest"></a>
+### UpdateScheduleRequest
+Request schema for updateSchedule operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**schedules**  <br>*required*|List of schedule objects to define the normal working hours of a resource.|[AvailabilityRecords](#availabilityrecords)|
+
+
+<a name="createreservationrequest"></a>
+### CreateReservationRequest
+Request schema for CreateReservation operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**resourceId**  <br>*required*|Resource (store) Identifier.|string|
+|**reservation**  <br>*required*|Reservation object to reduce the capacity of a resource.|[Reservation](#reservation)|
+
+
+<a name="updatereservationrequest"></a>
+### UpdateReservationRequest
+Request schema for UpdateReservation operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**resourceId**  <br>*required*|Resource (store) Identifier.|string|
+|**reservation**  <br>*required*|Reservation object to reduce the capacity of a resource.|[Reservation](#reservation)|
+
+
+<a name="serviceuploaddocument"></a>
+### ServiceUploadDocument
+Input for to be uploaded document.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**contentType**  <br>*required*|The content type of the to-be-uploaded file|enum ([ContentType](#contenttype))|
+|**contentLength**  <br>*required*|The content length of the to-be-uploaded file  <br>**Minimum value** : `1`  <br>**Maximum value** : `5242880`|number (int64)|
+|**contentMD5**  <br>*optional*|An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.  <br>**Pattern** : `"^[A-Za-z0-9\\\\+/]{22}={2}$"`|string|
+
+
+<a name="createservicedocumentuploaddestination"></a>
+### CreateServiceDocumentUploadDestination
+The response schema for the createServiceDocumentUploadDestination operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**payload**  <br>*optional*|Information about an upload destination.|[ServiceDocumentUploadDestination](#servicedocumentuploaddestination)|
+|**errors**  <br>*optional*|A list of error responses returned when a request is unsuccessful.|[ErrorList](#errorlist)|
+
+
+<a name="servicedocumentuploaddestination"></a>
+### ServiceDocumentUploadDestination
+Information about an upload destination.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**uploadDestinationId**  <br>*required*|The unique identifier to be used by APIs that reference the upload destination.|string|
+|**url**  <br>*required*|The URL to which to upload the file.|string|
+|**encryptionDetails**  <br>*required*|Encryption details for required client-side encryption and decryption of document contents.|[EncryptionDetails](#encryptiondetails)|
+|**headers**  <br>*optional*|The headers to include in the upload request.|object|
+
+
+<a name="encryptiondetails"></a>
+### EncryptionDetails
+Encryption details for required client-side encryption and decryption of document contents.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**standard**  <br>*required*|The encryption standard required to encrypt or decrypt the document contents.|enum ([Standard](#standard))|
+|**initializationVector**  <br>*required*|The vector to encrypt or decrypt the document contents using Cipher Block Chaining (CBC).|string|
+|**key**  <br>*required*|The encryption key used to encrypt or decrypt the document contents.|string|
+
+
 <a name="servicelocationtype"></a>
 ### ServiceLocationType
 The location of the service job.
@@ -679,6 +1224,39 @@ The status of the item.
 |**CANCELLED**|Indicates the item has been cancelled.|
 |**SHIPPED**|Indicates the item is shipped but not delivered.|
 |**DELIVERED**|Indicates the item is delivered.|
+
+
+<a name="type"></a>
+### Type
+Type of reservation.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**APPOINTMENT**|Reduce resource(store) capacity because of an appointment.|
+|**TRAVEL**|Reduce resource(store) capacity because technician(s) are travelling.|
+|**VACATION**|Reduce resource(store) capacity because technician(s) are on vacation.|
+|**BREAK**|Reduce resource(store) capacity because technician(s) are on break.|
+|**TRAINING**|Reduce resource(store) capacity because technician(s) are in training.|
+
+
+<a name="contenttype"></a>
+### ContentType
+The content type of the to-be-uploaded file
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**TIFF**|To be uploaded POA is of type image/tiff.|
+|**JPG**|To be uploaded POA is of type image/jpg.|
+|**PNG**|To be uploaded POA is of type image/png.|
+|**JPEG**|To be uploaded POA is of type image/jpeg.|
+|**GIF**|To be uploaded POA is of type image/gif.|
+|**PDF**|To be uploaded POA is of type application/pdf.|
 
 
 <a name="poatype"></a>
@@ -735,6 +1313,18 @@ Sort fields on which you want to sort the output.
 |**JOB_STATUS**|Sort on job status.|
 
 
+<a name="standard"></a>
+### Standard
+The encryption standard required to encrypt or decrypt the document contents.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**AES**|The Advanced Encryption Standard (AES).|
+
+
 <a name="appointmentstatus"></a>
 ### AppointmentStatus
 The status of the appointment.
@@ -766,7 +1356,7 @@ The status of the service job.
 |**HOLD**|Indicates that the appointment time preference given by customer cannot be serviced by the service provider.|
 |**PAYMENT_DECLINED**|Indicates that the customer payment has been declined.|
 
-<a id="servicejobstatus-subgroup-2"></a>**For use with the definition(s): [GetServiceJobs](#getservicejobs)**
+<a id="servicejobstatus-subgroup-2"></a>**For use with the operation(s): [getServiceJobs](#getservicejobs)**
 
 |Value|Description|
 |---|---|
