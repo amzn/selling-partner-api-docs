@@ -47,13 +47,14 @@ The Selling Partner API for Orders helps you programmatically retrieve order inf
 #### Description
 Returns orders created or updated during the time frame indicated by the specified parameters. You can also apply a range of filtering criteria to narrow the list of orders returned. If NextToken is present, that will be used to retrieve the orders instead of other criteria.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 0.0055 | 20 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -74,19 +75,22 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**Query**|**EasyShipShipmentStatuses**  <br>*optional*|A list of EasyShipShipmentStatus values. Used to select Easy Ship orders with statuses that match the specified  values. If EasyShipShipmentStatus is specified, only Amazon Easy Ship orders are returned.Possible values: PendingPickUp (Amazon has not yet picked up the package from the seller). LabelCanceled (The seller canceled the pickup). PickedUp (Amazon has picked up the package from the seller). AtOriginFC (The packaged is at the origin fulfillment center). AtDestinationFC (The package is at the destination fulfillment center). OutForDelivery (The package is out for delivery). Damaged (The package was damaged by the carrier). Delivered (The package has been delivered to the buyer). RejectedByBuyer (The package has been rejected by the buyer). Undeliverable (The package cannot be delivered). ReturnedToSeller (The package was not delivered to the buyer and was returned to the seller). ReturningToSeller (The package was not delivered to the buyer and is being returned to the seller).|< string > array|
 |**Query**|**NextToken**  <br>*optional*|A string token returned in the response of your previous request.|string|
 |**Query**|**AmazonOrderIds**  <br>*optional*|A list of AmazonOrderId values. An AmazonOrderId is an Amazon-defined order identifier, in 3-7-7 format.<br>**Max count** : 50|< string > array|
+|**Query**|**ActualFulfillmentSupplySourceId**  <br>*optional*|Denotes the recommended sourceId where the order should be fulfilled from.|string|
+|**Query**|**IsISPU**  <br>*optional*|When true, this order is marked to be picked up from a store rather than delivered.|boolean|
+|**Query**|**StoreChainStoreId**  <br>*optional*|The store chain store identifier. Linked to a specific store in a store chain.|string|
 
 
 #### Responses
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
 
 
 <a name="getorder"></a>
@@ -96,13 +100,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 #### Description
 Returns the order indicated by the specified order ID.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 0.0055 | 20 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -116,13 +121,13 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
 
 
 <a name="getorderbuyerinfo"></a>
@@ -132,13 +137,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 #### Description
 Returns buyer information for the order indicated by the specified order ID.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 0.0055 | 20 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -152,13 +158,13 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
 
 
 <a name="getorderaddress"></a>
@@ -168,13 +174,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 #### Description
 Returns the shipping address for the order indicated by the specified order ID.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 0.0055 | 20 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -188,13 +195,13 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
 
 
 <a name="getorderitems"></a>
@@ -206,13 +213,14 @@ Returns detailed order item information for the order indicated by the specified
 
 Note: When an order is in the Pending state (the order has been placed but payment has not been authorized), the getOrderItems operation does not return information about pricing, taxes, shipping charges, gift status or promotions for the order items in the order. After an order leaves the Pending state (this occurs when payment has been authorized) and enters the Unshipped, Partially Shipped, or Shipped state, the getOrderItems operation returns information about pricing, taxes, shipping charges, gift status and promotions for the order items in the order.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 0.0055 | 20 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -227,13 +235,13 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
 
 
 <a name="getorderitemsbuyerinfo"></a>
@@ -243,13 +251,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 #### Description
 Returns buyer information in the order items of the order indicated by the specified order ID.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 0.0055 | 20 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -264,13 +273,13 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
 
 
 <a name="definitions"></a>
@@ -402,8 +411,9 @@ Order information.
 |**PromiseResponseDueDate**  <br>*optional*|Indicates the date by which the seller must respond to the buyer with an estimated ship date. Returned only for Sourcing on Demand orders.|string|
 |**IsEstimatedShipDateSet**  <br>*optional*|When true, the estimated ship date is set for the order. Returned only for Sourcing on Demand orders.|boolean|
 |**IsSoldByAB**  <br>*optional*|When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.|boolean|
-|**AssignedShipFromLocationAddress**  <br>*optional*|The recommended location for the seller to ship the items from. It is calculated at checkout. The seller may or may not choose to ship from this location.|[Address](#address)|
+|**DefaultShipFromLocationAddress**  <br>*optional*|The recommended location for the seller to ship the items from. It is calculated at checkout. The seller may or may not choose to ship from this location.|[Address](#address)|
 |**FulfillmentInstruction**  <br>*optional*|Contains the instructions about the fulfillment like where should it be fulfilled from.|[FulfillmentInstruction](#fulfillmentinstruction)|
+|**IsISPU**  <br>*optional*|When true, this order is marked to be picked up from a store rather than delivered.|boolean|
 
 
 <a name="orderbuyerinfo"></a>
@@ -569,6 +579,7 @@ A single order item.
 |**SerialNumberRequired**  <br>*optional*|When true, the product type for this item has a serial number.<br><br>Returned only for Amazon Easy Ship orders.|boolean|
 |**IsTransparency**  <br>*optional*|When true, transparency codes are required.|boolean|
 |**IossNumber**  <br>*optional*|The IOSS number of the seller. Sellers selling in the EU will be assigned a unique IOSS number that must be listed on all packages sent to the EU.|string|
+|**StoreChainStoreId**  <br>*optional*|The store chain store identifier. Linked to a specific store in a store chain.|string|
 |**DeemedResellerCategory**  <br>*optional*|The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.|enum ([DeemedResellerCategory](#deemedresellercategory))|
 
 

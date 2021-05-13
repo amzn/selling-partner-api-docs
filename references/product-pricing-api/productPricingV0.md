@@ -47,13 +47,14 @@ The Selling Partner API for Pricing helps you programmatically retrieve product 
 #### Description
 Returns pricing information for a seller's offer listings based on seller SKU or ASIN.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 10 | 20 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -65,20 +66,21 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**Query**|**Skus**  <br>*optional*|A list of up to twenty seller SKU values used to identify items in the given marketplace.<br>**Max count** : 20|< string > array|
 |**Query**|**ItemType**  <br>*required*|Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.|enum ([ItemType](#itemtype-subgroup-1))|
 |**Query**|**ItemCondition**  <br>*optional*|Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.|enum ([ItemCondition](#itemcondition-subgroup-1))|
+|**Query**|**OfferType**  <br>*optional*|Indicates whether to request pricing information for the seller's B2C or B2B offers. Default is B2C.|enum ([OfferType](#offertype))|
 
 
 #### Responses
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 
 
 <a name="getcompetitivepricing"></a>
@@ -88,13 +90,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 #### Description
 Returns competitive pricing information for a seller's offer listings based on seller SKU or ASIN.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 10 | 20 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -105,20 +108,21 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**Query**|**Asins**  <br>*optional*|A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.<br>**Max count** : 20|< string > array|
 |**Query**|**Skus**  <br>*optional*|A list of up to twenty seller SKU values used to identify items in the given marketplace.<br>**Max count** : 20|< string > array|
 |**Query**|**ItemType**  <br>*required*|Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.|enum ([ItemType](#itemtype-subgroup-2))|
+|**Query**|**CustomerType**  <br>*optional*|Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.|enum ([CustomerType](#customertype-subgroup-1))|
 
 
 #### Responses
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 
 
 <a name="getlistingoffers"></a>
@@ -128,13 +132,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 #### Description
 Returns the lowest priced offers for a single SKU listing.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 5 | 10 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -144,20 +149,21 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**Query**|**MarketplaceId**  <br>*required*|A marketplace identifier. Specifies the marketplace for which prices are returned.|string|
 |**Query**|**ItemCondition**  <br>*required*|Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.|enum ([ItemCondition](#itemcondition-subgroup-1))|
 |**Path**|**SellerSKU**  <br>*required*|Identifies an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.|string|
+|**Query**|**CustomerType**  <br>*optional*|Indicates whether to request Consumer or Business offers. Default is Consumer.|enum ([CustomerType](#customertype-subgroup-2))|
 
 
 #### Responses
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 
 
 <a name="getitemoffers"></a>
@@ -167,13 +173,14 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 #### Description
 Returns the lowest priced offers for a single item based on ASIN.
 
-**Usage Plan:**
+**Usage Plans:**
 
-| Rate (requests per second) | Burst |
-| ---- | ---- |
-| 1 | 1 |
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 5 | 10 |
+|Selling partner specific| Variable | Variable |
 
-For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
 #### Parameters
@@ -183,20 +190,21 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**Query**|**MarketplaceId**  <br>*required*|A marketplace identifier. Specifies the marketplace for which prices are returned.|string|
 |**Query**|**ItemCondition**  <br>*required*|Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.|enum ([ItemCondition](#itemcondition-subgroup-2))|
 |**Path**|**Asin**  <br>*required*|The Amazon Standard Identification Number (ASIN) of the item.|string|
+|**Query**|**CustomerType**  <br>*optional*|Indicates whether to request Consumer or Business offers. Default is Consumer.|enum ([CustomerType](#customertype-subgroup-2))|
 
 
 #### Responses
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 
 
 <a name="definitions"></a>
@@ -343,6 +351,10 @@ A list of competitive pricing information.
 |**Price**  <br>*required*|Pricing information for a given CompetitivePriceId value.|[PriceType](#pricetype)|
 |**condition**  <br>*optional*|Indicates the condition of the item whose pricing information is returned. Possible values are: New, Used, Collectible, Refurbished, or Club.|string|
 |**subcondition**  <br>*optional*|Indicates the subcondition of the item whose pricing information is returned. Possible values are: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.|string|
+|**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.|[OfferCustomerType](#offercustomertype)|
+|**quantityTier**  <br>*optional*|Indicates at what quantity this price becomes active.|integer (int32)|
+|**quantityDiscountType**  <br>*optional*|Indicates the type of quantity discount this price applies to.|[QuantityDiscountType](#quantitydiscounttype)|
+|**sellerId**  <br>*optional*|The seller identifier for the offer.|string|
 |**belongsToRequester**  <br>*optional*|Indicates whether or not the pricing information is for an offer listing that belongs to the requester. The requester is the seller associated with the SellerId that was submitted with the request. Possible values are: true and false.|boolean|
 
 
@@ -409,15 +421,48 @@ A list of offers.
 
 <a name="offertype"></a>
 ### OfferType
+Indicates whether to request pricing information for the seller's B2C or B2B offers. Default is B2C.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**B2C**|B2C|
+|**B2B**|B2B|
+
+
+<a name="offercustomertype"></a>
+### OfferCustomerType
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**B2C**|B2C|
+|**B2B**|B2B|
+
+
+<a name="quantitydiscountpricetype"></a>
+### QuantityDiscountPriceType
+Contains pricing information that includes special pricing when buying in bulk.
+
 
 |Name|Description|Schema|
 |---|---|---|
-|**BuyingPrice**  <br>*required*|Contains pricing information that includes promotions and contains the shipping cost.|[PriceType](#pricetype)|
-|**RegularPrice**  <br>*required*|The current price excluding any promotions that apply to the product. Excludes the shipping cost.|[MoneyType](#moneytype)|
-|**FulfillmentChannel**  <br>*required*|The fulfillment channel for the offer listing. Possible values:<br><br><li> Amazon - Fulfilled by Amazon.</li><br><li> Merchant - Fulfilled by the seller.</li>|string|
-|**ItemCondition**  <br>*required*|The item condition for the offer listing. Possible values: New, Used, Collectible, Refurbished, or Club.|string|
-|**ItemSubCondition**  <br>*required*|The item subcondition for the offer listing. Possible values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.|string|
-|**SellerSKU**  <br>*required*|The seller stock keeping unit (SKU) of the item.|string|
+|**quantityTier**  <br>*required*|Indicates at what quantity this price becomes active.|integer (int32)|
+|**quantityDiscountType**  <br>*required*|Indicates the type of quantity discount this price applies to.|[QuantityDiscountType](#quantitydiscounttype)|
+|**price**  <br>*required*|The price at this quantity tier.|[MoneyType](#moneytype)|
+
+
+<a name="quantitydiscounttype"></a>
+### QuantityDiscountType
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**QuantityDiscount**|Quantity Discount|
 
 
 <a name="points"></a>
@@ -527,6 +572,9 @@ Indicates whether the item is fulfilled by Amazon or by the seller (merchant).
 |---|---|---|
 |**condition**  <br>*required*|Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.|string|
 |**fulfillmentChannel**  <br>*required*|Indicates whether the item is fulfilled by Amazon or by the seller.|string|
+|**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.|[OfferCustomerType](#offercustomertype)|
+|**quantityTier**  <br>*optional*|Indicates at what quantity this price becomes active.|integer (int32)|
+|**quantityDiscountType**  <br>*optional*|Indicates the type of quantity discount this price applies to.|[QuantityDiscountType](#quantitydiscounttype)|
 |**LandedPrice**  <br>*required*|The value calculated by adding ListingPrice + Shipping - Points.|[MoneyType](#moneytype)|
 |**ListingPrice**  <br>*required*|The price of the item.|[MoneyType](#moneytype)|
 |**Shipping**  <br>*required*|The shipping cost.|[MoneyType](#moneytype)|
@@ -539,10 +587,14 @@ Indicates whether the item is fulfilled by Amazon or by the seller (merchant).
 |Name|Description|Schema|
 |---|---|---|
 |**condition**  <br>*required*|Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.|string|
+|**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.|[OfferCustomerType](#offercustomertype)|
+|**quantityTier**  <br>*optional*|Indicates at what quantity this price becomes active.|integer (int32)|
+|**quantityDiscountType**  <br>*optional*|Indicates the type of quantity discount this price applies to.|[QuantityDiscountType](#quantitydiscounttype)|
 |**LandedPrice**  <br>*required*|The value calculated by adding ListingPrice + Shipping - Points.|[MoneyType](#moneytype)|
 |**ListingPrice**  <br>*required*|The price of the item.|[MoneyType](#moneytype)|
 |**Shipping**  <br>*required*|The shipping cost.|[MoneyType](#moneytype)|
 |**Points**  <br>*optional*|The number of Amazon Points offered with the purchase of an item.|[Points](#points)|
+|**sellerId**  <br>*optional*|The seller identifier for the offer.|string|
 
 
 <a name="offerdetaillist"></a>
@@ -556,11 +608,14 @@ Indicates whether the item is fulfilled by Amazon or by the seller (merchant).
 
 |Name|Description|Schema|
 |---|---|---|
+|**sellerId**  <br>*optional*|The seller identifier for the offer.|string|
 |**MyOffer**  <br>*optional*|When true, this is the seller's offer.|boolean|
+|**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.|[OfferCustomerType](#offercustomertype)|
 |**SubCondition**  <br>*required*|The subcondition of the item. Subcondition values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.|string|
 |**SellerFeedbackRating**  <br>*optional*|Information about the seller's feedback, including the percentage of positive feedback, and the total number of ratings received.|[SellerFeedbackType](#sellerfeedbacktype)|
 |**ShippingTime**  <br>*required*|The maximum time within which the item will likely be shipped once an order has been placed.|[DetailedShippingTimeType](#detailedshippingtimetype)|
 |**ListingPrice**  <br>*required*|The price of the item.|[MoneyType](#moneytype)|
+|**quantityDiscountPrices**  <br>*optional*|-|< [QuantityDiscountPriceType](#quantitydiscountpricetype) > array|
 |**Points**  <br>*optional*|The number of Amazon Points offered with the purchase of an item.|[Points](#points)|
 |**Shipping**  <br>*required*|The shipping cost.|[MoneyType](#moneytype)|
 |**ShipsFrom**  <br>*optional*|The state and country from where the item is shipped.|[ShipsFromType](#shipsfromtype)|
@@ -641,7 +696,7 @@ Indicates whether the item is available for shipping now, or on a known or an un
 ### ItemType
 *Type* : enum
 
-<a id="itemtype-subgroup-1"></a>**For use with the operation(s): [GetPricing](#getpricing)**
+<a id="itemtype-subgroup-1"></a>**For use with the operation(s): [getPricing](#getpricing)**
 Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
 
 |Value|Description|
@@ -649,7 +704,7 @@ Indicates whether ASIN values or seller SKU values are used to identify items. I
 |**Asin**|The Amazon Standard Identification Number (ASIN).|
 |**Sku**|The seller SKU.|
 
-<a id="itemtype-subgroup-2"></a>**For use with the operation(s): [GetCompetitivePricing](#getcompetitivepricing)**
+<a id="itemtype-subgroup-2"></a>**For use with the operation(s): [getCompetitivePricing](#getcompetitivepricing)**
 Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
 
 |Value|Description|
@@ -658,11 +713,32 @@ Indicates whether ASIN values or seller SKU values are used to identify items. I
 |**Sku**|The seller SKU.|
 
 
+<a name="customertype"></a>
+### CustomerType
+*Type* : enum
+
+<a id="customertype-subgroup-1"></a>**For use with the operation(s): [getCompetitivePricing](#getcompetitivepricing)**
+Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
+
+|Value|Description|
+|---|---|
+|**Consumer**|Consumer|
+|**Business**|Business|
+
+<a id="customertype-subgroup-2"></a>**For use with the operation(s): [getListingOffers](#getlistingoffers), [getItemOffers](#getitemoffers)**
+Indicates whether to request Consumer or Business offers. Default is Consumer.
+
+|Value|Description|
+|---|---|
+|**Consumer**|Consumer|
+|**Business**|Business|
+
+
 <a name="itemcondition"></a>
 ### ItemCondition
 *Type* : enum
 
-<a id="itemcondition-subgroup-1"></a>**For use with the operation(s): [GetPricing](#getpricing), [GetListingOffers](#getlistingoffers)**
+<a id="itemcondition-subgroup-1"></a>**For use with the operation(s): [getPricing](#getpricing), [getListingOffers](#getlistingoffers)**
 Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
 
 |Value|Description|
@@ -673,7 +749,7 @@ Filters the offer listings based on item condition. Possible values: New, Used, 
 |**Refurbished**|Refurbished|
 |**Club**|Club|
 
-<a id="itemcondition-subgroup-2"></a>**For use with the operation(s): [GetItemOffers](#getitemoffers)**
+<a id="itemcondition-subgroup-2"></a>**For use with the operation(s): [getItemOffers](#getitemoffers)**
 Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
 
 |Value|Description|

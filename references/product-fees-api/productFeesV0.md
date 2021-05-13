@@ -53,7 +53,7 @@ You can call getMyFeesEstimateForSKU for an item on behalf of a seller before th
 
 | Plan type | Rate (requests per second) | Burst |
 | ---- | ---- | ---- |
-|Default| 1 | 1 |
+|Default| 10 | 20 |
 |Selling partner specific| Variable | Variable |
 
 The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
@@ -87,7 +87,7 @@ You can call getMyFeesEstimateForASIN for an item on behalf of a seller before t
 
 | Plan type | Rate (requests per second) | Burst |
 | ---- | ---- | ---- |
-|Default| 1 | 1 |
+|Default| 10 | 20 |
 |Selling partner specific| Variable | Variable |
 
 The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
@@ -120,7 +120,7 @@ This table contains HTTP status codes and associated information for error respo
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 |**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 |**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[GetMyFeesEstimateResponse](#getmyfeesestimateresponse)|
