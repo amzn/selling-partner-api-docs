@@ -633,7 +633,7 @@ The following procedures show you how to construct an OAuth authorization URI, d
 
 1.  Get the Seller Central URL for the marketplace where you want selling partners to authorize your application. See [Seller Central URLs](#seller-central-urls) for a list of URLs by marketplace. Example: `https://sellercentral.amazon.com`
 
-2.  Combine the Seller Central URL with `/apps/authorize/consent?{your application ID}`.
+2.  Combine the Seller Central URL with `/apps/authorize/consent?application_id={your application ID}`.
 
     Example: `https://sellercentral.amazon.com/apps/authorize/consent?application_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28`
 
@@ -641,7 +641,7 @@ The following procedures show you how to construct an OAuth authorization URI, d
 
 1.  Get the Vendor Central URL for the marketplace where you want selling partners to authorize your application. See [Vendor Central URLs](#vendor-central-urls) for a list of URLs by marketplace. Example: `https://vendorcentral.amazon.com`
 
-2.  Combine the Vendor Central URL with `/apps/authorize/consent?{your application ID}`.
+2.  Combine the Vendor Central URL with `/apps/authorize/consent?application_id={your application ID}`.
 
     Example: `https://vendorcentral.amazon.com/apps/authorize/consent?application_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28`
 
