@@ -38,7 +38,7 @@ Vendors in the direct fulfillment program will want to see the Direct Fulfillmen
 
 Vendors can use these APIs to build applications to increase operational efficiency, reduce effort, reduce errors, and improve performance.
 
-For information on authentication and authorization, see the [Selling Partner API Developer Guide for Vendors](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuideForVendors.md).
+For information on authentication and authorization, see the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md).
 
 What is the Vendor Orders API?
 ==============================
