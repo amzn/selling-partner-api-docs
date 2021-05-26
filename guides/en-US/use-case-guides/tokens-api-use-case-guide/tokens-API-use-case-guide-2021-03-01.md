@@ -152,16 +152,18 @@ Request Example:
 ```
 POST https://sellingpartnerapi-na.amazon.com/tokens/2021-03-01/restrictedDataToken
 {
-	"restrictedResources": [{
-		"method": "GET",
-		"path": "/orders/v0/orders/902-3159896-1390916/address"
-	}, {
-		"method": "GET",
-		"path": "/orders/v0/orders/{orderId}/buyerInfo"
-	}, {
-		"method": "GET",
-		"path": "/mfn/v0/shipments/{shipmentId}"
-	}]
+  "restrictedResources": [
+    {
+      "method": "GET",
+      "path": "/orders/v0/orders/902-3159896-1390916/address"
+    }, {
+      "method": "GET",
+      "path": "/orders/v0/orders/{orderId}/buyerInfo"
+    }, {
+      "method": "GET",
+      "path": "/mfn/v0/shipments/{shipmentId}"
+    }
+  ]
 }
 ```
 **Response**
@@ -173,10 +175,10 @@ A successful response includes the following:
 Response Example:
 ```
 {
-	"payload": {
-		"restrictedDataToken": "Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR",
-		"expiresIn": 3600
-	}
+  "payload": {
+    "restrictedDataToken": "Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR",
+    "expiresIn": 3600
+  }
 }
 ```
 You now have an RDT that authorizes you to call the following restricted operations:
