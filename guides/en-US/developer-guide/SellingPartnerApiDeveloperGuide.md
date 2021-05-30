@@ -1511,7 +1511,7 @@ A successful response includes the following values.
 | **access_token**  | The LWA access token. Maximum size: 2048 bytes.   |
 | **token_type**    | The type of token returned. Must be *bearer*. |
 | **expires_in**    | The number of seconds before the LWA access token becomes invalid.  |
-| **refresh_token** | The LWA access token that you submitted in the request. Maximum size: 2048 bytes. |
+| **refresh_token** | The LWA refresh token that you submitted in the request. Maximum size: 2048 bytes. |
 ```http
 HTTP/l.l 200 OK
 Content-Type: application/json;charset UTF-8
