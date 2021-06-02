@@ -87,7 +87,7 @@ The following operations are available:
       </td>
       <td>GET</td>
       <td>/vendor/directFulfillment/orders/v1/purchaseOrders</td>
-      <td>Get a list of orders based on creation date range.</td>
+      <td>Get a list of orders based on creation date range.<p><b>Note:</b> This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md">Tokens API Use Case Guide</a>.</p></td>
     </tr>
     <tr class="even">
       <td>
@@ -95,7 +95,7 @@ The following operations are available:
       </td>
       <td>GET</td>
       <td>/vendor/directFulfillment/orders/v1/purchaseOrders /{purchaseOrderNumber}</td>
-      <td>Get order details of a specific order by purchase order number.</td>
+      <td>Get order details of a specific order by purchase order number.<p><b>Note:</b> This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md">Tokens API Use Case Guide</a>.</p></td>
     </tr>
     <tr class="odd">
       <td>
@@ -125,6 +125,8 @@ Get Purchase Orders
 -------------------
 
 The getOrders operation returns a list of order references (purchase order numbers) or complete order details for all orders which meet the criteria specified. If you return only the order numbers, you can use each order number later with the getOrder operation to get order details for a specific order.
+
+**Note:** This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md).
 
 You should use this API to get purchase orders available to you for fulfillment. Amazon recommends that vendors check for orders at least once per hour during business hours. Depending on your business volume, you may choose to check more frequently. You can return up to 100 orders in one API call. If there are more than 100 orders you can use the nextToken value in the response to get the next set of orders.
 
@@ -406,6 +408,8 @@ Get Purchase Order
 ------------------
 
 The [getOrder](https://github.com/amzn/selling-partner-api-docs/blob/main/references/vendor-direct-fulfillment-orders-api/vendorDirectFulfillmentOrdersV1.md#getorder) operation returns information about the purchase order that you specify using the purchase order number. The response includes complete purchase order information for the purchase order, including line item details, quantity, cost, etc.
+
+**Note:** This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md).
 
 You should use this API to get the details of specific orders returned by the [getOrders](https://github.com/amzn/selling-partner-api-docs/blob/main/references/vendor-direct-fulfillment-orders-api/vendorDirectFulfillmentOrdersV1.md#getorders) operation. You can also use this API to get details for any purchase order (in the time range of 7 days from a rolling window of last 6 months, after the vendor went live on API).
 
@@ -995,7 +999,7 @@ The following operations are available:
       </td>
       <td>GET</td>
       <td>/vendor/directFulfillment/shipping/v1/ shippingLabels</td>
-      <td>Get a list of shipping labels based on filter criterion.</td>
+      <td>Get a list of shipping labels based on filter criterion.<p><b>Note:</b> This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md">Tokens API Use Case Guide</a>.</p></td>
     </tr>
     <tr class="odd">
       <td>
@@ -1029,7 +1033,7 @@ The following operations are available:
       </td>
       <td>GET</td>
       <td>/vendor/directFulfillment/shipping/v1/packingSlips</td>
-      <td>Get a list of packing slips based on creation date range.</td>
+      <td>Get a list of packing slips based on creation date range.<p><b>Note:</b> This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md">Tokens API Use Case Guide</a>.</p></td>
     </tr>
     <tr class="odd">
       <td>
@@ -1045,7 +1049,7 @@ The following operations are available:
       </td>
       <td>GET</td>
       <td>/vendor/directFulfillment/shipping/v1/customerInvoices</td>
-      <td>Get a list of customer invoices based on filter criterion.</td>
+      <td>Get a list of customer invoices based on filter criterion.<p><b>Note:</b> This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md">Tokens API Use Case Guide</a>.</p></td>
     </tr>
     <tr class="odd">
       <td>
@@ -1216,6 +1220,8 @@ Get Shipping Labels
 -------------------
 
 The [getShippingLabels](https://github.com/amzn/selling-partner-api-docs/blob/main/references/vendor-direct-fulfillment-shipping-api/vendorDirectFulfillmentShippingV1.md#getShippingLabels) operation returns shipping labels for all orders which meet the filter criteria specified in the request. You must have already requested shipping labels using the [submitShippingLabelRequest](https://github.com/amzn/selling-partner-api-docs/blob/main/references/vendor-direct-fulfillment-shipping-api/vendorDirectFulfillmentShippingV1.md#submitshippinglabelrequest) operation before you use this API to get shipping labels available to you for fulfillment. Amazon recommends that vendors check for shipping labels at least once per hour during business hours. Depending on your business volume, you may choose to check more frequently. You can get up to 100 shipping labels in one API call. If there are more than 100 shipping labels you can use the nextToken value to get the next set of shipping labels.
+
+**Note:** This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md).
 
 The following diagram shows the integration workflow when retrieving shipping labels:
 
@@ -2032,6 +2038,8 @@ Get Packing Slips
 
 The [getPackingSlips](https://github.com/amzn/selling-partner-api-docs/blob/main/references/vendor-direct-fulfillment-shipping-api/vendorDirectFulfillmentShippingV1.md#getPackingSlips) operation returns a list of packing slips for the orders which meet the criteria specified. If you need to get a packing slip for a specific order, use the [getPackingSlip](https://github.com/amzn/selling-partner-api-docs/blob/main/references/vendor-direct-fulfillment-shipping-api/vendorDirectFulfillmentShippingV1.md#getpackingslip) operation instead.
 
+**Note:** This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md).
+
 You should use this API to get packing slips for the purchase orders available to you for fulfillment. Amazon recommends that vendors check for orders at least once per hour during business hours. Depending on your business volume, you may choose to check more frequently. You can get up to 100 packing slips in one API call. If there are more than 100 packing slips, you can use the nextToken value as a parameter in your next request to get the next set.
 
 The following diagram shows the integration workflow when retrieving packing slips:
@@ -2290,6 +2298,8 @@ Get Customer Invoices
 ---------------------
 
 The [getCustomerInvoices](https://github.com/amzn/selling-partner-api-docs/blob/main/references/vendor-direct-fulfillment-shipping-api/vendorDirectFulfillmentShippingV1.md#getCustomerInvoices) operation returns customer invoices for all purchase orders which meet the filter criteria you specify. The use of this API is mandatory only in the India region and not required in any other region. Amazon recommends that vendors check for customer invoices at least once per hour during business hours. Depending on your business volume, you may choose to check more frequently. You can get up to 100 customer invoices in one API call. If there are more than 100 customer invoices you can use the nextToken value as a parameter in the next request to get the next set of customer invoices.
+
+**Note:** This is a restricted operation and therefore requires a Restricted Data Token (RDT) for authorization. For more information, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md).
 
 The following diagram shows the integration workflow when retrieving customer invoices:
 
