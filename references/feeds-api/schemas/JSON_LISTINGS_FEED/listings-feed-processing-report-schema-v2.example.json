@@ -1,0 +1,35 @@
+{
+  "header": {
+    "sellerId": "AXXXXXXXXXXXX",
+    "version": "2.0",
+    "feedId": "1234567890"
+  },
+  "issues": [
+    {
+      "messageId": 4,
+      "code": "90220",
+      "severity": "ERROR",
+      "message": "'[batteries_required]' is required but not supplied."
+    },
+    {
+      "messageId": 4,
+      "code": "90220",
+      "severity": "ERROR",
+      "message": "'[supplier_declared_dg_hz_regulation]' is required but not supplied."
+    },
+    {
+      "messageId": 5,
+      "code": "99022",
+      "severity": "ERROR",
+      "message": "The field '\"prices\"' for the attribute 'purchasable_offer.our_price' does not have enough values. The required minimum is '1' value(s).",
+      "attributeName":"purchasable_offer.our_price"
+    }
+  ],
+  "summary": {
+    "errors": 3,
+    "warnings": 0,
+    "messagesProcessed": 4,
+    "messagesAccepted": 2,
+    "messagesInvalid": 2
+  }
+}
