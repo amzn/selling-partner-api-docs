@@ -778,7 +778,7 @@ Seller Central briefly displays a page indicating that Amazon is authorizing you
 | **state**  | The state value that you passed in the previous step.  |
 | **selling_partner_id** | The identifier of the selling partner who is authorizing your application. |
 | **mws_auth_token**  |  The **MWSAuthToken** value that you use when you create a query string for a call to Amazon Marketplace Web Service. The mws\_auth\_token parameter is only passed when the selling partner is authorizing a hybrid Selling Partner API (SP-API) application. Note that if you are the selling partner authorizing the hybrid SP-API application and the application owner (meaning you self-authorized your own Amazon MWS application) you will not receive the MWSAuthToken. For more information, see [Hybrid Selling Partner API applications](#hybrid-selling-partner-api-applications).|
-| **spapi_oauth_code**   | The Login with Amazon (LWA) authorization code that you exchange for an LWA refresh token. For more information, see [Step 5. Your](#step-5-your-application-exchanges-the-lwa-authorization-code-for-an-lwa-refresh-token) [application exchanges the LWA authorization code for an LWA](#step-5-your-application-exchanges-the-lwa-authorization-code-for-an-lwa-refresh-token) [refresh token](#step-5-your-application-exchanges-the-lwa-authorization-code-for-an-lwa-refresh-token). |
+| **spapi_oauth_code**   | The Login with Amazon (LWA) authorization code that you exchange for an LWA refresh token. For more information, see [Step 5. Your application exchanges the LWA authorization code for an LWA refresh token](#step-5-your-application-exchanges-the-lwa-authorization-code-for-an-lwa-refresh-token).<br/>**Note:** An LWA authorization code expires after five minutes. Be sure to exchange it for an LWA refresh token before it expires.|
 
    For example:
 ```
@@ -792,7 +792,11 @@ https://client-example.com?state=state-example&mws_auth_token=mwsauthtokenexampl
 
 ## Step 5. Your application exchanges the LWA authorization code for an LWA refresh token
 
-The Login with Amazon SDK for JavaScript can help you with the exchange of an LWA authorization code for an LWA refresh token. For more information, see the Login with Amazon documentation:
+The Login with Amazon SDK for JavaScript can help you with the exchange of an LWA authorization code for an LWA refresh token.
+
+**Note:** An LWA authorization code expires after five minutes. Be sure to exchange it for an LWA refresh token before it expires.
+
+For more information, see the Login with Amazon documentation:
 
   - [Add the Login with Amazon SDK for JavaScript](https://developer.amazon.com/docs/login-with-amazon/install-sdk-javascript.html)
 
@@ -957,7 +961,7 @@ Amazon briefly displays a page indicating that we are authorizing you to access 
 | **state** | The state value from [Step 1. The seller initiates authorization from](#step-1-the-seller-initiates-authorization-from-your-website) [your website](#step-1-the-seller-initiates-authorization-from-your-website). |
 | **selling_partner_id** | The identifier of the selling partner who is authorizing your application.    |
 | **mws_auth_token**  | The **MWSAuthToken** value that you use when you create a query string for a call to Amazon Marketplace Web Service. The mws\_auth\_token parameter is only passed when the selling partner is authorizing a hybrid Selling Partner API (SP-API) application. Note that if you are the selling partner authorizing the hybrid SP-API application and the application owner (meaning you self-authorized your own Amazon MWS application) you will not receive the MWSAuthToken. For more information, see [Hybrid Selling Partner API applications](#hybrid-selling-partner-api-applications). **For seller applications only.**|
-| **spapi_oauth_code**   | The Login with Amazon (LWA) authorization code that you exchange for an LWA refresh token. For more information, see [Step 4. Your](#step-4-your-application-exchanges-the-lwa-authorization-code-for-a-lwa-refresh-token) [application exchanges the LWA authorization code for a LWA refresh](#step-4-your-application-exchanges-the-lwa-authorization-code-for-a-lwa-refresh-token) [token](#step-4-your-application-exchanges-the-lwa-authorization-code-for-a-lwa-refresh-token). |
+| **spapi_oauth_code**   | The Login with Amazon (LWA) authorization code that you exchange for an LWA refresh token. For more information, see [Step 4. Your application exchanges the LWA authorization code for a LWA refresh token](#step-4-your-application-exchanges-the-lwa-authorization-code-for-a-lwa-refresh-token).<br/>**Note:** An LWA authorization code expires after five minutes. Be sure to exchange it for an LWA refresh token before it expires.|
 
 For example:
 ````
@@ -971,7 +975,11 @@ https://client-example.com?state=state-example&mws_auth_token=mwsauthtokenexampl
 
 ## Step 4. Your application exchanges the LWA authorization code for a LWA refresh token
 
-The Login with Amazon SDK for JavaScript can help you with the exchange of an LWA authorization code for an LWA refresh token. For more information, see the Login with Amazon documentation:
+The Login with Amazon SDK for JavaScript can help you with the exchange of an LWA authorization code for an LWA refresh token.
+
+**Note:** An LWA authorization code expires after five minutes. Be sure to exchange it for an LWA refresh token before it expires.
+
+For more information, see the Login with Amazon documentation:
 
   - [Add the Login with Amazon SDK for JavaScript](https://developer.amazon.com/docs/login-with-amazon/install-sdk-javascript.html)
 

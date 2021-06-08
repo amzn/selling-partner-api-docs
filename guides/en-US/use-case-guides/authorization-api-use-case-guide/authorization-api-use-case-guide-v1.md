@@ -38,6 +38,8 @@ For more information, see [Hybrid Selling Partner API applications](https://gith
 
 An LWA authorization code represents authorization to make calls to Selling Partner API on behalf of a seller who authorized you as an Amazon MWS developer.
 
+**Note:** An LWA authorization code expires after five minutes. Be sure to [exchange it for an LWA refresh token](#step-2-exchange-the-lwa-authorization-code-for-an-lwa-refresh-token) before it expires.
+
 **To get an LWA authorization code**
 
 1. Get the seller ID of the seller that previously authorized you as an Amazon MWS developer.
