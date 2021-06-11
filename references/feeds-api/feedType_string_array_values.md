@@ -1,3 +1,4 @@
+
 # feedType values
 
 A **feedType** value indicates to Amazon how to process a feed that you submit using the Feeds API. This page lists **feedType** values for the various feed types.
@@ -146,6 +147,12 @@ Feed types fall into these categories:
 <p><strong>feedType</strong> value: POST_INVOICE_CONFIRMATION_DATA</p><p>XSD: <a href="https://images-na.ssl-images-amazon.com/images/G/28/rainier/help/xsd/InvoiceConfirmation.xsd">InvoiceConfirmation.xsd</a></p></td>
 <td>
 <p>The Invoice Confirmation Feed</p></td>
+</tr>
+<tr class="even">
+<td><p><strong>Invoice Upload Feed</strong></p>
+<p><strong>feedType</strong> value: UPLOAD_VAT_INVOICE</p></td>
+<td>
+<p>Sellers who do not enrol in Amazon’s VAT Calculation Service can create invoices using their own tax calculation data.</p></td>
 </tr>
 <tr class="odd">
 <td><p><strong>Sourcing On Demand Feed</strong> (Japan only)</p>
