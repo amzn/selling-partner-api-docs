@@ -270,7 +270,7 @@ Path parameter:
 
 Request example:
 ```
-POST https://sellingpartnerapi-na.amazon.com/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments?contentType=image/png&contentMD5=9e92dc1ed22ffc814f063f02b1c0f233&marketplaceIds=ATVPDKIKX0DER
+POST https://sellingpartnerapi-na.amazon.com/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments?contentType=image/jpeg&contentMD5=9e92dc1ed22ffc814f063f02b1c0f233&marketplaceIds=ATVPDKIKX0DER
 ```
 **Response**
 
