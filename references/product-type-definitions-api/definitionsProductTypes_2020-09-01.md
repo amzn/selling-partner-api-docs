@@ -62,7 +62,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Query**|**keywords**  <br>*optional*|A comma-delimited list of keywords to search product types by.|< string > array(csv)|
-|**Query**|**marketplaceIds**  <br>*required*|A comma-delimited list of Amazon marketplace identifiers for the request.|< string > array(csv)|
+|**Query**|**marketplaceIds**  <br>*required*|A comma-delimited list of Amazon marketplace identifiers for the request.|string|
 
 
 #### Responses
