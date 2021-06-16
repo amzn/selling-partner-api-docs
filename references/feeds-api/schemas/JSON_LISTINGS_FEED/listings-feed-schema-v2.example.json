@@ -1,0 +1,68 @@
+{
+  "header": {
+    "sellerId": "AXXXXXXXXXXXX",
+    "version": "2.0",
+    "issueLocale": "en_US"
+  },
+  "messages": [
+    {
+      "messageId": 1,
+      "sku": "My-SKU-A",
+      "operationType": "DELETE"
+    },
+    {
+      "messageId": 2,
+      "sku": "My-SKU-B",
+      "operationType": "PARTIAL_UPDATE",
+      "productType": "LUGGAGE",
+      "attributes": {
+        "fulfillment_availability": [
+          {
+            "fulfillment_channel_code": "DEFAULT",
+            "quantity": 10
+          }
+        ]
+      }
+    },
+    {
+      "messageId": 3,
+      "sku": "My-SKU-C",
+      "operationType": "UPDATE",
+      "productType": "LUGGAGE",
+      "requirements": "LISTING",
+      "attributes": {
+        "item_name": [
+          {
+            "value": "My Title",
+            "language_tag": "en_US",
+            "marketplace_id": "ATVPDKIKX0DER"
+          }
+        ],
+        "fulfillment_availability": [
+          {
+            "fulfillment_channel_code": "AMAZON_NA",
+            "quantity": 10
+          }
+        ]
+      }
+    },
+    {
+      "messageId": 4,
+      "sku": "My-SKU-D",
+      "operationType": "PATCH",
+      "productType": "LUGGAGE",
+      "patches": [
+        {
+          "op": "replace",
+          "path": "/attributes/fulfillment_availability",
+          "value": [
+            {
+              "fulfillment_channel_code": "DEFAULT",
+              "quantity": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,36 +1,38 @@
 # Catalog Items Use Case Guide
 API Version: 2020-12-01
 # Contents
-	 
+
 * [What is the Catalog Items API?](#what-is-the-catalog-items-api)
 * [Tutorial: Retrieve details for an item in the Amazon catalog](#tutorial-retrieve-details-for-an-item-in-the-amazon-catalog)
-   * [Step 1: Submit catalog item GET request](#step-1-submit-catalog-item-get-request)
-	 
+   * [Step 1: Get information about a catalog item](#step-1-get-information-about-a-catalog-item)
+* [Tutorial: Search for items in the Amazon catalog](#tutorial-search-for-items-in-the-amazon-catalog)
+   * [Step 1: Get a list of catalog items and associated information](#step-1-get-a-list-of-catalog-items-and-associated-information)
+   * [Paging in the response to a search for items in the Amazon catalog](#paging-in-the-response-to-a-search-for-items-in-the-amazon-catalog)
+
 # What is the Catalog Items API?
-	 
-Using the Selling Partner API for Catalog Items (Catalog Items API), you can retrieve information about items in the Amazon catalog.
+
+Using the Selling Partner API for Catalog Items (Catalog Items API), you can retrieve information about items in the Amazon catalog. See the [Catalog Items API Reference](https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md) for details about API operations and associated data types and schemas.
 	 
 **Key Features**
 * **Retrieve Detailed Item Information**: The Catalog Items API provides details about items in the Amazon catalog, such as summarized item details, product identifiers, sales rankings, variations, and thumbnail images. Vendors may retrieve additional vendor-specific details and brand owners of items may retrieve additional attributes and image content.
-	 
+* **Search for Items**: The Catalog Items API allows you to search the Amazon catalog for existing items using keywords, including product identifiers.
+
 **Terminology**
 * **ASIN**: Amazon Standard Identification Number that identifies an item in the Amazon catalog.
 * **Variation**: Every color or size for a catalog item represents a variation that is assigned a different ASIN. They are grouped together as variations of one parent ASIN.  
-	 
 # Tutorial: Retrieve details for an item in the Amazon catalog
-	 
+
 Use this tutorial to retrieve information about an item in the Amazon catalog for the given ASIN and marketplaces.
 	 
 **Prerequisites**
- 
+
 To complete this tutorial, you will need:
 * Authorization from the Selling Partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 * Approval for the Product Listing role in your developer profile.
 * The Product Listing role selected in the App registration page for your application.  
-	 
-## Step 1: Submit catalog item GET request
-	 
-* Call the **getCatalogItem** operation, passing the following parameters:
+## Step 1: Get information about a catalog item
+
+Call the [getCatalogItem](https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#getcatalogitem) operation, passing the following parameters:
 	 
 **Request Parameters**
 
@@ -60,7 +62,7 @@ To complete this tutorial, you will need:
       <td>
         <code>XXXXXXXXXX</code>
       </td>
-      <td>Amazon Standard Identification Number for the item of interest.</td>
+      <td>Amazon Standard Identification Number for the item of interest.<p>Type: string</p></td>
       <td>Yes</td>
     </tr>
   </tbody>
@@ -93,12 +95,12 @@ To complete this tutorial, you will need:
       <td>
         <code>ATVPDKIKX0DER</code>
       </td>
-      <td>Comma-delimited list of Amazon marketplace identifiers.
+      <td>A comma-delimited list of Amazon marketplace identifiers.
         <br/>
         <br/>
         See the
         <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md" target="_blank">Selling Partner API Developer Guide</a>
-        for the list of Amazon marketplace identifiers.
+        for the list of Amazon marketplace identifiers.<p>Type: < string > array(csv)</p>
       </td>
       <td>Yes</td>
     </tr>
@@ -109,7 +111,7 @@ To complete this tutorial, you will need:
       <td>
         <code>summaries</code>
       </td>
-      <td>Comma-delimited list of item details to request. If none are specified, will default to returning
+      <td>A comma-delimited list of item details to request. If none are specified, will default to returning
         <code>summaries</code>
         data.
         <p>
@@ -147,12 +149,23 @@ To complete this tutorial, you will need:
               - Item vendor data. Available to vendors. Contains item replenishment, brand, and manufacturer information.
             </li>
           </ul>
-        </p>
+        </p><p>Type: < enum (<a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#includeddata-subgroup-2">IncludedData</a>) > array(csv)</p>
+      </td>
+      <td>No</td>
+    </tr><tr class="odd">
+      <td>
+        <code>locale</code>
+      </td>
+      <td>
+        <code>en_US</code>
+      </td>
+      <td>Locale for retrieving localized summaries. Defaults to the primary locale of the marketplace.<p>Type: string</p>
       </td>
       <td>No</td>
     </tr>
   </tbody>
 </table>
+
 
 **Example Request**
 ```plain
@@ -187,7 +200,7 @@ A successful response includes the following:
       <td>
         <code>XXXXXXXXXX</code>
       </td>
-      <td>The requested ASIN.</td>
+      <td>The requested ASIN.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#itemasin">ItemAsin</a></p></td>
     </tr>
     <tr class="odd">
       <td>
@@ -196,7 +209,7 @@ A successful response includes the following:
       <td>
         <em>See example response</em>
       </td>
-      <td>A JSON object containing detailed catalog item data. Values from multiple marketplaces are rolled up into a list under each attribute name.</td>
+      <td>A JSON object containing detailed catalog item data. Values from multiple marketplaces are rolled up into a list under each attribute name.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#itemattributes">ItemAttributes</a></p></td>
     </tr>
     <tr class="even">
       <td>
@@ -205,7 +218,7 @@ A successful response includes the following:
       <td>
         <em>See example response</em>
       </td>
-      <td>External identifiers such as UPC, EAN, etc., if applicable.</td>
+      <td>External identifiers such as UPC, EAN, etc., if applicable.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#itemidentifiers">ItemIdentifiers</a></p></td>
     </tr>
     <tr class="odd">
       <td>
@@ -214,7 +227,7 @@ A successful response includes the following:
       <td>
         <em>See example response</em>
       </td>
-      <td>Image data for the item.</td>
+      <td>Image data for the item.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#itemimages">ItemImages</a></p></td>
     </tr>
     <tr class="even">
       <td>
@@ -223,7 +236,7 @@ A successful response includes the following:
       <td>
         <em>See example response</em>
       </td>
-      <td>The product type category of the item within the Amazon catalog.</td>
+      <td>The product type category of the item within the Amazon catalog.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#itemproducttypes">ItemProductTypes</a></p></td>
     </tr>
     <tr class="odd">
       <td>
@@ -232,7 +245,7 @@ A successful response includes the following:
       <td>
         <em>See example response</em>
       </td>
-      <td>The sales ranking data for the item in every category it is tracked in.</td>
+      <td>The sales ranking data for the item in every category it is tracked in.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#itemsalesranks">ItemSalesRanks</a></p></td>
     </tr>
     <tr class="even">
       <td>
@@ -241,7 +254,7 @@ A successful response includes the following:
       <td>
         <em>See example response</em>
       </td>
-      <td>Summary of item data.</td>
+      <td>Summary of item data.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#itemsummaries">ItemSummaries</a></p></td>
     </tr>
     <tr class="odd">
       <td>
@@ -250,7 +263,7 @@ A successful response includes the following:
       <td>
         <em>See example response</em>
       </td>
-      <td>Other ASINs related to this one and whether this one is a parent ASIN or a child ASIN.</td>
+      <td>Other ASINs related to this one and whether this one is a parent ASIN or a child ASIN.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#itemvariations">ItemVariations</a></p></td>
     </tr>
     <tr class="even">
       <td>
@@ -259,15 +272,15 @@ A successful response includes the following:
       <td>
         <em>See example response</em>
       </td>
-      <td>Detailed vendor information for this product.</td>
+      <td>Detailed vendor information for this product.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#itemvendordetails">ItemVendorDetails</a></p></td>
     </tr>
   </tbody>
 </table>
 
-	 
+​	 
 **Example Response**
 
-	 
+
 ```plain
 {
   "asin": "B07N4M94X4",
@@ -771,3 +784,417 @@ A successful response includes the following:
   ]
 }
 ```
+
+# Tutorial: Search for items in the Amazon catalog
+
+Use this tutorial to search for items in the Amazon catalog.
+	 
+**Prerequisites**
+
+To complete this tutorial, you will need:
+* Authorization from the Selling Partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+* Approval for the Product Listing role in your developer profile.
+* The Product Listing role selected in the App registration page for your application.  
+## Step 1: Get a list of catalog items and associated information
+
+To search for and return a list of catalog items with the optional associated information you specify, call the searchCatalogItems operation.
+
+Call the [searchCatalogItems](https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#searchcatalogitems) operation, passing the following parameters:
+	 
+**Request Parameters**
+
+**Query Parameters**
+
+<table width="100%">
+  <thead>
+    <tr class="header">
+      <th>
+        <b>Parameter</b>
+      </th>
+      <th>
+        <b>Example</b>
+      </th>
+      <th>
+        <b>Description</b>
+      </th>
+      <th>
+        <b>Required</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr class="odd">
+      <td>
+        <code>keywords</code>
+      </td>
+      <td>
+        <code>shoes</code>
+      </td>
+      <td>A comma-delimited list of words or item identifiers to search the Amazon catalog for.
+        <p>Type: < string > array(csv)</p>
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr class="even">
+      <td>
+        <code>marketplaceIds</code>
+      </td>
+      <td>
+        <code>ATVPDKIKX0DER</code>
+      </td>
+      <td>A comma-delimited list of Amazon marketplace identifiers.
+        <br/>
+        <br/>
+        See the
+        <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md" target="_blank">Selling Partner API Developer Guide</a>
+        for the list of Amazon marketplace identifiers.<p>Type: < string > array(csv)</p>
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr class="odd">
+      <td>
+        <code>includedData</code>
+      </td>
+      <td>
+        <code>summaries</code>
+      </td>
+      <td>A comma-delimited list of item details to request. If none are specified, will default to returning
+        <code>summaries</code>
+        data.
+        <p>
+          <ul>
+            <li>
+              <code>identifiers</code>
+              - External item identifiers such as EAN, UPC, ISBN, etc.
+            </li>
+            <li>
+              <code>images</code>
+              - Product images. Each product image will contain the name of the image variant, resolution, and a link to download the image. All requests for images will include the MAIN product image at small resolution. Requests from brand owners will additionally include other image variants at full resolution.
+            </li>
+            <li>
+              <code>productTypes</code>
+              - Item product type data. The category this product sells under in the Amazon marketplace.
+            </li>
+            <li>
+              <code>salesRanks</code>
+              - Item sales ranking data. Each sales ranking will contain the name of the category, the item's ranking, and a link to the sales ranking page on the retail website.
+            </li>
+            <li>
+              <code>summaries</code>
+              - Summary of item data. Basic attributes such as the item name, manufacturer, and brand.
+            </li>
+            <li>
+              <code>variations</code>
+              - Item variation data. Contains the list of the ASINs of the items related to this item and whether this item is a child or parent item.
+            </li>
+            <li>
+              <code>vendorDetails</code>
+              - Item vendor data. Available to vendors. Contains item replenishment, brand, and manufacturer information.
+            </li>
+          </ul>
+        </p><p>Type: < enum (<a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#includeddata-subgroup-1">IncludedData</a>) > array(csv)</p>
+      </td>
+      <td>No</td>
+    </tr>
+    <tr class="even">
+      <td>
+        <code>brandNames</code>
+      </td>
+      <td>
+        <code>Beautiful Boats</code>
+      </td>
+      <td>A comma-delimited list of brand names to limit the search to.<p>Type: < string > array(csv)</p></td>
+      <td>No</td>
+    </tr>
+    </tr>
+    <tr class="odd">
+      <td>
+        <code>classificationIds</code>
+      </td>
+      <td>
+        <code>12345678</code>
+      </td>
+      <td>A comma-delimited list of classification identifiers to limit the search to.<p>Type: < string > array(csv)</p></td>
+      <td>No</td>
+    </tr>
+    </tr>
+    <tr class="even">
+      <td>
+        <code>pageSize</code>
+      </td>
+      <td>
+        <code>9</code>
+      </td>
+      <td>Number of results to be returned per page. <p>Default: 10</p><p>Type: integer</p></td>
+      <td>No</td>
+    </tr>
+    </tr>
+    <tr class="odd">
+      <td>
+        <code>pageToken</code>
+      </td>
+      <td><em>See example response.</em></td>
+      <td>A token to fetch a certain page when there are multiple pages worth of results.<p>Type: string</p></td>
+      <td>No</td>
+    </tr>
+    </tr>
+    <tr class="even">
+      <td>
+        <code>keywordsLocale</code>
+      </td>
+      <td>
+        <code>en-US</code>
+      </td>
+      <td>The language the keywords are provided in. Keywords will be translated to the response locale for searching if the two differ.<p>Type: string</p></td>
+      <td>No</td>
+    </tr>
+    </tr>
+    <tr class="odd">
+      <td>
+        <code>locale</code>
+      </td>
+      <td>
+        <code>es-US</code>
+      </td>
+      <td>Return results in this language, if available. If this parameter is not specified, the results will be returned in the marketplace's default language.<p>Type: string</p></td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+
+**Example Request**
+
+```plain
+GET https://sellingpartnerapi-na.amazon.com/catalog/2020-12-01/items
+   ?keywords=red,polo,shirt
+   &marketplaceIds=ATVPDKIKX0DER
+   &includedData=summaries
+   &pageSize=5
+```
+
+**Response**
+
+A successful response includes the following:
+
+<table width="100%">
+  <thead>
+    <tr class="header">
+      <th>
+        <b>Name</b>
+      </th>
+      <th>
+        <b>Example</b>
+      </th>
+      <th>
+        <b>Description</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even">
+      <td>
+        <code>numberOfResults</code>
+      </td>
+      <td>
+        <code>3097</code>
+      </td>
+      <td>The total number of products matched by the search query (only results up to the page count limit will be returned per request regardless of the number found).<p>Type: integer</p></td>
+    </tr>
+    <tr class="odd">
+      <td>
+        <code>pagination</code>
+      </td>
+      <td>
+        <em>See example response</em>
+      </td>
+      <td>A JSON object containing one or more page tokens that can be used to fetch the next or previous page of results.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#pagination">Pagination</a></p></td>
+    </tr>
+    <tr class="even">
+      <td>
+        <code>refinements</code>
+      </td>
+      <td>
+        <em>See example response</em>
+      </td>
+      <td>A JSON object containing keys that can be used to refine the search results down to certain brands or categories.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#refinements">Refinements</a></p></td>
+    </tr>
+    <tr class="odd">
+      <td>
+        <code>items</code>
+      </td>
+      <td>
+        <em>See example response</em>
+      </td>
+      <td>A list of items from the Amazon catalog.<p>Type: < <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#item">Item</a> > array</p></td>
+    </tr>
+  </tbody>
+</table>
+
+
+​	 
+**Example Response**
+
+
+```plain
+{
+    "numberOfResults": 12247,
+    "pagination": {
+        "nextToken": "9HkIVcuuPmX_bm51o3-igBfN45pxW4Ru7ElIM6GCECYCuXJKzT26f-AlJJZYjIPp8wkOEmQdma1wt_JvE7qiRmNsKy7hH"
+    },
+    "refinements": {
+        "brands": [
+            {
+                "numberOfResults": 91,
+                "brandName": "Polo Ralph Lauren"
+            },
+            {
+                "numberOfResults": 79,
+                "brandName": "Eddie Bauer"
+            },
+            {
+                "numberOfResults": 46,
+                "brandName": "Cutter & Buck"
+            },
+            {
+                "numberOfResults": 39,
+                "brandName": "FILA"
+            },
+            {
+                "numberOfResults": 37,
+                "brandName": "Orvis"
+            }
+        ],
+        "classifications": [
+            {
+                "numberOfResults": 1243,
+                "displayName": "Clothing, Shoes & Jewelry",
+                "classificationId": "7141124011"
+            },
+            {
+                "numberOfResults": 126,
+                "displayName": "Sports & Outdoors",
+                "classificationId": "3375301"
+            }
+        ]
+    },
+    "items": [
+        {
+            "asin": "B002N36Q3M",
+            "summaries": [
+                {
+                    "marketplaceId": "ATVPDKIKX0DER",
+                    "brandName": "Fred Perry",
+                    "colorName": "Wht/Brt Red/Nvy",
+                    "itemName": "Fred Perry Men's Twin Tipped Polo Shirt-M1200, WHT/BRT RED/NVY, X-Large",
+                    "manufacturer": "Fred Perry Men's Apparel",
+                    "modelNumber": "M1200",
+                    "sizeName": "X-Large",
+                    "styleName": "Twin Tipped Polo Shirt-m1200"
+                }
+            ]
+        },
+        {
+            "asin": "B002N3ABSI",
+            "summaries": [
+                {
+                    "marketplaceId": "ATVPDKIKX0DER",
+                    "brandName": "Fred Perry",
+                    "colorName": "White/Bright Red/Navy",
+                    "itemName": "Fred Perry Men's Twin Tipped Polo, White/Bright Red/Navy, SM",
+                    "manufacturer": "Fred Perry Apparel Mens",
+                    "modelNumber": "M1200-748",
+                    "sizeName": "SM",
+                    "styleName": "Twin Tipped Fred Perry Polo"
+                }
+            ]
+        },
+        {
+            "asin": "B01N5B3598",
+            "summaries": [
+                {
+                    "marketplaceId": "ATVPDKIKX0DER",
+                    "brandName": "NHL",
+                    "colorName": "Red",
+                    "itemName": "NHL New Jersey Devils Men's Polo, Small, Red",
+                    "manufacturer": "Knight's Apparel",
+                    "modelNumber": "H0MEE3ZAMZ",
+                    "sizeName": "Small"
+                }
+            ]
+        },
+        {
+            "asin": "B00HIVDUXI",
+            "summaries": [
+                {
+                    "marketplaceId": "ATVPDKIKX0DER",
+                    "brandName": "adidas",
+                    "colorName": "Bold Red/White",
+                    "itemName": "Adidas Golf Men's Puremotion Textured Stripe Polo, Bold Red/White, Large",
+                    "manufacturer": "TaylorMade - Adidas Golf Apparel",
+                    "modelNumber": "TM3010S4",
+                    "sizeName": "Large"
+                }
+            ]
+        },
+        {
+            "asin": "B005ZZ12YS",
+            "summaries": [
+                {
+                    "marketplaceId": "ATVPDKIKX0DER",
+                    "brandName": "RALPH LAUREN",
+                    "colorName": "Black / Red Pony",
+                    "itemName": "Polo Ralph Lauren Men's Long-sleeved T-shirt / Sleepwear / Thermal in Black, Red Pony (Large / L)",
+                    "sizeName": "Large"
+                }
+            ]
+        }
+    ]
+}
+```
+
+## Paging in the response to a search for items in the Amazon catalog
+When a call to the [searchCatalogItems](https://github.com/amzn/selling-partner-api-docs/blob/main/references/catalog-items-api/catalogItems_2020-12-01.md#searchcatalogitems) operation produces a response that exceeds the `pageSize`, pagination occurs. This means the response is divided into individual pages, where each page is returned in successive calls. To retrieve the next page or the previous page, you must pass the `nextToken` value or the `previousToken` value as the `pageToken` parameter in the next request. 
+
+You get the first page of results when you call the searchCatalogItems operation and provide no page token. You then iterate through the rest of the pages using the `nextToken` page token provided in successive responses. 
+
+Page tokens are special values that are decoded to determine which page is requested and how many pages are before or after.
+
+If the next or previous page is not available, the corresponding page token attribute (`nextToken` or `previousToken` respectively) will not be present in the `pagination` object. 
+
+Examples:
+
+When the response does not exceed the `pageSize`, there is no pagination, so there is no `nextToken` or `previousToken`:
+
+```plain
+"pagination": {
+},
+```
+
+When the response exceeds the `pageSize` and pagination occurs:
+
+For the first page, there is no previous page, so there is no `previousToken`:
+
+```plain
+"pagination": {
+  "nextToken": "XXXXXX"
+},
+```
+
+For the last page, there is no next page, so there is no `nextToken`:
+
+```plain
+"pagination": {
+  "previousToken": "XXXXXX"
+},
+```
+
+For all other pages:
+
+```plain
+"pagination": {
+  "nextToken": "XXXXXX",
+  "previousToken": "XXXXXX"
+},
+```
+
+Note: Even though there can be more than 1000 ASINs that match the search criteria, the maximum number of results that can be returned and paged through is limited to 1000. For example, if the caller sets the `pageSize` to 10, the maximum number of possible pages is 100.

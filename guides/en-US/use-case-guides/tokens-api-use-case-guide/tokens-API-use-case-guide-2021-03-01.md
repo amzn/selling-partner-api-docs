@@ -11,9 +11,8 @@ Contents
     - [Terminology](#terminology)
 
 - [Restricted operations](#restricted-operations)
-
     - [Restricted report types](#restricted-report-types)
-
+    
 - [Tutorial: Get an RDT and call restricted operations](#tutorial-get-an-rdt-and-call-restricted-operations)
 
     - [Step 1. Get an RDT](#step-1-get-an-rdt)
@@ -55,17 +54,16 @@ Restricted operations return customers' Personally Identifiable Information (PII
 
 Here is list of restricted operations, grouped by API:
 
-Orders API:
+Direct Fulfillment Orders API:
 
--   getOrderBuyerInfo
+-   getOrders
+-   getOrder
 
--   getOrderAddress
+Direct Fulfillment Shipping API:
 
--   getOrderItemsBuyerInfo
-
-Shipping API:
-
--   getShipment
+-   getShippingLabels
+-   getPackingSlips
+-   getCustomerInvoices
 
 Merchant Fulfillment API:
 
@@ -77,6 +75,14 @@ Merchant Fulfillment API:
 
 -   createShipment
 
+Orders API:
+
+-   getOrderBuyerInfo
+
+-   getOrderAddress
+
+-   getOrderItemsBuyerInfo
+
 Reports API:
 
 -   getReportDocument
@@ -86,6 +92,14 @@ Reports API:
     -  The getReportDocument operation is considered a restricted operation only when a restricted report is specified. See the list of restricted report types below.
 
     -  When calling the createRestrictedDataToken operation to get an RDT for the getReportDocument operation, the specified restricted resource can contain only a specific path, not a generic path. For more information, see [Tutorial: Get an RDT and call restricted operations](#tutorial-get-an-rdt-and-call-restricted-operations) and [Terminology](#terminology).
+
+Shipment Invoicing:
+
+-   getShipmentDetails
+
+Shipping API:
+
+-   getShipment
 
 Restricted report types
 -----------------------
@@ -152,31 +166,33 @@ Request Example:
 ```
 POST https://sellingpartnerapi-na.amazon.com/tokens/2021-03-01/restrictedDataToken
 {
-	"restrictedResources": [{
-		"method": "GET",
-		"path": "/orders/v0/orders/902-3159896-1390916/address"
-	}, {
-		"method": "GET",
-		"path": "/orders/v0/orders/{orderId}/buyerInfo"
-	}, {
-		"method": "GET",
-		"path": "/mfn/v0/shipments/{shipmentId}"
-	}]
+  "restrictedResources": [
+    {
+      "method": "GET",
+      "path": "/orders/v0/orders/902-3159896-1390916/address"
+    }, {
+      "method": "GET",
+      "path": "/orders/v0/orders/{orderId}/buyerInfo"
+    }, {
+      "method": "GET",
+      "path": "/mfn/v0/shipments/{shipmentId}"
+    }
+  ]
 }
 ```
 **Response**
 
 A successful response includes the following:
 
-<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>restrictedDataToken</td><td><p>A Restricted Data Token (RDT). This is a short-lived access token that authorizes you to call the restricted operations represented by the restricted resources that you specified. Pass the RDT value in the <code>x-amzn-access-token</code> header when making subsequent calls to the restricted operations.</p><p>Type: string</p></td></tr><tr class="even"><td>expiresIn</td><td><p>The lifetime of the RDT, in seconds.</p><p>Type: integer</p></td></tr></tbody></table>
+<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>restrictedDataToken</td><td><p>A Restricted Data Token (RDT). This is a short-lived access token that authorizes you to call the restricted operations represented by the restricted resources that you specified. Pass the RDT value in the <code>x-amz-access-token</code> header when making subsequent calls to the restricted operations.</p><p>Type: string</p></td></tr><tr class="even"><td>expiresIn</td><td><p>The lifetime of the RDT, in seconds.</p><p>Type: integer</p></td></tr></tbody></table>
 
 Response Example:
 ```
 {
-	"payload": {
-		"restrictedDataToken": "Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR",
-		"expiresIn": 3600
-	}
+  "payload": {
+    "restrictedDataToken": "Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR",
+    "expiresIn": 3600
+  }
 }
 ```
 You now have an RDT that authorizes you to call the following restricted operations:

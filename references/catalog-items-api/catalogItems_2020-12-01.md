@@ -11,13 +11,13 @@ The Selling Partner API for Catalog Items provides programmatic access to inform
 
 
 ### Contact information
-*Contact* : Selling Partner API Developer Support  
+*Contact* : Selling Partner API Developer Support  
 *Contact URL* : https://sellercentral.amazon.com/gp/mws/contactus.html  
 
 
 ### License information
 *License* : Apache License 2.0  
-*License URL* : http://www.apache.org/licenses/LICENSE-2.0  
+*License URL* : http://www.apache.org/licenses/LICENSE-2.0  
 
 
 ### URI scheme
@@ -36,9 +36,58 @@ The Selling Partner API for Catalog Items provides programmatic access to inform
 
 
 ### Operations
-[getCatalogItem](#getcatalogitem)<br>
+[searchCatalogItems](#searchcatalogitems)<br>[getCatalogItem](#getcatalogitem)<br>
 <a name="paths"></a>
 ## Paths
+
+<a name="searchcatalogitems"></a>
+### GET /catalog/2020-12-01/items
+**Operation: searchCatalogItems**
+
+#### Description
+Search for and return a list of Amazon catalog items and associated information.
+
+**Usage Plans:**
+
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 1 | 5 |
+|Selling partner specific| Variable | Variable |
+
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|Default|
+|---|---|---|---|---|
+|**Query**|**keywords**  <br>*required*|A comma-delimited list of words or item identifiers to search the Amazon catalog for.|< string > array(csv)|-|
+|**Query**|**marketplaceIds**  <br>*required*|A comma-delimited list of Amazon marketplace identifiers for the request.<br>**Max count** : 1|< string > array(csv)|-|
+|**Query**|**includedData**  <br>*optional*|A comma-delimited list of data sets to include in the response. Default: summaries.|< enum ([IncludedData](#includeddata-subgroup-1)) > array(csv)|-|
+|**Query**|**brandNames**  <br>*optional*|A comma-delimited list of brand names to limit the search to.|< string > array(csv)|-|
+|**Query**|**classificationIds**  <br>*optional*|A comma-delimited list of classification identifiers to limit the search to.|< string > array(csv)|-|
+|**Query**|**pageSize**  <br>*optional*|Number of results to be returned per page.<br>**Maximum** : 20|integer|`10`|
+|**Query**|**pageToken**  <br>*optional*|A token to fetch a certain page when there are multiple pages worth of results.|string|-|
+|**Query**|**keywordsLocale**  <br>*optional*|The language the keywords are provided in. Defaults to the primary locale of the marketplace.|string|-|
+|**Query**|**locale**  <br>*optional*|Locale for retrieving localized summaries. Defaults to the primary locale of the marketplace.|string|-|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ItemSearchResults](#itemsearchresults)|
+
+For error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+#### Consumes
+
+* `application/json`
+
+
+#### Produces
+
+* `application/json`
+
 
 <a name="getcatalogitem"></a>
 ### GET /catalog/2020-12-01/items/{asin}
@@ -63,7 +112,8 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |---|---|---|---|
 |**Path**|**asin**  <br>*required*|The Amazon Standard Identification Number (ASIN) of the item.|string|
 |**Query**|**marketplaceIds**  <br>*required*|A comma-delimited list of Amazon marketplace identifiers. Data sets in the response contain data only for the specified marketplaces.|< string > array(csv)|
-|**Query**|**includedData**  <br>*optional*|A comma-delimited list of data sets to include in the response.|< enum ([IncludedData](#includeddata)) > array(csv)|
+|**Query**|**includedData**  <br>*optional*|A comma-delimited list of data sets to include in the response. Default: summaries.|< enum ([IncludedData](#includeddata-subgroup-2)) > array(csv)|
+|**Query**|**locale**  <br>*optional*|Locale for retrieving localized summaries. Defaults to the primary locale of the marketplace.|string|
 
 
 #### Responses
@@ -94,7 +144,7 @@ This table contains HTTP status codes and associated information for error respo
 |---|---|---|
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
-|**404**|The resource specified does not exist.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
+|**404**|The resource specified does not exist.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**413**|The request size exceeded the maximum accepted size.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**415**|The request payload is in an unsupported format.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
@@ -135,7 +185,7 @@ An item in the Amazon catalog.
 |Name|Description|Schema|
 |---|---|---|
 |**asin**  <br>*required*|Amazon Standard Identification Number (ASIN) is the unique identifier for an item in the Amazon catalog.|[ItemAsin](#itemasin)|
-|**attributes**  <br>*optional*|A JSON object that contains structured item attribute data keyed by attribute name. Catalog item attributes are available only to brand owners.|[ItemAttributes](#itemattributes)|
+|**attributes**  <br>*optional*|A JSON object that contains structured item attribute data keyed by attribute name. Catalog item attributes are available only to brand owners and conform to the related product type definitions available in the Selling Partner API for Product Type Definitions.|[ItemAttributes](#itemattributes)|
 |**identifiers**  <br>*optional*|Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.|[ItemIdentifiers](#itemidentifiers)|
 |**images**  <br>*optional*|Images for an item in the Amazon catalog. All image variants are provided to brand owners. Otherwise, a thumbnail of the "MAIN" image variant is provided.|[ItemImages](#itemimages)|
 |**productTypes**  <br>*optional*|Product types associated with the Amazon catalog item.|[ItemProductTypes](#itemproducttypes)|
@@ -154,7 +204,7 @@ Amazon Standard Identification Number (ASIN) is the unique identifier for an ite
 
 <a name="itemattributes"></a>
 ### ItemAttributes
-A JSON object that contains structured item attribute data keyed by attribute name. Catalog item attributes are available only to brand owners.
+A JSON object that contains structured item attribute data keyed by attribute name. Catalog item attributes are available only to brand owners and conform to the related product type definitions available in the Selling Partner API for Product Type Definitions.
 
 *Type* : object
 
@@ -335,21 +385,62 @@ Vendor details associated with an Amazon catalog item for the indicated Amazon m
 |**subcategoryCode**  <br>*optional*|Product subcategory associated with an Amazon catalog item.|string|
 
 
-<a name="includeddata"></a>
-### IncludedData
-*Type* : enum
+<a name="itemsearchresults"></a>
+### ItemSearchResults
+Items in the Amazon catalog and search related metadata.
 
 
-|Value|Description|
-|---|---|
-|**attributes**|A JSON object that contains structured item attribute data keyed by attribute name. Catalog item attributes are available only to brand owners.|
-|**identifiers**|Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.|
-|**images**|Images for an item in the Amazon catalog. All image variants are provided to brand owners. Otherwise, a thumbnail of the "MAIN" image variant is provided.|
-|**productTypes**|Product types associated with the Amazon catalog item.|
-|**salesRanks**|Sales ranks of an Amazon catalog item.|
-|**summaries**|Summary details of an Amazon catalog item.|
-|**variations**|Variation details of an Amazon catalog item (variation relationships).|
-|**vendorDetails**|Vendor details associated with an Amazon catalog item. Vendor details are available to vendors only.|
+|Name|Description|Schema|
+|---|---|---|
+|**numberOfResults**  <br>*required*|The estimated total number of products matched by the search query (only results up to the page count limit will be returned per request regardless of the number found).<br><br>Note: The maximum number of items (ASINs) that can be returned and paged through is 1000.|integer|
+|**pagination**  <br>*required*|If available, the nextToken and/or previousToken values required to return paginated results.|[Pagination](#pagination)|
+|**refinements**  <br>*required*|Search refinements.|[Refinements](#refinements)|
+|**items**  <br>*required*|A list of items from the Amazon catalog.|< [Item](#item) > array|
+
+
+<a name="pagination"></a>
+### Pagination
+When a request produces a response that exceeds the pageSize, pagination occurs. This means the response is divided into individual pages. To retrieve the next page or the previous page, you must pass the nextToken value or the previousToken value as the pageToken parameter in the next request. When you receive the last page, there will be no nextToken key in the pagination object.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**nextToken**  <br>*optional*|A token that can be used to fetch the next page.|string|
+|**previousToken**  <br>*optional*|A token that can be used to fetch the previous page.|string|
+
+
+<a name="refinements"></a>
+### Refinements
+Search refinements.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**brands**  <br>*required*|Brand search refinements.|< [BrandRefinement](#brandrefinement) > array|
+|**classifications**  <br>*required*|Classification search refinements.|< [ClassificationRefinement](#classificationrefinement) > array|
+
+
+<a name="brandrefinement"></a>
+### BrandRefinement
+Description of a brand that can be used to get more fine-grained search results.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**numberOfResults**  <br>*required*|The estimated number of results that would still be returned if refinement key applied.|integer|
+|**brandName**  <br>*required*|Brand name. For display and can be used as a search refinement.|string|
+
+
+<a name="classificationrefinement"></a>
+### ClassificationRefinement
+Description of a classification that can be used to get more fine-grained search results.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**numberOfResults**  <br>*required*|The estimated number of results that would still be returned if refinement key applied.|integer|
+|**displayName**  <br>*required*|Display name for the classification.|string|
+|**classificationId**  <br>*required*|Identifier for the classification that can be used for search refinement purposes.|string|
 
 
 <a name="variant"></a>
@@ -405,4 +496,34 @@ Replenishment category associated with an Amazon catalog item.
 |**NON_STOCKUPABLE**|Indicates drop ship inventory that Amazon does not stock in its fulfillment centers.|
 |**OBSOLETE**|Indicates item is obsolete and should not be ordered.|
 |**PLANNED_REPLENISHMENT**|Indicates active items that should be automatically ordered.|
+
+
+<a name="includeddata"></a>
+### IncludedData
+*Type* : enum
+
+<a id="includeddata-subgroup-1"></a>**For use with the operation(s): [searchCatalogItems](#searchcatalogitems)**
+
+|Value|Description|
+|---|---|
+|**identifiers**|Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.|
+|**images**|Images for an item in the Amazon catalog. All image variants are provided to brand owners; a thumbnail of the "MAIN" image variant is provided otherwise.|
+|**productTypes**|Product types associated with the Amazon catalog item.|
+|**salesRanks**|Sales ranks of an Amazon catalog item.|
+|**summaries**|Summary details of an Amazon catalog item.|
+|**variations**|Variation details of an Amazon catalog item (variation relationships).|
+|**vendorDetails**|Vendor details associated with an Amazon catalog item. Vendor details are available to vendors only.|
+
+<a id="includeddata-subgroup-2"></a>**For use with the operation(s): [getCatalogItem](#getcatalogitem)**
+
+|Value|Description|
+|---|---|
+|**attributes**|A JSON object containing structured item attribute data keyed by attribute name. Catalog item attributes are available only to brand owners and conform to the related Amazon product type definitions available in the Selling Partner API for Product Type Definitions.|
+|**identifiers**|Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.|
+|**images**|Images for an item in the Amazon catalog. All image variants are provided to brand owners. Otherwise, a thumbnail of the "MAIN" image variant is provided.|
+|**productTypes**|Product types associated with the Amazon catalog item.|
+|**salesRanks**|Sales ranks of an Amazon catalog item.|
+|**summaries**|Summary details of an Amazon catalog item.|
+|**variations**|Variation details of an Amazon catalog item (variation relationships).|
+|**vendorDetails**|Vendor details associated with an Amazon catalog item. Vendor details are available to vendors only.|
 
