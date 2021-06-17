@@ -44,7 +44,7 @@ API Version: 2020-09-04
 
 # What is the Reports API?
 
-With the Selling Partner API for Reports (Reports API), you can build applications that enable sellers to get reports from Amazon that helps them manage their selling business. There are reports for a wide variety of use cases, such as monitoring inventory, tracking orders for fulfillment, getting tax information, tracking returns and seller performance, managing a selling business with Fulfillment by Amazon, and more. See the [Reports API Reference](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md) for details about Reports API operations and associated data types and schemas. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md) for the available report types.
+With the Selling Partner API for Reports (Reports API), you can build applications that enable sellers to get reports from Amazon that helps them manage their selling business. There are reports for a wide variety of use cases, such as monitoring inventory, tracking orders for fulfillment, getting tax information, tracking returns and seller performance, managing a selling business with Fulfillment by Amazon, and more. See the [Reports API Reference](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md) for details about Reports API operations and associated data types and schemas. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md) for the available report types.
 
 The two principal workflows for generating reports are requesting a report and scheduling a report.
 
@@ -82,7 +82,7 @@ Here are the high-level steps for requesting a report:
 
 To complete this tutorial, you will need:
 
-- A report type to request. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md) for a list of the available report types.
+- A report type to request. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md) for a list of the available report types.
 
 - Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
@@ -108,7 +108,7 @@ Request a report by specifying the report type and marketplaces that you are req
 
 Request body:
 
-<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>reportOptions</td><td>Additional information passed to reports. This varies by report type.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#reportoptions">ReportOptions</a></p></td><td>No</td></tr><tr class="even"><td>reportType</td><td>The report type. For more information, see <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md">reportType values</a>.<p>Type: string</p></td><td>Yes</td></tr><tr class="odd"><td>dataStartTime</td><td>The start of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.<p>Type: string (date-time)</p></td><td>No</td></tr><tr class="even"><td>dataEndTime</td><td>The end of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.<p>Type: string (date-time)</p></td><td>No</td></tr><tr class="odd"><td>marketplaceIds</td><td>A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.<p>Type: &lt; string &gt; array</p></td><td>Yes</td></tr></tbody></table>
+<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>reportOptions</td><td>Additional information passed to reports. This varies by report type.<p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#reportoptions">ReportOptions</a></p></td><td>No</td></tr><tr class="even"><td>reportType</td><td>The report type. For more information, see <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md">reportType values</a>.<p>Type: string</p></td><td>Yes</td></tr><tr class="odd"><td>dataStartTime</td><td>The start of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.<p>Type: string (date-time)</p></td><td>No</td></tr><tr class="even"><td>dataEndTime</td><td>The end of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.<p>Type: string (date-time)</p></td><td>No</td></tr><tr class="odd"><td>marketplaceIds</td><td>A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.<p>Type: &lt; string &gt; array</p></td><td>Yes</td></tr></tbody></table>
 
 #### Request example:
 
@@ -207,7 +207,7 @@ You can schedule requests for reports so that they are submitted periodically, u
 
 Here are the high-level steps for scheduling and retrieving reports:
 
-1. Call the [createReportSchedule](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#createreportschedule) operation to create a schedule for periodically submitting report requests. Specify **reportType, marketplaceIds** and **period** values and any optional parameters. For **reportType** values, see [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md). For **period** values, see [period enumeration](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#period).
+1. Call the [createReportSchedule](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#createreportschedule) operation to create a schedule for periodically submitting report requests. Specify **reportType, marketplaceIds** and **period** values and any optional parameters. For **reportType** values, see [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md). For **period** values, see [period enumeration](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#period).
 
    **Note**: If a report schedule with the same report type and marketplace IDs already exists, it will be cancelled and replaced with this one. Otherwise a new report schedule will be created.
 
@@ -229,7 +229,7 @@ Here are the high-level steps for scheduling and retrieving reports:
 
 To complete this tutorial, you will need:
 
-- A report type to schedule. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md) for a list of the available report types.
+- A report type to schedule. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md) for a list of the available report types.
 
 - Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
@@ -247,7 +247,7 @@ To complete this tutorial, you will need:
 
 ## Step 1: Create a schedule for report requests
 
-Call the createReportSchedule operation to create a schedule for submitting report requests, specifying the **reportType**, **markeplaceIds**, and **period** values and any optional parameters. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md) for a list of the available report types.
+Call the createReportSchedule operation to create a schedule for submitting report requests, specifying the **reportType**, **markeplaceIds**, and **period** values and any optional parameters. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md) for a list of the available report types.
 
 - Call the [createReportSchedule](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#createreportschedule) operation and pass the following parameters:
 
