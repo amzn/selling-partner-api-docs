@@ -33,7 +33,7 @@ Version: 2020-09-04
 
 # What is the Feeds API?
 
-With the Selling Partner API for Feeds (Feeds API), you can build applications that enable sellers to upload information to Amazon that helps them manage their selling businesses. There are feeds for a wide variety of use cases, such as creating listings, managing inventory and prices, acknowledging orders, and more. See [feedType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feedType_string_array_values.md) for a list of available feed types.
+With the Selling Partner API for Feeds (Feeds API), you can build applications that enable sellers to upload information to Amazon that helps them manage their selling businesses. There are feeds for a wide variety of use cases, such as creating listings, managing inventory and prices, acknowledging orders, and more. See [feedType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feedtype-values.md) for a list of available feed types.
 
 ### Workflow for submitting a feed
 
@@ -75,7 +75,7 @@ This tutorial shows you how to submit a feed, check the status of feed processin
 
 To complete this tutorial, you will need:
 
-1.  A feed to submit. See [feedType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feedType_string_array_values.md) for a list of available feed types.
+1.  A feed to submit. See [feedType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feedtype-values.md) for a list of available feed types.
 
 1.  Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
@@ -318,7 +318,7 @@ Body parameters:
 <tbody>
 <tr class="odd">
 <td>feedType</td>
-<td><p>The type of feed that you are submitting. For more information, see <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feedType_string_array_values.md">feedType values</a>.</p>
+<td><p>The type of feed that you are submitting. For more information, see <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feedtype-values.md">feedType values</a>.</p>
 <p>Type: string</p></td>
 <td>Yes</td>
 </tr>
