@@ -6,7 +6,7 @@ For additional information about feed types, including flat file feed templates,
 
 Feed types fall into these categories:
 
-- [Product and inventory feeds](#product-and-inventory-feeds)
+- [Listings feeds](#listings-feeds)
 
 - [Order feeds](#order-feeds)
 
@@ -16,7 +16,7 @@ Feed types fall into these categories:
 
 - [Easy Ship feed](#easy-ship-feed)
 
-## Product and inventory feeds
+## Listings feeds
 
 <table>
 <thead>
@@ -26,6 +26,14 @@ Feed types fall into these categories:
 </tr>
 </thead>
 <tbody>
+<tr class="even">
+<td><p><strong>Listings Feed</strong></p>
+<p><strong>feedType</strong> value: JSON_LISTINGS_FEED</p>
+<p>Schemas: <a href="https://github.com/amzn/selling-partner-api-docs/tree/main/references/feeds-api/schemas/JSON_LISTINGS_FEED">JSON_LISTINGS_FEED</a></p></td>
+<td>
+<p>Create, edit, and delete Amazon listings (by SKU) using the same data format used by the Listings Items API.</p><p>For more information about the Listings Items API, see the <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/listings-items-api-use-case-guide/listings-items-api-use-case-guide_2020-09-01.md">Listings Items API Use Case Guide</a>.</p>
+</td>
+</tr>
 <tr class="odd">
 <td><p><strong>Product Feed</strong></p>
 <p><strong>feedType</strong> value: POST_PRODUCT_DATA</p>
