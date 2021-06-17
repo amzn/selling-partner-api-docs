@@ -179,7 +179,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**subscriptionId**  <br>*required*|The identifier for the subscription that you want to delete.|string|
-|**Path**|**notificationType**  <br>*required*|The type of notification to which you want to subscribe.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
+|**Path**|**notificationType**  <br>*required*|The type of notification for which you want to delete the subscription.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
 
 
 #### Responses
