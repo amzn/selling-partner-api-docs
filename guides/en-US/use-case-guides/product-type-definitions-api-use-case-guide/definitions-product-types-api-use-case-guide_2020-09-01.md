@@ -54,6 +54,10 @@ To complete this tutorial, you will need:
 
 * Authorization from the selling partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
+* Approval for the Product Listing role in your developer profile.
+
+* The Product Listing role selected in the App registration page for your application. 
+
 ## Step 1. Search Product Type Definitions
 
 Call the [searchDefinitionsProductTypes](https://github.com/amzn/selling-partner-api-docs/blob/main/references/product-type-definitions-api/definitionsProductTypes_2020-09-01.md#searchdefinitionsproducttypes) operation to search product types available in the Product Type Definitions API.
@@ -148,6 +152,10 @@ Use this tutorial to return Amazon product type definitions and related schemas 
 To complete this tutorial, you will need:
 
 * Authorization from the Selling Partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+
+* Approval for the Product Listing role in your developer profile.
+
+* The Product Listing role selected in the App registration page for your application. 
 
 ## Step 1. Retrieve Product Type Definition
 
