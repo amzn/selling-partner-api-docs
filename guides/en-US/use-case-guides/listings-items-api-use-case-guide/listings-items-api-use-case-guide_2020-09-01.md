@@ -60,6 +60,10 @@ To complete this tutorial, you will need:
 
 * Authorization from the selling partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
+* Approval for the Product Listing role in your developer profile.
+
+* The Product Listing role selected in the App registration page for your application. 
+
 * A JSON-based listing payload adhering to the JSON Schema provided by the [Selling Partner API for Product Type Definitions](https://github.com/amzn/selling-partner-api-docs/blob/main/references/product-type-definitions-api/definitionsProductTypes_2020-09-01.md) for the given selling partner, Amazon marketplace, and Amazon product type.
 
 ## Step 1. Submit Listings Item Put Request
@@ -244,6 +248,10 @@ Partial updates are submitted in the form of JSON Patch documents. See [https://
 To complete this tutorial, you will need:
 
 * Authorization from the selling partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+
+* Approval for the Product Listing role in your developer profile.
+
+* The Product Listing role selected in the App registration page for your application. 
 
 * For attribute updates, JSON-based listing attribute payloads adhering to the JSON Schema provided by the [Selling Partner API for Product Type Definitions](https://github.com/amzn/selling-partner-api-docs/blob/main/references/product-type-definitions-api/definitionsProductTypes_2020-09-01.md) for the given selling partner, Amazon marketplace, Amazon product type, and attributes.
 
@@ -448,6 +456,10 @@ Use this tutorial to delete an Amazon listing for a given selling partner and Am
 To complete this tutorial, you will need:
 
 * Authorization from the selling partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+
+* Approval for the Product Listing role in your developer profile.
+
+* The Product Listing role selected in the App registration page for your application. 
 
 ## Step 1. Submit Listings Item Delete Request
 
