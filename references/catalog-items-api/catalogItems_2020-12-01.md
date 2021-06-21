@@ -189,7 +189,7 @@ An item in the Amazon catalog.
 |**identifiers**  <br>*optional*|Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.|[ItemIdentifiers](#itemidentifiers)|
 |**images**  <br>*optional*|Images for an item in the Amazon catalog. All image variants are provided to brand owners. Otherwise, a thumbnail of the "MAIN" image variant is provided.|[ItemImages](#itemimages)|
 |**productTypes**  <br>*optional*|Product types associated with the Amazon catalog item.|[ItemProductTypes](#itemproducttypes)|
-|**salesRanks**  <br>*optional*|Sales ranks of an Amazon catalog item.|[ItemSalesRanks](#itemsalesranks)|
+|**ranks**  <br>*optional*|Sales ranks of an Amazon catalog item.|[ItemSalesRanks](#itemsalesranks)|
 |**summaries**  <br>*optional*|Summary details of an Amazon catalog item.|[ItemSummaries](#itemsummaries)|
 |**variations**  <br>*optional*|Variation details by marketplace for an Amazon catalog item (variation relationships).|[ItemVariations](#itemvariations)|
 |**vendorDetails**  <br>*optional*|Vendor details associated with an Amazon catalog item. Vendor details are available to vendors only.|[ItemVendorDetails](#itemvendordetails)|
@@ -314,7 +314,7 @@ Sales rank of an Amazon catalog item.
 |---|---|---|
 |**title**  <br>*required*|Title, or name, of the sales rank.|string|
 |**link**  <br>*optional*|Corresponding Amazon retail website link, or URL, for the sales rank.|string|
-|**rank**  <br>*required*|Sales rank value.|integer|
+|**value**  <br>*required*|Sales rank value.|integer|
 
 
 <a name="itemsummaries"></a>
