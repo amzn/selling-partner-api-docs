@@ -148,7 +148,7 @@ Request schema.
 |**IsAmazonFulfilled**  <br>*optional*|When true, the offer is fulfilled by Amazon.|boolean|
 |**PriceToEstimateFees**  <br>*required*|The product price that the fee estimate is based on.|[PriceToEstimateFees](#pricetoestimatefees)|
 |**Identifier**  <br>*required*|A unique identifier provided by the caller to track this request.|string|
-|**OptionalFulfillmentProgram**  <br>*optional*|An optional enrollment program for which to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).|[OptionalFulfillmentProgram](#optionalfulfillmentprogram)|
+|**OptionalFulfillmentProgram**  <br>*optional*|An optional enrollment program to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).|[OptionalFulfillmentProgram](#optionalfulfillmentprogram)|
 
 
 <a name="getmyfeesestimateresponse"></a>
@@ -223,7 +223,7 @@ An item identifier, marketplace, time of request, and other details that identif
 |**IsAmazonFulfilled**  <br>*optional*|When true, the offer is fulfilled by Amazon.|boolean|
 |**PriceToEstimateFees**  <br>*optional*|The item price on which the fee estimate is based.|[PriceToEstimateFees](#pricetoestimatefees)|
 |**SellerInputIdentifier**  <br>*optional*|A unique identifier provided by the caller to track this request.|string|
-|**OptionalFulfillmentProgram**  <br>*optional*|An optional enrollment program for which to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).|[OptionalFulfillmentProgram](#optionalfulfillmentprogram)|
+|**OptionalFulfillmentProgram**  <br>*optional*|An optional enrollment program to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).|[OptionalFulfillmentProgram](#optionalfulfillmentprogram)|
 
 
 <a name="pricetoestimatefees"></a>
@@ -324,7 +324,7 @@ The type of fee, fee amount, and other details.
 
 <a name="optionalfulfillmentprogram"></a>
 ### OptionalFulfillmentProgram
-An optional enrollment program for which to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).
+An optional enrollment program to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).
 
 *Type* : enum
 
@@ -332,6 +332,6 @@ An optional enrollment program for which to return the estimated fees when the o
 |Value|Description|
 |---|---|
 |**FBA_CORE**|Returns the standard Amazon fulfillment fees for the offer. This is the default.|
-|**FBA_SNL**|Returns the Small and Light fees for the offer. The FBA Small and Light program offers reduced fulfillment costs on qualified items.|
+|**FBA_SNL**|Returns the FBA Small and Light (SNL) fees for the offer. The SNL program offers reduced fulfillment costs on qualified items. To check item eligibility for the SNL program, use the getSmallAndLightEligibilityBySellerSKU operation of the FBA Small And Light API.|
 |**FBA_EFN**|Returns the cross-border European Fulfillment Network fees across EU countries for the offer.|
 
