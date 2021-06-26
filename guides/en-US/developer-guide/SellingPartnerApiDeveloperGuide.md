@@ -1079,12 +1079,26 @@ The self authorization procedure varies depending on if you have a seller applic
 3.  For the application that you want to authorize, click the arrow next to the **Edit App** button, and then click **Authorize**.
 
     The **Authorize application** page appears.
+    
+    **Note.** If your selling partner account is merged with accounts in other regions, you will see an **Authorize app** button for each of your merged accounts.
 
-4.  Click the **Generate refresh token** button.
+4. Click the **Authorize app** button for each selling partner account that you want your application to access. The **Marketplaces** column indicates the marketplaces in which an account is active.
 
-    Your Login with Amazon (LWA) refresh token appears. If your selling account is linked to accounts from other regions, you will receive a separate refresh token for each region. Your application is now authorized to access your selling account(s).
+    A Login with Amazon (LWA) refresh token appears with every **Authorize app** button that you click. 
+    
+    **Note.** If you click an **Authorize app** button multiple times, a new refresh token is generated each time. Generating a new refresh token does not invalidate previous refresh tokens.
 
-    **Important:** Click **Generate refresh token** to get your refresh token. Generating a new refresh token does not invalidate previous refresh tokens.
+5. Save a refresh token for each selling partner account that you authorized your application to access. Later you can exchange these refresh tokens for access tokens. When you call a Selling Partner API to access a selling partner account, include the access token that corresponds to that account.
+
+6.  To authorize your application to access a selling partner account that is not merged with your account, click **sign in to another account** at the bottom of the page.
+
+    A Seller Central sign-in page appears.
+
+7. Sign in using the credentials for the selling partner account that you want your application to access.
+
+    The **Authorize application** page appears.
+
+8. Click the **Authorize app** button to get a refresh token.    
 
 **To self-authorize your application (vendor application)**
 1.  Sign into Vendor Central using the credentials that you used to [register as a developer](#registering-as-a-developer).
@@ -1099,10 +1113,10 @@ The self authorization procedure varies depending on if you have a seller applic
 
 4.  Click the **Generate refresh token** button.
 
-    Your Login with Amazon (LWA) refresh token appears. If your selling account is linked to accounts from other regions, you will receive a separate refresh token for each region. Your application is now authorized to access your selling account(s).
+    Your Login with Amazon (LWA) refresh token appears. If you click the **Generate refresh token** button again a new refresh token is generated. Generating a new refresh token does not invalidate previous refresh tokens.     
 
-    **Important:** Click **Generate refresh token** to get your refresh token. Generating a new refresh token does not invalidate previous refresh tokens.
-
+    **Note.**  If your selling account is merged with accounts from other regions, you will receive a separate refresh token for each region. Your application is now authorized to access your selling account(s).      
+    
 An LWA refresh token is a long-lived token that you exchange for an LWA access token. An access token obtained through this token exchange must be included with calls to all Selling Partner API operations except [restricted operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md#restricted-operations) and [grantless operations](#grantless-operations), which use somewhat different authorization models. After an access token is issued it is valid for one hour. The same access token can be used for multiple API calls, until it expires.
 
 To exchange a refresh token for an access token using a generated SDK, see [Connecting to the Selling Partner API using a generated Java SDK](#connecting-to-the-selling-partner-api-using-a-generated-java-sdk). To manually exchange a refresh token for an access token, see [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api).
