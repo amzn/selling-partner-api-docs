@@ -4,7 +4,7 @@
 Questo documento spiega cos'è l'API per i partner di vendita, come si differenzia da Amazon Marketplace Web Service (Amazon MWS) e mostra come convertire la tua applicazione Amazon MWS in un'applicazione dell'API per i partner di vendita.
 
 # Che cos'è l'API per i partner di vendita?
-L'API per i partner di vendita è un'API basata su REST che consente ai partner di vendita Amazon di accedere a livello di programmazione ai propri dati relativi a offerte, ordini, pagamenti, report e altro ancora. L'API per i partner di vendita è un'evoluzione di Amazon MWS e include tutte le funzionalità precedentemente disponibili in Amazon MWS. Tutti i miglioramenti futuri saranno disponibili solo per l'API per i partner di vendita.
+L'API per i partner di vendita è un'API basata su REST che consente ai partner di vendita Amazon di accedere in modo programmatico ai propri dati relativi a offerte, ordini, pagamenti, report e altro ancora. L'API per i partner di vendita è un'evoluzione di Amazon MWS e include tutte le funzionalità precedentemente disponibili in Amazon MWS. Tutti i miglioramenti futuri saranno disponibili solo per l'API per i partner di vendita.
 
 ## Funzionalità dell'API per i partner di vendita
 Per ogni API per i partner di vendita è disponibile un modello Swagger, un riferimento API e, in alcuni casi, una guida al caso d'uso. Sono incluse anche le librerie client che consentono di autenticare le chiamate alle API per i partner di vendita.
@@ -64,7 +64,7 @@ Questo tutorial mostra come convertire un'applicazione Amazon MWS in un'applicaz
 
 **Fasi**
 
-## Fase 1. Richiedi l'accesso ai dati richiesto dalla tua applicazione API per i Partner di vendita
+## Fase 1. Richiedi l'accesso ai dati richiesti dalla tua applicazione API per i Partner di vendita
 
 1. Accedi a Seller Central con le credenziali associate al tuo account sviluppatore Amazon MWS.
 
