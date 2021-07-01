@@ -1846,7 +1846,7 @@ The Selling Partner API has sandbox endpoints for the North America, Europe, and
 
 Although the Selling Partner API and Amazon Marketplace Web Service (Amazon MWS) are both web services that enable programmatic access to customer data, there are significant differences. Here are some key differences between the Selling Partner API and Amazon MWS:
 
-  - With the Selling Partner API you can developer applications for both sellers and vendors.
+  - With the Selling Partner API you can develop applications for both sellers and vendors.
   
   - The Selling Partner API treats data as REST-compliant resources that can be accessed and modified via standard HTTP methods. By contrast, Amazon MWS exposes data using operations that are specific to Amazon MWS.
 
