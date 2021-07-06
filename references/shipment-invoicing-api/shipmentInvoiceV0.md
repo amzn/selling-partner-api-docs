@@ -11,13 +11,15 @@ The Selling Partner API for Shipment Invoicing helps you programmatically retrie
 
 
 ### Contact information
-*Contact* : Selling Partner API Developer Support  
+*Contact* : Selling Partner API Developer Support
+  
 *Contact URL* : https://sellercentral.amazon.com/gp/mws/contactus.html  
 
 
 ### License information
 *License* : Apache License 2.0  
-*License URL* : http://www.apache.org/licenses/LICENSE-2.0  
+*License URL* : http://www.apache.org/licenses/LICENSE-2.0  
+
 
 
 ### URI scheme
@@ -72,7 +74,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentDetailsResponse](#getshipmentdetailsresponse)|
 |**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentDetailsResponse](#getshipmentdetailsresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentDetailsResponse](#getshipmentdetailsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentDetailsResponse](#getshipmentdetailsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentDetailsResponse](#getshipmentdetailsresponse)|
 |**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentDetailsResponse](#getshipmentdetailsresponse)|
 |**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentDetailsResponse](#getshipmentdetailsresponse)|
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetShipmentDetailsResponse](#getshipmentdetailsresponse)|
@@ -112,7 +114,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SubmitInvoiceResponse](#submitinvoiceresponse)|
 |**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SubmitInvoiceResponse](#submitinvoiceresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SubmitInvoiceResponse](#submitinvoiceresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SubmitInvoiceResponse](#submitinvoiceresponse)|
+**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SubmitInvoiceResponse](#submitinvoiceresponse)|
 |**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SubmitInvoiceResponse](#submitinvoiceresponse)|
 |**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SubmitInvoiceResponse](#submitinvoiceresponse)|
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[SubmitInvoiceResponse](#submitinvoiceresponse)|
@@ -151,7 +153,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetInvoiceStatusResponse](#getinvoicestatusresponse)|
 |**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetInvoiceStatusResponse](#getinvoicestatusresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetInvoiceStatusResponse](#getinvoicestatusresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetInvoiceStatusResponse](#getinvoicestatusresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetInvoiceStatusResponse](#getinvoicestatusresponse)|
 |**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetInvoiceStatusResponse](#getinvoicestatusresponse)|
 |**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetInvoiceStatusResponse](#getinvoicestatusresponse)|
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[GetInvoiceStatusResponse](#getinvoicestatusresponse)|
@@ -190,6 +192,8 @@ The information required by a selling partner to issue a shipment invoice.
 |**BuyerName**  <br>*optional*|The name of the buyer.|string|
 |**BuyerCounty**  <br>*optional*|The county of the buyer.|string|
 |**BuyerTaxInfo**  <br>*optional*|Tax information about the buyer.|[BuyerTaxInfo](#buyertaxinfo)|
+|**MarketplaceTaxInfo**  <br>*optional*|Tax information about the marketplace.|[MarketplaceTaxInfo](#marketplacetaxinfo)|
+|**SellerDisplayName**  <br>*optional*|The sellerâ€™s friendly name registered in the marketplace.|string|
 |**ShipmentItems**  <br>*optional*|A list of shipment items.|[ShipmentItems](#shipmentitems)|
 
 
@@ -237,6 +241,18 @@ The list of payment method details.
 <a name="buyertaxinfo"></a>
 ### BuyerTaxInfo
 Tax information about the buyer.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**CompanyLegalName**  <br>*optional*|The legal name of the company.|string|
+|**TaxingRegion**  <br>*optional*|The country or region imposing the tax.|string|
+|**TaxClassifications**  <br>*optional*|The list of tax classifications.|[TaxClassificationList](#taxclassificationlist)|
+
+
+<a name="marketplacetaxinfo"></a>
+### MarketplaceTaxInfo
+Tax information about the marketplace.
 
 
 |Name|Description|Schema|
