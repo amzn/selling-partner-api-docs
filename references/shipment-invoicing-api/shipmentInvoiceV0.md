@@ -193,7 +193,7 @@ The information required by a selling partner to issue a shipment invoice.
 |**BuyerCounty**  <br>*optional*|The county of the buyer.|string|
 |**BuyerTaxInfo**  <br>*optional*|Tax information about the buyer.|[BuyerTaxInfo](#buyertaxinfo)|
 |**MarketplaceTaxInfo**  <br>*optional*|Tax information about the marketplace.|[MarketplaceTaxInfo](#marketplacetaxinfo)|
-|**SellerDisplayName**  <br>*optional*|The sellerâ€™s friendly name registered in the marketplace.|string|
+|**SellerDisplayName**  <br>*optional*|The seller's friendly name registered in the marketplace.|string|
 |**ShipmentItems**  <br>*optional*|A list of shipment items.|[ShipmentItems](#shipmentitems)|
 
 
