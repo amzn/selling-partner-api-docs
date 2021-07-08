@@ -414,6 +414,8 @@ Order information.
 |**DefaultShipFromLocationAddress**  <br>*optional*|The recommended location for the seller to ship the items from. It is calculated at checkout. The seller may or may not choose to ship from this location.|[Address](#address)|
 |**FulfillmentInstruction**  <br>*optional*|Contains the instructions about the fulfillment like where should it be fulfilled from.|[FulfillmentInstruction](#fulfillmentinstruction)|
 |**IsISPU**  <br>*optional*|When true, this order is marked to be picked up from a store rather than delivered.|boolean|
+|**MarketplaceTaxInfo**  <br>*optional*|Tax information about the marketplace.|[MarketplaceTaxInfo](#marketplacetaxinfo)|
+|**SellerDisplayName**  <br>*optional*|The seller’s friendly name registered in the marketplace.|string|
 
 
 <a name="orderbuyerinfo"></a>
@@ -512,6 +514,16 @@ Tax information about the buyer.
 |**TaxClassifications**  <br>*optional*|A list of tax classifications that apply to the order.|< [TaxClassification](#taxclassification) > array|
 
 
+<a name="marketplacetaxinfo"></a>
+### MarketplaceTaxInfo
+Tax information about the marketplace.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**TaxClassifications**  <br>*optional*|A list of tax classifications that apply to the order.|< [TaxClassification](#taxclassification) > array|
+
+
 <a name="taxclassification"></a>
 ### TaxClassification
 The tax classification for the order.
@@ -578,7 +590,7 @@ A single order item.
 |**TaxCollection**  <br>*optional*|Information about withheld taxes.|[TaxCollection](#taxcollection)|
 |**SerialNumberRequired**  <br>*optional*|When true, the product type for this item has a serial number.<br><br>Returned only for Amazon Easy Ship orders.|boolean|
 |**IsTransparency**  <br>*optional*|When true, transparency codes are required.|boolean|
-|**IossNumber**  <br>*optional*|The IOSS number of the seller. Sellers selling in the EU will be assigned a unique IOSS number that must be listed on all packages sent to the EU.|string|
+|**IossNumber**  <br>*optional*|The IOSS number for the marketplace. Sellers shipping to the European Union (EU) from outside of the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.|string|
 |**StoreChainStoreId**  <br>*optional*|The store chain store identifier. Linked to a specific store in a store chain.|string|
 |**DeemedResellerCategory**  <br>*optional*|The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.|enum ([DeemedResellerCategory](#deemedresellercategory))|
 
