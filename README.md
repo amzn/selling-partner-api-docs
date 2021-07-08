@@ -46,6 +46,12 @@ Direct Fulfillment Use Case Guide: [Vendor Direct Fulfillment APIs Use Case Guid
 | Selling Partner API for Direct Fulfillment Transaction Status | [vendorDirectFulfillmentTransactionsV1.json](https://github.com/amzn/selling-partner-api-models/tree/main/models/vendor-direct-fulfillment-transactions-api-model/vendorDirectFulfillmentTransactionsV1.json) | [vendorDirectFulfillmentTransactionsV1.md](https://github.com/amzn/selling-partner-api-docs/blob/main/references/vendor-direct-fulfillment-transactions-api/vendorDirectFulfillmentTransactionsV1.md) |
 
 
+Unofficial Open Source Libraries in other programming languages:
+
+Python:
+
+[python-amazon-sp-api](https://github.com/saleweaver/python-amazon-sp-api)
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
