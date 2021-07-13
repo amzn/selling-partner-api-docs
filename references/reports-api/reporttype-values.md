@@ -4,7 +4,11 @@ Use a **reportType** value to specify the type of report that you want to reques
 
 In the report descriptions, "Seller Central" refers to sellers who have registered to sell on Amazon in the past few years; "Marketplace" refers to legacy sellers who registered to sell on Amazon prior to the last few years. Some reports are only available for Marketplace or Seller Central sellers.
 
+For more information about registering in Amazon’s Brand Registry, see [Build and protect your  brand](https://brandservices.amazon.com/).
+
 Report types fall into these categories:
+
+- [Vendor retail analytics reports](#vendor-retail-analytics-reports)
 
 - [Inventory reports](#inventory-reports)
 
@@ -34,6 +38,63 @@ Report types fall into these categories:
 
 - [B2B product opportunities reports](#b2b-product-opportunities-reports)
 
+## Vendor retail analytics reports
+
+<table>
+  <thead>
+    <tr class="header">
+      <th><strong>Name</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd">
+      <td>
+        <p><strong>Sales Diagnostic Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_VENDOR_SALES_DIAGNOSTIC_REPORT</p>
+      </td>
+      <td>
+        <p>JSON report with key retail performance metrics such as ordered/shipped revenue and units, glance 
+          views, conversion, replenishable out-of-stock rate, lost buy box rate, customer returns, and free
+          replacements, among others. Data is reported daily within each ASIN for the trailing 13 months.
+          Available to vendors who have the Brand Analytics Selling Partner API role and who are registered in
+          Amazon's Brand Registry.</p>
+        <p>Can be requested.</p>
+        </p><i><strong>Note</strong>: A new version of this report is expected to launch as early as Q4 2021.
+          Changes include the reportType value and report structure. The current version of this report will
+          be deprecated 90 days after launch of the new version.</i>
+      </td>
+    </tr>
+    <tr class="even">
+      <td>
+        <p><strong>Inventory Health & Planning Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_VENDOR_INVENTORY_HEALTH_REPORT</p>
+      </td>
+      <td><p>JSON report with key vendor inventory health metrics such as net received inventory, open purchase order
+        quantity, sell-through rate, on-hand inventory, aged inventory, vendor lead time, among others. Data is
+        reported daily within each ASIN for the trailing 13-months. Available to vendors who have the Brand
+        Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+        <p>Can be requested.</p>
+        <i><strong>Note</strong>: A new version of this report is expected to launch as early
+          as Q4 2021. Changes include the reportType value and report structure. The current version of this
+          report will be deprecated 90 days after launch of the new version.</i></td>
+    </tr>
+    <tr class="odd">
+      <td>
+        <p><strong>Demand Forecast Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_VENDOR_DEMAND_FORECAST_REPORT</p>
+      </td>
+      <td><p>JSON report with +26 weeks of Amazon's consumer demand forecast. Consumer demand data, in units, is
+        available for each of the next 26 weeks from the report creation date. Available to vendors who have the
+        Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+        <p>Can be requested.</p>
+          <i><strong>Note</strong>: A new version of this report is expected to launch as early
+          as Q4 2021. Changes include the reportType value and report structure. The current version of this
+          report will be deprecated 90 days after launch of the new version.</i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Inventory reports
 
