@@ -642,7 +642,7 @@ import com.amazon.spapi.documents.impl.AESCryptoStreamFactory;
 public class DownloadExample {
   final DownloadHelper downloadHelper = new DownloadHelper.Builder().build();
  
-  // key, initializationVector, url, and compressionAlgorithm are returned by the getReportDocument operation.
+  // key, initializationVector, url, and compressionAlgorithm are returned by the getFeedDocument operation.
   public void downloadAndDecrypt(String key, String initializationVector, String url, String compressionAlgorithm) {
     AESCryptoStreamFactory aesCryptoStreamFactory =
       new AESCryptoStreamFactory.Builder(key, initializationVector).build();
