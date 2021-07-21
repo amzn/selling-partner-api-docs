@@ -32,7 +32,7 @@ API Version: 2021-06-30
 
   - [Step 1. Get information required to retrieve the report](#step-1-get-information-required-to-retrieve-the-report)
 
-  - [Step 2. Download and decrypt the report](#step-2-download-and-decrypt-the-report)
+  - [Step 2. Download the report](#step-2-download-the-report)
 
   - [Sample Code (Java)](#sample-code-java)
 
