@@ -26,13 +26,13 @@ API Version: 2021-06-30
 
   - [Step 2. Periodically retrieve information about the scheduled reports](#step-2-periodically-retrieve-information-about-the-scheduled-reports)
 
-  - [Step 3. Retrieve the report](#step-3-retrieve-the-report)
+  - [Step 3. Retrieve the report](#step-3-retrieve-the-report-1)
 
 - [How to Retrieve a Report](#how-to-retrieve-a-report)
 
   - [Step 1. Get information required to retrieve the report](#step-1-get-information-required-to-retrieve-the-report)
 
-  - [Step 2. Download and decrypt the report](#step-2-download-and-decrypt-the-report)
+  - [Step 2. Download the report](#step-2-download-the-report)
 
   - [Sample Code (Java)](#sample-code-java)
 
@@ -346,7 +346,7 @@ To complete this tutorial, you will need:
 
 [Step 3. Retrieve the reports](#step-3-retrieve-the-report)
 
-## Step 1: Create a schedule for report requests
+## Step 1. Create a schedule for report requests
 
 Call the createReportSchedule operation to create a schedule for submitting report requests, specifying the **reportType**, **markeplaceIds**, and **period** values and any optional parameters. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md) for a list of the available report types.
 
@@ -465,7 +465,7 @@ A successful response includes the following:
 }
 ```
 
-## Step 2: Periodically retrieve information about the scheduled reports
+## Step 2. Periodically retrieve information about the scheduled reports
 
 Periodically call the getReports operation using an interval that is similar to the schedule that you configured. You'll want to try to time these calls so that they occur after scheduled reports are likely to have been completed.
 
@@ -622,7 +622,7 @@ The **ReportList** array in the response contains a [Report](https://github.com/
 }
 ```
 
-## Step 3: Retrieve the report
+## Step 3. Retrieve the report
 
 To retrieve a report, see [How to Retrieve a Report](#how-to-retrieve-a-report).
 
