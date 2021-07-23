@@ -251,16 +251,6 @@ Report types fall into these categories:
       </td>
     </tr>
     <tr class="even">
-      <td><strong>Global Expansion Opportunities Report</strong>
-        <p><strong>reportType</strong> value:<br>GET_FLAT_FILE_GEO_OPPORTUNITIES</p>
-      </td>
-      <td>
-      <p>Tab-delimited flat file report that contains products that a seller lists which have a high sales potential in
-        other Amazon marketplaces.</p>
-        <p>Can be requested.</p>
-      </td>
-    </tr>
-    <tr class="odd">
       <td>
         <p><strong>Referral Fee Preview Report</strong></p>
         <p><strong>reportType</strong> value:<br>GET_REFERRAL_FEE_PREVIEW_REPORT</p>
