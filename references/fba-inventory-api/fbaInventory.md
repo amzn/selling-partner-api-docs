@@ -3,7 +3,7 @@
 
 <a name="overview"></a>
 ## Overview
-The Selling Partner API for FBA Inventory lets you programmatically retrieve information about inventory in Amazon's fulfillment network. Today this API is available only in the North America region. In 2021 we plan to release this API in the Europe and Far East regions.
+The Selling Partner API for FBA Inventory lets you programmatically retrieve information about inventory in Amazon's fulfillment network.
 
 
 ### Version information
@@ -11,13 +11,13 @@ The Selling Partner API for FBA Inventory lets you programmatically retrieve inf
 
 
 ### Contact information
-*Contact* : Selling Partner API Developer Support  
+*Contact* : Selling Partner API Developer Support  
 *Contact URL* : https://sellercentral.amazon.com/gp/mws/contactus.html  
 
 
 ### License information
 *License* : Apache License 2.0  
-*License URL* : http://www.apache.org/licenses/LICENSE-2.0  
+*License URL* : http://www.apache.org/licenses/LICENSE-2.0  
 
 
 ### URI scheme
@@ -55,7 +55,7 @@ Returns a list of inventory summaries. The summaries returned depend on the pres
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 90 | 150 |
+| 5 | 10 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
@@ -77,7 +77,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|OK  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
+|**200**|OK  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
 
 For error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 #### Produces
@@ -94,12 +94,12 @@ This table contains HTTP status codes and associated information for error respo
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
-|**404**|The specified resource does not exist.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
+|**404**|The specified resource does not exist.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetInventorySummariesResponse](#getinventorysummariesresponse)|
 
 
 <a name="definitions"></a>
@@ -112,7 +112,7 @@ Describes a granularity at which inventory data can be aggregated. For example, 
 
 |Name|Description|Schema|
 |---|---|---|
-|**granularityType**  <br>*optional*|The granularity type for the inventory aggregation level.|enum ([GranularityType](#granularitytype))|
+|**granularityType**  <br>*optional*|The granularity type for the inventory aggregation level.|string|
 |**granularityId**  <br>*optional*|The granularity ID for the specified granularity type. When granularityType is Marketplace, specify the marketplaceId.|string|
 
 
