@@ -1,4 +1,4 @@
-# Catalog Items Use Case Guide
+# Catalog Items API Use Case Guide
 API Version: 2020-12-01
 # Contents
 
