@@ -7,30 +7,38 @@ Contents
 =================
 
 - [What is the Tokens API?](#what-is-the-tokens-api)
-
     - [Terminology](#terminology)
-
+    
 - [Restricted operations](#restricted-operations)
     - [Restricted report types](#restricted-report-types)
     
-- [Tutorial: Get an RDT and call restricted operations](#tutorial-get-an-rdt-and-call-restricted-operations)
+- [Tutorial: Get buyer and shipping address information for bulk orders](#tutorial-get-buyer-and-shipping-address-information-for-bulk-orders)
+    - [Step 1. Get an RDT](#step-1-get-an-rdt-getorders)
+    
+    - [Step 2. Include the RDT with a call the getOrders operation](#step-2-include-the-rdt-with-a-call-the-getorders-operation)
+    
+- [Tutorial: Get buyer information for the order items in an order](#tutorial-get-buyer-information-for-the-order-items-in-an-order)
 
-    - [Step 1. Get an RDT](#step-1-get-an-rdt)
+    - [Step 1. Get an order ID](#step-1-get-an-order-id)
 
-    - [Step 2. Call restricted operations](#step-2-call-restricted-operations)
+    - [Step 2. Get an RDT](#step-2-get-an-rdt)
 
-    - [Datatypes](#datatypes)
+    - [Step 3. Include the RDT with a call the getOrderItems operation](#step-3-include-the-rdt-with-a-call-the-getorderitems-operation)
 
+- [Tutorial: Get an RDT for multiple shipments](#tutorial-get-an-rdt-for-multiple-shipments)
+    - [Step-1. Get an RDT](#step-1-get-an-rdt-getShipment)
+    
+    - [Step 2. Include the RDT with a call the getShipment operation](#step-2-include-the-rdt-with-a-call-the-getshipment-operation)
+    
 - [Tutorial: Generate a Java SDK for the Tokens API](#tutorial-generate-a-java-sdk-for-the-tokens-api)
 
-- [Tokens API Postman collection](#tokens-api-postman-collection)
 
 What is the Tokens API?
 =======================
 
-The Selling Partner API for Tokens (Tokens API) provides a secure way to access a customer's Personally Identifiable Information (PII). You can call the Tokens API to get a Restricted Data Token (RDT) for one or more restricted resources that you specify. The RDT authorizes you to make subsequent calls to the restricted operations that the restricted resources represent. See [Terminology](#terminology).
+The Selling Partner API for Tokens (Tokens API) provides a secure way to access a customer's Personally Identifiable Information (PII). You can call the Tokens API to get a Restricted Data Token (RDT) for one or more restricted resources that you specify. The RDT authorizes you to make subsequent calls to the restricted operations that the restricted resources represent. For definitions, see [Terminology](#terminology).
 
-When you call a restricted operation you include an RDT in the `x-amz-access-token` header. This is in contrast to all other SP-API operations, where you include an LWA access token in the `x-amz-access-token` header. For more information, see [Step 3. Add headers to the URI](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#step-3-add-headers-to-the-uri).
+When you call a restricted operation you include an RDT in the `x-amz-access-token` header. This is in contrast to other SP-API operations, where you include an LWA access token in the `x-amz-access-token` header. For more information, see [Step 3. Add headers to the URI](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#step-3-add-headers-to-the-uri) in the Selling Partner API Developer Guide.
 
 Terminology
 -----------
@@ -43,14 +51,14 @@ Terminology
 
 -   **Restricted report type.** A report type that contains PII. See [Restricted report types](#restricted-report-types)
 
--   **Specific path.** A path in a restricted resource that contains a specific order ID or shipment ID. For example, `orders/v0/orders/902-3159896-1390916/address`
+-   **Specific path.** A path in a restricted resource that contains a specific order or shipment identifier. For example, `orders/v0/orders/902-3159896-1390916/address`
 
--   **Generic path.** A path in a restricted resource that does not contain a specific order ID or shipment ID. Instead, it contains the string `{orderId}` or `{shipmentId}`. For example, `orders/v0/orders/{orderId}/address`
+-   **Generic path.** A path in a restricted resource that contains a generic identifier, such as `{orderId}` or `{shipmentId}`. For example, `orders/v0/orders/{orderId}/address`
 
 Restricted operations
 =====================
 
-Restricted operations return customers' Personally Identifiable Information (PII). For more information about calling restricted operations, see [Tutorial: Get an RDT and call restricted operations](#tutorial-get-an-rdt-and-call-restricted-operations).
+Restricted operations return customers' Personally Identifiable Information (PII). You need an RDT to call a restricted operation.
 
 Here is list of restricted operations, grouped by API:
 
@@ -77,21 +85,22 @@ Merchant Fulfillment API:
 
 Orders API:
 
--   getOrderBuyerInfo
+- getOrders
 
--   getOrderAddress
+- getOrder
 
--   getOrderItemsBuyerInfo
+- getOrderItems
+
+  **Important.** We recommend using the getOrder, getOrders, and getOrderItems operations to retrieve PII using the RDT because the getOrderBuyerInfo, getOrderAddress, and getOrderItemsBuyerInfo operations are scheduled for deprecation on January 12, 2022.
 
 Reports API:
 
 -   getReportDocument
 
-    **Notes:**
+    **Notes.**
 
-    -  The getReportDocument operation is considered a restricted operation only when a restricted report is specified. See the list of restricted report types below.
-
-    -  When calling the createRestrictedDataToken operation to get an RDT for the getReportDocument operation, the specified restricted resource can contain only a specific path, not a generic path. For more information, see [Tutorial: Get an RDT and call restricted operations](#tutorial-get-an-rdt-and-call-restricted-operations) and [Terminology](#terminology).
+    -  The getReportDocument operation is considered a restricted operation only when a restricted report type is specified. See the list of [restricted report types](#restricted-report-types).
+    -  When calling the createRestrictedDataToken operation to get an RDT for the getReportDocument operation, the specified restricted resource can contain only a specific path, not a generic path. For definitions, see [Terminology](#terminology).
 
 Shipment Invoicing:
 
@@ -104,7 +113,7 @@ Shipping API:
 Restricted report types
 -----------------------
 
-Restricted report types contain PII. When specifying a restricted report type in a call to the getReportDocument operation, you must pass in an RDT with the call. For more information, see [Tutorial: Get an RDT and call restricted operations](#tutorial-get-an-rdt-and-call-restricted-operations).
+Restricted report types contain PII. When specifying a restricted report type in a call to the getReportDocument operation, you must pass in an RDT with the call.
 
 Here is a list of restricted report types:
 
@@ -140,54 +149,47 @@ Here is a list of restricted report types:
 
 -   SC_VAT_TAX_REPORT
 
-Tutorial: Get an RDT and call restricted operations
-===================================================
+# Tutorial: Get buyer and shipping address information for bulk orders
 
-This tutorial shows you how to use the Tokens API to get a Restricted Data Token (RDT) and then use the RDT to call restricted operations.
+You can use an RDT to get buyer information, shipping address information, or both, for bulk orders. The `dataElements` values that you specify with the createRestrictedDataToken operation determine the type of data that the RDT authorizes your application to access. In this tutorial we request an RDT that authorizes access to both buyer information and shipping address information.
 
 **Prerequisites**
 
 To complete this tutorial, you will need:
 
--   Authorization from the Selling Partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+-   Authorization from the selling partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
-Step 1. Get an RDT
-------------------
+## <a name="step-1-get-an-rdt-getorders"></a>Step 1. Get an RDT
 
 Call the createRestrictedDataToken operation to get an RDT.
 
--   Call the [createRestrictedDataToken](https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#createrestricteddatatoken) operation, passing the following parameters:
+1. Call the [createRestrictedDataToken](https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#createrestricteddatatoken) operation, passing the following parameters:
 
-Body parameters:
+Body parameter:
 
-<table><thead><tr class="header"><th><strong>Parameter</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>restrictedResources</td><td><p>Model of a restricted resource. Maximum: 50</p><p>Type: <a href="#restrictedresources">restrictedResources</a></p></td><td>Yes</td></tr></tbody></table>
+<table><thead><tr class="header"><th><strong>Parameter</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>restrictedResources</td><td><p>Model of a restricted resource. Maximum: 50</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#restrictedresource">RestrictedResource</a></p></td><td>Yes</td></tr></tbody></table>
 
-Request Example:
+**Request Example:**
 ```
 POST https://sellingpartnerapi-na.amazon.com/tokens/2021-03-01/restrictedDataToken
 {
   "restrictedResources": [
     {
       "method": "GET",
-      "path": "/orders/v0/orders/902-3159896-1390916/address"
-    }, {
-      "method": "GET",
-      "path": "/orders/v0/orders/{orderId}/buyerInfo"
-    }, {
-      "method": "GET",
-      "path": "/mfn/v0/shipments/{shipmentId}"
+      "path": "/orders/v0/orders",
+      "dataElements": ["buyerInfo", "shippingAddress"]
     }
   ]
 }
 ```
-**Response**
+### Response
 
 A successful response includes the following:
 
 <table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>restrictedDataToken</td><td><p>A Restricted Data Token (RDT). This is a short-lived access token that authorizes you to call the restricted operations represented by the restricted resources that you specified. Pass the RDT value in the <code>x-amz-access-token</code> header when making subsequent calls to the restricted operations.</p><p>Type: string</p></td></tr><tr class="even"><td>expiresIn</td><td><p>The lifetime of the RDT, in seconds.</p><p>Type: integer</p></td></tr></tbody></table>
 
-Response Example:
-```
+**Response Example:**
+```json
 {
   "payload": {
     "restrictedDataToken": "Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR",
@@ -195,37 +197,135 @@ Response Example:
   }
 }
 ```
-You now have an RDT that authorizes you to call the following restricted operations:
+2. Save the **restrictedDataToken** value (the RDT) to use in [Step 2. Include the RDT with a call the getOrders operation](#step-2-include-the-rdt-with-a-call-the-getorders-operation)
 
--   **getOrderAddress.** You can call the getOrderAddress operation using the specific path from the restricted resource that you specified. For example, `/orders/v0/orders/902-3159896-1390916/address`.
+## Step 2. Include the RDT with a call the getOrders operation
 
--   **getOrderBuyerInfo.** You can call the getOrderBuyerInfo operation using the generic path from the restricted resource that you specified, replacing `{orderId}` with an order ID from the selling partner. For example, `/orders/v0/orders/058-1233752-8214740/buyerInfo` and `/orders/v0/orders/483-3488972-0896720/buyerInfo`. You can use the RDT for any of the selling partner's order IDs.
+Call the [getOrders](https://github.com/amzn/selling-partner-api-docs/blob/main/references/orders-api/ordersV0.md#getorders) operation of the Orders API, specifying the appropriate parameters to filter for the orders that you want. Be sure to include the RDT (that you saved in [Step 1. Get an RDT](#step-1-get-an-rdt-getorders)) in the `x-amz-access-token` header of your call to getOrders. Because you specified both `buyerInfo` and `shippingAddress` in [Step 1. Get an RDT](#step-1-get-an-rdt-getorders), your call to getOrders returns both buyer information and shipping address information for each order. Had you specified only `buyerInfo` in Step 1, getOrders would return only buyer information for each order. Had you specified only `shippingAddress` in Step 1, getOrders would return only shipping address information for each order.
 
--   **getShipment.** You can call the getShipment operation using the generic path from the restricted resource that you specified, replacing `{shipmentId}` with a shipment ID from the selling partner. For example, `/mfn/v0/shipments/6f77095e-9f75-47eb-aaab-a42d5428fa1a`. You can use the RDT for any of the selling partner's shipment IDs.
+# Tutorial: Get buyer information for the order items in an order
 
-For more information, see [Terminology](#terminology).
+You can use an RDT to get buyer information for the order items in an order that you specify. In this workflow you specify `dataElements`=`buyerInfo` to indicate that the RDT will authorize your application to access buyer information for the specified order items.
 
-Step 2. Call restricted operations
-----------------------------------
+**Prerequisites**
 
-Call the restricted operations for which the RDT in [Step 1. Get an RDT](#step-1.-get-an-rdt) authorized you. When calling the restricted operations, include the RDT in the `x-amz-access-token` header. For more information, see [Step 3. Add headers to the URI](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#step-3-add-headers-to-the-uri).
+To complete this tutorial, you will need:
 
-Request Examples:
+-   Authorization from the selling partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+
+## Step 1. Get an order ID
+
+You need an order ID to identify an order for which you want order item information. You also need an Order ID to get an RDT that authorizes your application to access buyer information for order items. You can use the getOrders operation of the orders API to get a list of orders, from which you can get an order ID for the order that you are interested in.
+
+
+1. Call the [getOrders](https://github.com/amzn/selling-partner-api-docs/blob/main/references/orders-api/ordersV0.md#getorders) operation of the Orders API, specifying the appropriate parameters to filter for the order that you want.
+
+    The operation returns orders that match your request. Each order includes an order ID.
+
+2. From the orders that are returned, identify the one for which you want order item information.
+
+3. Save the order ID from the order that you want, to use in [Step 2. Get an RDT](#step-2-get-an-rdt) and [Step 3. Include the RDT with a call the getOrderItems operation](#step-3-include-the-rdt-with-a-call-the-getorderitems-operation).
+
+## Step 2. Get an RDT
+
+Call the createRestrictedDataToken operation to get an RDT.
+
+1. Call the [createRestrictedDataToken](https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#createrestricteddatatoken) operation, passing the **restrictedResources** body parameter. Include the order Id from [Step 1. Get an order ID](step-1-get-an-order-id) in the **path** parameter.
+
+**Body parameter:**
+
+<table><thead><tr class="header"><th><strong>Parameter</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>restrictedResources</td><td><p>Model of a restricted resource. Maximum: 50</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#restrictedresource">RestrictedResource</a></p></td><td>Yes</td></tr></tbody></table>
+
+**Request Example:**
 ```
-GET https://sellingpartnerapi-na.amazon.com/orders/v0/orders/orders/v0/orders/902-3159896-1390916/address.
-
-GET https://sellingpartnerapi-na.amazon.com/orders/v0/orders/902-3159896-1390916/buyerInfo
-
-GET https://sellingpartnerapi-na.amazon.com/orders/v0/orders/483-3488972-0896720/buyerInfo
-
-GET https://sellingpartnerapi-na.amazon.com/mfn/v0/shipments/6f77095e-9f75-47eb-aaab-a42d5428fa1a
+POST https://sellingpartnerapi-na.amazon.com/tokens/2021-03-01/restrictedDataToken
+{
+  "restrictedResources": [
+    {
+      "method": "GET",
+      "path": "/orders/v0/orders/123-456-7890/orderItems",
+      "dataElements": ["buyerInfo"]
+    }
+  ]
+}
 ```
-Datatypes
----------
+### Response
 
-### restrictedResources
+A successful response includes the following:
 
-<table><thead><tr class="header"><th><strong>Parameter</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>method</td><td><p>The HTTP method used with the restricted resource.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#method">Method</a></p></td><td>Yes</td></tr><tr class="even"><td>path</td><td><p>The path from a restricted operation. This could be:</p><ul><li><p>A specific path containing a seller's order ID, shipment ID, or report document ID, for example <code>/orders/v0/orders/902-3159896-1390916/address</code> or <code>/mfn/v0/shipments/6f77095e-9f75-47eb-aaab-a42d5428fa1a</code></p></li><li><p>A generic path that does not contain a seller's order ID or shipment ID, for example <code>/orders/v0/orders/{orderId}/address</code> or <code>/mfn/v0/shipments/{shipmentId}</code></p></li></ul><p>Type: string</p></td><td>Yes</td></tr></tbody></table>
+<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>restrictedDataToken</td><td><p>A Restricted Data Token (RDT). This is a short-lived access token that authorizes you to call the restricted operations represented by the restricted resources that you specified. Pass the RDT value in the <code>x-amz-access-token</code> header when making subsequent calls to the restricted operations.</p><p>Type: string</p></td></tr><tr class="even"><td>expiresIn</td><td><p>The lifetime of the RDT, in seconds.</p><p>Type: integer</p></td></tr></tbody></table>
+
+**Response Example:**
+```json
+{
+  "payload": {
+    "restrictedDataToken": "Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR",
+    "expiresIn": 3600
+  }
+}
+```
+2. Save the **restrictedDataToken** value (the RDT) to use in [Step 3. Include the RDT with a call the getOrder operation](#step-3-include-the-rdt-with-a-call-the-getorderitems-operation).
+
+## Step 3. Include the RDT with a call the getOrderItems operation
+
+Call the [getOrderItems](https://github.com/amzn/selling-partner-api-docs/blob/main/references/orders-api/ordersV0.md#getOrderItems) operation of the Orders API, specifying the order ID that you identified in [Step 1. Get an order ID](#step-1-get-an-order-id). Be sure to include the RDT from Step 1 in the `x-amz-access-token` header of your call to getOrderItems.
+
+# Tutorial: Get an RDT for multiple shipments
+
+You can get an RDT that provides authorization to get shipment details for any of a selling partner's shipments.
+
+**Prerequisites**
+
+To complete this tutorial, you will need:
+
+-   Authorization from the selling partner for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+
+- Shipment IDs for the shipments that you want to get shipment details for.
+
+## <a name="step-1-get-an-rdt-getShipment"></a>Step 1. Get an RDT
+
+Call the createRestrictedDataToken operation to get an RDT.
+
+-   Call the [createRestrictedDataToken](https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#createrestricteddatatoken) operation, passing the following parameters:
+
+**Body parameters:**
+
+<table><thead><tr class="header"><th><strong>Parameter</strong></th><th><strong>Description</strong></th><th><strong>Required</strong></th></tr></thead><tbody><tr class="odd"><td>restrictedResources</td><td><p>Model of a restricted resource. Maximum: 50</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#restrictedresource">RestrictedResource</a></p></td><td>Yes</td></tr></tbody></table>
+
+**Request Example:**
+```
+POST https://sellingpartnerapi-na.amazon.com/tokens/2021-03-01/restrictedDataToken
+{
+  "restrictedResources": [
+    {
+      "method": "GET",
+      "path": "/mfn/v0/shipments/{shipmentId}"
+    }
+  ]
+}
+```
+### Response
+
+A successful response includes the following:
+
+<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>restrictedDataToken</td><td><p>A Restricted Data Token (RDT). This is a short-lived access token that authorizes you to call the restricted operations represented by the restricted resources that you specified. Pass the RDT value in the <code>x-amz-access-token</code> header when making subsequent calls to the restricted operations.</p><p>Type: string</p></td></tr><tr class="even"><td>expiresIn</td><td><p>The lifetime of the RDT, in seconds.</p><p>Type: integer</p></td></tr></tbody></table>
+
+**Response Example:**
+```json
+{
+  "payload": {
+    "restrictedDataToken": "Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR",
+    "expiresIn": 3600
+  }
+}
+```
+2. Save the **restrictedDataToken** value (the RDT) to use in [Step 2. Include the RDT with a call the getShipment operation](#step-2-include-the-rdt-with-a-call-the-getshipment-operation).
+
+For definitions, see [Terminology](#terminology).
+
+## Step 2. Include the RDT with a call the getShipment operation
+
+Call the [getShipment](https://github.com/amzn/selling-partner-api-docs/blob/main/references/merchant-fulfillment-api/merchantFulfillmentV0.md#getshipment) operation of the Merchant Fulfillment API, using the generic path that you specified in [Step-1. Get an RDT](#step-1-get-an-rdt-getShipment) and replacing `{shipmentId}` with a shipment ID from the selling partner. For example, `/mfn/v0/shipments/FBA1234ABC5D`. Be sure to include the RDT from Step 1 in the `x-amz-access-token` header of your call to getShipment. You can use the RDT for any of the selling partner's shipment IDs.
 
 Tutorial: Generate a Java SDK for the Tokens API
 ================================================
@@ -296,8 +396,3 @@ With this SDK you can make calls to the Tokens API with the following code alrea
 13.  Download [restricted-data-token-workflow.java](https://github.com/amzn/selling-partner-api-models/commit/63a55cee11ca54caf8242884027a863860abaaf2) and use it to build a class inside the **main/java/sampleCode/** folder of the generated client library.
 
 You can now start testing the workflow for getting an RDT and using it to call one or more restricted operations. Use this code to guide you in building your own applications.
-
-Tokens API Postman collection
-=============================
-
-You can use the [Tokens API Postman collection](https://github.com/amzn/selling-partner-api-models/blob/main/clients/postman-collections/tokens-api-sandbox-postman-collection.json) to test the Tokens API in the Selling Partner API sandbox environment. For more information about testing with the sandbox, see [The Selling Partner API sandbox](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#the-selling-partner-api-sandbox) in the Developer Guide.
