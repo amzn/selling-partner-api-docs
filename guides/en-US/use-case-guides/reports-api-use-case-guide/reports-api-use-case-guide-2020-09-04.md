@@ -26,7 +26,7 @@ API Version: 2020-09-04
 
   - [Step 2: Periodically retrieve information about the scheduled reports](#step-2-periodically-retrieve-information-about-the-scheduled-reports)
 
-  - [Step 3: Retrieve the report](#step-3-retrieve-the-report)
+  - [Step 3: Retrieve the report](#step-3-retrieve-the-report-1)
 
 - [How to Retrieve a Report](#how-to-retrieve-a-report)
 
@@ -243,7 +243,7 @@ To complete this tutorial, you will need:
 
 [Step 2: Periodically retrieve information about the scheduled reports](#step-2-periodically-retrieve-information-about-the-scheduled-reports)
 
-[Step 3: Retrieve the reports](#step-3-retrieve-the-report)
+[Step 3: Retrieve the reports](#step-3-retrieve-the-report-1)
 
 ## Step 1: Create a schedule for report requests
 
@@ -303,9 +303,41 @@ GET https://sellingpartnerapi-na.amazon.com/reports/2020-09-04/reports?reportTyp
 
 A successful response includes the following:
 
-<table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th><th><strong>Schema</strong></th></tr></thead><tbody><tr class="odd"><td>payload</td><td><p>The payload for the getReports operation.</p></td><td><a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#reportlist">ReportList</a></td></tr><tr class="even"><td>nextToken</td><td><p>Returned when the number of results exceeds pageSize. To get the next page of results, call getReports with this token as the only parameter.</p></td><td>string</td></tr></tbody></table><br>
+<table>
+  <thead>
+    <tr class="header">
+      <th>
+        <strong>Name</strong>
+      </th>
+      <th>
+        <strong>Description</strong>
+      </th>
+      <th>
+        <strong>Schema</strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd">
+      <td>payload</td>
+      <td>
+        <p>The payload for the getReports operation.</p>
+      </td>
+      <td>
+        <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#reportlist">ReportList</a>
+      </td>
+    </tr>
+    <tr class="even">
+      <td>nextToken</td>
+      <td>
+        <p>Returned when the number of results exceeds pageSize. To get the next page of results, call getReports with this token as the only parameter.</p>
+      </td>
+      <td>string</td>
+    </tr>
+  </tbody>
+</table><br>
 
-The **ReportList** array in the response payload contains a [Report](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#report) object for each processed report, and that **Report** object contains the **reportDocumentId**.
+The payload array in the response contains one Report object (see     [Report](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#report)) for each processed report, and each Report object contains the **reportDocumentId**.
 
 **Note**: Information about both on-demand and scheduled reports is returned. To identify scheduled reports, look for the presence of a **reportScheduleId** in the **Report** object in the response. The **reportScheduleId** indicates which schedule submitted this report request.
 
