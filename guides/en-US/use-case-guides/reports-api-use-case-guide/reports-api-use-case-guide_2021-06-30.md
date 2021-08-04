@@ -28,6 +28,13 @@ API Version: 2021-06-30
 
   - [Step 3. Retrieve the report](#step-3-retrieve-the-report-1)
 
+- [Tutorial: Retrieve reports that are automatically generated](#tutorial-retrieve-reports-that-are-automatically-generated)
+  - [Prerequisites](#prerequisites-2)
+  
+  - [Step 1. Retrieve information about reports that can be downloaded](#step-1-retrieve-information-about-reports-that-can-be-downloaded)
+  
+  - [Step 2. Retrieve the report](#step-2-retrieve-the-report)
+  
 - [How to Retrieve a Report](#how-to-retrieve-a-report)
 
   - [Step 1. Get information required to retrieve the report](#step-1-get-information-required-to-retrieve-the-report)
@@ -46,7 +53,7 @@ API Version: 2021-06-30
 
 With the Selling Partner API for Reports (Reports API), you can build applications that enable sellers to get reports from Amazon that help them manage their selling business. There are reports for a wide variety of use cases, such as monitoring inventory, tracking orders for fulfillment, getting tax information, tracking returns and seller performance, managing a selling business with Fulfillment by Amazon, and more. See the [Reports API Reference](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md) for details about Reports API operations and associated data types and schemas. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md) for the available report types.
 
-The two principal workflows for generating reports are requesting a report and scheduling a report.
+The three principal workflows for generating reports are requesting a report scheduling a report, and retrieving automatically generated reports.
 
 **Requesting a report**
 
@@ -55,6 +62,10 @@ You can request any available report type on demand using the createReport opera
 **Scheduling a report**
 
 You can have Amazon automatically submit report requests on a schedule using the createReportSchedule operation. See [Tutorial: Schedule and retrieve reports](#tutorial-schedule-and-retrieve-reports) for instructions for scheduling reports.
+
+**Retrieving automatically generated reports**
+
+Amazon generates some reports automatically. See [Tutorial: Retrieve reports that are automatically generated](#tutorial-retrieve-reports-that-are-automatically-generated) for instructions for retrieving those reports.
 
 ## Terminology
 
@@ -344,7 +355,7 @@ To complete this tutorial, you will need:
 
 [Step 2. Periodically retrieve information about the scheduled reports](#step-2-periodically-retrieve-information-about-the-scheduled-reports)
 
-[Step 3. Retrieve the reports](#step-3-retrieve-the-report)
+[Step 3. Retrieve the report](#step-3-retrieve-the-report-1)
 
 ## Step 1. Create a schedule for report requests
 
@@ -593,7 +604,7 @@ A successful response includes the following:
 </table>
 <br>
 
-The **ReportList** array in the response contains a [Report](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#report) object for each processed report, and that **Report** object contains the **reportDocumentId**.
+The **reports** array in the response contains a [Report](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#report) object for each processed report, and that **Report** object contains the **reportDocumentId**.
 
 **Note**: Information about both on-demand and scheduled reports is returned. To identify scheduled reports, look for the presence of a **reportScheduleId** in the **Report** object in the response. The **reportScheduleId** indicates which schedule submitted this report request.
 
@@ -625,6 +636,205 @@ The **ReportList** array in the response contains a [Report](https://github.com/
 ## Step 3. Retrieve the report
 
 To retrieve a report, see [How to Retrieve a Report](#how-to-retrieve-a-report).
+
+
+# Tutorial: Retrieve reports that are automatically generated
+
+Some reports are automatically generated without your having to request them or schedule them. For example, settlement reports are automatically scheduled by Amazon. You can search for these reports using the getReports operation. 
+
+Here are the high-level steps for retrieving reports that are automatically generated:
+
+1. Call the [getReports](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#getreports) operation to find reports that can be downloaded.
+
+   If a call to the getReports operation succeeds, the response contains an array of report information, including **reportDocumentId** values if report data is available.
+
+   **Note**: The getReports operation only serves information for report requests that were created within the last 90 days.
+
+1. For each **reportDocumentId** that represents a report that you want to retrieve:
+
+   1. Call the [getReportDocument](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#getreportdocument) operation, passing the **reportDocumentId** value.
+
+      Amazon returns a pre-signed URL for the location of the report document, and the compression algorithm used if the report document contents have been compressed.
+
+   1. Download the report.<br>
+
+## Prerequisites
+
+To complete this tutorial, you will need:
+
+- One or more report types to download if report data is available. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md) for a list of the report types.
+
+- Authorization from the seller for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+
+- To use the sample code in this guide, a working Java Development Kit (JDK) installation.
+
+**Steps**
+
+[Step 1. Retrieve information about reports that can be downloaded](#step-1-retrieve-information-about-reports-that-can-be-downloaded)
+
+[Step 2. Retrieve the report](#step-2-retrieve-the-report)
+
+## Step 1. Retrieve information about reports that can be downloaded
+
+Call the getReports operation to find reports that can be downloaded, specifying the **reportTypes** parameter to filter the list of reports returned, and any optional parameters. See [reportType values](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md) for a list of the available report types.
+
+- Call the [getReports](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#getreports) operation and pass the following parameters:
+
+Query parameters:
+
+<table>
+  <thead>
+    <tr class="header">
+      <th>
+        <strong>Name</strong>
+      </th>
+      <th>
+        <strong>Description</strong>
+      </th>
+      <th>
+        <strong>Required</strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd">
+      <td>reportTypes</td>
+      <td>
+        A list of report types used to filter reports. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided.
+        <p>Either reportTypes or nextToken is required.</p>
+        <p>Type: &lt; string &gt; array</p>
+      </td>
+      <td>No</td>
+    </tr>
+    <tr class="even">
+      <td>processingStatuses</td>
+      <td>
+        A list of processing statuses used to filter reports.
+        <p>Type: &lt; enum (<a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md#processingstatuses">ProcessingStatuses</a>) &gt; array</p>
+      </td>
+      <td>No</td>
+    </tr>
+    <tr class="odd">
+      <td>marketplaceIds</td>
+      <td>
+        A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify.
+        <p>Type: &lt; string &gt; array</p>
+      </td>
+      <td>No</td>
+    </tr>
+    <tr class="even">
+      <td>pageSize</td>
+      <td>
+        The maximum number of reports to return in a single call.
+        <p>Type: Integer</p>
+      </td>
+      <td>No</td>
+    </tr>
+    <tr class="odd">
+      <td>createdSince</td>
+      <td>
+        The earliest report creation date and time for reports to include in the response, in ISO 8601 date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days.
+        <p>Type: string (date-time)</p>
+      </td>
+      <td>No</td>
+    </tr>
+    <tr class="even">
+      <td>createdUntil</td>
+      <td>
+        The latest report creation date and time for reports to include in the response, in ISO 8601 date time format. The default is now.
+        <p>Type: string (date-time)</p>
+      </td>
+      <td>No</td>
+    </tr>
+    <tr class="odd">
+      <td>nextToken</td>
+      <td>
+        A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getReports operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail.
+        <p>Type: string</p>
+      </td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Request example:
+
+```plain
+GET https://sellingpartnerapi-na.amazon.com/reports/2021-06-30/reports?reportTypes=GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE
+```
+
+**Response**
+
+A successful response includes the following:
+
+<table>
+  <thead>
+    <tr class="header">
+      <th>
+        <strong>Name</strong>
+      </th>
+      <th>
+        <strong>Description</strong>
+      </th>
+      <th>
+        <strong>Schema</strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd">
+      <td>reports</td>
+      <td>
+        The reports.
+      </td>
+      <td>
+        <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#reportlist">ReportList</a>
+      </td>
+    </tr>
+    <tr class="even">
+      <td>nextToken</td>
+      <td>
+        Returned when the number of results exceeds pageSize. To get the next page of results, call getReports with this token as the only parameter.
+      </td>
+      <td>string</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+The **reports** array in the response contains a [Report](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#report) object for each processed report, and that **Report** object contains the **reportDocumentId**.
+
+2. For each **reportDocumentId** that represents a report that you want to retrieve, save the **reportDocumentId** and go to Step 2 to retrieve the report.
+
+#### Response example:
+
+```json
+{
+  "reports": [
+    {
+      "reportType": "GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE",
+      "processingEndTime": "2021-08-03T01:02:25+00:00",
+      "processingStatus": "DONE",
+      "marketplaceIds": [
+        "ATVPDKIKX0DER"
+      ],
+      "reportDocumentId": "DOC-b8b0-4226-b4b9-0ee058ea5760",
+      "reportId": "ID222",
+      "dataEndTime": "2021-08-03T01:02:25+00:00",
+      "createdTime": "2021-08-03T01:02:25+00:00",
+      "processingStartTime": "2021-08-03T01:02:25+00:00",
+      "dataStartTime": "2021-08-03T01:02:25+00:00"
+    }
+  ]
+}
+
+```
+
+## Step 2. Retrieve the report
+
+To retrieve a report, see [How to Retrieve a Report](#how-to-retrieve-a-report).
+
+
 
 # How to Retrieve a Report
 
