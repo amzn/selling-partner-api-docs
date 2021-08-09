@@ -1535,23 +1535,23 @@ A daily FBA report is generated no more than once every four hours. This means t
         partner's business on Amazon. Each report offers up to 10,000 recommendations and is refreshed weekly.</p>
         <p>This report accepts the following <strong>reportOptions</strong> values:</p>
         <ul>
-          <li><strong>categories</strong> - Accepts a semicolon separated list of categories to use to filter the
-            report. Otherwise, the report contains all categories. Defaults to "".<br>Example:
+          <li><strong>categories</strong> - type: String | (Optional) | Defaults to "".<br>Accepts a semicolon separated list of categories to use to filter the report.  
+            <br>Example:
             <code>"reportOptions":{"categories":"Luggage;Wireless;Groceries"}</code>
+            <br> The list of categories can be obtained by generating a report without entering a <code>categories</code> parameter.
           </li>
-          <li><strong>subCategories</strong> - Accepts a semicolon separated list of subcategories to use to filter the
-            report. Otherwise, the report contains all subcategories. Defaults to "".<br>Example:
+          <li><strong>subCategories</strong> - type: String | (Optional) |Defaults to "". <br>Accepts a semicolon separated list of subcategories to use to filter the report. 
+            <br>Example:
             <code>"reportOptions":{"subCategories":"9100 Backpacks;1500 Navigation Electronics"}</code>
+            <br> The list of subcategories can be obtained by generating a report without entering a <code>subCategories</code> parameter.
           </li>
-          <li><strong>depersonalized</strong> - A Boolean value that indicates whether to request a depersonalized
-            report. A depersonalized report provides default recommendations that are not customized based on current
-            seller history. Defaults to <strong>false</strong>.<br>Example:
+          <li><strong>depersonalized</strong> - type: Boolean | (Optional) | Defaults to <strong><code>false</code></strong>. <br>A value that indicates if you are requesting a depersonalized report. A depersonalized report provides default recommendations that are not customized based on current seller history. <br>Example:
             <code>"reportOptions":{"depersonalized":"true"}</code>
           </li>
-          <li><strong>filterMode</strong> - Specify <strong>"include"</strong> to include only the categories and
-            subCategories provided in reportOptions, or <strong>"exclude"</strong> to exclude them from the report (for
-            example, the report will not show any listings with "Home Improvement" if it were passed in as a category).
-            Defaults to <strong>"include"</strong>.<br>Example:
+          <li><strong>filterMode</strong> - type: "include" or "exclude" | (Optional) | Defaults to <strong><code>include</code></strong>. <br>Use <strong>"include"</strong> to include only the categories or
+            subCategories specified in reportOptions, or <strong>"exclude"</strong> to exclude them from the report (for
+            example, the report will not show any listings with "Home Improvement" if it was specified as the category).
+            <br>Example:
             <code>"reportOptions":{"filterMode":"exclude"}</code>
           </li>
         </ul>
@@ -1564,13 +1564,16 @@ A daily FBA report is generated no more than once every four hours. This means t
             <p>US</p>
           </li>
           <li>
+            <p>Spain</p>
+          </li>
+          <li>
             <p>UK</p>
           </li>
           <li>
             <p>France</p>
           </li>
           <li>
-            <p>Spain</p>
+            <p>Germany</p>
           </li>
           <li>
             <p>Italy</p>
@@ -1580,9 +1583,6 @@ A daily FBA report is generated no more than once every four hours. This means t
           </li>
           <li>
             <p>Japan</p>
-          </li>
-          <li>
-            <p>Germany</p>
           </li>
         </ul>
         <p>Can be requested.</p>
@@ -1598,26 +1598,28 @@ A daily FBA report is generated no more than once every four hours. This means t
         Each report offers up to 10,000 recommendations and is refreshed weekly.</p>
         <p>This report accepts the following <strong>reportOptions</strong> values:</p>
         <ul>
-          <li><strong>categories</strong> - Accepts a semicolon separated list of categories to use to filter the
-            report. Otherwise, the report contains all categories. Defaults to "".<br>Example:
+          <li><strong>categories</strong> - type: String | (Optional) | Defaults to "".<br>Accepts a semicolon separated list of categories to use to filter the report.  
+            <br>Example:
             <code>"reportOptions":{"categories":"Luggage;Wireless;Groceries"}</code>
+            <br> The list of categories can be obtained by generating a report without entering a <code>categories</code> parameter.
           </li>
-          <li><strong>depersonalized</strong> - A Boolean value that indicates whether to request a depersonalized
-            report. A depersonalized report provides default recommendations that are not customized based on current
-            seller history. Defaults to <strong>false</strong>.<br>Example:
+          <li><strong>depersonalized</strong> - type: Boolean | (Optional) | Defaults to <strong><code>false</code></strong>. <br>A value that indicates if you are requesting a depersonalized report. A depersonalized report provides default recommendations that are not customized based on current seller history. <br>Example:
             <code>"reportOptions":{"depersonalized":"true"}</code>
           </li>
-          <li><strong>filterMode</strong> - Specify <strong>"include"</strong> to include only the categories and
-            subCategories provided in reportOptions, or <strong>"exclude"</strong> to exclude them from the report (for
-            example, the report will not show any listings with "Home Improvement" if it were passed in as a category).
-            Defaults to <strong>"include"</strong>.<br>Example:
+          <li><strong>filterMode</strong> - type: "include" or "exclude" | (Optional) | Defaults to <strong><code>include</code></strong>. <br>Use <strong>"include"</strong> to include only the categories or
+            subCategories specified in reportOptions, or <strong>"exclude"</strong> to exclude them from the report (for
+            example, the report will not show any listings with "Home Improvement" if it was specified as the category).
+            <br>Example:
             <code>"reportOptions":{"filterMode":"exclude"}</code>
           </li>
-        </ul>
+          <p><strong>Note:</strong> <code>subCategories</code> are not available in this report.
         <p>This report is only available in these marketplaces:</p>
         <ul>
           <li>
             <p>US</p>
+          </li>
+          <li>
+            <p>Spain</p>
           </li>
           <li>
             <p>UK</p>
@@ -1626,7 +1628,7 @@ A daily FBA report is generated no more than once every four hours. This means t
             <p>France</p>
           </li>
           <li>
-            <p>Spain</p>
+            <p>Germany</p>
           </li>
           <li>
             <p>Italy</p>
@@ -1636,9 +1638,6 @@ A daily FBA report is generated no more than once every four hours. This means t
           </li>
           <li>
             <p>Japan</p>
-          </li>
-          <li>
-            <p>Germany</p>
           </li>
         </ul>
         <p>Can be requested.</p>
