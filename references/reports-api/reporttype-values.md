@@ -68,7 +68,7 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>Inventory Health & Planning Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_VENDOR_INVENTORY_HEALTH_REPORT</p>
+        <p><strong>reportType</strong> value:<br>GET_VENDOR_INVENTORY_HEALTH_AND_PLANNING_REPORT</p>
       </td>
       <td><p>JSON report with key vendor inventory health metrics such as net received inventory, open purchase order
         quantity, sell-through rate, on-hand inventory, aged inventory, vendor lead time, among others. Data is
