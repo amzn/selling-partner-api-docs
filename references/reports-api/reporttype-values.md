@@ -2,7 +2,7 @@
 
 Use a **reportType** value to specify the type of report that you want to request using the Reports API.
 
-In the report descriptions, "Seller Central" refers to sellers who have registered to sell on Amazon in the past few years; "Marketplace" refers to legacy sellers who registered to sell on Amazon prior to the last few years. Some reports are only available for Marketplace or Seller Central sellers.
+In the report descriptions, "Seller Central" refers to sellers who have registered to sell on Amazon in the past few years; "Marketplace" refers to legacy sellers who registered to sell on Amazon prior to the last few years. Some reports are only available for Marketplace or Seller Central sellers. 
 
 For more information about registering in Amazon’s Brand Registry, see [Build and protect your  brand](https://brandservices.amazon.com/).
 
@@ -68,7 +68,7 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>Inventory Health & Planning Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_VENDOR_INVENTORY_HEALTH_REPORT</p>
+        <p><strong>reportType</strong> value:<br>GET_VENDOR_INVENTORY_HEALTH_AND_PLANNING_REPORT</p>
       </td>
       <td><p>JSON report with key vendor inventory health metrics such as net received inventory, open purchase order
         quantity, sell-through rate, on-hand inventory, aged inventory, vendor lead time, among others. Data is
@@ -95,6 +95,7 @@ Report types fall into these categories:
     </tr>
   </tbody>
 </table>
+
 
 ## Inventory reports
 
@@ -265,6 +266,7 @@ Report types fall into these categories:
     </tr>
   </tbody>
 </table>
+
 
 ## Order reports
 
