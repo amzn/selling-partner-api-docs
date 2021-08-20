@@ -9,36 +9,39 @@ In the Selling Partner API, requests are rate limited using the [token bucket al
 Selling Partner API operations have associated usage plans that specify the rate limits. You can find these in the API Reference documentation. The usage plan definitions are:
 
 - Rate - The number of requests per second that are added to the token bucket, and thus can be used to submit requests without experiencing throttling. If you are making calls continuously over a long period of time, staying below this rate will help you avoid throttled requests.
-
 - Burst – The maximum size that the token bucket can reach. This also represents the maximum number of requests that you can build up over time and then submit simultaneously assuming the token bucket is full.
+
+## Standard Usage Plans
+
+Most Selling Partner APIs are governed by standard usage plans. With a standard usage plan, rate limits are static for all callers and based on our expected calls patterns for each API operation. The default usage plan rates for every Selling Partner API operation are published in the API reference for that API section. Callers to an API operation should receive the throughput indicated by the default rates. Selling partners whose business demands require higher throughput may see higher rate and burst values than the defaults if they have been granted an override by Amazon. 
+
+If you find that the default rates are not sufficient for your use case, petition for an override by opening a support ticket with our developer support team. 
 
 ## Dynamic Usage Plans
 
-This new feature automatically adjusts rate-limits to right-size them based on the needs of the business over time.
+The dynamic usage plan feature is only available for the the **Selling Partner API for Orders**.  
 
-A dynamic usage plan is one that is automatically adjusted to each selling partner based on the current and historical business needs for that business. A variety of measures are employed as rules to drive dynamic rate limit adjustments. This means you can expect rate limits to change for any Selling Partner API operation that employs dynamic usage plans. The default rates published in the API Reference documentation can be used as a basis to plan your application. However, because the purpose of dynamic usage plans is to right-size those limits over time, the rates will change. When you submit a request to a Selling Partner API operation, the current rate limits for that operation are returned in the `x-amzn-RateLimit-Limit` response header, when possible.
+A dynamic usage plan is one that is automatically adjusted to each selling partner based on the current and historical business needs for that business. The default rate limits published in the API Reference documentation can be used to plan your application. However, because the purpose of dynamic usage plans is to right-size those limits over time, the rates may change. 
+
+A variety of selling partner business metrics influence rate adjustments. These are *business metrics only* and do not include a historical number of API requests. Rates will not dynamically increase because an application sends API requests more frequently.
+
+If you find that dynamic rates are still not sufficient for your use case, petition for an override by opening a support ticket with our developer support team. 
 
 ## The `x-amzn-RateLimit-Limit` response header
 
-The `x-amzn-RateLimit-Limit` response header returns your current rate limit (requests per second) for a valid request, on a best-effort basis. In some instances, our attempt to request, retrieve and provide the rate limit can itself fail. This could be due to random network error, our request attempt being throttled, or other hard-to-predict issues. When that happens, we will not fail an otherwise valid request to a Selling Partner API operation. We will instead return the response without the header.
+When you submit a request to a Selling Partner API operation, the current rate limits for that operation are returned in the `x-amzn-RateLimit-Limit` response header, on a best-effort basis, for HTTP status codes 20x, 400 and 404 only. In some instances, our best-effort attempt to request, retrieve and provide the rate limit can itself fail. This could be due to random network error, our request attempt being throttled, or other hard-to-predict issues. When that happens, we will not fail an otherwise valid request to a Selling Partner API operation. We will instead return the response without the header.
 
 This means you must not depend on the presence of the `x-amzn-RateLimit-Limit` header in a response. Instead, check for the presence of the header before attempting to use the rate limit value.
 
 The `x-amzn-RateLimit-Limit` should never be expected in the response to a throttled, unauthorized, or unauthenticated request. 
 
-## Comparison to Amazon Marketplace Web Service (Amazon MWS)
-
-Dynamic usage plans are designed to reduce throttling when compared to Amazon MWS. In Amazon MWS today, rate limits are applied uniformly without considering business size or changing business needs over time. With dynamic usage plans in the Selling Partner API, you can move from a one-size-fits all design to an approach that emphasizes right-sizing the rate limits for each selling partner based on business context and changing needs over time.
-
-The key design improvements are:
-
-- Dynamic usage plans adjust rate limits according to changing business needs. Rate limits are set for each selling partner.
-
-- Dynamic usage plans automatically right-size rates to improve traffic performance.
-
 ## Frequently Asked Questions
 
 ### General
+
+#### The rate limits for one operation are too low for my use case. Can the limit be increased?
+
+We aim for right-sized limits, with the goal that efficient call patterns should, ideally, never be throttled. If you believe that you have a use case that we have not properly accounted for, let us know by opening a support ticket with our developer support team.
 
 #### How should my application handle a 429 response?
 
@@ -62,10 +65,6 @@ If your application is consistently throttled, it might mean that your call patt
 
 3. Use batch APIs where available or otherwise try to do more with fewer calls. For example, with the [Feeds](https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feeds_2020-09-04.md) and [Reports](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2020-09-04.md) APIs you can send or retrieve a lot of information (i.e. batches of information) using a relatively small number of calls. Generally, examine your call patterns against the operations in an API to see if you can get the same work done in fewer calls.
 
-#### The rate limits for one operation are too low for my use case. Can the limit be increased?
-
-We aim for right-sized limits, with the goal that efficient call patterns should, ideally, never be throttled. If you believe that you have a use case that we have not properly accounted for, please let us know by opening a support ticket.
-
 #### Will my application be throttled more often as I obtain more authorizations?
 
 No. All usage plans are specific to application-Selling Partner pairs, so that your throughput grows naturally with your clients.
@@ -78,9 +77,13 @@ Rate limits for dynamic usage plans (discussed below) auto adjust higher or lowe
 
 ### Dynamic Usage Plans
 
+#### Will my rate limits increase if my application is constantly throttled?
+
+Rates are based on a selling partner’s business metrics. If an application is being throttled consistently, it likely means your call patterns are not aligned with the rate limits assigned to that selling partner.  See [What should I do if my application is consistently throttled?](#what-should-i-do-if-my-application-is-consistently-throttled) See also [The rate limits for one operation are too low for my use case. Can the limit be increased?](#the-rate-limits-for-one-operation-are-too-low-for-my-use-case-can-the-limit-be-increased).
+
 #### What is the overall goal of dynamic usage plans?
 
-Historically, we have observed that homogeneous usage plans are over-sized for some situations and, worse, under-sized for others. The goal of dynamic usage plans is to leverage the known context of a given call to put the right limits in place for any situation.
+Historically, we have observed that homogeneous usage plans are over-sized for some situations and, worse, under-sized for others. The goal of dynamic usage plans is to leverage the known business context of a given call to put the right limits in place for any situation.
 
 #### What factors influence dynamic usage plans?
 
@@ -88,7 +91,7 @@ In general, rate limits are shaped by the type, size, and behavior of the sellin
 
 #### How often will the limits associated with a given usage plan change?
 
-We aim to prevent frequent, disruptive changes to limits. Generally, limits will be changed as soon as the need is observed.
+We aim to prevent frequent, disruptive changes to limits. Generally, limits will be changed as soon as we detect meaningful changes in the business metrics in a Selling Partner account.
 
 #### How should I code my application to respect dynamic limits?
 
@@ -100,10 +103,3 @@ Here are a few suggestions for good application behavior with respect to dynamic
 
 3. Code naturally against events rather than running on a loop. If you do this you won’t need a timer at all. In the example of a re-pricer, update prices in response to price notifications rather than every n-seconds.
 
-#### Which Selling Partner API sections use dynamic usage plans?
-
-The Selling Partner API for Orders.
-
-#### Why don’t all operations support dynamic usage plans?
-
-We are working on it\!
