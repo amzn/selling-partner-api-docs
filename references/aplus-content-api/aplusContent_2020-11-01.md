@@ -378,13 +378,13 @@ This table contains HTTP status codes and associated information for error respo
 |HTTP Code|Description|Schema|
 |---|---|---|
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 |**404**|The specified resource does not exist.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
-|**410**|The specified resource no longer exists.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
+|**410**|The specified resource no longer exists.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference identifier.|[ErrorList](#errorlist)|
 
 
 <a name="definitions"></a>
@@ -705,14 +705,6 @@ A whole number dimension and its unit of measurement. For example, this can repr
 |**value**  <br>*required*|The dimension value.|integer|
 |**units**  <br>*required*|The unit of measurement.|string|
 
-
-<a name="contentrecordlist"></a>
-### ContentRecordList
-A list of A+ Content records.
-
-*Type* : < [ContentRecord](#contentrecord) > array
-
-**Unique items** : false  
 
 <a name="contentrecord"></a>
 ### ContentRecord
@@ -1210,19 +1202,6 @@ The type of rich text decorator.
 |**contentMetadataRecords**  <br>*required*|The content metadata records.|[ContentMetadataRecordList](#contentmetadatarecordlist)|
 
 
-<a name="getcontentdocumentincludeddatatype"></a>
-### GetContentDocumentIncludedDataType
-The type of data to include in the response, such as the contents or the metadata of the A+ Content documents.
-
-*Type* : enum
-
-
-|Value|Description|
-|---|---|
-|**CONTENTS**|The contents of the content document.|
-|**METADATA**|The metadata of the content document.|
-
-
 <a name="getcontentdocumentresponse"></a>
 ### GetContentDocumentResponse
 *Polymorphism* : Composition
@@ -1251,18 +1230,6 @@ The type of data to include in the response, such as the contents or the metadat
 |---|---|---|
 |**warnings**  <br>*optional*|A set of messages to the user, such as warnings or comments.|[MessageSet](#messageset)|
 |**contentReferenceKey**  <br>*required*|A unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier.|[ContentReferenceKey](#contentreferencekey)|
-
-
-<a name="listcontentdocumentasinrelationsincludeddatatype"></a>
-### ListContentDocumentAsinRelationsIncludedDataType
-The type of data to include in the response, such as metadata about the related ASINs.
-
-*Type* : enum
-
-
-|Value|Description|
-|---|---|
-|**METADATA**|The metadata of the content document.|
 
 
 <a name="listcontentdocumentasinrelationsresponse"></a>
