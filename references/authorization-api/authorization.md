@@ -73,7 +73,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Success.  <br>**Headers** :   <br>`x-amzn-requestId` (string) : Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
 
 For error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 
@@ -85,14 +85,14 @@ This table contains HTTP status codes and associated information for error respo
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
-|**404**|The resource specified does not exist.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
+|**404**|The resource specified does not exist.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers**:  <br>`x-amzn-RateLimit-Limit` (string):Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[GetAuthorizationCodeResponse](#getauthorizationcoderesponse)|
 
 
 <a name="definitions"></a>
