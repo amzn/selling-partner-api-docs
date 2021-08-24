@@ -231,6 +231,7 @@ The `marketplaceId` identifies the marketplace in a request.
 | Poland               | A1C3SOZRARQ6R3    | PL               |
 | Egypt                | ARBP9OOSHTCHU     | EG               |
 | Turkey               | A33AVAJ2PDY3EV    | TR               |
+| Saudi Arabia         | A17E79C6D8DWNP    | SA               |
 | United Arab Emirates | A2VIGQ35RCS4UG    | AE               |
 | India                | A21TJRUUN4KGV     | IN               |
 
