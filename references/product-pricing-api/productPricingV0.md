@@ -75,12 +75,12 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |---|---|---|
 |**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 |**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 
 
 <a name="getcompetitivepricing"></a>
@@ -117,12 +117,12 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |---|---|---|
 |**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 |**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetPricingResponse](#getpricingresponse)|
 
 
 <a name="getlistingoffers"></a>
@@ -158,12 +158,12 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |---|---|---|
 |**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 |**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 
 
 <a name="getitemoffers"></a>
@@ -199,12 +199,12 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |---|---|---|
 |**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**401**|The request's Authorization header is not formatted correctly or does not contain a valid token.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 |**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 |**404**|The specified resource does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOffersResponse](#getoffersresponse)|
 
 
 <a name="definitions"></a>
@@ -452,7 +452,7 @@ Contains pricing information that includes special pricing when buying in bulk.
 |---|---|---|
 |**quantityTier**  <br>*required*|Indicates at what quantity this price becomes active.|integer (int32)|
 |**quantityDiscountType**  <br>*required*|Indicates the type of quantity discount this price applies to.|[QuantityDiscountType](#quantitydiscounttype)|
-|**price**  <br>*required*|The price at this quantity tier.|[MoneyType](#moneytype)|
+|**listingPrice**  <br>*required*|The price at this quantity tier.|[MoneyType](#moneytype)|
 
 
 <a name="quantitydiscounttype"></a>
@@ -462,7 +462,7 @@ Contains pricing information that includes special pricing when buying in bulk.
 
 |Value|Description|
 |---|---|
-|**QuantityDiscount**|Quantity Discount|
+|**QUANTITY_DISCOUNT**|Quantity Discount|
 
 
 <a name="points"></a>
@@ -515,7 +515,9 @@ Contains price information about the product, including the LowestPrices and Buy
 |**LowestPrices**  <br>*optional*|A list of the lowest prices for the item.|[LowestPrices](#lowestprices)|
 |**BuyBoxPrices**  <br>*optional*|A list of item prices.|[BuyBoxPrices](#buyboxprices)|
 |**ListPrice**  <br>*optional*|The list price of the item as suggested by the manufacturer.|[MoneyType](#moneytype)|
+|**CompetitivePriceThreshold**  <br>*optional*|This price is based on competitive prices from other retailers (excluding other Amazon sellers). The offer may be ineligible for the Buy Box if the seller's price + shipping (minus Amazon Points) is greater than this competitive price.|[MoneyType](#moneytype)|
 |**SuggestedLowerPricePlusShipping**  <br>*optional*|The suggested lower price of the item, including shipping and Amazon Points. The suggested lower price is based on a range of factors, including historical selling prices, recent Buy Box-eligible prices, and input from customers for your products.|[MoneyType](#moneytype)|
+|**SalesRankings**  <br>*optional*|A list that contains the sales rank of the item in the given product categories.|[SalesRankList](#salesranklist)|
 |**BuyBoxEligibleOffers**  <br>*optional*|A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.|[BuyBoxEligibleOffers](#buyboxeligibleoffers)|
 |**OffersAvailableTime**  <br>*optional*|When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing.|string (date-time)|
 
@@ -612,6 +614,8 @@ Indicates whether the item is fulfilled by Amazon or by the seller (merchant).
 |**MyOffer**  <br>*optional*|When true, this is the seller's offer.|boolean|
 |**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.|[OfferCustomerType](#offercustomertype)|
 |**SubCondition**  <br>*required*|The subcondition of the item. Subcondition values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.|string|
+|**SellerId**  <br>*optional*|The seller identifier for the offer.|string|
+|**ConditionNotes**  <br>*optional*|Information about the condition of the item.|string|
 |**SellerFeedbackRating**  <br>*optional*|Information about the seller's feedback, including the percentage of positive feedback, and the total number of ratings received.|[SellerFeedbackType](#sellerfeedbacktype)|
 |**ShippingTime**  <br>*required*|The maximum time within which the item will likely be shipped once an order has been placed.|[DetailedShippingTimeType](#detailedshippingtimetype)|
 |**ListingPrice**  <br>*required*|The price of the item.|[MoneyType](#moneytype)|
@@ -620,8 +624,20 @@ Indicates whether the item is fulfilled by Amazon or by the seller (merchant).
 |**Shipping**  <br>*required*|The shipping cost.|[MoneyType](#moneytype)|
 |**ShipsFrom**  <br>*optional*|The state and country from where the item is shipped.|[ShipsFromType](#shipsfromtype)|
 |**IsFulfilledByAmazon**  <br>*required*|When true, the offer is fulfilled by Amazon.|boolean|
+|**PrimeInformation**  <br>*optional*|Amazon Prime information.|[PrimeInformationType](#primeinformationtype)|
 |**IsBuyBoxWinner**  <br>*optional*|When true, the offer is currently in the Buy Box. There can be up to two Buy Box winners at any time per ASIN, one that is eligible for Prime and one that is not eligible for Prime.|boolean|
 |**IsFeaturedMerchant**  <br>*optional*|When true, the seller of the item is eligible to win the Buy Box.|boolean|
+
+
+<a name="primeinformationtype"></a>
+### PrimeInformationType
+Amazon Prime information.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**IsPrime**  <br>*required*|Indicates whether the offer is an Amazon Prime offer.|boolean|
+|**IsNationalPrime**  <br>*required*|Indicates whether the offer is an Amazon Prime offer throughout the entire marketplace where it is listed.|boolean|
 
 
 <a name="sellerfeedbacktype"></a>
@@ -651,7 +667,7 @@ The time range in which an item will likely be shipped once an order has been pl
 |---|---|---|
 |**minimumHours**  <br>*optional*|The minimum time, in hours, that the item will likely be shipped after the order has been placed.|integer (int64)|
 |**maximumHours**  <br>*optional*|The maximum time, in hours, that the item will likely be shipped after the order has been placed.|integer (int64)|
-|**availableDate**  <br>*optional*|The date when the item will be available for shipping. Only displayed for items that are not currently available for shipping.|number|
+|**availableDate**  <br>*optional*|The date when the item will be available for shipping. Only displayed for items that are not currently available for shipping.|string|
 |**availabilityType**  <br>*optional*|Indicates whether the item is available for shipping now, or on a known or an unknown date in the future. If known, the availableDate property indicates the date that the item will be available for shipping. Possible values: NOW, FUTURE_WITHOUT_DATE, FUTURE_WITH_DATE.|enum ([AvailabilityType](#availabilitytype))|
 
 
