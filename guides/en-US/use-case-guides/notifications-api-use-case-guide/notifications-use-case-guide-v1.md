@@ -2468,7 +2468,7 @@ The following table shows the child elements of the PromotionActiveTimeRange ele
 ```
 ## FBA_OUTBOUND_SHIPMENT_STATUS
 
-The FBA_OUTBOUND_SHIPMENT_STATUS notification is sent whenever Amazon creates or cancels a Fulfillment by Amazon shipment for a seller.
+The FBA_OUTBOUND_SHIPMENT_STATUS notification is sent whenever Amazon creates or cancels a Fulfillment by Amazon shipment for a seller. This notification is only for FBA Onsite shipments. This notification is available only in the Brazil marketplace.
 
 ### FBAOutboundShipmentStatusNotification
 
