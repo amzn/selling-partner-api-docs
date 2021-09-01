@@ -274,8 +274,8 @@ public class UploadExample {
   public void upload(byte[] source, String url) {
     OkHttpClient client = new OkHttpClient();
 
-    // The contentType must match the input provided to the createFeedDocument operation.
-    String contentType = String.format("text/plain; charset=%s", StandardCharsets.UTF_8);
+    // The contentType must match the input provided to the createFeedDocument operation. This example uses text/xml, but your contentType may be different depending upon on your chosen feedType (text/plain, text/csv, and so on). 
+    String contentType = String.format("text/xml; charset=%s", StandardCharsets.UTF_8);
     try {
       Request request = new Request.Builder()
         .url(url)
