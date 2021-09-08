@@ -288,7 +288,7 @@ The following procedures show you how to register as a developer, depending on t
 
 1.  Sign into Seller Central using the credentials that you want to associate with your developer account.
 
-2.  In the **Apps & Services** menu, click **Develop Apps**.
+2.  In the **Partner Network** menu, click **Develop Apps**.
 
     The **Developer Central** page appears.
 
@@ -300,7 +300,7 @@ The following procedures show you how to register as a developer, depending on t
 
 1.  Sign into Seller Central using the credentials that you want to associate with your developer account.
 
-2.  In the **Apps & Services** menu, click **Develop Apps**.
+2.  In the **Partner Network** menu, click **Develop Apps**.
 
     The **Developer Central** page appears.
 
@@ -342,7 +342,7 @@ The following procedures show you how to check the status of your request to reg
 
 1. Sign into Seller Central with the credentials that you used when you [registered as a developer](#registering-as-a-developer).
 
-2.  In the **Apps & Services** menu, click **Develop Apps**.
+2.  In the **Partner Network** menu, click **Develop Apps**.
 
     The **Developer Central** page appears.
 
@@ -528,7 +528,7 @@ The following procedures show you how to register your application, depending on
 
 1.  Sign into Seller Central using the credentials that you used to [register as a developer](#registering-as-a-developer).
 
-2.  In the **Apps & Services** menu, click **Develop Apps**.
+2.  In the **Partner Network** menu, click **Develop Apps**.
 
     The **Developer Central** page appears.
 
@@ -572,7 +572,7 @@ The following procedures show you how to view your application information and c
 
 1.  Sign into Seller Central using the credentials that you used to [register as a developer](#registering-as-a-developer).
 
-2.  In the **Apps & Services** menu, click **Develop Apps**.
+2.  In the **Partner Network** menu, click **Develop Apps**.
 
     The **Developer Central** page displays information about your application(s), including the IAM ARN associated with them.
 
@@ -1073,7 +1073,7 @@ The self authorization procedure varies depending on if you have a seller applic
 **To self-authorize your application (seller application)**
 1. Sign into Seller Central using the credentials that you used to [register as a developer](#registering-as-a-developer).
 
-2.  In the **Apps & Services** menu, click **Develop Apps**.
+2.  In the **Partner Network** menu, click **Develop Apps**.
 
     The **Developer Central** page appears.
 
@@ -1574,7 +1574,7 @@ Add headers to the URI that you constructed in [Step 2. Construct a Selling Part
 | **Name**     | **Description**  |
 | ---------- | ---------------- |
 | host  | The marketplace endpoint. See [Selling Partner API endpoints](#selling-partner-api-endpoints).   |
-| x-amz-access-token | The LWA access token. See [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token).<br>**Note about restricted operations.** If you are calling a restricted operation, pass in a Restricted Data Token (RDT) here instead of an LWA access token. For information about getting RDTs and calling restricted operations, see the [Tutorial: Get an RDT and call restricted operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md#tutorial-get-an-rdt-and-call-restricted-operations) in the Tokens API Use Case Guide. |
+| x-amz-access-token | The LWA access token. See [Step 1. Request a Login with Amazon access token](#step-1-request-a-login-with-amazon-access-token).<br>**Note about restricted operations.** If you are calling a restricted operation, pass in a Restricted Data Token (RDT) here instead of an LWA access token. For information about getting RDTs and calling restricted operations, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md) in the Tokens API Use Case Guide. |
 | x-amz-date   | The date and time of your request.    |
 | user-agent    | Your application name and version number, platform, and programming language. These help Amazon diagnose and fix problems you might encounter with the service. See [Include a User-Agent header in all](#include-a-user-agent-header-in-all-requests) [requests](#include-a-user-agent-header-in-all-requests). |
 
@@ -1799,7 +1799,7 @@ Amazon considers a hybrid application to be a single application. For example, w
 
 2.  Sign into Seller Central using the credentials that you used to [register as a developer](#registering-as-a-developer).
 
-3.  In the **Apps & Services** menu, click **Develop Apps**.
+3.  In the **Partner Network** menu, click **Develop Apps**.
 
     The **Developer Central** page appears.
 
