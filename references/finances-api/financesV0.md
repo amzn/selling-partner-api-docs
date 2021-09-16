@@ -73,10 +73,10 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**200**|Success.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventGroupsResponse](#listfinancialeventgroupsresponse)|
 
 
 <a name="listfinancialeventsbygroupid"></a>
@@ -111,10 +111,10 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**200**|Success.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
 
 
 <a name="listfinancialeventsbyorderid"></a>
@@ -149,10 +149,10 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**200**|Financial Events successfully retrieved.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
 
 
 <a name="listfinancialevents"></a>
@@ -188,10 +188,10 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |**200**|Success.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
 |**400**|Request has missing or invalid parameters and cannot be parsed.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
-|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference identifier.|[ListFinancialEventsResponse](#listfinancialeventsresponse)|
 
 
 <a name="definitions"></a>
@@ -564,6 +564,11 @@ Contains all information related to a financial event.
 |**NetworkComminglingTransactionEventList**  <br>*optional*|A list of network commingling transaction events.|[NetworkComminglingTransactionEventList](#networkcomminglingtransactioneventlist)|
 |**AffordabilityExpenseEventList**  <br>*optional*|A list of expense information related to an affordability promotion.|[AffordabilityExpenseEventList](#affordabilityexpenseeventlist)|
 |**AffordabilityExpenseReversalEventList**  <br>*optional*|A list of expense information related to an affordability promotion.|[AffordabilityExpenseEventList](#affordabilityexpenseeventlist)|
+|**TrialShipmentEventList**  <br>*optional*|A list of information about trial shipment financial events.|[TrialShipmentEventList](#trialshipmenteventlist)|
+|**ShipmentSettleEventList**  <br>*optional*|A list of information about shipment settle financial events.|[ShipmentSettleEventList](#shipmentsettleeventlist)|
+|**TaxWithholdingEventList**  <br>*optional*|List of TaxWithholding events.|[TaxWithholdingEventList](#taxwithholdingeventlist)|
+|**RemovalShipmentEventList**  <br>*optional*|A list of removal shipment event information.|[RemovalShipmentEventList](#removalshipmenteventlist)|
+|**RemovalShipmentAdjustmentEventList**  <br>*optional*|A comma-delimited list of Removal shipmentAdjustment details for FBA inventory.|[RemovalShipmentAdjustmentEventList](#removalshipmentadjustmenteventlist)|
 
 
 <a name="imagingservicesfeeevent"></a>
@@ -747,6 +752,7 @@ A removal shipment event for a removal order.
 |Name|Description|Schema|
 |---|---|---|
 |**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
+|**MerchantOrderId**  <br>*optional*|The merchant removal orderId.|string|
 |**OrderId**  <br>*optional*|The identifier for the removal shipment order.|string|
 |**TransactionType**  <br>*optional*|The type of removal order.<br><br>Possible values:<br><br><li> WHOLESALE_LIQUIDATION</li>|string|
 |**RemovalShipmentItemList**  <br>*optional*|A list of removal shipment items.|[RemovalShipmentItemList](#removalshipmentitemlist)|
@@ -781,6 +787,50 @@ Item-level information for a removal shipment.
 A list of information about removal shipment items.
 
 *Type* : < [RemovalShipmentItem](#removalshipmentitem) > array
+
+
+<a name="removalshipmentadjustmentevent"></a>
+### RemovalShipmentAdjustmentEvent
+A financial adjustment event for FBA liquidated inventory.
+
+Possible adjustment:
+
+* Positive values - Buyer needs to pay more amount to Amazon. E.g. charge was wrongly calculated 0$ instead of 100$ due to system error. 
+
+* Negative Values - Buyer get refund. E.g. Buyer receives less items or damaged items and as part of their adjustment buyer gets refund.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**PostedDate**  <br>*optional*|The date when the financial event was posted.|[Date](#date)|
+|**AdjustmentEventId**  <br>*optional*|The unique identifier for the adjustment event.|string|
+|**MerchantOrderId**  <br>*optional*|The merchant removal orderId.|string|
+|**OrderId**  <br>*optional*|The orderId for shipping inventory.|string|
+|**TransactionType**  <br>*optional*|The type of removal order.<br><br>Possible values:<br><br><li> WHOLESALE_LIQUIDATION.</li>|string|
+|**RemovalShipmentItemAdjustmentList**  <br>*optional*|A comma-delimited list of Removal shipmentItemAdjustment details for FBA inventory.|< [RemovalShipmentItemAdjustment](#removalshipmentitemadjustment) > array|
+
+
+<a name="removalshipmentadjustmenteventlist"></a>
+### RemovalShipmentAdjustmentEventList
+A comma-delimited list of Removal shipmentAdjustment details for FBA inventory.
+
+*Type* : < [RemovalShipmentAdjustmentEvent](#removalshipmentadjustmentevent) > array
+
+
+<a name="removalshipmentitemadjustment"></a>
+### RemovalShipmentItemAdjustment
+Item-level information for a removal shipment item adjustment.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**RemovalShipmentItemId**  <br>*optional*|An identifier for an item in a removal shipment.|string|
+|**TaxCollectionModel**  <br>*optional*|The tax collection model applied to the item.<br><br>Possible values:<br><br><li> MarketplaceFacilitator - Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller.</li><br><li> Standard - Tax is paid to the seller and not remitted to the taxing authority by Amazon.</li>|string|
+|**FulfillmentNetworkSKU**  <br>*optional*|The Amazon fulfillment network SKU for the item.|string|
+|**AdjustedQuantity**  <br>*optional*|Adjusted quantity of removal shipmentItemAdjustment items.|integer (int32)|
+|**RevenueAdjustment**  <br>*optional*|The total amount adjusted for disputed items.|[Currency](#currency)|
+|**TaxAmountAdjustment**  <br>*optional*|Adjustment on the Tax collected amount on the adjusted revenue.|[Currency](#currency)|
+|**TaxWithheldAdjustment**  <br>*optional*|Adjustment the tax withheld and remitted to the taxing authority by Amazon on behalf of the seller. If TaxCollectionModel=MarketplaceFacilitator, then TaxWithheld=TaxAmount (except the TaxWithheld amount is a negative number). Otherwise TaxWithheld=0.|[Currency](#currency)|
 
 
 <a name="rentaltransactionevent"></a>
@@ -1025,23 +1075,35 @@ A list of information about solution provider credits.
 *Type* : < [SolutionProviderCreditEvent](#solutionprovidercreditevent) > array
 
 
-<a name="tdsreimbursementevent"></a>
-### TDSReimbursementEvent
-A tax deduction at source (TDS) claim reimbursement event on the seller's account.
+<a name="taxwithholdingperiod"></a>
+### TaxWithholdingPeriod
+Period which taxwithholding on seller's account is calculated.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**StartDate**  <br>*optional*|Start of the time range.|[Date](#date)|
+|**EndDate**  <br>*optional*|End of the time range.|[Date](#date)|
+
+
+<a name="taxwithholdingevent"></a>
+### TaxWithholdingEvent
+A TaxWithholding event on seller's account.
 
 
 |Name|Description|Schema|
 |---|---|---|
 |**PostedDate**  <br>*optional*|The date and time when the financial event was posted.|[Date](#date)|
-|**TdsOrderId**  <br>*optional*|A tax deduction at source (TDS) claim identifier.|string|
-|**ReimbursedAmount**  <br>*optional*|The amount of the reimbursement.|[Currency](#currency)|
+|**BaseAmount**  <br>*optional*|The amount which tax was withheld against.|[Currency](#currency)|
+|**WithheldAmount**  <br>*optional*|The amount of the tax withholding deducted from seller's account.|[Currency](#currency)|
+|**TaxWithholdingPeriod**  <br>*optional*|Time period for which tax is withheld.|[TaxWithholdingPeriod](#taxwithholdingperiod)|
 
 
-<a name="tdsreimbursementeventlist"></a>
-### TDSReimbursementEventList
-A list of information about tax deduction at source (TDS) claim reimbursement events.
+<a name="taxwithholdingeventlist"></a>
+### TaxWithholdingEventList
+List of TaxWithholding events.
 
-*Type* : < [TDSReimbursementEvent](#tdsreimbursementevent) > array
+*Type* : < [TaxWithholdingEvent](#taxwithholdingevent) > array
 
 
 <a name="taxwithheldcomponent"></a>
@@ -1081,6 +1143,13 @@ An event related to a trial shipment.
 A list of information about trial shipment financial events.
 
 *Type* : < [TrialShipmentEvent](#trialshipmentevent) > array
+
+
+<a name="shipmentsettleeventlist"></a>
+### ShipmentSettleEventList
+A list of information about shipment settle financial events.
+
+*Type* : < [ShipmentEvent](#shipmentevent) > array
 
 
 <a name="errorlist"></a>
