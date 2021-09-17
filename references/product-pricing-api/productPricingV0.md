@@ -610,7 +610,6 @@ Indicates whether the item is fulfilled by Amazon or by the seller (merchant).
 
 |Name|Description|Schema|
 |---|---|---|
-|**sellerId**  <br>*optional*|The seller identifier for the offer.|string|
 |**MyOffer**  <br>*optional*|When true, this is the seller's offer.|boolean|
 |**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.|[OfferCustomerType](#offercustomertype)|
 |**SubCondition**  <br>*required*|The subcondition of the item. Subcondition values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.|string|
