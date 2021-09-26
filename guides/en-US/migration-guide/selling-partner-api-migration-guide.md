@@ -96,7 +96,7 @@ This tutorial shows you how to convert an Amazon MWS application into a Selling 
 
 1. Sign into Seller Central with the credentials associated with your Amazon MWS developer account.
 
-1. In the **Apps & Services** menu, click **Develop Apps**.
+1. In the **Partner Network** menu, click **Develop Apps**.
 
    The **Developer Central** page appears.
    
