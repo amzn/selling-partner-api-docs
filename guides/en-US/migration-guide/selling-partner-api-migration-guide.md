@@ -42,7 +42,7 @@ New and updated Selling Partner APIs:
 * **Pricing API.** Gets product pricing and offer information.
 * **Product Fees API.** Gets estimated fees for a product.
 * **Sales API.** Generate sales history reports. 
-* **Services API.** Enables service providers to get and modify their service orders.
+* **Services API. ** Enables service providers to get and modify their service orders.
 * **Shipping API.** Provides programmatic access to Amazon's shipping services.
 * **Solicitations API.** Enables selling partners to send non-critical solicitations to customers.
 * **Tokens API.** Provides a secure way to access a customer's Personally Identifiable Information (PII).
