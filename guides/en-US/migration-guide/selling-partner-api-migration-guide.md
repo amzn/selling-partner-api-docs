@@ -49,22 +49,22 @@ New and updated Selling Partner APIs:
 
 ## Mapping APIs from Amazon MWS to the Selling Partner API
 
-| Amazon MWS                                | Selling Partner API                 |
-| ----------------------------------------- | ----------------------------------- |
-| Feeds API section                         | Feeds API                           |
-| Finances API section                      | Finances API                        |
-| Fulfillment Inbound Shipment API section  | Fulfillment Inbound API             |
-| Fulfillment Inventory API section         | FBA Inventory API                   |
-| Fulfillment Outbound Shipment API section | Fulfillment Outbound API            |
-| Merchant Fulfillment API section          | Merchant Fulfillment API            |
-| Orders API section                        | Orders API                          |
-| Products API section - Product Fees       | Product Fees API                    |
-| Products API section - Product Listings   | Catalog Items API                   |
-| Products API section - Product Pricing    | Pricing API                         |
-| Recommendations API section               | *Deprecated in Selling Partner API* |
-| Reports API section                       | Reports API                         |
-| Sellers API section                       | Sellers API                         |
-| Subscriptions API section                 | Notifications API                   |
+| Amazon MWS                                                                                                                         | Selling Partner API                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| [Feeds API section](https://docs.developer.amazonservices.com/en_US/feeds/Feeds_Overview.html)                                      | [Feeds API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/feeds-api)                               |
+| [Finances API section](https://docs.developer.amazonservices.com/en_US/finances/Finances_Overview.html)                             | [Finances API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/finances-api)                         |
+| [Fulfillment Inbound Shipment API section](https://docs.developer.amazonservices.com/en_US/fba_inbound/FBAInbound_Overview.html)    | [Fulfillment Inbound API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/fulfillment-inbound-api)   |
+| [Fulfillment Inventory API section](https://docs.developer.amazonservices.com/en_US/fba_inventory/FBAInventory_Overview.html)       | [FBA Inventory API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/fba-inventory-api)               |
+| [Fulfillment Outbound Shipment API section](https://docs.developer.amazonservices.com/en_US/fba_outbound/FBAOutbound_Overview.html) | [Fulfillment Outbound API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/fulfillment-outbound-api) |
+| [Merchant Fulfillment API section](https://docs.developer.amazonservices.com/en_US/merch_fulfill/MerchFulfill_Overview.html)        | [Merchant Fulfillment API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/merchant-fulfillment-api) |
+| [Orders API section](https://docs.developer.amazonservices.com/en_US/orders-2013-09-01/Orders_Overview.html)                        | [Orders API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/orders-api)                             |
+| [Products API section](https://docs.developer.amazonservices.com/en_US/products/Products_Overview.html) - Product Fees              | [Product Fees API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/product-fees-api)                 |
+| [Products API section](https://docs.developer.amazonservices.com/en_US/products/Products_Overview.html) - Product Listings          | [Catalog Items API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/catalog-items-api)               |
+| [Products API section](https://docs.developer.amazonservices.com/en_US/products/Products_Overview.html) - Product Pricing           | [Pricing API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/product-pricing-api)                   |
+| [Recommendations API section](https://docs.developer.amazonservices.com/en_US/recommendations/Recommendations_Overview.html)        | *Deprecated in Selling Partner API*                                                                                        |
+| [Reports API section](https://docs.developer.amazonservices.com/en_US/reports/Reports_Overview.html)                                | [Reports API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/reports-api)                           |
+| [Sellers API section](https://docs.developer.amazonservices.com/en_US/sellers/Sellers_Overview.html)                                | [Sellers API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/sellers-api)                           |
+| [Subscriptions API section](https://docs.developer.amazonservices.com/en_US/subscriptions/Subscriptions_Overview.html)              | [Notifications API](https://github.com/amzn/selling-partner-api-docs/tree/main/references/notifications-api)               |
 
 # Tutorial: Convert an Amazon MWS application into an Selling Partner API application
 
