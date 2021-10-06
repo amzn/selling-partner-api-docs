@@ -1174,7 +1174,7 @@ The SDK is copied to C:\\SwaggerToCL\\Sellers_JavaCL
 
 10. Build the AA Library and add it as a dependency of the SDK:
     
-    1.  Navigate to the **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** folder of your local copy of the repository and run mvn package. This generates a folder named "target". In this folder is a JAR file named **sellingpartnerapi-aa-java-1.0-jar-with-dependencies.jar** (or something similar) and all of the required dependencies.
+    1.  Navigate to the **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** folder of your local copy of the repository and run `mvn package`. This generates a folder named "target". In this folder is a JAR file named **sellingpartnerapi-aa-java-1.0-jar-with-dependencies.jar** (or something similar) and all of the required dependencies.
     
     2.  Install the JAR file in your local Maven repository.
 
