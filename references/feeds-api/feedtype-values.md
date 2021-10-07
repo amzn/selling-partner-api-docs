@@ -88,7 +88,7 @@ Feed types fall into these categories:
 </tr>
 <tr class="odd">
 <td><p><strong>Flat File Book Loader Feed</strong></p>
-<p><strong>feedType</strong> value: POST_FLAT_FILE_BOOKLOADER_DATA_</p></td>
+<p><strong>feedType</strong> value: POST_FLAT_FILE_BOOKLOADER_DATA</p></td>
 <td><p>Uploads product data for book formats to match existing book listings or create new book listings.</p></td>
 </tr>
 <tr class="even">
