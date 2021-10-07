@@ -8,6 +8,8 @@ For more information about registering in Amazon’s Brand Registry, see [Build 
 
 Report types fall into these categories:
 
+- [Brand Analytics reports](#brand-analytics-reports)
+
 - [Vendor retail analytics reports](#vendor-retail-analytics-reports)
 
 - [Inventory reports](#inventory-reports)
@@ -38,6 +40,34 @@ Report types fall into these categories:
 
 - [B2B product opportunities reports](#b2b-product-opportunities-reports)
 
+## Brand Analytics reports
+
+<table>
+  <thead>
+    <tr class="header">
+      <th><strong>Name</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr class="even">
+      <td>
+        <p><strong>Amazon Search Terms Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_BRAND_ANALYTICS_SEARCH_TERMS_REPORT</p>
+      </td>
+      <td><p>JSON report containing data on the top clicked ASINs by search keyword and department for a marketplace. The data is available across different reporting periods: DAY, WEEK, MONTH, and QUARTER. Requests cannot span multiple reporting periods. For example, a request with <b>reportPeriod</b>=<i>WEEK</i> could not start on 2021-06-06 and end on 2021-06-19, as this would span more than one week. Available to selling partners who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+      <p>This report accepts the following <b>reportOptions</b> property:</p>
+        <ul>
+        <li><b>reportPeriod</b>. Specifies the reporting period for the report.  Values include <i>DAY</i>, <i>WEEK</i>, <i>MONTH</i>, and <i>QUARTER</i><br>
+              Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
+        </ul>
+        <p>Requests must include the <b>reportPeriod</b> property. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be the following Saturday when <b>reportPeriod</b>=<i>WEEK</i>.</p>
+        <p>Can be requested by vendors.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## Vendor retail analytics reports
 
 <table>
@@ -60,9 +90,9 @@ Report types fall into these categories:
           Available to vendors who have the Brand Analytics Selling Partner API role and who are registered in
           Amazon's Brand Registry.</p>
         <p>Can be requested.</p>
-        </p><i><strong>Note</strong>: A new version of this report is expected to launch as early as Q4 2021.
+        <p><i><strong>Note</strong>: A new version of this report is expected to launch as early as Q4 2021.
           Changes include the reportType value and report structure. The current version of this report will
-          be deprecated 90 days after launch of the new version.</i>
+          be deprecated 90 days after launch of the new version.</i></p>
       </td>
     </tr>
     <tr class="even">
@@ -95,7 +125,6 @@ Report types fall into these categories:
     </tr>
   </tbody>
 </table>
-
 
 ## Inventory reports
 
@@ -396,7 +425,7 @@ The date range that you specify when requesting an order report indicates when t
     </tr>
     <tr class="odd">
       <td>
-        <p><strong>Requested or Scheduled Flat File Order Report (Tax)</p></strong>
+        <p><strong>Requested or Scheduled Flat File Order Report (Tax)</strong></p>
         <strong>reportType</strong> value:<br>GET_FLAT_FILE_ORDER_REPORT_DATA_TAX
       </td>
       <td>
@@ -645,6 +674,7 @@ These pending order reports are only available in the Japan marketplace.
         For all sellers.</p>
         <p>Can be requested</p>
       </td>
+    </tr>
   </tbody>
 </table>
 
@@ -1614,7 +1644,8 @@ A daily FBA report is generated no more than once every four hours. This means t
             <br>Example:
             <code>"reportOptions":{"filterMode":"exclude"}</code>
           </li>
-          <p><strong>Note:</strong> <code>subCategories</code> are not available in this report.
+        </ul>
+          <p><strong>Note:</strong> <code>subCategories</code> are not available in this report.</p>
         <p>This report is only available in these marketplaces:</p>
         <ul>
           <li>
