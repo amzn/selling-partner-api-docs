@@ -1991,7 +1991,7 @@ Here are the Vendor Central URLs by marketplace.
 | Egypt           | <https://vendorcentral.amazon.me>     |
 | Turkey          | <https://vendorcentral.amazon.com.tr> |
 | U.A.E.          | <https://vendorcentral.amazon.me>     |
-| India           | <https://www.vendorcentral.in>        |
+| India           | <https://vendorcentral.amazon.in>        |
 
 **Far East**
 
