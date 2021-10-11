@@ -67,10 +67,10 @@
   
   - [Step 4. Your application exchanges the LWA authorization code for a LWA refresh token](#step-4-your-application-exchanges-the-lwa-authorization-code-for-a-lwa-refresh-token)
 
+
 - [Self authorization](#self-authorization)
 
 - [Authorization with the Restricted Data Token](#authorization-with-the-restricted-data-token)
-   - [How do I get an RDT?](#how-do-i-get-an-rdt)
 
 - [Generating a Java SDK with LWA token exchange and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication)
 
@@ -1118,17 +1118,16 @@ The self authorization procedure varies depending on if you have a seller applic
 
     **Note.**  If your selling account is merged with accounts from other regions, you will receive a separate refresh token for each region. Your application is now authorized to access your selling account(s).      
     
+
 An LWA refresh token is a long-lived token that you exchange for an LWA access token. An access token obtained through this token exchange must be included with calls to all Selling Partner API operations except [restricted operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md#restricted-operations) and [grantless operations](#grantless-operations), which use somewhat different authorization models. After an access token is issued it is valid for one hour. The same access token can be used for multiple API calls, until it expires.
 
 To exchange a refresh token for an access token using a generated SDK, see [Connecting to the Selling Partner API using a generated Java SDK](#connecting-to-the-selling-partner-api-using-a-generated-java-sdk). To manually exchange a refresh token for an access token, see [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api).
 
 # Authorization with the Restricted Data Token
 
-Operations that return restricted data (such as Personally Identifiable information, or PII) are considered restricted operations, and require special authorization in the form of a Restricted Data Token (RDT). An RDT provides authorization to get the PII required to perform functions such as shipping, tax invoicing, or tax remittance services. You authorize calls to restricted operations by passing an RDT in the `x-amz-access-token` header when calling a restricted operation. This is in contrast to passing the LWA access token in the header, as you do with other SP-API operations. For more information, see [Step 3. Add headers to the URI](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#step-3-add-headers-to-the-uri) in the Selling Partner API Developer Guide.
+Operations that return restricted data (such as Personally Identifiable information, or PII) are considered restricted operations, and require special authorization in the form of a Restricted Data Token (RDT). You pass an RDT in the `x-amz-access-token` header when calling a restricted operation. This is in contrast to passing the LWA access token in the header, as you do with all other SP-API operations. For more information, see [Step 3. Add headers to the URI](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#step-3-add-headers-to-the-uri) in the Selling Partner API Developer Guide.
 
-## How do I get an RDT?
-
-Unless you have a delegatee application (see [Terminology](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md#terminology) in the Tokens Use Case Guide), you get an RDT by calling the [createRestrictedDataToken](https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#createrestricteddatatoken) operation of the Tokens API. If you have a delegatee application, you get an RDT from the delegator application that your application is integrated with. For more information about authorizing calls using the RDT, including delegating authorization, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md).
+You can get an RDT by calling the [createRestrictedDataToken](https://github.com/amzn/selling-partner-api-docs/blob/main/references/tokens-api/tokens_2021-03-01.md#createrestricteddatatoken) operation of the Tokens API. See [Restricted operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md#restricted-operations) of the Tokens API Use Case Guide for a list of restricted operations. The guide also contains instructions for getting an RDT and using it to authorize a call to a restricted operation.
 
 # Generating a Java SDK with LWA token exchange and authentication
 
@@ -1296,7 +1295,7 @@ Create an instance of `AWSAuthenticationCredentialsProvider`, using the followin
 
 Example:
 ```
-import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentials;
+import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentialsProvider;
 
 AWSAuthenticationCredentialsProvider awsAuthenticationCredentialsProvider=AWSAuthenticationCredentialsProvider.builder()
   .roleArn("myroleARN")
@@ -1991,7 +1990,7 @@ Here are the Vendor Central URLs by marketplace.
 | Egypt           | <https://vendorcentral.amazon.me>     |
 | Turkey          | <https://vendorcentral.amazon.com.tr> |
 | U.A.E.          | <https://vendorcentral.amazon.me>     |
-| India           | <https://vendorcentral.amazon.in>        |
+| India           | <https://vendorcentral.amazon.in>     |
 
 **Far East**
 
