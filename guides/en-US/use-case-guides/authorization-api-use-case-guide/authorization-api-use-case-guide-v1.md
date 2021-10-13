@@ -11,7 +11,7 @@ Version: v1
 
 The Authorization API lets you migrate an Amazon Marketplace Web Service \(Amazon MWS\) authorization that a seller has granted you to a hybrid Selling Partner API application. This eliminates the need to request authorization from the seller again.
 
-When would you need to use the Authorization API? Suppose you have published an Amazon MWS application on the Marketplace Appstore. A number of sellers have authorized you as an Amazon MWS developer so they can use your application. You later convert your Amazon MWS application into a hybrid Selling Partner API application that makes calls to both Amazon MWS and Selling Partner API. Now you want your application to make calls to Selling Partner API on behalf of these sellers without requesting authorization again. The Authorization API lets you do this.
+When would you need to use the Authorization API? Suppose you have published an Amazon MWS application on the Amazon Seller Central Partner Network. A number of sellers have authorized you as an Amazon MWS developer so they can use your application. You later convert your Amazon MWS application into a hybrid Selling Partner API application that makes calls to both Amazon MWS and Selling Partner API. Now you want your application to make calls to Selling Partner API on behalf of these sellers without requesting authorization again. The Authorization API lets you do this.
 
 # Tutorial: Migrate an Amazon MWS authorization to a Selling Partner API application
 
@@ -19,12 +19,12 @@ This tutorial shows you how to use the Authorization API to get authorization to
 
 **Prerequisites**
 
-This tutorial assumes that you have a hybrid Selling Partner API application published on the Marketplace Appstore. Further, it assumes that you published your application following these steps:
+This tutorial assumes that you have a hybrid Selling Partner API application published on the Amazon Seller Central Partner Network (Amazon SCPN). Further, it assumes that you published your application following these steps:
 
-1.  You published an Amazon MWS application on the Marketplace Appstore.
+1.  You published an Amazon MWS application on the Amazon SCPN.
 2.  One or more sellers have authorized your developer ID to make calls to Amazon MWS on your behalf.
 3.  You converted your Amazon MWS application to a draft hybrid Selling Partner API application.
-4.  You published your hybrid Selling Partner API application to the Marketplace Appstore.
+4.  You published your hybrid Selling Partner API application to the Amazon SCPN.
 
 For more information, see [Hybrid Selling Partner API applications](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#hybrid-selling-partner-api-applications) in the Amazon Selling Partner API Developer Guide.
 
@@ -50,15 +50,15 @@ An LWA authorization code represents authorization to make calls to Selling Part
 
 | Name             | Description                                                  | Required |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| sellingPartnerId | The seller ID of the seller for whom you are requesting Selling Partner API authorization. This must be the seller ID of the seller who authorized your application on the Marketplace Appstore.<br>Type: string | Yes      |
+| sellingPartnerId | The seller ID of the seller for whom you are requesting Selling Partner API authorization. This must be the seller ID of the seller who authorized your application on the Amazon Seller Central Partner Network (Amazon SCPN).<br>Type: string | Yes      |
 | developerId      | Your developer ID. This must be one of the developer ID values that you provided when you registered your hybrid application in Developer Central. This must also be the developer id that the seller authorized for you to make calls to Amazon MWS on their behalf.<br>Type: string | Yes      |
-| mwsAuthToken     | The MWS Auth Token that was generated when the seller authorized your application on the Marketplace Appstore.<br>Type: string | Yes      |
+| mwsAuthToken     | The MWS Auth Token that was generated when the seller authorized your application on the Amazon SCPN.<br>Type: string | Yes      |
 
 Request example:
 
     GET https://sellingpartnerapi-na.amazon.com/authorization/v1/authorizationCode
 
-**Important:** The developer ID that you specify must be the same developer ID that you provided when you registered your application for listing in the Marketplace Appstore. Otherwise the service returns an error.
+**Important:** The developer ID that you specify must be the same developer ID that you provided when you registered your application for listing in the Amazon SCPN. Otherwise the service returns an error.
 
 The operation returns an LWA authorization code.
     
