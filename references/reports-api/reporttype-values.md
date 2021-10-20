@@ -64,7 +64,7 @@ Report types fall into these categories:
         </ul>
         <p>Requests must include the <b>reportPeriod</b> property. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be a Saturday when <b>reportPeriod</b>=<i>WEEK </i>.
         </p>
-        <p>Can be requested by sellers and vendors.</p>
+        <p>Can be requested by vendors.</p>
       </td>
     </tr>
     <tr class="even">
@@ -713,7 +713,7 @@ These pending order reports are only available in the Japan marketplace.
       <li>If a selected promotion is in progress when you request a report, the report will contain cumulative data for the promotion up until the day prior to your report request.</li>
       <li>A report will contain complete information on a selected promotion if the promotion ended one day or more before the time you requested the report.</li>
       <li>This report supports start dates up to two years before the current date.</li>
-      </ul><p>Can be requested.</p>
+      </ul><p>Can be requested by vendors.</p>
       </td>
     </tr>
   </tbody>
