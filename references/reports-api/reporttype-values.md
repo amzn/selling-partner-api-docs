@@ -50,7 +50,24 @@ Report types fall into these categories:
     </tr>
   </thead>
   <tbody>
-        <tr class="even">
+      <tr class="odd">
+      <td>
+        <p><strong>Market Basket Analysis Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_BRAND_ANALYTICS_MARKET_BASKET_REPORT</p>
+      </td>
+      <td><p>JSON report containing data on the items that are most commonly purchased in combination with the items in the customer's basket (cart) at checkout. The data is available across different reporting periods: DAY, WEEK, MONTH, and QUARTER. Requests can span multiple reporting periods. In this report, an <b>asin</b> property is an ASIN in the selling partner's catalog and a <b>purchasedWithAsin</b> property might or might not be an ASIN in the selling partner's catalog. Available to selling partners who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.
+        </p>
+        <p>This report accepts the following <b>reportOptions</b> property:</p>
+        <ul>
+        <li><b>reportPeriod</b>. Specifies the reporting period for the report. Values include <i>DAY</i>, <i>WEEK</i>, <i>MONTH</i>, and <i>QUARTER</i><br>
+              Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
+        </ul>
+        <p>Requests must include the <b>reportPeriod</b> property. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be a Saturday when <b>reportPeriod</b>=<i>WEEK </i>.
+        </p>
+        <p>Can be requested by sellers and vendors.</p>
+      </td>
+    </tr>
+    <tr class="even">
       <td>
         <p><strong>Amazon Search Terms Report</strong></p>
         <p><strong>reportType</strong> value:<br>GET_BRAND_ANALYTICS_SEARCH_TERMS_REPORT</p>
@@ -62,7 +79,7 @@ Report types fall into these categories:
               Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
         </ul>
         <p>Requests must include the <b>reportPeriod</b> property. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be the following Saturday when <b>reportPeriod</b>=<i>WEEK</i>.</p>
-        <p>Can be requested by vendors.</p>
+        <p>Can be requested by sellers and vendors.</p>
       </td>
     </tr>
   </tbody>
@@ -673,6 +690,30 @@ These pending order reports are only available in the Japan marketplace.
       <td><p>Report that contains the individual performance metrics data from the Seller Central Account Health dashboard.
         For all sellers.</p>
         <p>Can be requested</p>
+      </td>
+    </tr>
+    <tr class="even">
+      <td>
+        <p><strong>Promotions Performance Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_PROMOTION_PERFORMANCE_REPORT</p>
+      </td>
+      <td><p>JSON report containing data from promotion campaigns to help vendors optimize their promotions and adjust their advertising strategies. The report includes sales from promotions, the types of discounts that were offered, the discount amounts, and how many items were sold as a result of the promotions. Currently three promotion types are supported: Best Deal, Lightning Deal, and Price Discount. Available to vendors who have the Selling Partner Insights Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+      <p>This report accepts the following <b>reportOptions</b> properties:</p>
+        <ul>
+        <li><b>promotionStartDateFrom</b>. The start of a date and time range (in ISO 8601 date time format) used for selecting promotions to report on. Be sure to specify the time zone: either UTC or an offset from UTC.</li>
+        <li><b>promotionStartDateTo</b>. The end of a date and time range (in ISO 8601 date time format) used for selecting promotions to report on. Be sure to specify the time zone: either UTC or an offset from UTC.<br>
+              Example:<br><pre>"reportOptions": {
+  "promotionStartDateFrom": "2020-11-23T15:33:26Z",
+  "promotionStartDateTo": "2020-12-06T15:33:26Z"
+}</pre></li>
+        </ul>
+        <p>Requests must include the <b>promotionStartDateFrom</b> and  <b>promotionStartDateTo</b> properties. All promotions with a start date-time that fall within the range of <b>promotionStartDateFrom</b> and <b>promotionStartDateTo</b> will be included. This report is only available in North America.</p>
+      <p>Report behaviors:</p>
+      <ul>
+      <li>If a selected promotion is in progress when you request a report, the report will contain cumulative data for the promotion up until the day prior to your report request.</li>
+      <li>A report will contain complete information on a selected promotion if the promotion ended one day or more before the time you requested the report.</li>
+      <li>This report supports start dates up to two years before the current date.</li>
+      </ul><p>Can be requested.</p>
       </td>
     </tr>
   </tbody>
