@@ -584,7 +584,7 @@ The type of notification to which you want to subscribe.
 |**ITEM_PRODUCT_TYPE_CHANGE**|Sent whenever there is a change to the product type name of any ASIN that the selling partner has a brand relationship with.|
 |**LISTINGS_ITEM_STATUS_CHANGE**|Sent whenever there is a listing status change including buyable transition, discoverable transition, listing create or delete for any SKU that the selling partner has.|
 |**LISTINGS_ITEM_ISSUES_CHANGE**|Sent whenever there are issues change for any SKU that the selling partner has.|
-|**MFN_ORDER_STATUS_CHANGE**|Sent whenever there is a change in the status of a MFN order availability.<br><br>This notification type is invitation-only and not publicly available.|
+|**MFN_ORDER_STATUS_CHANGE**|Sent whenever there is a change in the status of a MFN order availability.|
 |**B2B_ANY_OFFER_CHANGED**|Sent whenever there is a listing change for any of the top 20 B2B offers, by condition (new or used). The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points(applicable only JP). If multiple sellers are charging the same landed price, the results will be returned in random order.<br><br> These notifications are only sent for items for which the seller has active offers. Seller cannot receive notifications for items for which the seller does not have active offers.|
 |**ACCOUNT_STATUS_CHANGED**|Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, WARNING, AT_RISK, and SUSPENDED.<br><br> The notification will have a payload with 2 fields: previousAccountStatus and currentAccountStatus to indicate the direction of the change.|
 
