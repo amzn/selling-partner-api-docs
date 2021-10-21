@@ -548,7 +548,7 @@ The postal address information.
 |**DistrictOrCounty**  <br>*optional*|The district or county.|[DistrictOrCounty](#districtorcounty)|
 |**Email**  <br>*required*|The email address.|[EmailAddress](#emailaddress)|
 |**City**  <br>*required*|The city.|[City](#city)|
-|**StateOrProvinceCode**  <br>*optional*|The state or province code.|[StateOrProvinceCode](#stateorprovincecode)|
+|**StateOrProvinceCode**  <br>*required*|The state or province code.|[StateOrProvinceCode](#stateorprovincecode)|
 |**PostalCode**  <br>*required*|The zip code or postal code.|[PostalCode](#postalcode)|
 |**CountryCode**  <br>*required*|The country code. A two-character country code, in ISO 3166-1 alpha-2 format.|[CountryCode](#countrycode)|
 |**Phone**  <br>*required*|The phone number.|[PhoneNumber](#phonenumber)|
