@@ -584,8 +584,7 @@ A successful response includes the following:
 
 # Submitting Images and Other Media Attributes
 
-The Listings Items API accepts product images and other media content attributes that are  downloaded by Amazon from publicly accessible AWS S3 or AWS CloudFront HTTP or HTTPS URLs. Private AWS S3 content may also be downloaded from S3 URLs (e.g. `s3://bucket-name/object-name.jpg`).
-In order for Amazon to download from private AWS S3 URLs, the `GetObject` and `ListBucket` operations must be allowed for the `arn:aws:iam::368641386589:role/Media-Download-Role` AWS IAM Role on the AWS S3 bucket.
+The Listings Items API accepts product images and other media content attributes that are downloaded by Amazon from publicly accessible AWS S3 or AWS CloudFront HTTP or HTTPS URLs. Private AWS S3 content may also be downloaded from S3 URLs (e.g. `s3://bucket-name/object-name.jpg`). In order for Amazon to download from private AWS S3 URLs, the `GetObject` and `ListBucket` operations must be allowed for the `arn:aws:iam::368641386589:role/Media-Download-Role` AWS IAM Role on the AWS S3 bucket. Please note that private AWS S3 content is treated as immutable, which means that changing the content for an AWS S3 object key is not supported (i.e. new media content requires a new AWS S3 object key). This convention provides the benefit of improved processing times and avoids the cost of redundant downloads in case listing submissions are re-processed.
 
 The following is an example AWS S3 bucket policy enabling the required operations on a bucket named `bucket-name`:
 ```
