@@ -707,7 +707,7 @@ These pending order reports are only available in the Japan marketplace.
   "promotionStartDateTo": "2020-12-06T15:33:26Z"
 }</pre></li>
         </ul>
-        <p>Requests must include the <b>promotionStartDateFrom</b> and  <b>promotionStartDateTo</b> properties. All promotions with a start date-time that fall within the range of <b>promotionStartDateFrom</b> and <b>promotionStartDateTo</b> will be included. This report is only available in North America.</p>
+        <p>Requests must include the <b>promotionStartDateFrom</b> and  <b>promotionStartDateTo</b> properties. All promotions with a start date-time that fall within the range of <b>promotionStartDateFrom</b> and <b>promotionStartDateTo</b> will be included.</p>
       <p>Report behaviors:</p>
       <ul>
       <li>If a selected promotion is in progress when you request a report, the report will contain cumulative data for the promotion up until the day prior to your report request.</li>
