@@ -11,13 +11,13 @@ The Selling Partner API for Notifications lets you subscribe to notifications th
 
 
 ### Contact information
-*Contact* : Selling Partner API Developer Support  
+*Contact* : Selling Partner API Developer Support  
 *Contact URL* : https://sellercentral.amazon.com/gp/mws/contactus.html  
 
 
 ### License information
 *License* : Apache License 2.0  
-*License URL* : http://www.apache.org/licenses/LICENSE-2.0  
+*License URL* : http://www.apache.org/licenses/LICENSE-2.0  
 
 
 ### URI scheme
@@ -60,7 +60,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
-|**Path**|**notificationType**  <br>*required*|The type of notification to which you want to subscribe.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
+|**Path**|**notificationType**  <br>*required*|The type of notification.<br><br> For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).|enum ([NotificationType](#notificationtype))|
 
 
 #### Responses
@@ -99,7 +99,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Body**|**body**  <br>*required*|The request schema for the createSubscription operation.|[CreateSubscriptionRequest](#createsubscriptionrequest)|
-|**Path**|**notificationType**  <br>*required*|The type of notification to which you want to subscribe.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
+|**Path**|**notificationType**  <br>*required*|The type of notification.<br><br> For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).|enum ([NotificationType](#notificationtype))|
 
 
 #### Responses
@@ -139,7 +139,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**subscriptionId**  <br>*required*|The identifier for the subscription that you want to get.|string|
-|**Path**|**notificationType**  <br>*required*|The type of notification to which you want to subscribe.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
+|**Path**|**notificationType**  <br>*required*|The type of notification.<br><br> For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).|enum ([NotificationType](#notificationtype))|
 
 
 #### Responses
@@ -179,7 +179,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**subscriptionId**  <br>*required*|The identifier for the subscription that you want to delete.|string|
-|**Path**|**notificationType**  <br>*required*|The type of notification to which you want to subscribe.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
+|**Path**|**notificationType**  <br>*required*|The type of notification.<br><br> For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).|enum ([NotificationType](#notificationtype))|
 
 
 #### Responses
@@ -565,9 +565,9 @@ Error response returned when the request is unsuccessful.
 
 <a name="notificationtype"></a>
 ### NotificationType
-The type of notification to which you want to subscribe.
+The type of notification.
 
- For more information about notification types, see the Notifications API Use Case Guide.
+ For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).
 
 *Type* : enum
 
@@ -584,7 +584,7 @@ The type of notification to which you want to subscribe.
 |**ITEM_PRODUCT_TYPE_CHANGE**|Sent whenever there is a change to the product type name of any ASIN that the selling partner has a brand relationship with.|
 |**LISTINGS_ITEM_STATUS_CHANGE**|Sent whenever there is a listing status change including buyable transition, discoverable transition, listing create or delete for any SKU that the selling partner has.|
 |**LISTINGS_ITEM_ISSUES_CHANGE**|Sent whenever there are issues change for any SKU that the selling partner has.|
-|**MFN_ORDER_STATUS_CHANGE**|Sent whenever there is a change in the status of a MFN order availability.|
+|**MFN_ORDER_STATUS_CHANGE**|Sent whenever there is a change in the status of an MFN order availability.|
 |**B2B_ANY_OFFER_CHANGED**|Sent whenever there is a listing change for any of the top 20 B2B offers, by condition (new or used). The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points(applicable only JP). If multiple sellers are charging the same landed price, the results will be returned in random order.<br><br> These notifications are only sent for items for which the seller has active offers. Seller cannot receive notifications for items for which the seller does not have active offers.|
 |**ACCOUNT_STATUS_CHANGED**|Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, WARNING, AT_RISK, and SUSPENDED.<br><br> The notification will have a payload with 2 fields: previousAccountStatus and currentAccountStatus to indicate the direction of the change.|
 
