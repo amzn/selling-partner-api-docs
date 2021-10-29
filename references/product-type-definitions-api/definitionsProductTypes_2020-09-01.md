@@ -108,7 +108,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |---|---|---|---|---|
 |**Path**|**productType**  <br>*required*|The Amazon product type name.|string|-|
 |**Query**|**sellerId**  <br>*optional*|A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner.|string|-|
-|**Query**|**marketplaceIds**  <br>*required*|A comma-delimited list of Amazon marketplace identifiers for the request.|< string > array(csv)|-|
+|**Query**|**marketplaceIds**  <br>*required*|A comma-delimited list of Amazon marketplace identifiers for the request.<br>Note: This parameter is limited to one marketplaceId at this time.|< string > array(csv)|-|
 |**Query**|**productTypeVersion**  <br>*optional*|The version of the Amazon product type to retrieve. Defaults to "LATEST",. Prerelease versions of product type definitions may be retrieved with "RELEASE_CANDIDATE". If no prerelease version is currently available, the "LATEST" live version will be provided.|string|`"LATEST"`|
 |**Query**|**requirements**  <br>*optional*|The name of the requirements set to retrieve requirements for.|enum ([Requirements](#requirements-subgroup-2))|`"LISTING"`|
 |**Query**|**requirementsEnforced**  <br>*optional*|Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates).|enum ([RequirementsEnforced](#requirementsenforced-subgroup-2))|`"ENFORCED"`|
