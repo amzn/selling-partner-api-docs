@@ -220,7 +220,7 @@ A successful response includes the following:
 </table>
 
 Response example
-```json
+```plain
 {
   "payload": {
     "resource": {
