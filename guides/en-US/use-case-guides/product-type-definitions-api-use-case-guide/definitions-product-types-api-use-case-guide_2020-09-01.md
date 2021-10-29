@@ -205,7 +205,7 @@ Call the [getDefinitionsProductType](https://github.com/amzn/selling-partner-api
 		<tr class="odd">
 			<td><code>marketplaceIds</code></td>
 			<td><code>ATVPDKIKX0DER</code></td>
-			<td>Comma-delimited list of Amazon marketplace identifiers.<br/><br/>See the <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md" target="_blank">Selling Partner API Developer Guide</a> for the list of Amazon marketplace identifiers.<p>Type: < string > array(csv)</p></td>
+			<td>Comma-delimited list of Amazon marketplace identifiers.<br>Note:  This parameter is limited to one marketplaceId at this time<br/><br/>See the <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md" target="_blank">Selling Partner API Developer Guide</a> for the list of Amazon marketplace identifiers.<p>Type: < string > array(csv)</p></td>
 			<td>Yes</td>
 		</tr>
 		<tr class="even">
