@@ -272,7 +272,7 @@ The `marketplaceId` identifies the marketplace in a request.
 
 # Registering as a developer
 
-You must [register as a Selling Partner API developer](https://developer.amazonservices.com/) before you can [register your Selling Partner API application](#Registering-your-application). The way you register as a developer varies slightly depending on the type of application that you create. For the purposes of registering as a developer, applications are grouped into three types: 
+You must register as a Selling Partner API developer ([here](https://developer.amazonservices.com/)) before you can [register your Selling Partner API application](#Registering-your-application). The way you register as a developer varies slightly depending on the type of application that you create. For the purposes of registering as a developer, applications are grouped into three types: 
 
 - **All public applications.** Applications that are publicly available and are authorized by a seller or by a vendor.
 
