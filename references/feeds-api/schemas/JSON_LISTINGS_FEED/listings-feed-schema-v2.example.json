@@ -1,6 +1,6 @@
 {
   "header": {
-    "sellerId": "AXXXXXXXXXXXX",
+    "sellerId": "AV9UWMNY661BB",
     "version": "2.0",
     "issueLocale": "en_US"
   },
@@ -40,8 +40,7 @@
         ],
         "fulfillment_availability": [
           {
-            "fulfillment_channel_code": "AMAZON_NA",
-            "quantity": 10
+            "fulfillment_channel_code": "AMAZON_NA"
           }
         ]
       }

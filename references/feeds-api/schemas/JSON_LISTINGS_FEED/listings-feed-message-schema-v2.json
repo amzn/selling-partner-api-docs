@@ -9,8 +9,9 @@
       "examples":[
         1
       ],
+      "type":"integer",
       "minimum":1,
-      "type":"integer"
+      "maximum": 2147483647
     },
     "sku":{
       "title":"SKU (Stock Keeping Unit)",
