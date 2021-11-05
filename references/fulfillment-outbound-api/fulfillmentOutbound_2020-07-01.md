@@ -1678,7 +1678,9 @@ The unit of weight.
 |Value|Description|
 |---|---|
 |**KG**|Kilograms.|
+|**KILOGRAMS**|Kilograms.|
 |**LB**|Pounds.|
+|**POUNDS**|Pounds.|
 
 
 <a name="name"></a>
