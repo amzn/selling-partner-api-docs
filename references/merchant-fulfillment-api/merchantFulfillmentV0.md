@@ -548,7 +548,7 @@ The postal address information.
 |**DistrictOrCounty**  <br>*optional*|The district or county.|[DistrictOrCounty](#districtorcounty)|
 |**Email**  <br>*required*|The email address.|[EmailAddress](#emailaddress)|
 |**City**  <br>*required*|The city.|[City](#city)|
-|**StateOrProvinceCode**  <br>*optional*|The state or province code.|[StateOrProvinceCode](#stateorprovincecode)|
+|**StateOrProvinceCode**  <br>*optional*|The state or province code. **Note.** Required in the Canada, US, and UK marketplaces. Also required for shipments originating from China.|[StateOrProvinceCode](#stateorprovincecode)|
 |**PostalCode**  <br>*required*|The zip code or postal code.|[PostalCode](#postalcode)|
 |**CountryCode**  <br>*required*|The country code. A two-character country code, in ISO 3166-1 alpha-2 format.|[CountryCode](#countrycode)|
 |**Phone**  <br>*required*|The phone number.|[PhoneNumber](#phonenumber)|
@@ -1236,7 +1236,7 @@ The type of standard identifier to print on the label.
 
 <a name="stateorprovincecode"></a>
 ### StateOrProvinceCode
-The state or province code.
+The state or province code. **Note.** Required in the Canada, US, and UK marketplaces. Also required for shipments originating from China.
 
 *Type* : string
 
