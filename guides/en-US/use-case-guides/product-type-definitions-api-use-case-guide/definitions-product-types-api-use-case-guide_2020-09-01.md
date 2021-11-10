@@ -28,6 +28,8 @@ Using the Selling Partner API for Product Type Definitions (Product Type Definit
 
 For more details on the JSON Schema format provided by the Product Type Definitions API, see the accompanying [Amazon Product Type Definition Meta-Schema (v1)](amazon-product-type-definition-meta-schema-v1.md) documentation.
 
+See the [Product Type Definitions API Reference](https://github.com/amzn/selling-partner-api-docs/blob/main/references/product-type-definitions-api/definitionsProductTypes_2020-09-01.md) for details about API operations and associated data types and schemas.
+
 **Key Features**
 
 * **JSON Schemas**: The Product Type Definitions API provides JSON Schemas that describe the seller-agnostic requirements for a given Amazon product type. This includes the data format, attribute constraints (i.e. required, length, maximum, etc.), and conditionally applied attribute constraints (i.e. if batteries are included, what type of battery).
