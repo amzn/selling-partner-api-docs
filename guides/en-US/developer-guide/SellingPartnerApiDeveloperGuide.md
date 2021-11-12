@@ -816,7 +816,7 @@ For more information, see the Login with Amazon documentation:
 | **client_secret** | Part of your LWA credentials. To get this value, see [Viewing your application information and credentials](#viewing-your-application-information-and-credentials).  |
 
 For example:
-```http
+```plain
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -830,7 +830,7 @@ grant_type=authorization_code&code=SplxlOexamplebYS6WxSbIA&client_id=foodev&clie
 | **token_type**    | The type of token returned. Should be bearer.   |
 | **expires_in**    | The number of seconds before the access token becomes invalid.  |
 | **refresh_token** | A long-lived token that can be exchanged for a new access token. See [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api). |
-```http
+```plain
 HTTP/l.l 200 OK
 Content-Type: application/json;
 charset UTF-8
@@ -1023,7 +1023,7 @@ For more information, see the Login with Amazon documentation:
 </table>
 
 For example:
-```http
+```plain
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1037,7 +1037,7 @@ grant_type=authorization_code&code=SplxlOexamplebYS6WxSbIA&client_id=foodev&clie
 | **token_type**    | The type of token returned. Should be bearer.      |
 | **expires_in**    | The number of seconds before the access token becomes invalid.   |
 | **refresh_token** | A long-lived token that can be exchanged for a new access token. See [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api). |
-```http
+```plain
 HTTP/l.l 200 OK
 Content-Type: application/json;
 charset UTF-8
@@ -1507,7 +1507,7 @@ To request an LWA access token, make a secure HTTP POST to the LWA authenticatio
 </table>
 
 Example for calling an operation that requires selling partner authorization:
-```http
+```plain
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1517,7 +1517,7 @@ grant_type=refresh_token
 &client_secret=Y76SDl2F
 ```
 Example for calling a grantless operation:
-```http
+```plain
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1538,7 +1538,7 @@ A successful response includes the following values.
 | **token_type**    | The type of token returned. Must be *bearer*. |
 | **expires_in**    | The number of seconds before the LWA access token becomes invalid.  |
 | **refresh_token** | The LWA refresh token that you submitted in the request. Maximum size: 2048 bytes. |
-```http
+```plain
 HTTP/l.l 200 OK
 Content-Type: application/json;charset UTF-8
 Cache-Control: no-store
@@ -1565,7 +1565,7 @@ Here are the components of a Selling Partner API URI.
 | Path parameter | The path parameters.  | `shipmentId1`  |
 
 For example:
-```http
+```plain
 PUT https://sellingpartnerapi-na.amazon.com/fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10
 ```
 ## Step 3. Add headers to the URI
@@ -1582,7 +1582,7 @@ Add headers to the URI that you constructed in [Step 2. Construct a Selling Part
 | user-agent    | Your application name and version number, platform, and programming language. These help Amazon diagnose and fix problems you might encounter with the service. See [Include a User-Agent header in all](#include-a-user-agent-header-in-all-requests) [requests](#include-a-user-agent-header-in-all-requests). |
 
 Here is an example of a request to the Selling Partner API with URI and headers but no signing information:
-```http
+```plain
 PUT /fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10 HTTP/1.1
 host: sellingpartnerapi-na.amazon.com
 user-agent: My Selling Tool/2.0 (Language=Java/1.8.0.221;
@@ -1633,7 +1633,7 @@ To create and sign your request, complete the following:
       - See [Authorization header](#authorization-header) for details about creating an `Authorization` header parameter.
 
     The following example shows what a request might look like after you've added the signing information to it using the Authorization header.
-```http
+```plain
 PUT /fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10HTTP/1.1
 Authorization: AWS4-HMAC-SHA256 Credential=AKIAIHV6HIXXXXXXX/20201022/us-east-1/execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-access-token,
 Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
@@ -1700,7 +1700,7 @@ In response to an HTTP request, the Selling Partner API returns response headers
 ### Success Response
 
 If your request is successful, the Selling Partner API returns the data requested. Here is an example of a successful response:
-```http
+```plain
 HTTP/1.1 200 OK
 Content-Length: 368
 Content-Type: application/json
@@ -1726,7 +1726,7 @@ If your request is unsuccessful, the Selling Partner API returns an error respon
 | details     | Link to additional information.     | No           |
 
 Here is an example of an error response:
-```http
+```plain
 HTTP/1.1 400 Bad Request
 Content-Length: 117
 Content-Type: application/json
