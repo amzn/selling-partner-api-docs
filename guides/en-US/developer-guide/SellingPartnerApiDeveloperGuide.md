@@ -32,6 +32,8 @@
   - [Step 5. Add an AWS Security Token Service policy to your IAM user](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
   
 - [Registering your application](#registering-your-application)
+
+- [Updating your application information](#updating-your-application-information)
   
 - [Viewing your application information and credentials](#viewing-your-application-information-and-credentials)
 
@@ -555,6 +557,49 @@ The following procedures show you how to register your application, depending on
 4. Complete the form.
 
 **Important.** When registering your application, the IAM ARN that you provide must be for the IAM entity to which you attached the IAM policy from  [Step 3. Create an IAM policy](#Step-3-Create-an-IAM-policy). In this workflow, that IAM entity is the IAM role from [Step 4. Create an IAM role](#Step-4-Create-an-IAM-role). If you register your application using your IAM user, be sure that the IAM policy is attached to it. Otherwise your calls to the Selling Partner API will fail. We recommend registering your application using an IAM role, as shown in this workflow, to help you better control access to your AWS resources.
+
+# Updating your application information
+
+After you [register your application](#registering-your-application), you might find that you later want to update your application information. For example, you might want to change the IAM ARN associated with your application or add another OAuth redirect URI. 
+
+**Note.** When you update the IAM ARN for your application, both the old IAM ARN and the new IAM ARN are in effect for 14 days. This gives you time to update your authorization workflow for the new IAM ARN. After 14 days, the old IAM ARN expires.
+
+The way you update your application information varies slightly depending on the application type. For the purposes of updating your application information, applications are grouped into two types:
+
+- **All public applications and private seller applications.** These are: (1) Applications that are publicly available and are authorized by a seller or by a vendor,  and (2) seller applications that are available only to your organization, and are self-authorized.
+
+- **Private vendor applications.** Vendor applications that are available only to your organization, and are self-authorized.
+
+For more information, see [Terminology](#terminology).
+
+**To update your application information (for all public applications and private seller applications)**
+
+1.  Sign into Seller Central using the credentials that you used to [register as a developer](#registering-as-a-developer).
+
+2.  In the **Partner Network** menu, click **Develop Apps**.
+
+    The **Developer Central** page appears.
+
+3. Click the **Edit app** button next to the application that you want to update the information for.
+
+    The **App registration** page appears.
+
+4. Edit the values on the page that you want to update, and then click **Save and exit**.
+
+
+**To update your application information (for private vendor applications)**
+
+1. Sign into Vendor Central with the credentials that you used to [register as a developer](#registering-as-a-developer).
+
+2. In the **Integration** menu, click **API Integration**.
+
+   The **Developer Central** page appears. 
+
+3. Click the **Edit app** button next to the application that you want to update the information for.
+
+    The **App registration** page appears.
+
+4. Edit the values on the page that you want to update, and then click **Save and exit**.
 
 # Viewing your application information and credentials
 
