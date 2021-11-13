@@ -34,7 +34,7 @@
 - [Registering your application](#registering-your-application)
 
 - [Updating your application information](#updating-your-application-information)
-  
+
 - [Viewing your application information and credentials](#viewing-your-application-information-and-credentials)
 
 - [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications)
@@ -586,7 +586,6 @@ For more information, see [Terminology](#terminology).
 
 4. Edit the values on the page that you want to update, and then click **Save and exit**.
 
-
 **To update your application information (for private vendor applications)**
 
 1. Sign into Vendor Central with the credentials that you used to [register as a developer](#registering-as-a-developer).
@@ -701,7 +700,11 @@ For information about creating and testing an authorization workflow, see [Amazo
 
 **For seller applications only.**
 
-If a seller has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a [hybrid Selling Partner API application](#Hybrid-Selling-Partner-API-applications). This eliminates the need to request authorization from the selling partner again. For more information, see the [Authorization API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/authorization-api-use-case-guide/authorization-api-use-case-guide-v1.md).
+If a seller has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a [hybrid Selling Partner API application](#Hybrid-Selling-Partner-API-applications). This eliminates the need to request authorization from this seller for your hybrid SP-API application.
+
+**Note.** Authorizations of a hybrid SP-API application expire after one year. Be sure to have your selling partners reauthorize your SP-API hybrid application yearly before their authorizations expire. 
+
+For more information, see the [Authorization API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/authorization-api-use-case-guide/authorization-api-use-case-guide-v1.md).
 
 # Amazon Seller Central Partner Network authorization workflow
 

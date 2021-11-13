@@ -9,9 +9,11 @@ Version: v1
 
 # What is the Authorization API?
 
-The Authorization API lets you migrate an Amazon Marketplace Web Service \(Amazon MWS\) authorization that a seller has granted you to a hybrid Selling Partner API application. This eliminates the need to request authorization from the seller again.
+The Authorization API lets you migrate an Amazon Marketplace Web Service \(Amazon MWS\) authorization, that a seller previously granted you, to a hybrid Selling Partner API (SP-API) application. This eliminates the need to request authorization from this seller for your hybrid SP-API application.
 
-When would you need to use the Authorization API? Suppose you have published an Amazon MWS application on the Amazon Seller Central Partner Network. A number of sellers have authorized you as an Amazon MWS developer so they can use your application. You later convert your Amazon MWS application into a hybrid Selling Partner API application that makes calls to both Amazon MWS and Selling Partner API. Now you want your application to make calls to Selling Partner API on behalf of these sellers without requesting authorization again. The Authorization API lets you do this.
+**Note.** Authorizations of a hybrid SP-API application expire after one year. Be sure to have your selling partners reauthorize your SP-API hybrid application yearly before their authorizations expire. 
+
+When would you need to use the Authorization API? Suppose you have published an Amazon MWS application on the Amazon Seller Central Partner Network. A number of sellers have authorized you as an Amazon MWS developer so they can use your application. You later convert your Amazon MWS application into a hybrid SP-API application that makes calls to both Amazon MWS and the SP-API. Now you want your application to make calls to the SP-API on behalf of these sellers. The Authorization API lets you do this without your selling partners needing to authorize your hybrid SP-API application.
 
 # Tutorial: Migrate an Amazon MWS authorization to a Selling Partner API application
 
