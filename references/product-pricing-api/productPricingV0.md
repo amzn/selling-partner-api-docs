@@ -351,7 +351,7 @@ A list of competitive pricing information.
 |**Price**  <br>*required*|Pricing information for a given CompetitivePriceId value.|[PriceType](#pricetype)|
 |**condition**  <br>*optional*|Indicates the condition of the item whose pricing information is returned. Possible values are: New, Used, Collectible, Refurbished, or Club.|string|
 |**subcondition**  <br>*optional*|Indicates the subcondition of the item whose pricing information is returned. Possible values are: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.|string|
-|**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.|[OfferCustomerType](#offercustomertype)|
+|**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.<br><br>When the offer type is B2C in a quantity discount, the seller is winning the Buy Box because others do not have inventory at that quantity, not because they have a quantity discount on the ASIN.|[OfferCustomerType](#offercustomertype)|
 |**quantityTier**  <br>*optional*|Indicates at what quantity this price becomes active.|integer (int32)|
 |**quantityDiscountType**  <br>*optional*|Indicates the type of quantity discount this price applies to.|[QuantityDiscountType](#quantitydiscounttype)|
 |**sellerId**  <br>*optional*|The seller identifier for the offer.|string|
@@ -589,7 +589,7 @@ Indicates whether the item is fulfilled by Amazon or by the seller (merchant).
 |Name|Description|Schema|
 |---|---|---|
 |**condition**  <br>*required*|Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.|string|
-|**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.|[OfferCustomerType](#offercustomertype)|
+|**offerType**  <br>*optional*|Indicates the type of customer that the offer is valid for.<br><br>When the offer type is B2C in a quantity discount, the seller is winning the Buy Box because others do not have inventory at that quantity, not because they have a quantity discount on the ASIN.|[OfferCustomerType](#offercustomertype)|
 |**quantityTier**  <br>*optional*|Indicates at what quantity this price becomes active.|integer (int32)|
 |**quantityDiscountType**  <br>*optional*|Indicates the type of quantity discount this price applies to.|[QuantityDiscountType](#quantitydiscounttype)|
 |**LandedPrice**  <br>*required*|The value calculated by adding ListingPrice + Shipping - Points.|[MoneyType](#moneytype)|
