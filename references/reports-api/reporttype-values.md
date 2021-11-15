@@ -156,7 +156,7 @@ Report types fall into these categories:
     <tr class="odd">
       <td>
         <p><strong>Inventory Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_FLAT_FILE_OPEN_LISTINGS_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_FLAT_FILE_OPEN_LISTINGS_DATA</p>
       </td>
       <td>
         <p>Tab-delimited flat file open listings report that contains a summary of the seller's product listings with
@@ -165,8 +165,8 @@ Report types fall into these categories:
         <ul>
           <li>
             <p><strong>Custom</strong> - A Boolean value that indicates whether a custom report is returned. Default:
-              <code>false</code>.<br>
-              Example:<br><code>"reportOptions":{"custom":"true"}</code>.</p>
+              <code>false</code>.<br/>
+              Example:<br/><code>"reportOptions":{"custom":"true"}</code>.</p>
           </li>
         </ul>
         <p>Can be requested.</p>
@@ -175,15 +175,15 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>All Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_ALL_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_ALL_DATA</p>
       </td>
       <td><p>Tab-delimited flat file detailed all listings report. For Marketplace and Seller Central sellers.</p>
         <p>This report accepts the following reportOptions values:</p>
         <ul>
           <li>
             <p><strong>Custom</strong> - A Boolean value that indicates whether a custom report is returned. Default:
-              <code>false</code>.<br>
-              Example:<br>
+              <code>false</code>.<br/>
+              Example:<br/>
               <code>"reportOptions":{"custom":"true"}</code>.</p>
           </li>
         </ul>
@@ -193,7 +193,7 @@ Report types fall into these categories:
     <tr class="odd">
       <td>
         <p><strong>Active Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DATA</p>
       </td>
       <td><p>Tab-delimited flat file detailed active listings report. For Marketplace and Seller Central sellers.</p>
         <p>Can be requested.</p>
@@ -202,7 +202,7 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>Inactive Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_INACTIVE_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_INACTIVE_DATA</p>
       </td>
       <td><p>Tab-delimited flat file detailed inactive listings report. For Marketplace and Seller Central sellers.</p>
         <p>Can be requested.</p>
@@ -211,7 +211,7 @@ Report types fall into these categories:
     <tr class="odd">
       <td>
         <p><strong>Open Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DATA_BACK_COMPAT</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DATA_BACK_COMPAT</p>
       </td>
       <td>
         <p>Tab-delimited flat file open listings report.</p>
@@ -219,7 +219,7 @@ Report types fall into these categories:
         <ul>
           <li>
             <p><strong>Custom</strong> - A Boolean value that indicates whether a custom report is returned. Default:
-              <code>false</code>.<br>Example:<br> <code>"reportOptions":{"custom":"true"}</code>.</p>
+              <code>false</code>.<br/>Example:<br/> <code>"reportOptions":{"custom":"true"}</code>.</p>
           </li>
         </ul>
         <p>Can be requested.</p>
@@ -228,7 +228,7 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>Open Listings Report Lite</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DATA_LITE</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DATA_LITE</p>
       </td>
       <td><p>Tab-delimited flat file active listings report that contains only the SKU, ASIN, Price, and Quantity fields
         for items that have a quantity greater than zero. For Marketplace and Seller Central sellers.</p>
@@ -238,7 +238,7 @@ Report types fall into these categories:
     <tr class="odd">
       <td>
         <p><strong>Open Listings Report Liter</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DATA_LITER</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DATA_LITER</p>
       </td>
       <td><p>Tab-delimited flat file active listings report that contains only the SKU and Quantity fields for items that
         have a quantity greater than zero. For Marketplace and Seller Central sellers.</p>
@@ -248,7 +248,7 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>Canceled Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_CANCELLED_LISTINGS_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_CANCELLED_LISTINGS_DATA</p>
       </td>
       <td>
         <p>Tab-delimited flat file canceled listings report. For Marketplace and Seller Central sellers.</p>
@@ -256,7 +256,7 @@ Report types fall into these categories:
         <ul>
           <li>
             <p><strong>Custom</strong> - A Boolean value that indicates whether a custom report is returned. Default:
-              <code>false</code>.<br>Example:<br> <code>"reportOptions":{"custom":"true"}</code>.</p>
+              <code>false</code>.<br/>Example:<br/> <code>"reportOptions":{"custom":"true"}</code>.</p>
           </li>
         </ul>
         <p>Can be requested.</p>
@@ -264,17 +264,26 @@ Report types fall into these categories:
     </tr>
     <tr class="odd">
       <td>
+        <p><strong>Suppressed Listings Report</strong></p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANTS_LISTINGS_FYP_REPORT</p>
+      </td>
+      <td><p>Tab-delimited flat file that contains suppressed listings, the reason each listing is suppressed, and instructions for removing each suppression. For Marketplace and Seller Central users.</p>
+        <p>Can be requested or scheduled.</p>
+      </td>
+    </tr>
+    <tr class="even">
+      <td>
         <p><strong>Listing Quality and Suppressed Listing Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DEFECT_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DEFECT_DATA</p>
       </td>
       <td><p>Tab-delimited flat file listing quality and suppressed listing report that contains listing information that
         is incomplete or incorrect. For Marketplace and Seller Central sellers.</p>
         <p>Can be requested.</p>
       </td>
     </tr>
-    <tr class="even">
+    <tr class="odd">
       <td><strong>Pan-European Eligibility: FBA ASINs</strong>
-        <p><strong>reportType</strong> value:<br> GET_PAN_EU_OFFER_STATUS</p>
+        <p><strong>reportType</strong> value:<br/> GET_PAN_EU_OFFER_STATUS</p>
       </td>
       <td>
       <p>Tab-delimited flat file report that contains enrollment status and eligibility information for the
@@ -284,9 +293,9 @@ Report types fall into these categories:
         <p>Can be requested.</p>
       </td>
     </tr>
-    <tr class="odd">
+    <tr class="even">
       <td><strong>Pan-European Eligibility: Self-fulfilled ASINs</strong>
-        <p><strong>reportType</strong> value:<br> GET_MFN_PAN_EU_OFFER_STATUS</p>
+        <p><strong>reportType</strong> value:<br/> GET_MFN_PAN_EU_OFFER_STATUS</p>
       </td>
       <td>
       <p>Tab-delimited flat file report that contains eligibility information for the Pan-European FBA Program for each
@@ -297,10 +306,10 @@ Report types fall into these categories:
         <p>Can be requested.</p>
       </td>
     </tr>
-    <tr class="even">
+    <tr class="odd">
       <td>
         <p><strong>Referral Fee Preview Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_REFERRAL_FEE_PREVIEW_REPORT</p>
+        <p><strong>reportType</strong> value:<br/>GET_REFERRAL_FEE_PREVIEW_REPORT</p>
       </td>
       <td>
         <p>Tab-delimited flat file that contains the seller's open listings as well as the price and estimated referral
@@ -329,7 +338,7 @@ The date range that you specify when requesting an order report indicates when t
     <tr class="odd">
       <td>
         <p><strong>Unshipped Orders Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_FLAT_FILE_ACTIONABLE_ORDER_DATA_SHIPPING</p>
+        <p><strong>reportType</strong> value:<br/>GET_FLAT_FILE_ACTIONABLE_ORDER_DATA_SHIPPING</p>
       </td>
       <td>
         <p>Tab-delimited flat file report that contains only orders that are not confirmed as shipped. For Marketplace and Seller Central sellers.</p>
@@ -337,7 +346,7 @@ The date range that you specify when requesting an order report indicates when t
         <ul>
           <li>
             <p><strong>ShowSalesChannel</strong> - A Boolean value that indicates whether an additional column is added
-              to the report that shows the sales channel. Default: <code>false</code>.<br>Example:<br>
+              to the report that shows the sales channel. Default: <code>false</code>.<br/>Example:<br/>
               <code>"reportOptions":{"ShowSalesChannel":"true"}</code>
             </p>
           </li>
