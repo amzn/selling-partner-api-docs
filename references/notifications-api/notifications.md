@@ -5,6 +5,8 @@
 ## Overview
 The Selling Partner API for Notifications lets you subscribe to notifications that are relevant to a selling partner's business. Using this API you can create a destination to receive notifications, subscribe to notifications, delete notification subscriptions, and more.
 
+For more information, see the [Notifications Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md)
+
 
 ### Version information
 *Version* : v1
@@ -586,5 +588,6 @@ The type of notification.
 |**LISTINGS_ITEM_ISSUES_CHANGE**|Sent whenever there are issues change for any SKU that the selling partner has.|
 |**MFN_ORDER_STATUS_CHANGE**|Sent whenever there is a change in the status of an MFN order availability.|
 |**B2B_ANY_OFFER_CHANGED**|Sent whenever there is a listing change for any of the top 20 B2B offers, by condition (new or used). The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points(applicable only JP). If multiple sellers are charging the same landed price, the results will be returned in random order.<br><br> These notifications are only sent for items for which the seller has active offers. Seller cannot receive notifications for items for which the seller does not have active offers.|
-|**ACCOUNT_STATUS_CHANGED**|Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, WARNING, AT_RISK, and SUSPENDED.<br><br> The notification will have a payload with 2 fields: previousAccountStatus and currentAccountStatus to indicate the direction of the change.|
+|**ACCOUNT_STATUS_CHANGED**|Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, AT_RISK, and DEACTIVATED.<br><br> The notification will have a payload with 2 fields: previousAccountStatus and currentAccountStatus to indicate the direction of the change.|
+|**PRODUCT_TYPE_DEFINITIONS_CHANGE**|Sent whenever there is a new Product Type or a Product Type Version in a marketplace.|
 
