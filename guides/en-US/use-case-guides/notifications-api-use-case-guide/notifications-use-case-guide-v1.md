@@ -30,6 +30,7 @@ API Version: 1.0
   - [LISTINGS_ITEM_STATUS_CHANGE](#listings_item_status_change)
   - [LISTINGS_ITEM_ISSUES_CHANGE](#listings_item_issues_change)
   - [MFN_ORDER_STATUS_CHANGE](#mfn_order_status_change)
+  - [PRODUCT_TYPE_DEFINITIONS_CHANGE](#product_type_definitions_change)
   - [REPORT_PROCESSING_FINISHED](#report_processing_finished)
 - [Common types](#common-types)
   - [FulfillmentChannelType](#fulfillmentchanneltype)
@@ -38,6 +39,8 @@ API Version: 1.0
 # What is the Notifications API?
 
 The Selling Partner API for Notifications lets you subscribe to notifications that are relevant to a selling partner's business. Using this API, you can create a destination to receive notifications, subscribe to notifications, delete notification subscriptions, and more. Instead of polling for information, your application can receive information directly from Amazon when an event triggers a notification to which you are subscribed.
+
+You can subscribe to notifications on behalf of sellers or vendors. To determine whether you can subscribe to a notification type on behalf of sellers only, vendors only, or both, see [notificationType](#notificationtype).
 
 ### Terminology
 
@@ -65,6 +68,7 @@ Use this workflow to receive the following notification types:
   
   - [LISTINGS_ITEM_ISSUES_CHANGE](#listings_item_issues_change). Sent whenever there is an issues change for any SKU that the selling partner has. 
   
+  - [PRODUCT_TYPE_DEFINITIONS_CHANGE](#product_type_definitions_change). Sent whenever there is a new Product Type or Product Type Version. 
 
 See [Tutorial: Set up notifications (Amazon EventBridge workflow)](#tutorial-set-up-notifications-amazon-eventbridge-workflow).
 
@@ -72,7 +76,7 @@ See [Tutorial: Set up notifications (Amazon EventBridge workflow)](#tutorial-set
 
 Use this workflow to receive the following notification types:
 
-  - [ACCOUNT_STATUS_CHANGED](#account_status_changed). Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, AT_RISK, and SUSPENDED.
+  - [ACCOUNT_STATUS_CHANGED](#account_status_changed). Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, AT_RISK, and DEACTIVATED.
 
   - [ANY_OFFER_CHANGED](#any_offer_changed). Sent whenever there is a change to any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item listed by the seller.
 
@@ -104,6 +108,7 @@ Use this tutorial to receive any of the following notifications types:
   
   - [LISTINGS_ITEM_ISSUES_CHANGE](#listings_item_issues_change). Sent whenever there is an issues change for any SKU that the selling partner has.
   
+  - [PRODUCT_TYPE_DEFINITIONS_CHANGE](#product_type_definitions_change). Sent whenever there is a new Product Type or Product Type Version. 
 
 If you want to receive any other notification type, skip this tutorial and go to [Tutorial: Set up notifications (Amazon Simple Queue Service workflow)](#tutorial-set-up-notifications-amazon-simple-queue-service-workflow).
 
@@ -111,7 +116,7 @@ If you want to receive any other notification type, skip this tutorial and go to
 
 To complete this tutorial you will need:
 
-  - Authorization from the selling partners for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
+  - Authorization from the selling partners (sellers or vendors) for whom you are making calls. See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md) for more information.
 
   - An AWS Account. This AWS account will be responsible for charges related to receiving notifications. If you are not already an AWS customer, you can create a free AWS account. For more information, see [AWS Free Tier](https://aws.amazon.com/free).
 
@@ -355,7 +360,7 @@ Path parameters:
       <td>notificationType</td>
       <td>
         The type of notification to which you want to subscribe.
-        <p>Possible values: BRANDED_ITEM_CONTENT_CHANGE, ITEM_PRODUCT_TYPE_CHANGE, LISTINGS_ITEM_STATUS_CHANGE, LISTINGS_ITEM_ISSUES_CHANGE. See <a href="#notificationtype">notificationType</a>.</p>
+        <p>Possible values: BRANDED_ITEM_CONTENT_CHANGE, ITEM_PRODUCT_TYPE_CHANGE, LISTINGS_ITEM_STATUS_CHANGE, LISTINGS_ITEM_ISSUES_CHANGE, PRODUCT_TYPE_DEFINITIONS_CHANGE. See <a href="#notificationtype">notificationType</a>.</p>
         <p>Type: string</p>
       </td>
       <td>Yes</td>
@@ -463,7 +468,7 @@ You are now subscribed to receive BRANDED_ITEM_CONTENT_CHANGE notifications.
 
 Use this tutorial to set up your system to receive any of the following notifications types:
 
-  - [ACCOUNT_STATUS_CHANGED](#account_status_changed). Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, AT_RISK, and SUSPENDED.
+  - [ACCOUNT_STATUS_CHANGED](#account_status_changed). Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, AT_RISK, and DEACTIVATED.
 
   - [ANY_OFFER_CHANGED](#any_offer_changed). Sent whenever there is a listing change for any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item listed by the seller.
 
@@ -838,25 +843,33 @@ Notification example:
   "NotificationType": "BRANDED_ITEM_CONTENT_CHANGE",
   "PayloadVersion": "1.0",
   "EventTime": "2019-03-20T18:59:30.194Z",
-  "Payload": {
+  "Payload":
+  {
     "MarketplaceId": "ATVPDKIKX0DER",
     "BrandName": "Great Brand",
-    "Asin": "B1234567"
+    "Asin": "B1234567",
+    "AttributesChanged": [
+      "bullet_point",
+      "item_name",
+      "product_description"
+    ]
   },
-  "NotificationMetadata": {
+  "NotificationMetadata":
+  {
     "ApplicationId": "amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
     "SubscriptionId": "93b098e1-c42-2f45-93a1-78910a6a8369",
     "PublishTime": "2019-03-20T18:59:48.768Z",
     "NotificationId": "8e009934-da2c-4f9c-9bc7-93f23b7e1f60"
   }
 }
+
 ```
 # notificationType
 
 You can subscribe to various notifications, depending on the selling partner information that you want to receive.
 
 The following **notificationType** values indicate the notification type:
-  - [ACCOUNT_STATUS_CHANGED](#account_status_changed). Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, WARNING, AT_RISK, and SUSPENDED.
+  - [ACCOUNT_STATUS_CHANGED](#account_status_changed). Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, AT_RISK, and DEACTIVATED.
 
   - [ANY_OFFER_CHANGED](#any_offer_changed). Sent whenever there is a change in any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item listed by the seller.
 
@@ -875,16 +888,19 @@ The following **notificationType** values indicate the notification type:
   - [ITEM_PRODUCT_TYPE_CHANGE](#item_product_type_change). Sent whenever there is a change to the product type name of any ASIN that the selling partner has a brand relationship with.
 
   - [LISTINGS_ITEM_STATUS_CHANGE](#listings_item_status_change). Sent whenever there is a change in the status of a listings item that a selling partner owns. 
-
   - [LISTINGS_ITEM_ISSUES_CHANGE](#listings_item_issues_change). Sent whenever there is a change to the issues associated with a listings item that the selling partner owns. 
   
   - [MFN_ORDER_STATUS_CHANGE](#mfn_order_status_change). Sent whenever there is a change in the status of a MFN order availability.
+
+  - [PRODUCT_TYPE_DEFINITIONS_CHANGE](#product_type_definitions_change). Sent whenever there is a new Product Type or Product Type Version.
 
   - [REPORT_PROCESSING_FINISHED](#report_processing_finished). Sent whenever any report that you have requested using the the Selling Partner API for Reports reaches a report processing status of DONE, CANCELLED, or FATAL.
 
 ## ACCOUNT_STATUS_CHANGED
 
-The **ACCOUNT_STATUS_CHANGED** notification is sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, WARNING, AT_RISK, and SUSPENDED.
+Sellers can subscribe to this notification.
+
+The **ACCOUNT_STATUS_CHANGED** notification is sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, AT_RISK, and DEACTIVATED.
 
 **ACCOUNT_STATUS_CHANGED Payload schema: Version 2021-01-01**
 
@@ -951,6 +967,8 @@ The following table shows the properties of the accountStatusChangeNotification 
 
 
 ## ANY_OFFER_CHANGED
+
+Sellers can subscribe to this notification.
 
 The **ANY_OFFER_CHANGED** notification is sent whenever there is a change to any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item that you sell, or if there is a change to which offer wins the BuyBox, or a change to the BuyBox price. The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points. If multiple sellers are charging the same landed price, the results will be returned in random order.
 
@@ -1896,6 +1914,7 @@ The following table shows the objects and properties of the Summary object:
 ```
 ## B2B_ANY_OFFER_CHANGED
 
+Sellers can subscribe to this notification.
 
 The **B2B_ANY_OFFER_CHANGED** notification is sent whenever there is a change in any of the top 20 B2B offers, in the form of any price change (either single unit or quantity discount tier prices) for an item listed by the seller. The top 20 B2B offers are determined by the single-unit landed price, which is the price plus shipping. If multiple sellers are charging the same landed price, the results will be returned in random order.
 
@@ -2706,17 +2725,75 @@ The following table shows the objects and properties of the Summary object:
 ```
 ## BRANDED_ITEM_CONTENT_CHANGE
 
+Sellers can subscribe to this notification.
+
 Amazon sends a **BRANDED_ITEM_CONTENT_CHANGE** notification whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with. A selling partner has a brand relationship with an ASIN, as defined in the Amazon Registered Brands program, when they are a verified brand owner. The selling partner is the party who authorizes an application to call the Notifications API on their behalf, for the purpose of creating and managing notification subscriptions. Amazon sends **BRANDED_ITEM_CONTENT_CHANGE** notifications for items listed in any Amazon marketplace.
 
 **BRANDED_ITEM_CONTENT_CHANGE Payload schema: Version 1.0**
 
-A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* includes the following objects in the **Payload** object.
+A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* includes the following properties in the **Payload** object.
 
-| **Object**    | **Description**                             |
-| ------------- | ------------------------------------------- |
-| MarketplaceId | The marketplace that the item is listed in. |
-| BrandName     | The brand name of the item.                 |
-| Asin          | The ASIN of the item.                       |
+<table>
+  <thead>
+    <tr class="header">
+      <th>
+        <b>Name</b>
+      </th>
+      <th>
+        <b>Description</b>
+      </th>
+      <th>
+        <b>Required</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd">
+      <td>MarketplaceId</td>
+      <td>
+        The marketplace that the item is listed in.
+        <p>Type: string</p>
+      </td>
+      <td>
+        Yes
+      </td>
+    </tr>
+    <tr class="even">
+      <td>BrandName</td>
+      <td>
+        The brand name of the item.
+        <p>Type: string</p>
+      </td>
+      <td>
+        Yes
+      </td>
+    </tr>
+    <tr class="odd">
+      <td>Asin</td>
+      <td>
+        The ASIN of the item.
+        <p>Type: string</p>
+      </td>
+      <td>
+        Yes
+      </td>
+    </tr>
+    <tr class="even">
+      <td>AttributesChanged</td>
+      <td>
+        The array of item attributes that have changed. Attribute names, descriptions, and requirements are available by calling the Product Type Definitions API. For more information, see the <a href="https://github.com/amzn/selling-partner-api-docs/tree/main/guides/en-US/use-case-guides/product-type-definitions-api-use-case-guide/definitions-product-types-api-use-case-guide_2020-09-01.md">Product Type Definitions API Use Case Guide</a>.
+        <p>Type: Array of string</p>
+        Possible values:<br/>
+        bullet_point<br/>
+        item_name<br/>
+        product_description<br/>
+      </td>
+      <td>
+        Yes
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 **Notification schema:** [BrandedItemContentChangeNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/BrandedItemContentChangeNotification.json)
 
@@ -2727,22 +2804,31 @@ A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* inc
   "NotificationType": "BRANDED_ITEM_CONTENT_CHANGE",
   "PayloadVersion": "1.0",
   "EventTime": "2019-03-20T18:59:30.194Z",
-  "Payload": {
+  "Payload":
+  {
     "MarketplaceId": "ATVPDKIKX0DER",
     "BrandName": "Great Brand",
     "Asin": "B1234567",
-    "AttributesChanged": ["bullet_point", "item_name", "product_description"]
+    "AttributesChanged": [
+      "bullet_point",
+      "item_name",
+      "product_description"
+    ]
   },
-  "NotificationMetadata": {
+  "NotificationMetadata":
+  {
     "ApplicationId": "amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
     "SubscriptionId": "93b098e1-c42-2f45-93a1-78910a6a8369",
     "PublishTime": "2019-03-20T18:59:48.768Z",
     "NotificationId": "8e009934-da2c-4f9c-9bc7-93f23b7e1f60"
   }
 }
+
 ```
 
 ## FBA_OUTBOUND_SHIPMENT_STATUS
+
+Sellers can subscribe to this notification.
 
 The FBA_OUTBOUND_SHIPMENT_STATUS notification is sent whenever Amazon creates or cancels a Fulfillment by Amazon shipment for a seller. This notification is only for FBA Onsite shipments. This notification is available only in the Brazil marketplace.
 
@@ -2817,6 +2903,8 @@ The following table shows the objects and properties of the FBAOutboundShipmentS
 ```
 
 ## FEE_PROMOTION
+
+Sellers can subscribe to this notification.
 
 Sellers using Selling Partner API can benefit from time-limited fee promotions. To receive notification of available fee promotions, sellers must subscribe to FEE_PROMOTION notification. When the seller initially signs up for the subscription and *isEnabled* is set to *true*, the seller receives all currently active promotions. Each promotion is sent as a single message. Subsequent promotion notifications are sent when the promotion becomes active.
 
@@ -2962,14 +3050,14 @@ Each FeePromotionNotification object is made up of the following data objects:
       <td>Identifiers</td>
       <td>A list of items to which this promotion applies.</td>
       <td>Yes</td>
-      <td>Type: Array of <a href="#_Identifier">Identifier</a>
+      <td>Type: Array of <a href="#identifier">Identifier</a>
       </td>
     </tr>
     <tr class="even">
       <td>PromotionActiveTimeRange</td>
       <td>The range of time when this promotion is active.</td>
       <td>Yes</td>
-      <td>Type: <a href="#_PromotionActiveTimeRange">PromotionActiveTimeRange</a>
+      <td>Type: <a href="#promotionactivetimerange">PromotionActiveTimeRange</a>
       </td>
     </tr>
     <tr class="odd">
@@ -3241,6 +3329,8 @@ The following table shows the properties of the PromotionActiveTimeRange object:
 
 ## FEED_PROCESSING_FINISHED
 
+Sellers can subscribe to this notification.
+
 The **FEED_PROCESSING_FINISHED** notification is sent whenever any feed submitted using the Selling Partner API for Feeds reaches a feed processing status of DONE, CANCELLED, or FATAL.
 
 **FEED_PROCESSING_FINISHED Payload schema: Version 1.0**
@@ -3323,6 +3413,8 @@ A **FEED_PROCESSING_FINISHED** notification with **PayloadVersion**=*2020-09-04*
 ```
 
 ## FULFILLMENT_ORDER_STATUS
+
+Sellers can subscribe to this notification.
 
 The FULFILLMENT_ORDER_STATUS notification is sent whenever there is a change in the status of a Multi-Channel Fulfillment fulfillment order.
 
@@ -3536,7 +3628,7 @@ The following table shows the objects and properties of the FulfillmentShipment 
       <td>
         <p>Contains all the packages in the fulfillment shipment.</p>
         <p>Optional</p>
-        <p>Type: Array of <a href="#_FulfillmentShipmentPackage">FulfillmentShipmentPackage</a>
+        <p>Type: Array of <a href="#fulfillmentshipmentpackage">FulfillmentShipmentPackage</a>
         </p>
       </td>
     </tr>
@@ -3630,6 +3722,8 @@ The following table shows the objects and properties of the FulfillmentShipmentP
 ```
 ## ITEM_PRODUCT_TYPE_CHANGE
 
+Sellers can subscribe to this notification.
+
 Amazon sends an **ITEM_PRODUCT_TYPE_CHANGE** notification whenever there is a change to the product type of any item that the selling partner has a brand relationship with. A selling partner has a brand relationship with an item, as defined in the Amazon Registered Brands program, when they are a verified brand owner. The selling partner is the party who authorizes an application to call the Notifications API on their behalf, for the purpose of creating and managing notification subscriptions. Amazon sends **ITEM_PRODUCT_TYPE_CHANGE** notifications for items listed in any Amazon marketplace.
 
 **ITEM_PRODUCT_TYPE_CHANGE Payload schema: Version 1.0**
@@ -3669,6 +3763,8 @@ An **ITEM_PRODUCT_TYPE_CHANGE** notification with **PayloadVersion**=*1.0* inclu
 
 ## LISTINGS_ITEM_STATUS_CHANGE
 
+Sellers can subscribe to this notification.
+
 Amazon sends a **LISTINGS_ITEM_STATUS_CHANGE** notification when the status of a listings item changes for a selling partner. **LISTINGS_ITEM_STATUS_CHANGE** notifications are published when a listings item is created, deleted, or its buyability changes. The notification payload provides the current listings item information and status. Amazon sends **LISTINGS_ITEM_STATUS_CHANGE** notifications for items listed in any Amazon marketplace.
 
 To retrieve additional associated details about the listing, such as listings item issues, call the **Selling Partner API for Listings Items**. For more information, see the [Listings Items API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/listings-items-api-use-case-guide/listings-items-api-use-case-guide_2021-08-01.md).
@@ -3691,7 +3787,7 @@ A **LISTINGS_ITEM_STATUS_CHANGE** notification with **PayloadVersion**=*1.0* inc
   <tbody>
     <tr class="odd">
       <td>SellerID</td>
-      <td>Selling partner identifier, such as a merchant account, of the affected listings item.</td>
+      <td>Selling partner identifier, such as a seller (merchant) account, of the affected listings item.</td>
       <td>string</td>
       <td>Yes</td>
     </tr>
@@ -3770,6 +3866,8 @@ This table shows the possible values for ListingsItemStatus:
 
 ## LISTINGS_ITEM_ISSUES_CHANGE
 
+Sellers and vendors can subscribe to this notification.
+
 Amazon sends a **LISTINGS_ITEM_ISSUES_CHANGE** notification whenever there is a change to the issues associated with a listings item that the selling partner owns. Issues point out that the listings item has problems which cause listing inactive, search suppression, or other quality problems. For example, if the selling partner's product image has low resolution, this issue will cause search suppression for this product. Amazon sends **LISTINGS_ITEM_ISSUES_CHANGE** notifications for items listed in any Amazon marketplace.
 
 **LISTINGS_ITEM_ISSUES_CHANGE** notifications are triggered when an issue on a listing is either created, fixed, or updated. The notification payload includes basic listing information, related issue severity, and enforcement actions caused by issues. To retrieve more details about issues associated with a listing, call the **Selling Partner API for Listings Items**. For more information, see the [Listings Items API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/listings-items-api-use-case-guide/listings-items-api-use-case-guide_2021-08-01.md). 
@@ -3794,7 +3892,7 @@ A **LISTINGS_ITEM_ISSUES_CHANGE** notification with **PayloadVersion**=*1.0* inc
   <tbody class="odd">
     <tr>
       <td>SellerId</td>
-      <td>Selling partner identifier, such as a merchant account, of the affected listings item.</td>
+      <td>Selling partner identifier, such as a seller (merchant) account or vendor code, of the affected listings item.</td>
       <td>string</td>
       <td>Yes</td>
     </tr>
@@ -3849,6 +3947,7 @@ This table shows the possible values for IssueEnforcementActions:
 |----------|----------|
 | SEARCH_SUPPRESSED | When provided, the listing item is suppressed from search results caused by at least one issue currently associated with the affected listing item. |
 
+
 **Notification schema**: [ListingsItemIssuesChangeNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/ListingsItemIssuesChangeNotification.json)
 
 **Notification example**:
@@ -3882,6 +3981,8 @@ This table shows the possible values for IssueEnforcementActions:
 ```
 
 ## MFN_ORDER_STATUS_CHANGE
+
+Sellers can subscribe to this notification.
 
 The **MFN_ORDER_STATUS_CHANGE** notification is sent whenever there is a change in the status of a MFN order availability.
 
@@ -3992,8 +4093,114 @@ A **MFN_ORDER_STATUS_CHANGE** notification with **PayloadVersion**=*1.0* include
     
 ```
 
+## PRODUCT_TYPE_DEFINITIONS_CHANGE
+
+Sellers and vendors can subscribe to this notification.
+
+The **PRODUCT_TYPE_DEFINITIONS_CHANGE** notification is sent whenever there is a new Product Type or Product Type Version. 
+
+If the notification is triggered by the addition of one or more new product types in a marketplace, the notification payload provides the names of the new product types and the product type version applicable to those product types.
+
+If the notification is triggered only by a new product type version, the notification payload provides the new product type version.
+
+For more information about product types, see the [Product Type Definitions API Use Case Guide](https://github.com/amzn/amazon-marketplace-api-sdk/blob/master/product-type-definitions-api/definitions-product-types-api-use-case-guide_2020-09-01.md).
+
+**PRODUCT_TYPE_DEFINITIONS_CHANGE Payload schema: Version 1.0**
+
+A **PRODUCT_TYPE_DEFINITIONS_CHANGE** notification with **PayloadVersion**=*1.0* includes the following properties in the **Payload** object.
+
+<table>
+  <thead>
+    <tr class="header">
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd">
+      <td>AccountId</td>
+      <td>The selling partner identifier, such as a seller (merchant) account or vendor group ID.</td>
+      <td>string</td>
+      <td>Yes</td>
+    </tr>
+    <tr class="even">
+      <td>MarketplaceId</td>
+      <td>Amazon marketplace identifier of the affected product type or product type version.</td>
+      <td>string</td>
+      <td>No</td>
+    </tr>
+    <tr class="odd">
+      <td>ProductTypeVersion</td>
+      <td>Version of the released Amazon product type definition.</td>
+      <td>string</td>
+      <td>Yes</td>
+    </tr>
+    <tr class="even">
+      <td>NewProductTypes</td>
+      <td>List of product types launched in a marketplace.</td>
+      <td>Array of string</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+
+**Notification schema**: [ProductTypeDefinitionsChangeNotification.json](https://amazonservicesstatic.com/json-schemas/notifications/ProductTypeDefinitionsChangeNotification.json)
+
+**Notification example**: 
+
+Example 1: Notification with new product types
+```json
+{
+  "NotificationVersion":"1.0",
+  "NotificationType":"PRODUCT_TYPE_DEFINITIONS_CHANGE",
+  "PayloadVersion":"1.0",
+  "EventTime":"2021-02-03T18:59:30.194Z",
+  "Payload":{ 
+    "AccountId": "AXXXXXXXXXXXXX",
+    "MarketplaceId": "ATVPDKIKX0DER",
+    "ProductTypeVersion": "Uyp-Z6z_y2HhQD2x8sDBXkRAuxBqBionr",
+    "NewProductTypes":[
+      "LUGGAGE",
+      "SHOES", 
+    ]
+  },
+  "NotificationMetadata":{
+    "ApplicationId":"amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
+    "SubscriptionId":"93b098e1-c42-2f45-93a1-78910a6a8369",
+    "PublishTime":"2021-02-03T18:59:30.194Z",
+    "NotificationId":"0e999936-da2c-4f9c-9fc2-02b67bae5f49"
+  }
+}
+
+```
+
+Example 2: Notification with a product type version change
+
+```json 
+{
+  "NotificationVersion":"1.0",
+  "NotificationType":"PRODUCT_TYPE_DEFINITIONS_CHANGE",
+  "PayloadVersion":"1.0",
+  "EventTime":"2021-02-03T18:59:30.194Z",
+  "Payload":{ 
+    "AccountId": "AXXXXXXXXXXXXX",
+    "ProductTypeVersion": "Uyp-Z6z_y2HhQD2x8sDBXkRAuxBqBionr"    
+  },
+  "NotificationMetadata":{
+    "ApplicationId":"amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
+    "SubscriptionId":"93b098e1-c42-2f45-93a1-78910a6a8369",
+    "PublishTime":"2021-02-03T18:59:30.194Z",
+    "NotificationId":"0e999936-da2c-4f9c-9fc2-02b67bae5f49"
+  }
+}
+
+```
 
 ## REPORT_PROCESSING_FINISHED
+
+Sellers can subscribe to this notification.
 
 The **REPORT_PROCESSING_FINISHED** notification is sent whenever any report that you have requested using the the Selling Partner API for Reports reaches a report processing status of DONE, CANCELLED, or FATAL.
 
