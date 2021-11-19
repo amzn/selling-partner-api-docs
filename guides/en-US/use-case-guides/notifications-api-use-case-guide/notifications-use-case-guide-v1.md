@@ -517,6 +517,29 @@ To receive notifications you must grant Selling Partner API permission to write 
 
 7.  Click the **Details** tab and take note of the ARN for this queue. You will pass this value using the **arn** parameter when you call the **createDestination** operation in [Step 2. Create a destination](#step-2-create-a-destination).
 
+**Note:** If you are using server-side encryption (SSE), then you must provide Selling Partner API access to your key using the [AWS Key Management Service (KMS)](https://aws.amazon.com/kms). Consider using the following policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::437568002678:root"
+      },
+      "Action": [
+        "kms:GenerateDataKey",
+        "kms:Decrypt"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+See [Key management](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-key-management.html) for more information.
+
 ## Step 2. Create a destination
 
 Call the **createDestination** operation to create an Amazon Simple Queue Service (SQS) destination.
