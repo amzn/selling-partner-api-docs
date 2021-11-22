@@ -195,7 +195,8 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**Query**|**updatedBefore**  <br>*optional*|Purchase orders for which the last purchase order update happened before this timestamp will be included in the result. Must be in ISO-8601 date/time format.|string (date-time)|
 |**Query**|**purchaseOrderNumber**  <br>*optional*|Provides purchase order status for the specified purchase order number.|string|
 |**Query**|**purchaseOrderStatus**  <br>*optional*|Filters purchase orders based on the specified purchase order status. If not included in filter, this will return purchase orders for all statuses.|enum ([PurchaseOrderStatus](#purchaseorderstatus-subgroup-2))|
-|**Query**|**itemConfirmationStatus**  <br>*optional*|Filters purchase orders based on the specified purchase order item status. If not included in filter, purchase orders for all statuses are included.|enum ([ItemConfirmationStatus](#itemconfirmationstatus))|
+|**Query**|**itemConfirmationStatus**  <br>*optional*|Filters purchase orders based on their item confirmation status. If the item confirmation status is not included in the filter, purchase orders for all confirmation statuses are included.|enum ([ItemConfirmationStatus](#itemconfirmationstatus))|
+|**Query**|**itemReceiveStatus**  <br>*optional*|Filters purchase orders based on the purchase order's item receive status. If the item receive status is not included in the filter, purchase orders for all receive statuses are included.|enum ([ItemReceiveStatus](#itemreceivestatus))|
 |**Query**|**orderingVendorCode**  <br>*optional*|Filters purchase orders based on the specified ordering vendor code. This value should be same as 'sellingParty.partyId' in the purchase order. If not included in filter, all purchase orders for all the vendor codes that exist in the vendor group used to authorize API client application are returned.|string|
 |**Query**|**shipToPartyId**  <br>*optional*|Filters purchase orders for a specific buyer's Fulfillment Center/warehouse by providing ship to location id here. This value should be same as 'shipToParty.partyId' in the purchase order. If not included in filter, this will return purchase orders for all the buyer's warehouses used for vendor group purchase orders.|string|
 
@@ -454,7 +455,7 @@ Details of the item being acknowledged.
 |**amazonProductIdentifier**  <br>*optional*|Amazon Standard Identification Number (ASIN) of an item.|string|
 |**vendorProductIdentifier**  <br>*optional*|The vendor selected product identification of the item. Should be the same as was sent in the purchase order.|string|
 |**orderedQuantity**  <br>*required*|The quantity of this item ordered.|[ItemQuantity](#itemquantity)|
-|**netCost**  <br>*required*|The cost to Amazon, which should match the cost on the invoice. This is a required field. If this is left blank the file will reject in Amazon systems. Price information should not be zero or negative. Indicates a net unit price.|[Money](#money)|
+|**netCost**  <br>*optional*|The cost to Amazon, which should match the cost on the invoice. This is a required field. If this is left blank the file will reject in Amazon systems. Price information should not be zero or negative. Indicates a net unit price.|[Money](#money)|
 |**listPrice**  <br>*optional*|The list price. This is required only if a vendor sells books with a list price.|[Money](#money)|
 |**discountMultiplier**  <br>*optional*|The discount multiplier that should be applied to the price if a vendor sells books with a list price. This is a multiplier factor to arrive at a final discounted price. A multiplier of .90 would be the factor if a 10% discount is given.|string|
 |**itemAcknowledgements**  <br>*required*|This is used to indicate acknowledged quantity.|< [OrderItemAcknowledgement](#orderitemacknowledgement) > array|
@@ -539,6 +540,7 @@ Detailed description of items order status.
 |**listPrice**  <br>*optional*|The list Price to Amazon each (list).|[Money](#money)|
 |**orderedQuantity**  <br>*optional*|Ordered quantity information.|[orderedQuantity](#orderitemstatus-orderedquantity)|
 |**acknowledgementStatus**  <br>*optional*|Acknowledgement status information.|[acknowledgementStatus](#orderitemstatus-acknowledgementstatus)|
+|**receivingStatus**  <br>*optional*|Item receive status at the buyer's warehouse.|[receivingStatus](#orderitemstatus-receivingstatus)|
 
 <a name="orderitemstatus-orderedquantity"></a>
 **orderedQuantity**
@@ -557,6 +559,15 @@ Detailed description of items order status.
 |**acceptedQuantity**  <br>*optional*|Item quantities accepted by vendor to be shipped.|[ItemQuantity](#itemquantity)|
 |**rejectedQuantity**  <br>*optional*|Item quantities rejected by vendor.|[ItemQuantity](#itemquantity)|
 |**acknowledgementStatusDetails**  <br>*optional*|Details of item quantity confirmed.|< [AcknowledgementStatusDetails](#acknowledgementstatusdetails) > array|
+
+<a name="orderitemstatus-receivingstatus"></a>
+**receivingStatus**
+
+|Name|Description|Schema|
+|---|---|---|
+|**receiveStatus**  <br>*optional*|Receive status of the line item.|enum ([ReceiveStatus](#receivestatus))|
+|**receivedQuantity**  <br>*optional*|The total item quantity received by the buyer so far.|[ItemQuantity](#itemquantity)|
+|**lastReceiveDate**  <br>*optional*|The date when the most recent item was received at the buyer's warehouse. Must be in ISO-8601 date/time format.|string (date-time)|
 
 
 <a name="orderedquantitydetails"></a>
@@ -627,6 +638,20 @@ Confirmation status of line item.
 |**UNCONFIRMED**|Status for orders that are yet to be confirmed by vendors.|
 
 
+<a name="itemreceivestatus"></a>
+### ItemReceiveStatus
+Filters purchase orders based on the purchase order's item receive status. If the item receive status is not included in the filter, purchase orders for all receive statuses are included.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**NOT_RECEIVED**|Provides a list of orders that have at least one item not received by the buyer.|
+|**PARTIALLY_RECEIVED**|Provides a list of orders that have at least one item not received by the buyer.|
+|**RECEIVED**|Provides a list of orders that have at least one item fully received by the buyer.|
+
+
 <a name="unitofmeasure"></a>
 ### UnitOfMeasure
 Unit of measure for the acknowledged quantity.
@@ -668,17 +693,17 @@ Current state of the purchase order item. If this value is Cancelled, this API w
 
 <a name="itemconfirmationstatus"></a>
 ### ItemConfirmationStatus
-Filters purchase orders based on the specified purchase order item status. If not included in filter, purchase orders for all statuses are included.
+Filters purchase orders based on their item confirmation status. If the item confirmation status is not included in the filter, purchase orders for all confirmation statuses are included.
 
 *Type* : enum
 
 
 |Value|Description|
 |---|---|
-|**ACCEPTED**|Status for orders accepted by vendors.|
-|**PARTIALLY_ACCEPTED**|Status for orders that are partially accepted by vendors.|
-|**REJECTED**|Status for orders that are rejected by vendors.|
-|**UNCONFIRMED**|Status for orders that are yet to be confirmed by vendors.|
+|**ACCEPTED**|Provides a list of orders that has at least one item fully accepted by vendors.|
+|**PARTIALLY_ACCEPTED**|Provides a list of orders that has at least one item partially accepted by vendors.|
+|**REJECTED**|Provides a list of orders that has at least one item rejected by vendors.|
+|**UNCONFIRMED**|Provides a list of orders that has at least one item yet to be confirmed by vendors.|
 
 
 <a name="internationalcommercialterms"></a>
@@ -714,6 +739,20 @@ Tax registration type for the entity.
 |---|---|
 |**VAT**|Value-added tax.|
 |**GST**|Goods and Services tax.|
+
+
+<a name="receivestatus"></a>
+### ReceiveStatus
+Receive status of the line item.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**NOT_RECEIVED**|The buyer has not received any of the item.|
+|**PARTIALLY_RECEIVED**|-|
+|**RECEIVED**|Receiving is complete. The buyer has received all confirmed items.|
 
 
 <a name="sortorder"></a>
