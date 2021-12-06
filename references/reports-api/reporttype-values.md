@@ -706,7 +706,7 @@ These pending order reports are only available in the Japan marketplace.
         <p><strong>Promotions Performance Report</strong></p>
         <p><strong>reportType</strong> value:<br>GET_PROMOTION_PERFORMANCE_REPORT</p>
       </td>
-      <td><p>JSON report containing data from promotion campaigns to help vendors optimize their promotions and adjust their advertising strategies. The report includes sales from promotions, the types of discounts that were offered, the discount amounts, and how many items were sold as a result of the promotions. Currently three promotion types are supported: Best Deal, Lightning Deal, and Price Discount. Available to vendors who have the Selling Partner Insights Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+      <td><p>JSON report containing data from promotion campaigns to help vendors and sellers optimize their promotions and adjust their advertising strategies. The report includes sales from promotions, the types of discounts that were offered, and how many items were sold as a result of the promotions. Currently, three promotion types are supported for vendors (Best Deal, Lightning Deal, and Price Discount), and two promotion types are supported for sellers (Best Deal and Lightning Deal). Available to vendors and sellers who have the Selling Partner Insights Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
       <p>This report accepts the following <b>reportOptions</b> properties:</p>
         <ul>
         <li><b>promotionStartDateFrom</b>. The start of a date and time range (in ISO 8601 date time format) used for selecting promotions to report on. Be sure to specify the time zone: either UTC or an offset from UTC.</li>
@@ -722,7 +722,8 @@ These pending order reports are only available in the Japan marketplace.
       <li>If a selected promotion is in progress when you request a report, the report will contain cumulative data for the promotion up until the day prior to your report request.</li>
       <li>A report will contain complete information on a selected promotion if the promotion ended one day or more before the time you requested the report.</li>
       <li>This report supports start dates up to two years before the current date.</li>
-      </ul><p>Can be requested by vendors.</p>
+      <li>Data for this report is updated on a daily basis, so some fields might not reflect the most up-to-date state of the promotion.</li>
+      </ul><p>Can be requested by both vendors and sellers.</p>
       </td>
     </tr>
   </tbody>
