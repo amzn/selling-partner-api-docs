@@ -1,0 +1,364 @@
+Brand Analytics reports:
+-
+  GET_BRAND_ANALYTICS_MARKET_BASKET_REPORT:
+    file_format: json
+  GET_BRAND_ANALYTICS_SEARCH_TERMS_REPORT:
+    file_format: json
+Vendor retail analytics reports:
+-
+  GET_VENDOR_SALES_DIAGNOSTIC_REPORT:
+    file_format: json
+  GET_VENDOR_INVENTORY_HEALTH_AND_PLANNING_REPORT:
+    file_format: json
+  GET_VENDOR_INVENTORY_HEALTH_AND_PLANNING_REPORT:
+    file_format: json
+  GET_VENDOR_DEMAND_FORECAST_REPORT:
+    file_format: json
+Inventory reports:
+-
+  GET_FLAT_FILE_OPEN_LISTINGS_DATA:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_ALL_DATA:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_DATA:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_DATA:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_INACTIVE_DATA:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_INACTIVE_DATA:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_DATA_BACK_COMPAT:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_DATA_LITE:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_DATA_LITE:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_DATA_LITER:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_DATA_LITER:
+    file_format: tsv
+  GET_MERCHANT_CANCELLED_LISTINGS_DATA:
+    file_format: tsv
+  GET_MERCHANTS_LISTINGS_FYP_REPORT:
+    file_format: tsv
+  GET_MERCHANTS_LISTINGS_FYP_REPORT:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_DEFECT_DATA:
+    file_format: tsv
+  GET_MERCHANT_LISTINGS_DEFECT_DATA:
+    file_format: tsv
+  GET_PAN_EU_OFFER_STATUS:
+    file_format: tsv
+  GET_PAN_EU_OFFER_STATUS:
+    file_format: tsv
+  GET_MFN_PAN_EU_OFFER_STATUS:
+    file_format: tsv
+  GET_MFN_PAN_EU_OFFER_STATUS:
+    file_format: tsv
+  GET_REFERRAL_FEE_PREVIEW_REPORT:
+    file_format: tsv
+Order reports:
+-
+  GET_FLAT_FILE_ACTIONABLE_ORDER_DATA_SHIPPING:
+    file_format: tsv
+  GET_ORDER_REPORT_DATA_INVOICING:
+    file_format: xml
+  GET_ORDER_REPORT_DATA_INVOICING:
+    file_format: xml
+  GET_ORDER_REPORT_DATA_TAX:
+    file_format: xml
+  GET_ORDER_REPORT_DATA_TAX:
+    file_format: xml
+  GET_ORDER_REPORT_DATA_SHIPPING:
+    file_format: xml
+  GET_ORDER_REPORT_DATA_SHIPPING:
+    file_format: xml
+  GET_FLAT_FILE_ORDER_REPORT_DATA_INVOICING:
+    file_format: tsv
+  GET_FLAT_FILE_ORDER_REPORT_DATA_SHIPPING:
+    file_format: tsv
+  GET_FLAT_FILE_ORDER_REPORT_DATA_TAX:
+    file_format: tsv
+Order tracking reports:
+-
+  GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL:
+    file_format: tsv
+  GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL:
+    file_format: tsv
+  GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL:
+    file_format: tsv
+  GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL:
+    file_format: tsv
+  GET_FLAT_FILE_ARCHIVED_ORDERS_DATA_BY_ORDER_DATE:
+    file_format: tsv
+  GET_FLAT_FILE_ARCHIVED_ORDERS_DATA_BY_ORDER_DATE:
+    file_format: tsv
+  GET_XML_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL:
+    file_format: xml
+  GET_XML_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL:
+    file_format: xml
+  GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL:
+    file_format: xml
+Pending order reports:
+-
+  GET_FLAT_FILE_PENDING_ORDERS_DATA:
+    file_format: tsv
+  GET_FLAT_FILE_PENDING_ORDERS_DATA:
+    file_format: tsv
+  GET_PENDING_ORDERS_DATA:
+    file_format: xml
+  GET_PENDING_ORDERS_DATA:
+    file_format: xml
+  GET_CONVERGED_FLAT_FILE_PENDING_ORDERS_DATA:
+Returns reports:
+-
+  GET_XML_RETURNS_DATA_BY_RETURN_DATE:
+    file_format: xml
+  GET_XML_RETURNS_DATA_BY_RETURN_DATE:
+    file_format: xml
+  GET_FLAT_FILE_RETURNS_DATA_BY_RETURN_DATE:
+    file_format: tsv
+  GET_FLAT_FILE_RETURNS_DATA_BY_RETURN_DATE:
+    file_format: tsv
+  GET_XML_MFN_PRIME_RETURNS_REPORT:
+    file_format: xml
+  GET_XML_MFN_PRIME_RETURNS_REPORT:
+    file_format: xml
+  GET_CSV_MFN_PRIME_RETURNS_REPORT:
+    file_format: csv
+  GET_CSV_MFN_PRIME_RETURNS_REPORT:
+    file_format: csv
+  GET_XML_MFN_SKU_RETURN_ATTRIBUTES_REPORT:
+    file_format: xml
+  GET_XML_MFN_SKU_RETURN_ATTRIBUTES_REPORT:
+    file_format: xml
+  GET_FLAT_FILE_MFN_SKU_RETURN_ATTRIBUTES_REPORT:
+    file_format: tsv
+Performance reports:
+-
+  GET_SELLER_FEEDBACK_DATA:
+    file_format: tsv
+  GET_SELLER_FEEDBACK_DATA:
+    file_format: tsv
+  GET_V1_SELLER_PERFORMANCE_REPORT:
+    file_format: xml
+  GET_V1_SELLER_PERFORMANCE_REPORT:
+    file_format: xml
+  GET_V2_SELLER_PERFORMANCE_REPORT:
+  GET_PROMOTION_PERFORMANCE_REPORT:
+    file_format: json
+Settlement reports:
+-
+  GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE:
+    file_format: tsv
+  GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE:
+    file_format: tsv
+  GET_V2_SETTLEMENT_REPORT_DATA_XML:
+    file_format: xml
+  GET_V2_SETTLEMENT_REPORT_DATA_XML:
+    file_format: xml
+  GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2:
+    file_format: tsv
+Fulfillment by Amazon:
+-
+  GET_AMAZON_FULFILLED_SHIPMENTS_DATA_GENERAL:
+    file_format: tsv
+  GET_AMAZON_FULFILLED_SHIPMENTS_DATA_INVOICING:
+    file_format: tsv
+  GET_AMAZON_FULFILLED_SHIPMENTS_DATA_INVOICING:
+    file_format: tsv
+  GET_AMAZON_FULFILLED_SHIPMENTS_DATA_TAX:
+    file_format: tsv
+  GET_AMAZON_FULFILLED_SHIPMENTS_DATA_TAX:
+    file_format: tsv
+  GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL:
+    file_format: tsv
+  GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL:
+    file_format: tsv
+  GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL:
+    file_format: tsv
+  GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL:
+    file_format: tsv
+  GET_XML_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL:
+    file_format: xml
+  GET_XML_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL:
+    file_format: xml
+  GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL:
+    file_format: xml
+  GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL:
+    file_format: xml
+  GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_SALES_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_SALES_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_PROMOTION_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_PROMOTION_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CUSTOMER_TAXES_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CUSTOMER_TAXES_DATA:
+    file_format: tsv
+  GET_REMOTE_FULFILLMENT_ELIGIBILITY:
+    file_format: tsv
+  GET_AFN_INVENTORY_DATA:
+    file_format: tsv
+  GET_AFN_INVENTORY_DATA:
+    file_format: tsv
+  GET_AFN_INVENTORY_DATA_BY_COUNTRY:
+    file_format: tsv
+  GET_AFN_INVENTORY_DATA_BY_COUNTRY:
+    file_format: tsv
+  GET_LEDGER_SUMMARY_VIEW_DATA:
+    file_format: tsv
+  GET_LEDGER_DETAIL_VIEW_DATA:
+    file_format: tsv
+  GET_LEDGER_DETAIL_VIEW_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CURRENT_INVENTORY_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CURRENT_INVENTORY_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_MONTHLY_INVENTORY_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_MONTHLY_INVENTORY_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_INVENTORY_RECEIPTS_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_INVENTORY_RECEIPTS_DATA:
+    file_format: tsv
+  GET_RESERVED_INVENTORY_DATA:
+    file_format: tsv
+  GET_RESERVED_INVENTORY_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_INVENTORY_SUMMARY_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_INVENTORY_ADJUSTMENTS_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_INVENTORY_ADJUSTMENTS_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_INVENTORY_HEALTH_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_INVENTORY_HEALTH_DATA:
+    file_format: tsv
+  GET_FBA_MYI_UNSUPPRESSED_INVENTORY_DATA:
+    file_format: tsv
+  GET_FBA_MYI_UNSUPPRESSED_INVENTORY_DATA:
+    file_format: tsv
+  GET_FBA_MYI_ALL_INVENTORY_DATA:
+    file_format: tsv
+  GET_FBA_MYI_ALL_INVENTORY_DATA:
+    file_format: tsv
+  GET_RESTOCK_INVENTORY_RECOMMENDATIONS_REPORT:
+    file_format: tsv
+  GET_RESTOCK_INVENTORY_RECOMMENDATIONS_REPORT:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_INBOUND_NONCOMPLIANCE_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_INBOUND_NONCOMPLIANCE_DATA:
+    file_format: tsv
+  GET_STRANDED_INVENTORY_UI_DATA:
+    file_format: tsv
+  GET_STRANDED_INVENTORY_UI_DATA:
+    file_format: tsv
+  GET_STRANDED_INVENTORY_LOADER_DATA:
+    file_format: tsv
+  GET_STRANDED_INVENTORY_LOADER_DATA:
+    file_format: tsv
+  GET_FBA_INVENTORY_AGED_DATA:
+    file_format: tsv
+  GET_FBA_INVENTORY_AGED_DATA:
+    file_format: tsv
+  GET_EXCESS_INVENTORY_DATA:
+    file_format: tsv
+  GET_EXCESS_INVENTORY_DATA:
+    file_format: tsv
+  GET_FBA_STORAGE_FEE_CHARGES_DATA:
+    file_format: tsv
+  GET_FBA_STORAGE_FEE_CHARGES_DATA:
+    file_format: tsv
+  GET_PRODUCT_EXCHANGE_DATA:
+    file_format: tsv
+  GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA:
+    file_format: tsv
+  GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA:
+    file_format: tsv
+  GET_FBA_REIMBURSEMENTS_DATA:
+    file_format: tsv
+  GET_FBA_REIMBURSEMENTS_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_LONGTERM_STORAGE_FEE_CHARGES_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_REPLACEMENT_DATA:
+    file_format: tsv
+  GET_FBA_RECOMMENDED_REMOVAL_DATA:
+    file_format: tsv
+  GET_FBA_RECOMMENDED_REMOVAL_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_REMOVAL_ORDER_DETAIL_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_REMOVAL_ORDER_DETAIL_DATA:
+    file_format: tsv
+  GET_FBA_FULFILLMENT_REMOVAL_SHIPMENT_DETAIL_DATA:
+    file_format: tsv
+  GET_FBA_UNO_INVENTORY_DATA:
+    file_format: tsv
+Tax Reports:
+-
+  GET_FLAT_FILE_SALES_TAX_DATA:
+    file_format: tsv
+  GET_FLAT_FILE_SALES_TAX_DATA:
+    file_format: tsv
+  SC_VAT_TAX_REPORT:
+    file_format: csv
+  SC_VAT_TAX_REPORT:
+    file_format: csv
+  GET_VAT_TRANSACTION_DATA:
+    file_format: tsv
+  GET_VAT_TRANSACTION_DATA:
+    file_format: tsv
+  GET_GST_MTR_B2B_CUSTOM:
+    file_format: tsv
+  GET_GST_MTR_B2B_CUSTOM:
+    file_format: tsv
+  GET_GST_MTR_B2C_CUSTOM:
+    file_format: tsv
+Browse tree report:
+-
+  GET_XML_BROWSE_TREE_DATA:
+    file_format: xml
+Easy ship reports:
+-
+  GET_EASYSHIP_DOCUMENTS:
+    file_format: pdf
+  GET_EASYSHIP_DOCUMENTS:
+    file_format: pdf
+  GET_EASYSHIP_PICKEDUP:
+    file_format: tsv
+  GET_EASYSHIP_PICKEDUP:
+    file_format: tsv
+  GET_EASYSHIP_WAITING_FOR_PICKUP:
+    file_format: tsv
+Amazon business reports:
+-
+  RFQD_BULK_DOWNLOAD:
+    file_format: xlsx
+  RFQD_BULK_DOWNLOAD:
+    file_format: xlsx
+  FEE_DISCOUNTS_REPORT:
+    file_format: xlsx
+Amazon pay report:
+-
+  GET_FLAT_FILE_OFFAMAZONPAYMENTS_SANDBOX_SETTLEMENT_DATA:
+    file_format: csv
+B2B product opportunities reports:
+-
+  GET_B2B_PRODUCT_OPPORTUNITIES_RECOMMENDED_FOR_YOU:
+    file_format: csv
+  GET_B2B_PRODUCT_OPPORTUNITIES_NOT_YET_ON_AMAZON:
+    file_format: csv
