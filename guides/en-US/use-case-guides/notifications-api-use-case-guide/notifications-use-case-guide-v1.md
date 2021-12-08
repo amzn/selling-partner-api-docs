@@ -60,7 +60,7 @@ There are two separate workflows for receiving notifications. The workflow you u
 
 Use this workflow to receive the following notification types:
 
-  - [BRANDED_ITEM_CONTENT_CHANGE](#branded_item_content_change). Sent whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with.
+  - [BRANDED_ITEM_CONTENT_CHANGE](#branded_item_content_change). Sent whenever there is a change to the title, description, bullet points, or images, for any ASIN that the selling partner has a brand relationship with.
 
   - [ITEM_PRODUCT_TYPE_CHANGE](#item_product_type_change). Sent whenever there is a change to the product type name of any ASIN that the selling partner has a brand relationship with.
 
@@ -100,7 +100,7 @@ See [Tutorial: Set up notifications (Amazon Simple Queue Service workflow)](#tut
 
 Use this tutorial to receive any of the following notifications types:
 
-  - [BRANDED_ITEM_CONTENT_CHANGE](#branded_item_content_change). Sent whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with.
+  - [BRANDED_ITEM_CONTENT_CHANGE](#branded_item_content_change). Sent whenever there is a change to the title, description, bullet points, or images, for any ASIN that the selling partner has a brand relationship with.
 
   - [ITEM_PRODUCT_TYPE_CHANGE](#item_product_type_change). Sent whenever there is a change to the product type name of any ASIN that the selling partner has a brand relationship with.
   
@@ -874,7 +874,17 @@ Notification example:
     "AttributesChanged": [
       "bullet_point",
       "item_name",
-      "product_description"
+      "product_description",
+      "main_product_image_locator",
+      "other_product_image_locator_1",
+      "other_product_image_locator_2",
+      "other_product_image_locator_3",
+      "other_product_image_locator_4",
+      "other_product_image_locator_5",
+      "other_product_image_locator_6",
+      "other_product_image_locator_7",
+      "other_product_image_locator_8",
+      "swatch_product_image_locator"
     ]
   },
   "NotificationMetadata":
@@ -898,7 +908,7 @@ The following **notificationType** values indicate the notification type:
 
   - [B2B_ANY_OFFER_CHANGED](#B2B_ANY_OFFER_CHANGED). Sent whenever there is a change in any of the top 20 B2B offers, in the form of any price change (either single unit or quantity discount tier prices) for an item listed by the seller.
 
-  - [BRANDED_ITEM_CONTENT_CHANGE](#branded_item_content_change). Sent whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with.
+  - [BRANDED_ITEM_CONTENT_CHANGE](#branded_item_content_change). Sent whenever there is a change to the title, description, bullet points, or images, for any ASIN that the selling partner has a brand relationship with.
 
   - [FBA_OUTBOUND_SHIPMENT_STATUS](#fba_outbound_shipment_status). Sent whenever we create or cancel a Fulfillment by Amazon shipment for a seller.
   
@@ -2013,16 +2023,16 @@ The following table shows the objects and properties of the BuyBoxPrice object.
   </thead>
   <tbody>
     <tr class="odd">
-      <td>LandedPrice</td>
+      <td>landedPrice</td>
       <td>
-        <p>ListingPrice + Shipping.</p>
+        <p>listingPrice + shipping.</p>
         <p>Optional.</p>
         <p>Type: <a href="#moneytype">MoneyType</a>
         </p>
       </td>
     </tr>
     <tr class="even">
-      <td>ListingPrice</td>
+      <td>listingPrice</td>
       <td>
         <p>The price of the item.</p>
         <p>Required.</p>
@@ -2031,7 +2041,7 @@ The following table shows the objects and properties of the BuyBoxPrice object.
       </td>
     </tr>
     <tr class="odd">
-      <td>Shipping</td>
+      <td>shipping</td>
       <td>
         <p>The shipping cost.</p>
         <p>Optional.</p>
@@ -2040,23 +2050,23 @@ The following table shows the objects and properties of the BuyBoxPrice object.
       </td>
     </tr>
     <tr class="even">
-      <td>OfferType</td>
+      <td>offerType</td>
       <td>
-        <p>Indicates whether the offer is a B2B offer or a B2C offer</p>
+        <p>Indicates whether the offer is a B2B offer or a B2C offer. When the offer type is B2C in a quantity discount, the seller is winning the Buy Box because others do not have inventory at that quantity, not because they have a quantity discount on the ASIN.</p>
         <p>Required.</p>
         <p>Type: string</p>
       </td>
     </tr>
     <tr class="odd">
-      <td>QuantityTier</td>
+      <td>quantityTier</td>
       <td>
-        <p>The quantity tier for the offer</p>
+        <p>The quantity tier for the offer.</p>
         <p>Required.</p>
         <p>Type: integer</p>
       </td>
     </tr>
     <tr class="even">
-      <td>DiscountType</td>
+      <td>discountType</td>
       <td>
         <p>Indicates whether the quantity tier is for Quantity Discount or Progressive Discount.</p>
         <p>Optional.</p>
@@ -2064,10 +2074,18 @@ The following table shows the objects and properties of the BuyBoxPrice object.
       </td>
     </tr>
     <tr class="odd">
-      <td>Condition</td>
+      <td>condition</td>
       <td>
         <p>Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.</p>
         <p>Required.</p>
+        <p>Type: string</p>
+      </td>
+    </tr>
+    <tr class="even">
+      <td>sellerId</td>
+      <td>
+        <p>The seller identifier for the offer.</p>
+        <p>Optional.</p>
         <p>Type: string</p>
       </td>
     </tr>
@@ -2576,7 +2594,7 @@ The following table shows the objects and properties of the Summary object:
       <td>BuyBoxPrices</td>
       <td>
         <p>A list that contains the Buy Box price of the item for the given conditions, quantity tiers, and discount types.</p>
-        <p>The seven pre-defined quantity tiers for discount type “Quantity Discounts” are 2, 3, 5, 10, 20, 30 and 50.</p>
+        <p>Up to the first 50 quantity tiers are shown.</p>
         <p>Optional.</p>
         <p>Type: Array of <a href="#BuyBoxPrice">BuyBoxPrice</a>
         </p>
@@ -2603,137 +2621,167 @@ The following table shows the objects and properties of the Summary object:
   "notificationType": "B2B_ANY_OFFER_CHANGED",
   "payloadVersion": "1.0",
   "eventTime": "2020-09-23T21:30:13.713Z",
-  "notificationMetadata": {
+  "notificationMetadata":
+  {
     "applicationId": "amzn1.sellerapps.app.1da85d14-a68d-4ff3-9ff0-df6429e00d9a",
     "subscriptionId": "e3a059ca-677a-442a-8d39-05b2848971b6",
     "publishTime": "2020-09-23T21:30:16.903Z",
     "notificationId": "23ae41cd-3537-4676-af46-6ee9abf8802e"
   },
-  "payload": {
-    "b2bAnyOfferChangedNotification": {
+  "payload":
+  {
+    "b2bAnyOfferChangedNotification":
+    {
       "sellerId": "A3EZFOFNDPFB8R",
-      "offerChangeTrigger": {
+      "offerChangeTrigger":
+      {
         "marketplaceId": "ATVPDKIKX0DER",
         "asin": "B007IBIWZY",
         "itemCondition": "new",
         "timeOfOfferChange": "2020-09-23T21:30:13.409Z"
       },
-      "summary": {
-        "numberOfOffers": [{
+      "summary":
+      {
+        "numberOfOffers": [
+          {
             "condition": "new",
             "fulfillmentChannel": "Merchant",
             "offerCount": 3
           }
         ],
-        "buyBoxEligibleOffers": [{
+        "buyBoxEligibleOffers": [
+          {
             "condition": "new",
             "fulfillmentChannel": "Merchant",
             "offerCount": 3
           }
         ],
-        "lowestPrices": [{
+        "lowestPrices": [
+          {
             "condition": "new",
             "fulfillmentChannel": "Merchant",
             "offerType": "B2B",
             "quantityTier": 1,
-            "listingPrice": {
+            "listingPrice":
+            {
               "amount": 8184.23,
               "currencyCode": "USD"
             },
-            "shipping": {
+            "shipping":
+            {
               "amount": 4.49,
               "currencyCode": "USD"
             },
-            "landedPrice": {
+            "landedPrice":
+            {
               "amount": 8188.72,
               "currencyCode": "USD"
             }
-          }, {
+          },
+          {
             "condition": "new",
             "fulfillmentChannel": "Merchant",
             "offerType": "B2B",
             "quantityTier": 20,
-            "listingPrice": {
+            "listingPrice":
+            {
               "amount": 7500,
               "currencyCode": "USD"
             }
-          }, {
+          },
+          {
             "condition": "new",
             "fulfillmentChannel": "Merchant",
             "offerType": "B2B",
             "quantityTier": 30,
             "discountType": "QUANTITY_DISCOUNT",
-            "listingPrice": {
+            "listingPrice":
+            {
               "amount": 6975,
               "currencyCode": "USD"
             }
           }
         ],
-        "buyBoxPrices": [{
+        "buyBoxPrices": [
+          {
             "condition": "new",
             "offerType": "B2B",
             "quantityTier": 1,
-            "listingPrice": {
+            "listingPrice":
+            {
               "amount": 8184.23,
               "currencyCode": "USD"
             },
-            "shipping": {
+            "shipping":
+            {
               "amount": 4.49,
               "currencyCode": "USD"
             },
-            "landedPrice": {
+            "landedPrice":
+            {
               "amount": 8188.72,
               "currencyCode": "USD"
             }
-          }, {
+          },
+          {
             "condition": "new",
             "offerType": "B2B",
             "quantityTier": 20,
             "discountType": "QUANTITY_DISCOUNT",
-            "listingPrice": {
+            "listingPrice":
+            {
               "amount": 8000,
               "currencyCode": "USD"
             }
-          }, {
+          },
+          {
             "condition": "new",
             "offerType": "B2B",
             "quantityTier": 30,
             "discountType": "QUANTITY_DISCOUNT",
-            "listingPrice": {
+            "listingPrice":
+            {
               "amount": 7800,
               "currencyCode": "USD"
             }
           }
         ]
       },
-      "offers": [{
+      "offers": [
+        {
           "sellerId": "A2VUIDM8BZ902A",
           "subCondition": "new",
-          "sellerFeedbackRating": {
+          "sellerFeedbackRating":
+          {
             "feedbackCount": 1,
             "sellerPositiveFeedbackRating": 0
           },
-          "shippingTime": {
+          "shippingTime":
+          {
             "minimumHours": 24,
             "maximumHours": 48,
             "availabilityType": "available",
             "availableDate": "2020-07-13T19:42:04.284Z"
           },
-          "listingPrice": {
+          "listingPrice":
+          {
             "amount": 8184.23,
             "currencyCode": "USD"
           },
-          "shipping": {
+          "shipping":
+          {
             "amount": 4.49,
             "currencyCode": "USD"
           },
-          "shipsFrom": {
+          "shipsFrom":
+          {
             "country": "US"
           },
           "isFulfilledByAmazon": false,
           "isBuyBoxWinner": true,
           "conditionNotes": "New in box",
-          "primeInformation": {
+          "primeInformation":
+          {
             "isPrime": true,
             "isNationalPrime": true
           },
@@ -2750,7 +2798,7 @@ The following table shows the objects and properties of the Summary object:
 
 Sellers can subscribe to this notification.
 
-Amazon sends a **BRANDED_ITEM_CONTENT_CHANGE** notification whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with. A selling partner has a brand relationship with an ASIN, as defined in the Amazon Registered Brands program, when they are a verified brand owner. The selling partner is the party who authorizes an application to call the Notifications API on their behalf, for the purpose of creating and managing notification subscriptions. Amazon sends **BRANDED_ITEM_CONTENT_CHANGE** notifications for items listed in any Amazon marketplace.
+Amazon sends a **BRANDED_ITEM_CONTENT_CHANGE** notification whenever there is a change to the title, description, bullet points, or images, for any ASIN that the selling partner has a brand relationship with. A selling partner has a brand relationship with an ASIN, as defined in the Amazon Registered Brands program, when they are a verified brand owner. The selling partner is the party who authorizes an application to call the Notifications API on their behalf, for the purpose of creating and managing notification subscriptions. Amazon sends **BRANDED_ITEM_CONTENT_CHANGE** notifications for items listed in any Amazon marketplace.
 
 **BRANDED_ITEM_CONTENT_CHANGE Payload schema: Version 1.0**
 
@@ -2810,6 +2858,19 @@ A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* inc
         bullet_point<br/>
         item_name<br/>
         product_description<br/>
+        main_product_image_locator<br/>
+        other_product_image_locator_1<br/>
+        other_product_image_locator_2<br/>
+        other_product_image_locator_3<br/>
+        other_product_image_locator_4<br/>
+        other_product_image_locator_5<br/>
+        other_product_image_locator_6<br/>
+        other_product_image_locator_7<br/>
+        other_product_image_locator_8<br/>
+        swatch_product_image_locator<br/>
+        <br/>
+        <strong>NOTE:</strong>
+        The presence of one or more of the above values that contain the word <em>image</em> (for example, main_product_<em>image</em>_locator, other_product_<em>image</em>_locator_1, and so on) indicates that <em>at least one</em> image changed on the product detail page. The number of values that contain the word image <em>does not necessarily</em> match the number of images changed on the product detail page. 
       </td>
       <td>
         Yes
@@ -2835,7 +2896,17 @@ A **BRANDED_ITEM_CONTENT_CHANGE** notification with **PayloadVersion**=*1.0* inc
     "AttributesChanged": [
       "bullet_point",
       "item_name",
-      "product_description"
+      "product_description",
+      "main_product_image_locator",
+      "other_product_image_locator_1",
+      "other_product_image_locator_2",
+      "other_product_image_locator_3",
+      "other_product_image_locator_4",
+      "other_product_image_locator_5",
+      "other_product_image_locator_6",
+      "other_product_image_locator_7",
+      "other_product_image_locator_8",
+      "swatch_product_image_locator"
     ]
   },
   "NotificationMetadata":
