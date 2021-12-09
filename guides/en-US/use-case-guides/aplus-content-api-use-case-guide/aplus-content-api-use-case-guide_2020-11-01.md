@@ -91,7 +91,7 @@ Response properties:
 <table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><strong>publishRecordList</strong></td><td><p>The list of A+ content publishing records.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/aplus-content-api/aplusContent_2020-11-01.md#publishRecordList">PublishRecordList</a></p></td></tr><tr class="odd"><td><strong>warnings</strong></td><td><p>A set of messages to the user, such as warnings or comments.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/aplus-content-api/aplusContent_2020-11-01.md#MessageSet">MessageSet</a></p></td></tr><tr class="odd"><td><strong>nextPageToken</strong></td><td><p>A page token that is returned when the results of the call exceed the page size. To get another page of results, call the operation again, passing in this value with the pageToken parameter.</p><p>Type: string</p></td></tr></tbody></table>
 
 Response example:
-```json
+```
 {
   "warnings": [],
   "nextPageToken": null,
@@ -136,7 +136,7 @@ Response properties:
 <table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><strong>contentMetadataRecords</strong></td><td><p>The list of A+ content metadata records.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/aplus-content-api/aplusContent_2020-11-01.md#ContentMetadataRecordList">ContentMetadataRecordList</a></p></td></tr><tr class="odd"><td><strong>warnings</strong></td><td><p>A set of messages to the user, such as warnings or comments.</p><p>Type: MessageSet</p></td></tr><tr class="even"><td><strong>nextPageToken</strong></td><td><p>A page token that is returned when the results of the call exceed the page size. To get another page of results, call the operation again, passing in this value with the pageToken parameter.</p><p>Type: string</p></td></tr></tbody></table>
 
 Response example:
-```json
+```
 {
   "warnings": [],
   "nextPageToken": null,
@@ -279,7 +279,7 @@ Response properties:
 <table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><strong>payload</strong></td><td><p>Information about an upload destination.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/uploads-api/uploads_2020-11-01.md#uploaddestination">UploadDestination</a></p></td></tr><tr class="even"><td><strong>errors</strong></td><td><p>A list of error response returned when a request is unsuccessful.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/uploads-api/uploads_2020-11-01.md#errorlist">ErrorList</a></p></td></tr></tbody></table>
 
 Response example:
-```json
+```
 {
   "errors": [],
   "payload": {
@@ -615,7 +615,7 @@ Response properties:
 <table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><strong>warnings</strong></td><td><p>A set of messages to the user, such as warnings or comments.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/aplus-content-api/aplusContent_2020-11-01.md#MessageSet">MessageSet</a></p></td></tr><tr class="even"><td><strong>contentRecord</strong></td><td><p>A content document with additional information for content management. See the <strong>status</strong> property for the submission status.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/aplus-content-api/aplusContent_2020-11-01.md#ContentRecord">ContentRecord</a></p></td></tr></tbody></table>
 
 Response example:
-```json
+```
 {
   "warnings": [],
   "contentRecord": {
@@ -890,7 +890,7 @@ Response properties:
 <table><thead><tr class="header"><th><strong>Name</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><strong>warnings</strong></td><td><p>A set of messages to the user, such as warnings or comments.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/aplus-content-api/aplusContent_2020-11-01.md#MessageSet">MessageSet</a></p></td></tr><tr class="even"><td><strong>nextPageToken</strong></td><td><p>A page token that is returned when the results of the call exceed the page size. To get another page of results, call the operation again, passing in this value with the pageToken parameter.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/aplus-content-api/aplusContent_2020-11-01.md#PageToken">PageToken</a></p></td></tr><tr class="odd"><td><strong>asinMetadataSet</strong></td><td><p>The set of ASIN metadata.</p><p>Type: <a href="https://github.com/amzn/selling-partner-api-docs/blob/main/references/aplus-content-api/aplusContent_2020-11-01.md#AsinMetadataSet">AsinMetadataSet</a></p></td></tr></tbody></table>
 
 Response example:
-```json
+```
 {
   "warnings": [],
   "nextPageToken": null,
