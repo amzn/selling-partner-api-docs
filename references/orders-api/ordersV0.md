@@ -36,7 +36,7 @@ The Selling Partner API for Orders helps you programmatically retrieve order inf
 
 
 ### Operations
-[getOrders](#getorders)<br>[getOrder](#getorder)<br>[getOrderBuyerInfo](#getorderbuyerinfo)<br>[getOrderAddress](#getorderaddress)<br>[getOrderItems](#getorderitems)<br>[getOrderItemsBuyerInfo](#getorderitemsbuyerinfo)<br>
+[getOrders](#getorders)<br>[getOrder](#getorder)<br>[getOrderBuyerInfo](#getorderbuyerinfo)<br>[getOrderAddress](#getorderaddress)<br>[getOrderItems](#getorderitems)<br>[getOrderItemsBuyerInfo](#getorderitemsbuyerinfo)<br>[updateShipmentStatus](#updateshipmentstatus)<br>
 <a name="paths"></a>
 ## Paths
 
@@ -66,7 +66,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**Query**|**LastUpdatedAfter**  <br>*optional*|A date used for selecting orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in ISO 8601 format.|string|
 |**Query**|**LastUpdatedBefore**  <br>*optional*|A date used for selecting orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in ISO 8601 format.|string|
 |**Query**|**OrderStatuses**  <br>*optional*|A list of OrderStatus values used to filter the results. Possible values: PendingAvailability (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.); Pending (The order has been placed but payment has not been authorized); Unshipped (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped); PartiallyShipped (One or more, but not all, items in the order have been shipped); Shipped (All items in the order have been shipped); InvoiceUnconfirmed (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.); Canceled (The order has been canceled); and Unfulfillable (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.).|< string > array|
-|**Query**|**MarketplaceIds**  <br>*required*|A list of MarketplaceId values. Used to select orders that were placed in the specified marketplaces.<br>**Max count** : 50|< string > array|
+|**Query**|**MarketplaceIds**  <br>*required*|A list of MarketplaceId values. Used to select orders that were placed in the specified marketplaces.<br><br>See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#marketplaceid-values) for a complete list of marketplaceId values.<br>**Max count** : 50|< string > array|
 |**Query**|**FulfillmentChannels**  <br>*optional*|A list that indicates how an order was fulfilled. Filters the results by fulfillment channel. Possible values: FBA (Fulfillment by Amazon); SellerFulfilled (Fulfilled by the seller).|< string > array|
 |**Query**|**PaymentMethods**  <br>*optional*|A list of payment method values. Used to select orders paid using the specified payment methods. Possible values: COD (Cash on delivery); CVS (Convenience store payment); Other (Any payment method other than COD or CVS).|< string > array|
 |**Query**|**BuyerEmail**  <br>*optional*|The email address of a buyer. Used to select orders that contain the specified email address.|string|
@@ -92,7 +92,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
 
-
+For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 <a name="getorder"></a>
 ### GET /orders/v0/orders/{orderId}
 **Operation: getOrder**
@@ -129,7 +129,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
 
-
+For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 <a name="getorderbuyerinfo"></a>
 ### GET /orders/v0/orders/{orderId}/buyerInfo
 **Operation: getOrderBuyerInfo**
@@ -168,7 +168,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
 
-
+For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 <a name="getorderaddress"></a>
 ### GET /orders/v0/orders/{orderId}/address
 **Operation: getOrderAddress**
@@ -207,7 +207,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
 
-
+For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 <a name="getorderitems"></a>
 ### GET /orders/v0/orders/{orderId}/orderItems
 **Operation: getOrderItems**
@@ -247,7 +247,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
 
-
+For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
 <a name="getorderitemsbuyerinfo"></a>
 ### GET /orders/v0/orders/{orderId}/orderItems/buyerInfo
 **Operation: getOrderItemsBuyerInfo**
@@ -287,9 +287,109 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
 
+For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+<a name="updateshipmentstatus"></a>
+### POST /orders/v0/orders/{orderId}/shipment
+**Operation: updateShipmentStatus**
+
+#### Description
+Update the shipment status.
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**orderId**  <br>*required*|An Amazon-defined order identifier, in 3-7-7 format.|string|
+|**Body**|**payload**  <br>*required*|Request to update the shipment status.|[UpdateShipmentStatusRequest](#updateshipmentstatusrequest)|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**204**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|No Content|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+
+For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+
+
+
+<a name="error-responses-and-schemas"></a>
+### Error Responses and Schemas
+This table contains HTTP status codes and associated information for error responses.
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+
 
 <a name="definitions"></a>
 ## Definitions
+
+<a name="updateshipmentstatusrequest"></a>
+### UpdateShipmentStatusRequest
+Request to update the status of shipment of an order.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**marketplaceId**  <br>*required*|the unobfuscated marketplace ID|[MarketplaceId](#marketplaceid)|
+|**shipmentStatus**  <br>*required*|the status of the shipment of the order to be updated|[ShipmentStatus](#shipmentstatus)|
+|**orderItems**  <br>*optional*|the list of order items and quantities when the seller wants to partially update the shipment status of the order|[OrderItems](#orderitems)|
+
+
+<a name="marketplaceid"></a>
+### MarketplaceId
+the unobfuscated marketplace ID
+
+*Type* : string
+
+
+<a name="shipmentstatus"></a>
+### ShipmentStatus
+the status of the shipment of the order to be updated
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**ReadyForPickup**|-|
+|**PickedUp**|-|
+|**RefusedPickup**|-|
+
+
+<a name="orderitems"></a>
+### OrderItems
+the list of order items and quantities when the seller wants to partially update the shipment status of the order
+
+*Type* : < [OrderItems](#orderitems-inline) > array
+
+<a name="orderitems-inline"></a>
+**OrderItems**
+
+|Name|Description|Schema|
+|---|---|---|
+|**orderItemId**  <br>*optional*|the unique identifier for the order item|string|
+|**quantity**  <br>*optional*|the quantity of items that needs an update of the shipment status|integer|
+
+
+<a name="updateshipmentstatuserrorresponse"></a>
+### UpdateShipmentStatusErrorResponse
+The error response schema for the UpdateShipmentStatus operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**errors**  <br>*optional*|One or more unexpected errors occurred during the UpdateShipmentStatus operation.|[ErrorList](#errorlist)|
+
 
 <a name="getordersresponse"></a>
 ### GetOrdersResponse
@@ -418,12 +518,15 @@ Order information.
 |**IsEstimatedShipDateSet**  <br>*optional*|When true, the estimated ship date is set for the order. Returned only for Sourcing on Demand orders.|boolean|
 |**IsSoldByAB**  <br>*optional*|When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.|boolean|
 |**DefaultShipFromLocationAddress**  <br>*optional*|The recommended location for the seller to ship the items from. It is calculated at checkout. The seller may or may not choose to ship from this location.|[Address](#address)|
+|**BuyerInvoicePreference**  <br>*optional*|The buyer’s invoicing preference.|enum ([BuyerInvoicePreference](#buyerinvoicepreference))|
+|**BuyerTaxInformation**  <br>*optional*|Contains the business invoice tax information.|[BuyerTaxInformation](#buyertaxinformation)|
 |**FulfillmentInstruction**  <br>*optional*|Contains the instructions about the fulfillment like where should it be fulfilled from.|[FulfillmentInstruction](#fulfillmentinstruction)|
 |**IsISPU**  <br>*optional*|When true, this order is marked to be picked up from a store rather than delivered.|boolean|
 |**MarketplaceTaxInfo**  <br>*optional*|Tax information about the marketplace.|[MarketplaceTaxInfo](#marketplacetaxinfo)|
 |**SellerDisplayName**  <br>*optional*|The seller’s friendly name registered in the marketplace.|string|
 |**ShippingAddress**  <br>*optional*|The shipping address for the order.|[Address](#address)|
 |**BuyerInfo**  <br>*optional*|Buyer information|[BuyerInfo](#buyerinfo)|
+|**AutomatedShippingSettings**  <br>*optional*|Contains information regarding the Shipping Settings Automaton program, such as whether the order's shipping settings were generated automatically, and what those settings are.|[AutomatedShippingSettings](#automatedshippingsettings)|
 
 
 <a name="orderbuyerinfo"></a>
@@ -687,6 +790,19 @@ Information about withheld taxes.
 |**ResponsibleParty**  <br>*optional*|The party responsible for withholding the taxes and remitting them to the taxing authority.|enum ([ResponsibleParty](#responsibleparty))|
 
 
+<a name="buyertaxinformation"></a>
+### BuyerTaxInformation
+Contains the business invoice tax information.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**BuyerLegalCompanyName**  <br>*optional*|Business buyer's company legal name.|string|
+|**BuyerBusinessAddress**  <br>*optional*|Business buyer's address.|string|
+|**BuyerTaxRegistrationId**  <br>*optional*|Business buyer's tax registration ID.|string|
+|**BuyerTaxOffice**  <br>*optional*|Business buyer's tax office.|string|
+
+
 <a name="fulfillmentinstruction"></a>
 ### FulfillmentInstruction
 Contains the instructions about the fulfillment like where should it be fulfilled from.
@@ -725,6 +841,18 @@ A single item's buyer information.
 |**GiftWrapLevel**  <br>*optional*|The gift wrap level specified by the buyer.|string|
 
 
+<a name="automatedshippingsettings"></a>
+### AutomatedShippingSettings
+Contains information regarding the Shipping Settings Automation program, such as whether the order's shipping settings were generated automatically, and what those settings are.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**HasAutomatedShippingSettings**  <br>*optional*|If true, this order has automated shipping settings generated by Amazon. This order could be identified as an SSA order.|boolean|
+|**AutomatedCarrier**  <br>*optional*|Auto-generated carrier for SSA orders.|string|
+|**AutomatedShipMethod**  <br>*optional*|Auto-generated ship method for SSA orders.|string|
+
+
 <a name="errorlist"></a>
 ### ErrorList
 A list of error responses returned when a request is unsuccessful.
@@ -742,6 +870,19 @@ Error response returned when the request is unsuccessful.
 |**code**  <br>*required*|An error code that identifies the type of error that occurred.|string|
 |**message**  <br>*required*|A message that describes the error condition in a human-readable form.|string|
 |**details**  <br>*optional*|Additional details that can help the caller understand or fix the issue.|string|
+
+
+<a name="buyerinvoicepreference"></a>
+### BuyerInvoicePreference
+The buyer’s invoicing preference.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**INDIVIDUAL**|Buyer should be issued an individual invoice.|
+|**BUSINESS**|Buyer should be issued a business invoice. Tax information is available in BuyerTaxInformation structure.|
 
 
 <a name="orderstatus"></a>
