@@ -149,44 +149,42 @@ Report types fall into these categories:
         <p><strong>reportType</strong> value:<br>GET_VENDOR_SALES_DIAGNOSTIC_REPORT</p>
       </td>
       <td>
-        <p>JSON report with key retail performance metrics such as ordered/shipped revenue and units, glance 
-          views, conversion, replenishable out-of-stock rate, lost buy box rate, customer returns, and free
-          replacements, among others. Data is reported daily within each ASIN for the trailing 13 months.
-          Available to vendors who have the Brand Analytics Selling Partner API role and who are registered in
-          Amazon's Brand Registry.</p>
+        <p>JSON report with key retail performance metrics such as ordered/shipped revenue and units, glance views, conversion, replenishable out-of-stock rate, lost buy box rate, customer returns, and free replacements, among others. Data is reported daily for each ASIN for the trailing 13 months.</p>
+        <p>This report accepts the following reportOptions values:</p>
+        <ul>
+          <li>
+            <p><strong>distributorView</strong>. Specifies the distributor view of the report. Values include MANUFACTURING and SOURCING. Default: MANUFACTURING.<br /> Example: <br/><code>"reportOptions":{"distributorView": "SOURCING"}</code></p>
+          </li>
+        </ul>
+        <p>Available to vendors who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
         <p>Can be requested.</p>
-        <p><i><strong>Note</strong>: A new version of this report is expected to launch as early as Q4 2021.
-          Changes include the reportType value and report structure. The current version of this report will
-          be deprecated 90 days after launch of the new version.</i></p>
-      </td>
+        </td>
     </tr>
     <tr class="even">
       <td>
         <p><strong>Inventory Health & Planning Report</strong></p>
         <p><strong>reportType</strong> value:<br>GET_VENDOR_INVENTORY_HEALTH_AND_PLANNING_REPORT</p>
       </td>
-      <td><p>JSON report with key vendor inventory health metrics such as net received inventory, open purchase order
+      <td>
+        <p>JSON report with key vendor inventory health metrics such as net received inventory, open purchase order
         quantity, sell-through rate, on-hand inventory, aged inventory, vendor lead time, among others. Data is
-        reported daily within each ASIN for the trailing 13-months. Available to vendors who have the Brand
+        reported daily within each ASIN for the trailing 13-months.</p>
+        <p>Available to vendors who have the Brand
         Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
         <p>Can be requested.</p>
-        <i><strong>Note</strong>: A new version of this report is expected to launch as early
-          as Q4 2021. Changes include the reportType value and report structure. The current version of this
-          report will be deprecated 90 days after launch of the new version.</i></td>
+        </td>
     </tr>
     <tr class="odd">
       <td>
         <p><strong>Demand Forecast Report</strong></p>
         <p><strong>reportType</strong> value:<br>GET_VENDOR_DEMAND_FORECAST_REPORT</p>
       </td>
-      <td><p>JSON report with +26 weeks of Amazon's consumer demand forecast. Consumer demand data, in units, is
-        available for each of the next 26 weeks from the report creation date. Available to vendors who have the
+      <td>
+        <p>JSON report with +26 weeks of Amazon's consumer demand forecast. Consumer demand data, in units, is available for each of the next 26 weeks from the report creation date.</p>
+        <p>Available to vendors who have the
         Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
         <p>Can be requested.</p>
-          <i><strong>Note</strong>: A new version of this report is expected to launch as early
-          as Q4 2021. Changes include the reportType value and report structure. The current version of this
-          report will be deprecated 90 days after launch of the new version.</i>
-      </td>
+        </td>
     </tr>
     <tr>
       <td>
