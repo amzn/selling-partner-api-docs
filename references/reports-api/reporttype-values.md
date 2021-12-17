@@ -188,6 +188,38 @@ Report types fall into these categories:
           report will be deprecated 90 days after launch of the new version.</i>
       </td>
     </tr>
+    <tr>
+      <td>
+        <p><strong>Net Pure Product Margin Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_VENDOR_NET_PURE_PRODUCT_MARGIN_REPORT</p>
+      </td>
+      <td><p>JSON report containing data on Amazon's net pure product margins for selling a vendor's items. Data is reported at the aggregate level across a vendor's catalog of items and at the ASIN level across DAY, WEEK, MONTH, QUARTER, and YEAR reporting periods. Available to vendors who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+      <p>This report accepts the following <b>reportOptions</b> property:</p>
+        <ul>
+        <li><b>reportPeriod</b>. Specifies the reporting period for the report. Values include <i>DAY</i>, <i>WEEK</i>, <i>MONTH</i>, <i>QUARTER</i> and <i>YEAR</i><br>
+              Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
+        </ul>
+        <p>Requests must include the <b>reportPeriod</b> property. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be a Saturday when <b>reportPeriod</b>=<i>WEEK </i>.</p>
+        <p><strong>Maximum lookback windows</strong></p>
+        <p>Here are the maximum lookback windows (from the current date) that are available for each <strong>reportPeriod</strong> type. Specify a <b>dataStartTime</b> parameter that falls within the maximum lookback window for the reporting period that you want:</p>
+        <ul><li><strong>DAY</strong>. 1,460 days</li>
+        <li><strong>WEEK</strong>. 8 weeks</li>
+        <li><strong>MONTH</strong>. 36 months</li>
+        <li><strong>QUARTER</strong>. 8 quarters</li>
+        <li><strong>YEAR</strong>. 3 years</li></ul>
+        <p><strong>Maximum reporting periods</strong></p>
+        <p>Here are the maximum reporting periods that you can specify using the <b>dataStartTime</b> and <b>dataEndTime</b> parameters, by <strong>reportPeriod</strong> type:</p>
+        <ul><li><strong>DAY</strong>. 15 days</li>
+        <li><strong>WEEK</strong>. 7 weeks</li>
+        <li><strong>MONTH</strong>. 15 months</li>
+        <li><strong>QUARTER</strong>. 4 quarters</li>
+        <li><strong>YEAR</strong>. 2 years</li></ul>
+        <p><strong>Data availability</strong></p>
+        <P>Net pure product margins data for a given day is available 168 hours after that day. For example, data from 2021-12-03 will be available for this report no later than 2021-12-11T00:00:00. If you request a report for a reporting period that is not yet available, the report will not be generated and <b>processingStatus</b> for the report will be <i>FATAL</i>. You can get the processing status of the report by polling the getReport operation of the Reports API. For more information, see the <a href=https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/reports-api-use-case-guide/reports-api-use-case-guide_2021-06-30.md>Reports API Use Case Guide</a>.
+</p>
+        <p>Can be requested.</p>
+      </td>
+    </tr>
   </tbody>
 </table>
 
