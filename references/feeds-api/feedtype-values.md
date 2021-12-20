@@ -262,19 +262,27 @@ Feed types fall into these categories:
 ## Easy Ship feed
 
 <table>
-<thead>
-<tr class="header">
-<th><strong>Feed</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p><strong>Easy Ship Feed</strong></p>
-<p><strong>feedType</strong> value: POST_EASYSHIP_DOCUMENTS</p></td>
-<td>
-<p>For getting invoices, shipping labels, and warranties for Amazon Easy Ship orders that are scheduled for pickup.</p>
-<p>This functionality is available only in the India marketplace.</p></td>
-</tr>
-</tbody>
+    <thead>
+        <tr class="header">
+            <th><strong>Feed</strong></th>
+            <th><strong>Description</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="odd">
+            <td>
+                <p><strong>Easy Ship Feed</strong></p>
+                <p><strong>feedType</strong> value: POST_EASYSHIP_DOCUMENTS</p>
+            </td>
+            <td>
+                <p>For getting invoices, shipping labels, and warranties for Amazon Easy Ship orders that are scheduled for pickup.</p>
+                <p>This feed accepts the following <strong>feedOptions</strong> values:</p>
+                <ul>
+                    <li><strong>AmazonOrderId</strong> - An Amazon-defined order identifier in 3-7-7 format. Example: <code>902-3159896-1390916</code>.</li>
+                    <li><strong>DocumentType</strong> - The type of PDF document you want to get for the Amazon Easy Ship order identified with the <strong>AmazonOrderId</strong> parameter. Example: <code>ShippingLabel</code>.</li>
+                </ul>
+                <p>This functionality is available only in the India marketplace.</p>
+            </td>
+        </tr>
+    </tbody>
 </table>
