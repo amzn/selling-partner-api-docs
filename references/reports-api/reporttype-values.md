@@ -153,7 +153,7 @@ Report types fall into these categories:
         <p>This report accepts the following reportOptions values:</p>
         <ul>
           <li>
-            <p><strong>distributorView</strong>. Specifies the distributor view of the report. Values include MANUFACTURING and SOURCING. Default: MANUFACTURING.<br /> Example: <br/><code>"reportOptions":{"distributorView": "SOURCING"}</code></p>
+            <p><strong>distributorView</strong>. Specifies the distributor view of the report. Values include MANUFACTURER and SOURCING. Default: MANUFACTURER.<br /> Example: <br/><code>"reportOptions":{"distributorView": "SOURCING"}</code></p>
           </li>
         </ul>
         <p>Available to vendors who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
