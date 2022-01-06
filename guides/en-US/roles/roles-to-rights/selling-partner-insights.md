@@ -39,7 +39,6 @@
 |getSupplySources|GET|/supplySources/2020-07-01/supplySources|NA, EU, FE|
 |updateSupplySource|PUT|/supplySources/2020-07-01/supplySources/{supplySourceId}|NA, EU, FE|
 |updateSupplySourceStatus|PUT|/supplySources/2020-07-01/supplySources/{supplySourceId}/status|NA, EU, FE|
-&nbsp;
 ## Feeds, Reports and Notifications
 |API Section|Type|Region|
 |-|-|-|

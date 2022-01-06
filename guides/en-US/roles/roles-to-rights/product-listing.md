@@ -99,7 +99,6 @@
 |searchDefinitionsProductTypes|GET|/definitions/2020-09-01/productTypes|NA, EU, FE|
 |updateContentDocument|POST|/aplus/2020-11-01/contentDocuments/{contentReferenceKey}|NA, EU, FE|
 |validateContentDocumentAsinRelations|POST|/aplus/2020-11-01/contentAsinValidations|NA, EU|
-&nbsp;
 ## Feeds, Reports and Notifications
 |API Section|Type|Region|
 |-|-|-|

@@ -54,7 +54,6 @@
 |getShipmentDetails - RDT|GET|/fba/outbound/brazil/v0/shipments/{shipmentId}|NA|
 |getShipmentDetails|GET|/fba/outbound/brazil/v0/shipments/{shipmentId}|NA|
 |submitInvoice|POST|/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice|NA|
-&nbsp;
 ## Feeds, Reports and Notifications
 |API Section|Type|Region|
 |-|-|-|

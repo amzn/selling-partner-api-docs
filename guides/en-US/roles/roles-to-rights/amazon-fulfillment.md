@@ -114,7 +114,6 @@
 |updatePackage|PUT|/externalFulfillment/shipments/2021-01-06/shipments/{shipmentId}/packages/{packageId}|NA, EU, FE|
 |updatePackageStatus|PATCH|/externalFulfillment/shipments/2021-01-06/shipments/{shipmentId}/packages/{packageId}|NA, EU, FE|
 |voidTransport|POST|/fba/inbound/v0/shipments/{shipmentId}/transport/void|NA, EU, FE|
-&nbsp;
 ## Feeds, Reports and Notifications
 |API Section|Type|Region|
 |-|-|-|
@@ -126,12 +125,12 @@
 |Feeds|POST\_FLAT\_FILE\_FULFILLMENT\_ORDER\_CANCELLATION\_REQUEST\_DATA|NA, EU, FE|
 |Feeds|POST\_FLAT\_FILE\_FULFILLMENT\_ORDER\_REQUEST\_DATA|NA, EU, FE|
 |Feeds|POST\_FULFILLMENT\_ORDER\_CANCELLATION\_REQUEST\_DATA|NA, EU, FE|
-|Notifications|FBA_OUTBOUND_SHIPMENT_STATUS|NA, EU\*, FE|
-|Notifications|FEED_PROCESSING_FINISHED|NA, EU\*, FE|
-|Notifications|FULFILLMENT_ORDER_STATUS|NA, EU\*, FE|
+|Notifications|FBA_OUTBOUND_SHIPMENT_STATUS|NA, EU*, FE|
+|Notifications|FEED_PROCESSING_FINISHED|NA, EU*, FE|
+|Notifications|FULFILLMENT_ORDER_STATUS|NA, EU*, FE|
 |Notifications|MFN_ORDER_STATUS_CHANGE|NA|
 |Notifications|ORDER_STATUS_CHANGE|NA, EU, FE|
-|Notifications|REPORT_PROCESSING_FINISHED|NA, EU\*, FE|
+|Notifications|REPORT_PROCESSING_FINISHED|NA, EU*, FE|
 |Reports|GET\_AFN\_INVENTORY\_DATA\_BY\_COUNTRY|NA, EU, FE|
 |Reports|GET\_AFN\_INVENTORY\_DATA|NA, EU, FE|
 |Reports|GET\_AMAZON\_FULFILLED\_SHIPMENTS\_DATA\_GENERAL|NA, EU, FE|
@@ -182,4 +181,5 @@
 |Reports|SUPPLY\_CHAIN\_HUB\_INSIGHTS\_DATA|NA, EU, FE|
 |Reports|SUPPLY\_CHAIN\_HUB\_INSIGHTS|NA, EU, FE|
 |Reports|SUPPLY\_CHAIN\_HUB\_RAW\_DATA|NA, EU, FE|
-\* Functionality may not be entirely available in this region.
+<br/>
+* Functionality may not be entirely available in this region.

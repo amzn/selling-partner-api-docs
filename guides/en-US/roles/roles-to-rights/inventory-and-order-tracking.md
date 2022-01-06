@@ -56,7 +56,6 @@
 |SubmitShipmentConfirmations|POST|/vendor/shipping/v1/shipmentConfirmations|NA, FE|
 |updateInventory|PUT|/externalFulfillment/inventory/2021-01-06/locations/{locationId}/skus/{skuId}|NA, EU, FE|
 |updateShipmentStatus|POST|/orders/v0/orders/{orderId}/shipment|NA, EU, FE|
-&nbsp;
 ## Feeds, Reports and Notifications
 |API Section|Type|Region|
 |-|-|-|

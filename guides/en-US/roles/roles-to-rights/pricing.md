@@ -49,16 +49,15 @@
 |getReportSchedules|GET|/reports/2021-06-30/schedules|NA, EU, FE|
 |getReports|GET|/reports/2020-09-04/reports|NA, EU, FE|
 |getReports|GET|/reports/2021-06-30/reports|NA, EU, FE|
-&nbsp;
 ## Feeds, Reports and Notifications
 |API Section|Type|Region|
 |-|-|-|
 |Feeds|RFQ\_UPLOAD\_FEED|NA, EU, FE|
-|Notifications|ANY_OFFER_CHANGED|NA, EU, FE\*|
+|Notifications|ANY_OFFER_CHANGED|NA, EU, FE*|
 |Notifications|B2B_ANY_OFFER_CHANGED|NA|
-|Notifications|FEED_PROCESSING_FINISHED|NA, EU, FE\*|
+|Notifications|FEED_PROCESSING_FINISHED|NA, EU, FE*|
 |Notifications|ITEM_PRODUCT_TYPE_CHANGE|NA|
-|Notifications|REPORT_PROCESSING_FINISHED|NA, EU, FE\*|
+|Notifications|REPORT_PROCESSING_FINISHED|NA, EU, FE*|
 |Reports|GET\_AFN\_INVENTORY\_DATA\_BY\_COUNTRY|NA, EU, FE|
 |Reports|GET\_AMAZON\_FULFILLED\_SHIPMENTS\_DATA\_GENERAL|NA, EU, FE|
 |Reports|GET\_CSV\_MFN\_PRIME\_RETURNS\_REPORT|NA, EU, FE|
@@ -107,4 +106,5 @@
 |Reports|GET\_XML\_ALL\_ORDERS\_DATA\_BY\_ORDER\_DATE\_GENERAL|NA, EU, FE|
 |Reports|GET\_XML\_BROWSE\_TREE\_DATA|NA, EU, FE|
 |Reports|GET\_XML\_MFN\_PRIME\_RETURNS\_REPORT|NA, EU, FE|
-\* Functionality may not be entirely available in this region.
+<br/>
+* Functionality may not be entirely available in this region.

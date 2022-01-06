@@ -37,7 +37,6 @@
 |listFinancialEventsByGroupId|GET|/finances/v0/financialEventGroups/{eventGroupId}/financialEvents|NA, EU, FE|
 |listFinancialEventsByOrderId|GET|/finances/v0/orders/{orderId}/financialEvents|NA, EU, FE|
 |listFinancialEvents|GET|/finances/v0/financialEvents|NA, EU, FE|
-&nbsp;
 ## Feeds, Reports and Notifications
 |API Section|Type|Region|
 |-|-|-|

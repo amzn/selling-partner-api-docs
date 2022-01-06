@@ -37,7 +37,6 @@
 |getReportSchedules|GET|/reports/2021-06-30/schedules|NA, EU, FE|
 |getReports|GET|/reports/2020-09-04/reports|NA, EU, FE|
 |getReports|GET|/reports/2021-06-30/reports|NA, EU, FE|
-&nbsp;
 ## Feeds, Reports and Notifications
 |API Section|Type|Region|
 |-|-|-|

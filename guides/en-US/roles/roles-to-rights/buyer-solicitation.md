@@ -16,4 +16,3 @@
 |getOrderMetrics|GET|/sales/v1/orderMetrics|FE|
 |getOrders|GET|/orders/v0/orders|NA, EU, FE|
 |getSolicitationActionsForOrder|GET|/solicitations/v1/orders/{amazonOrderId}|NA, EU, FE|
-&nbsp;

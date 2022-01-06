@@ -117,6 +117,7 @@
 |getTracking|GET|/shipping/sandbox/v2/tracking|NA, EU|
 |getTracking|GET|/shipping/v2/tracking|NA, EU, FE|
 |getTrackingInformation|GET|/shipping/v1/tracking/{trackingId}|NA, EU, FE|
+|getTransactionStatus|GET|/vendor/directFulfillment/transactions/2021-12-28/transactions/{transactionId}|NA, EU, FE|
 |getTransactionStatus|GET|/vendor/directFulfillment/transactions/v1/transactions/{transactionId}|NA, EU, FE|
 |listCatalogCategories|GET|/catalog/v0/categories|NA, FE|
 |listHandoverSlots|POST|/easyship/v0/timeSlots|EU|
@@ -143,7 +144,6 @@
 |updatePackage|PUT|/externalFulfillment/shipments/2021-01-06/shipments/{shipmentId}/packages/{packageId}|NA, EU, FE|
 |updatePackageStatus|PATCH|/externalFulfillment/shipments/2021-01-06/shipments/{shipmentId}/packages/{packageId}|NA, EU, FE|
 |updateScheduledPackages|PATCH|/easyship/v0/packages|EU|
-&nbsp;
 ## Feeds, Reports and Notifications
 |API Section|Type|Region|
 |-|-|-|
