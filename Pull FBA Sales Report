@@ -1,0 +1,24 @@
+import { AmazonOrderReportsApi } from 'amazon-order-reports-api';
+
+(async () => {
+  const api = new AmazonOrderReportsApi({
+    username: 'info@ridgewoodglobal.co.uk',
+    password: 'password1234',
+  });
+
+  for await (const item of api.getItems({
+    startDate: new Date('2020-10-01'),
+    endDate: new Date('2020-12-31')
+  })) {
+    console.log(item);
+  }
+
+  for await (const refund of api.getRefunds({
+    startDate: new Date('2020-10-01'),
+    endDate: new Date('2020-12-31')
+  })) {
+    console.log(refund);
+  }
+
+  await api.stop();
+})();
