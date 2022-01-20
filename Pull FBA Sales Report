@@ -2,7 +2,7 @@ import { AmazonOrderReportsApi } from 'amazon-order-reports-api';
 
 (async () => {
   const api = new AmazonOrderReportsApi({
-    username: 'info@ridgewoodglobal.co.uk',
+    username: 'Test@test.com',
     password: 'password1234',
   });
 
