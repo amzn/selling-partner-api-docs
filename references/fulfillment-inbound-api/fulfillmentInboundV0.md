@@ -270,7 +270,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 
 <a name="getprepinstructions"></a>
-### GET /fba/inbound/v0/pollyctions
+### GET /fba/inbound/v0/prepInstructions
 **Operation: getPrepInstructions**
 
 #### Description
