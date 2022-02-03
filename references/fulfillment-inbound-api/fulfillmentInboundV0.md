@@ -270,7 +270,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 
 <a name="getprepinstructions"></a>
-### GET /fba/inbound/v0/prepInstructions
+### GET /fba/inbound/v0/pollyctions
 **Operation: getPrepInstructions**
 
 #### Description
@@ -1732,6 +1732,7 @@ Preparation instructions for shipping an item to Amazon's fulfillment network. F
 |**BlackShrinkWrapping**|Indicates that black shrink wrapping is required.|
 |**Labeling**|Indicates that the FNSKU label should be applied to the item.|
 |**HangGarment**|Indicates that the item should be placed on a hanger.|
+|**SetCreation**|Indicates that the item should be set creation.|
 
 
 <a name="prepinstructionlist"></a>
