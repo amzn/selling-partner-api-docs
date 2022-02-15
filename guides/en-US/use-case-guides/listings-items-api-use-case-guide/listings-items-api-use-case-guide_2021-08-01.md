@@ -1,7 +1,7 @@
 # Listings Items API Use Case Guide
-API Version: 2020-09-01
+API Version: 2021-08-01
 
-This content has been migrated to the new Selling Partner API Documentation website at [https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2020-09-01-use-case-guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2020-09-01-use-case-guide).
+This content has been migrated to the new Selling Partner API Documentation website at [https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
 
 Please update your bookmarks to the new location for future reference. 
 
