@@ -8,6 +8,8 @@ For more information about registering in Amazon’s Brand Registry, see [Build 
 
 Report types fall into these categories:
 
+- [Brand Analytics reports](#brand-analytics-reports)
+
 - [Vendor retail analytics reports](#vendor-retail-analytics-reports)
 
 - [Inventory reports](#inventory-reports)
@@ -38,6 +40,99 @@ Report types fall into these categories:
 
 - [B2B product opportunities reports](#b2b-product-opportunities-reports)
 
+## Brand Analytics reports
+
+<table>
+  <thead>
+    <tr class="header">
+      <th><strong>Name</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr class="odd">
+      <td>
+        <p><strong>Market Basket Analysis Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_BRAND_ANALYTICS_MARKET_BASKET_REPORT</p>
+      </td>
+      <td><p>JSON report containing data on the items that are most commonly purchased in combination with the items in the customer's basket (cart) at checkout. The data is available across different reporting periods: DAY, WEEK, MONTH, and QUARTER. Requests can span multiple reporting periods. In this report, an <b>asin</b> property is an ASIN in the selling partner's catalog and a <b>purchasedWithAsin</b> property might or might not be an ASIN in the selling partner's catalog. Available to selling partners who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.
+        </p>
+        <p>This report accepts the following <b>reportOptions</b> value:</p>
+        <ul>
+        <li><b>reportPeriod</b>. Specifies the reporting period for the report. Values include <i>DAY</i>, <i>WEEK</i>, <i>MONTH</i>, and <i>QUARTER</i><br>
+              Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
+        </ul>
+        <p>Requests <b>must</b> include the <b>reportPeriod</b> in the <b>reportsOptions</b>. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be a Saturday when <b>reportPeriod</b>=<i>WEEK </i>.
+        </p>
+        <p>Can be requested by sellers and vendors.</p>
+      </td>
+    </tr>
+    <tr class="even">
+      <td>
+        <p><strong>Amazon Search Terms Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_BRAND_ANALYTICS_SEARCH_TERMS_REPORT</p>
+      </td>
+      <td><p>JSON report containing data on the top clicked ASINs by search keyword and department for a marketplace. The data is available across different reporting periods: DAY, WEEK, MONTH, and QUARTER. Requests cannot span multiple reporting periods. For example, a request with <b>reportPeriod</b>=<i>WEEK</i> could not start on 2021-06-06 and end on 2021-06-19, as this would span more than one week. Available to selling partners who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+      <p>This report accepts the following <b>reportOptions</b> value:</p>
+        <ul>
+        <li><b>reportPeriod</b>. Specifies the reporting period for the report.  Values include <i>DAY</i>, <i>WEEK</i>, <i>MONTH</i>, and <i>QUARTER</i><br>
+              Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
+        </ul>
+        <p>Requests <b>must</b> include the <b>reportPeriod</b> in the <b>reportsOptions</b>. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be the following Saturday when <b>reportPeriod</b>=<i>WEEK</i>.</p>
+        <p>Can be requested by sellers and vendors.</p>
+      </td>
+    </tr>
+    <tr class="odd">
+      <td>
+        <p><strong>Repeat Purchase</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_BRAND_ANALYTICS_REPEAT_PURCHASE_REPORT</p>
+      </td>
+      <td>
+        <p>JSON report containing data on the quantity of repeated purchases of the selling partner's items. The data is available across different reporting periods: WEEK, MONTH, and QUARTER. Requests can span multiple reporting periods. In this report, an <b>asin</b> property is an ASIN in the selling partner's catalog. Available to selling partners who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+        <p>This report accepts the following <b>reportOptions</b> value:</p>
+        <ul>
+        <li><b>reportPeriod</b>. Specifies the reporting period for the report. Values include <i>WEEK</i>, <i>MONTH</i>, and <i>QUARTER</i><br>
+              Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
+        </ul>
+        <p>Requests <b>must</b> include the <b>reportPeriod</b> in the <b>reportsOptions</b>. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be the following Saturday when <b>reportPeriod</b>=<i>WEEK</i>.</p>
+        <p>Can be requested by sellers and vendors.</p>
+      </td>
+    </tr>
+    <tr class="even">
+      <td>
+        <p><strong>Alternate Purchase</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_BRAND_ANALYTICS_ALTERNATE_PURCHASE_REPORT</p>
+      </td>
+      <td>
+        <p>JSON report containing data on the items most commonly purchased by a customer after they view but do not purchase the selling partner's item. The data is available across different reporting periods: DAY, WEEK, MONTH, and QUARTER. Requests can span multiple reporting periods. In this report, an <b>asin</b> property is an ASIN in the selling partner's catalog and <b>purchasedAsin</b> might or might not be an ASIN in the selling partner's catalog. Available to selling partners who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+        <p>This report accepts the following <b>reportOptions</b> value:</p>
+        <ul>
+        <li><b>reportPeriod</b>. Specifies the reporting period for the report. Values include <i>DAY</i>, <i>WEEK</i>, <i>MONTH</i>, and <i>QUARTER</i><br>
+              Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
+        </ul>
+        <p>Requests <b>must</b> include the <b>reportPeriod</b> in the <b>reportsOptions</b>. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be the following Saturday when <b>reportPeriod</b>=<i>WEEK</i>.</p>
+        <p>Can be requested by sellers and vendors.</p>
+      </td>
+    </tr>
+    <tr class="odd">
+      <td>
+        <p><strong>Item Comparison Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_BRAND_ANALYTICS_ITEM_COMPARISON_REPORT</p>
+      </td>
+      <td>
+        <p>JSON report containing data on the items that a customer most commonly views after viewing the selling partner's items. The data is available across different reporting periods: DAY, WEEK, MONTH, and QUARTER. Requests can span multiple reporting periods. In this report, an <b>asin</b> property is an ASIN in the selling partner's catalog and <b>comparedAsin</b> might or might not be an ASIN in the selling partner's catalog. Available to selling partners who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+        <p>This report accepts the following <b>reportOptions</b> value:</p>
+        <ul>
+        <li><b>reportPeriod</b>. Specifies the reporting period for the report. Values include <i>DAY</i>, <i>WEEK</i>, <i>MONTH</i>, and <i>QUARTER</i><br>
+              Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
+        </ul>
+        <p>Requests <b>must</b> include the <b>reportPeriod</b> in the <b>reportsOptions</b>. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be the following Saturday when <b>reportPeriod</b>=<i>WEEK</i>.</p>
+        <p>Can be requested by sellers and vendors.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## Vendor retail analytics reports
 
 <table>
@@ -54,48 +149,77 @@ Report types fall into these categories:
         <p><strong>reportType</strong> value:<br>GET_VENDOR_SALES_DIAGNOSTIC_REPORT</p>
       </td>
       <td>
-        <p>JSON report with key retail performance metrics such as ordered/shipped revenue and units, glance 
-          views, conversion, replenishable out-of-stock rate, lost buy box rate, customer returns, and free
-          replacements, among others. Data is reported daily within each ASIN for the trailing 13 months.
-          Available to vendors who have the Brand Analytics Selling Partner API role and who are registered in
-          Amazon's Brand Registry.</p>
+        <p>JSON report with key retail performance metrics such as ordered/shipped revenue and units, glance views, conversion, replenishable out-of-stock rate, lost buy box rate, customer returns, and free replacements, among others. Data is reported daily for each ASIN for the trailing 13 months.</p>
+        <p>This report accepts the following reportOptions values:</p>
+        <ul>
+          <li>
+            <p><strong>distributorView</strong>. Specifies the distributor view of the report. Values include MANUFACTURER and SOURCING. Default: MANUFACTURER.<br /> Example: <br/><code>"reportOptions":{"distributorView": "SOURCING"}</code></p>
+          </li>
+        </ul>
+        <p>Available to vendors who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
         <p>Can be requested.</p>
-        </p><i><strong>Note</strong>: A new version of this report is expected to launch as early as Q4 2021.
-          Changes include the reportType value and report structure. The current version of this report will
-          be deprecated 90 days after launch of the new version.</i>
-      </td>
+        </td>
     </tr>
     <tr class="even">
       <td>
         <p><strong>Inventory Health & Planning Report</strong></p>
         <p><strong>reportType</strong> value:<br>GET_VENDOR_INVENTORY_HEALTH_AND_PLANNING_REPORT</p>
       </td>
-      <td><p>JSON report with key vendor inventory health metrics such as net received inventory, open purchase order
+      <td>
+        <p>JSON report with key vendor inventory health metrics such as net received inventory, open purchase order
         quantity, sell-through rate, on-hand inventory, aged inventory, vendor lead time, among others. Data is
-        reported daily within each ASIN for the trailing 13-months. Available to vendors who have the Brand
+        reported daily within each ASIN for the trailing 13-months.</p>
+        <p>Available to vendors who have the Brand
         Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
         <p>Can be requested.</p>
-        <i><strong>Note</strong>: A new version of this report is expected to launch as early
-          as Q4 2021. Changes include the reportType value and report structure. The current version of this
-          report will be deprecated 90 days after launch of the new version.</i></td>
+        </td>
     </tr>
     <tr class="odd">
       <td>
         <p><strong>Demand Forecast Report</strong></p>
         <p><strong>reportType</strong> value:<br>GET_VENDOR_DEMAND_FORECAST_REPORT</p>
       </td>
-      <td><p>JSON report with +26 weeks of Amazon's consumer demand forecast. Consumer demand data, in units, is
-        available for each of the next 26 weeks from the report creation date. Available to vendors who have the
+      <td>
+        <p>JSON report with +26 weeks of Amazon's consumer demand forecast. Consumer demand data, in units, is available for each of the next 26 weeks from the report creation date.</p>
+        <p>Available to vendors who have the
         Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
         <p>Can be requested.</p>
-          <i><strong>Note</strong>: A new version of this report is expected to launch as early
-          as Q4 2021. Changes include the reportType value and report structure. The current version of this
-          report will be deprecated 90 days after launch of the new version.</i>
+        </td>
+    </tr>
+    <tr>
+      <td>
+        <p><strong>Net Pure Product Margin Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_VENDOR_NET_PURE_PRODUCT_MARGIN_REPORT</p>
+      </td>
+      <td><p>JSON report containing data on Amazon's net pure product margins for selling a vendor's items. Data is reported at the aggregate level across a vendor's catalog of items and at the ASIN level across DAY, WEEK, MONTH, QUARTER, and YEAR reporting periods. Available to vendors who have the Brand Analytics Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+      <p>This report accepts the following <b>reportOptions</b> property:</p>
+        <ul>
+        <li><b>reportPeriod</b>. Specifies the reporting period for the report. Values include <i>DAY</i>, <i>WEEK</i>, <i>MONTH</i>, <i>QUARTER</i> and <i>YEAR</i><br>
+              Example:<br><code>"reportOptions":{"reportPeriod": "WEEK"}</code></li>
+        </ul>
+        <p>Requests must include the <b>reportPeriod</b> property. Use the <b>dataStartTime</b> and <b>dataEndTime</b> parameters to specify the date boundaries for the report. The <b>dataStartTime</b> and <b>dataEndTime</b> values must correspond to valid first and last days in the specified <b>reportPeriod</b>. For example, <b>dataStartTime</b> must be a Sunday and <b>dataEndTime</b> must be a Saturday when <b>reportPeriod</b>=<i>WEEK </i>.</p>
+        <p><strong>Maximum lookback windows</strong></p>
+        <p>Here are the maximum lookback windows (from the current date) that are available for each <strong>reportPeriod</strong> type. Specify a <b>dataStartTime</b> parameter that falls within the maximum lookback window for the reporting period that you want:</p>
+        <ul><li><strong>DAY</strong>. 1,460 days</li>
+        <li><strong>WEEK</strong>. 8 weeks</li>
+        <li><strong>MONTH</strong>. 36 months</li>
+        <li><strong>QUARTER</strong>. 8 quarters</li>
+        <li><strong>YEAR</strong>. 3 years</li></ul>
+        <p><strong>Maximum reporting periods</strong></p>
+        <p>Here are the maximum reporting periods that you can specify using the <b>dataStartTime</b> and <b>dataEndTime</b> parameters, by <strong>reportPeriod</strong> type:</p>
+        <ul><li><strong>DAY</strong>. 15 days</li>
+        <li><strong>WEEK</strong>. 7 weeks</li>
+        <li><strong>MONTH</strong>. 15 months</li>
+        <li><strong>QUARTER</strong>. 4 quarters</li>
+        <li><strong>YEAR</strong>. 2 years</li></ul>
+        <p><strong>Data availability</strong></p>
+        <P>Net pure product margins data for a given day is available 168 hours after that day. For example, data from 2021-12-03 will be available for this report no later than 2021-12-11T00:00:00. If you request a report for a reporting period that is not yet available, the report will not be generated and <b>processingStatus</b> for the report will be <i>FATAL</i>. You can get the processing status of the report by polling the getReport operation of the Reports API. For more information, see the <a href=https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/reports-api-use-case-guide/reports-api-use-case-guide_2021-06-30.md>Reports API Use Case Guide</a>.
+</p>
+        <p>Can be requested.</p>
       </td>
     </tr>
   </tbody>
 </table>
-
 
 ## Inventory reports
 
@@ -110,7 +234,7 @@ Report types fall into these categories:
     <tr class="odd">
       <td>
         <p><strong>Inventory Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_FLAT_FILE_OPEN_LISTINGS_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_FLAT_FILE_OPEN_LISTINGS_DATA</p>
       </td>
       <td>
         <p>Tab-delimited flat file open listings report that contains a summary of the seller's product listings with
@@ -119,8 +243,8 @@ Report types fall into these categories:
         <ul>
           <li>
             <p><strong>Custom</strong> - A Boolean value that indicates whether a custom report is returned. Default:
-              <code>false</code>.<br>
-              Example:<br><code>"reportOptions":{"custom":"true"}</code>.</p>
+              <code>false</code>.<br/>
+              Example:<br/><code>"reportOptions":{"custom":"true"}</code>.</p>
           </li>
         </ul>
         <p>Can be requested.</p>
@@ -129,15 +253,15 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>All Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_ALL_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_ALL_DATA</p>
       </td>
       <td><p>Tab-delimited flat file detailed all listings report. For Marketplace and Seller Central sellers.</p>
         <p>This report accepts the following reportOptions values:</p>
         <ul>
           <li>
             <p><strong>Custom</strong> - A Boolean value that indicates whether a custom report is returned. Default:
-              <code>false</code>.<br>
-              Example:<br>
+              <code>false</code>.<br/>
+              Example:<br/>
               <code>"reportOptions":{"custom":"true"}</code>.</p>
           </li>
         </ul>
@@ -147,7 +271,7 @@ Report types fall into these categories:
     <tr class="odd">
       <td>
         <p><strong>Active Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DATA</p>
       </td>
       <td><p>Tab-delimited flat file detailed active listings report. For Marketplace and Seller Central sellers.</p>
         <p>Can be requested.</p>
@@ -156,7 +280,7 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>Inactive Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_INACTIVE_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_INACTIVE_DATA</p>
       </td>
       <td><p>Tab-delimited flat file detailed inactive listings report. For Marketplace and Seller Central sellers.</p>
         <p>Can be requested.</p>
@@ -165,7 +289,7 @@ Report types fall into these categories:
     <tr class="odd">
       <td>
         <p><strong>Open Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DATA_BACK_COMPAT</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DATA_BACK_COMPAT</p>
       </td>
       <td>
         <p>Tab-delimited flat file open listings report.</p>
@@ -173,7 +297,7 @@ Report types fall into these categories:
         <ul>
           <li>
             <p><strong>Custom</strong> - A Boolean value that indicates whether a custom report is returned. Default:
-              <code>false</code>.<br>Example:<br> <code>"reportOptions":{"custom":"true"}</code>.</p>
+              <code>false</code>.<br/>Example:<br/> <code>"reportOptions":{"custom":"true"}</code>.</p>
           </li>
         </ul>
         <p>Can be requested.</p>
@@ -182,7 +306,7 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>Open Listings Report Lite</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DATA_LITE</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DATA_LITE</p>
       </td>
       <td><p>Tab-delimited flat file active listings report that contains only the SKU, ASIN, Price, and Quantity fields
         for items that have a quantity greater than zero. For Marketplace and Seller Central sellers.</p>
@@ -192,7 +316,7 @@ Report types fall into these categories:
     <tr class="odd">
       <td>
         <p><strong>Open Listings Report Liter</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DATA_LITER</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DATA_LITER</p>
       </td>
       <td><p>Tab-delimited flat file active listings report that contains only the SKU and Quantity fields for items that
         have a quantity greater than zero. For Marketplace and Seller Central sellers.</p>
@@ -202,7 +326,7 @@ Report types fall into these categories:
     <tr class="even">
       <td>
         <p><strong>Canceled Listings Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_CANCELLED_LISTINGS_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_CANCELLED_LISTINGS_DATA</p>
       </td>
       <td>
         <p>Tab-delimited flat file canceled listings report. For Marketplace and Seller Central sellers.</p>
@@ -210,7 +334,7 @@ Report types fall into these categories:
         <ul>
           <li>
             <p><strong>Custom</strong> - A Boolean value that indicates whether a custom report is returned. Default:
-              <code>false</code>.<br>Example:<br> <code>"reportOptions":{"custom":"true"}</code>.</p>
+              <code>false</code>.<br/>Example:<br/> <code>"reportOptions":{"custom":"true"}</code>.</p>
           </li>
         </ul>
         <p>Can be requested.</p>
@@ -218,17 +342,26 @@ Report types fall into these categories:
     </tr>
     <tr class="odd">
       <td>
+        <p><strong>Suppressed Listings Report</strong></p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANTS_LISTINGS_FYP_REPORT</p>
+      </td>
+      <td><p>Tab-delimited flat file that contains suppressed listings, the reason each listing is suppressed, and instructions for removing each suppression. For Marketplace and Seller Central users.</p>
+        <p>Can be requested or scheduled.</p>
+      </td>
+    </tr>
+    <tr class="even">
+      <td>
         <p><strong>Listing Quality and Suppressed Listing Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_MERCHANT_LISTINGS_DEFECT_DATA</p>
+        <p><strong>reportType</strong> value:<br/>GET_MERCHANT_LISTINGS_DEFECT_DATA</p>
       </td>
       <td><p>Tab-delimited flat file listing quality and suppressed listing report that contains listing information that
         is incomplete or incorrect. For Marketplace and Seller Central sellers.</p>
         <p>Can be requested.</p>
       </td>
     </tr>
-    <tr class="even">
+    <tr class="odd">
       <td><strong>Pan-European Eligibility: FBA ASINs</strong>
-        <p><strong>reportType</strong> value:<br> GET_PAN_EU_OFFER_STATUS</p>
+        <p><strong>reportType</strong> value:<br/> GET_PAN_EU_OFFER_STATUS</p>
       </td>
       <td>
       <p>Tab-delimited flat file report that contains enrollment status and eligibility information for the
@@ -238,9 +371,9 @@ Report types fall into these categories:
         <p>Can be requested.</p>
       </td>
     </tr>
-    <tr class="odd">
+    <tr class="even">
       <td><strong>Pan-European Eligibility: Self-fulfilled ASINs</strong>
-        <p><strong>reportType</strong> value:<br> GET_MFN_PAN_EU_OFFER_STATUS</p>
+        <p><strong>reportType</strong> value:<br/> GET_MFN_PAN_EU_OFFER_STATUS</p>
       </td>
       <td>
       <p>Tab-delimited flat file report that contains eligibility information for the Pan-European FBA Program for each
@@ -251,10 +384,10 @@ Report types fall into these categories:
         <p>Can be requested.</p>
       </td>
     </tr>
-    <tr class="even">
+    <tr class="odd">
       <td>
         <p><strong>Referral Fee Preview Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_REFERRAL_FEE_PREVIEW_REPORT</p>
+        <p><strong>reportType</strong> value:<br/>GET_REFERRAL_FEE_PREVIEW_REPORT</p>
       </td>
       <td>
         <p>Tab-delimited flat file that contains the seller's open listings as well as the price and estimated referral
@@ -283,7 +416,7 @@ The date range that you specify when requesting an order report indicates when t
     <tr class="odd">
       <td>
         <p><strong>Unshipped Orders Report</strong></p>
-        <p><strong>reportType</strong> value:<br>GET_FLAT_FILE_ACTIONABLE_ORDER_DATA_SHIPPING</p>
+        <p><strong>reportType</strong> value:<br/>GET_FLAT_FILE_ACTIONABLE_ORDER_DATA_SHIPPING</p>
       </td>
       <td>
         <p>Tab-delimited flat file report that contains only orders that are not confirmed as shipped. For Marketplace and Seller Central sellers.</p>
@@ -291,7 +424,7 @@ The date range that you specify when requesting an order report indicates when t
         <ul>
           <li>
             <p><strong>ShowSalesChannel</strong> - A Boolean value that indicates whether an additional column is added
-              to the report that shows the sales channel. Default: <code>false</code>.<br>Example:<br>
+              to the report that shows the sales channel. Default: <code>false</code>.<br/>Example:<br/>
               <code>"reportOptions":{"ShowSalesChannel":"true"}</code>
             </p>
           </li>
@@ -396,7 +529,7 @@ The date range that you specify when requesting an order report indicates when t
     </tr>
     <tr class="odd">
       <td>
-        <p><strong>Requested or Scheduled Flat File Order Report (Tax)</p></strong>
+        <p><strong>Requested or Scheduled Flat File Order Report (Tax)</strong></p>
         <strong>reportType</strong> value:<br>GET_FLAT_FILE_ORDER_REPORT_DATA_TAX
       </td>
       <td>
@@ -645,6 +778,32 @@ These pending order reports are only available in the Japan marketplace.
         For all sellers.</p>
         <p>Can be requested</p>
       </td>
+    </tr>
+    <tr class="even">
+      <td>
+        <p><strong>Promotions Performance Report</strong></p>
+        <p><strong>reportType</strong> value:<br>GET_PROMOTION_PERFORMANCE_REPORT</p>
+      </td>
+      <td><p>JSON report containing data from promotion campaigns to help vendors and sellers optimize their promotions and adjust their advertising strategies. The report includes sales from promotions, the types of discounts that were offered, and how many items were sold as a result of the promotions. Currently, three promotion types are supported for vendors (Best Deal, Lightning Deal, and Price Discount), and two promotion types are supported for sellers (Best Deal and Lightning Deal). Available to vendors and sellers who have the Selling Partner Insights Selling Partner API role and who are registered in Amazon's Brand Registry.</p>
+      <p>This report accepts the following <b>reportOptions</b> values:</p>
+        <ul>
+        <li><b>promotionStartDateFrom</b>. The start of a date and time range (in ISO 8601 date time format) used for selecting promotions to report on. Be sure to specify the time zone: either UTC or an offset from UTC.</li>
+        <li><b>promotionStartDateTo</b>. The end of a date and time range (in ISO 8601 date time format) used for selecting promotions to report on. Be sure to specify the time zone: either UTC or an offset from UTC.<br>
+              Example:<br><pre>"reportOptions": {
+  "promotionStartDateFrom": "2020-11-23T15:33:26Z",
+  "promotionStartDateTo": "2020-12-06T15:33:26Z"
+}</pre></li>
+        </ul>
+        <p>Requests <b>must</b> include the <b>promotionStartDateFrom</b> and <b>promotionStartDateTo</b> in the <b>reportOptions</b>. All promotions with a start date-time that fall within the range of <b>promotionStartDateFrom</b> and <b>promotionStartDateTo</b> will be included.</p>
+      <p>Report behaviors:</p>
+      <ul>
+      <li>If a selected promotion is in progress when you request a report, the report will contain cumulative data for the promotion up until the day prior to your report request.</li>
+      <li>A report will contain complete information on a selected promotion if the promotion ended one day or more before the time you requested the report.</li>
+      <li>This report supports start dates up to two years before the current date.</li>
+      <li>Data for this report is updated on a daily basis, so some fields might not reflect the most up-to-date state of the promotion.</li>
+      </ul><p>Can be requested by both vendors and sellers.</p>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -1614,7 +1773,8 @@ A daily FBA report is generated no more than once every four hours. This means t
             <br>Example:
             <code>"reportOptions":{"filterMode":"exclude"}</code>
           </li>
-          <p><strong>Note:</strong> <code>subCategories</code> are not available in this report.
+        </ul>
+          <p><strong>Note:</strong> <code>subCategories</code> are not available in this report.</p>
         <p>This report is only available in these marketplaces:</p>
         <ul>
           <li>

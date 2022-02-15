@@ -5,6 +5,8 @@
 ## Overview
 The Selling Partner API for Notifications lets you subscribe to notifications that are relevant to a selling partner's business. Using this API you can create a destination to receive notifications, subscribe to notifications, delete notification subscriptions, and more.
 
+For more information, see the [Notifications Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md)
+
 
 ### Version information
 *Version* : v1
@@ -60,7 +62,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
-|**Path**|**notificationType**  <br>*required*|The type of notification to which you want to subscribe.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
+|**Path**|**notificationType**  <br>*required*|The type of notification.<br><br> For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).|enum ([NotificationType](#notificationtype))|
 
 
 #### Responses
@@ -99,7 +101,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Body**|**body**  <br>*required*|The request schema for the createSubscription operation.|[CreateSubscriptionRequest](#createsubscriptionrequest)|
-|**Path**|**notificationType**  <br>*required*|The type of notification to which you want to subscribe.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
+|**Path**|**notificationType**  <br>*required*|The type of notification.<br><br> For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).|enum ([NotificationType](#notificationtype))|
 
 
 #### Responses
@@ -139,7 +141,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**subscriptionId**  <br>*required*|The identifier for the subscription that you want to get.|string|
-|**Path**|**notificationType**  <br>*required*|The type of notification to which you want to subscribe.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
+|**Path**|**notificationType**  <br>*required*|The type of notification.<br><br> For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).|enum ([NotificationType](#notificationtype))|
 
 
 #### Responses
@@ -179,7 +181,7 @@ For more information, see "Usage Plans and Rate Limits" in the Selling Partner A
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**subscriptionId**  <br>*required*|The identifier for the subscription that you want to delete.|string|
-|**Path**|**notificationType**  <br>*required*|The type of notification to which you want to subscribe.<br><br> For more information about notification types, see the Notifications API Use Case Guide.|enum ([NotificationType](#notificationtype))|
+|**Path**|**notificationType**  <br>*required*|The type of notification.<br><br> For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).|enum ([NotificationType](#notificationtype))|
 
 
 #### Responses
@@ -565,9 +567,9 @@ Error response returned when the request is unsuccessful.
 
 <a name="notificationtype"></a>
 ### NotificationType
-The type of notification to which you want to subscribe.
+The type of notification.
 
- For more information about notification types, see the Notifications API Use Case Guide.
+ For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).
 
 *Type* : enum
 
@@ -576,16 +578,16 @@ The type of notification to which you want to subscribe.
 |---|---|
 |**ANY_OFFER_CHANGED**|Sent whenever there is a listing change for any of the top 20 offers, by condition (new or used), or if the external price (the price from other retailers) changes for an item listed by the seller. The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points. If multiple sellers are charging the same landed price, the results will be returned in random order.<br><br> These notifications are only sent for items for which the seller has active offers. You cannot subscribe to notifications for items for which the seller does not have active offers.|
 |**FEED_PROCESSING_FINISHED**|Sent whenever any feed submitted using the Selling Partner API for Feeds reaches a feed processing status of DONE or CANCELLED.|
-|**FBA_OUTBOUND_SHIPMENT_STATUS**|Sent whenever we create or cancel a Fulfillment by Amazon shipment for a seller.|
+|**FBA_OUTBOUND_SHIPMENT_STATUS**|Sent whenever Amazon creates or cancels a Fulfillment by Amazon shipment for a seller. This notification is only for FBA Onsite shipments. This notification is available only in the Brazil marketplace.|
 |**FEE_PROMOTION**|Sent when a promotion becomes active. Sellers can benefit from time-limited fee promotions. To receive notifications of these fee promotions on behalf of the seller, subscribe to the FEE_PROMOTION notification. All currently active promotions are sent at first, with each promotion sent as a single message. Subsequent notifications are sent when the promotion becomes active.|
 |**FULFILLMENT_ORDER_STATUS**|Sent whenever there is a change in the status of a Multi-Channel Fulfillment order.<br><br> Multi-Channel Fulfillment is a program where sellers use their FBA inventory to fulfill orders not sold on the retail site.|
-|**REPORT_PROCESSING_FINISHED**|Sent whenever any report that you have requested using the Selling Partner API for Reports reaches a report processing status of DONE, CANCELLED, or DONE_NO_DATA.|
+|**REPORT_PROCESSING_FINISHED**|Sent whenever any report that you have requested using the Selling Partner API for Reports reaches a report processing status of DONE, CANCELLED, or FATAL.|
 |**BRANDED_ITEM_CONTENT_CHANGE**|Sent whenever there is a change to the title, description, or bullet points for any ASIN that the selling partner has a brand relationship with.|
 |**ITEM_PRODUCT_TYPE_CHANGE**|Sent whenever there is a change to the product type name of any ASIN that the selling partner has a brand relationship with.|
 |**LISTINGS_ITEM_STATUS_CHANGE**|Sent whenever there is a listing status change including buyable transition, discoverable transition, listing create or delete for any SKU that the selling partner has.|
 |**LISTINGS_ITEM_ISSUES_CHANGE**|Sent whenever there are issues change for any SKU that the selling partner has.|
-|**MFN_ORDER_STATUS_CHANGE**|Sent whenever there is a change in the status of a MFN order availability.<br><br>This notification type is invitation-only and not publicly available.|
+|**MFN_ORDER_STATUS_CHANGE**|Sent whenever there is a change in the status of an MFN order availability.|
 |**B2B_ANY_OFFER_CHANGED**|Sent whenever there is a listing change for any of the top 20 B2B offers, by condition (new or used). The top 20 offers are determined by the landed price, which is the price plus shipping minus Amazon Points(applicable only JP). If multiple sellers are charging the same landed price, the results will be returned in random order.<br><br> These notifications are only sent for items for which the seller has active offers. Seller cannot receive notifications for items for which the seller does not have active offers.|
-|**ACCOUNT_STATUS_CHANGED**|Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, WARNING, AT_RISK, and SUSPENDED.<br><br> The notification will have a payload with 2 fields: previousAccountStatus and currentAccountStatus to indicate the direction of the change.|
-|**EXTERNAL_FULFILLMENT_SHIPMENT_STATUS_CHANGE**|Sent whenever there is a change in the status of an External Fulfillment shipment.|
+|**ACCOUNT_STATUS_CHANGED**|Sent whenever the Account Status changes for the developers subscribed merchant/marketplace pairs. A notification is published whenever the merchant's account status changes between NORMAL, AT_RISK, and DEACTIVATED.<br><br> The notification will have a payload with 2 fields: previousAccountStatus and currentAccountStatus to indicate the direction of the change.|
+|**PRODUCT_TYPE_DEFINITIONS_CHANGE**|Sent whenever there is a new Product Type or a Product Type Version in a marketplace.|
 

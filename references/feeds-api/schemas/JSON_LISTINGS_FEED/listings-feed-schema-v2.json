@@ -44,8 +44,9 @@
             "examples": [
               1
             ],
-            "minimum": 1,
-            "type": "integer"
+            "type":"integer",
+            "minimum":1,
+            "maximum": 2147483647
           },
           "sku": {
             "title": "SKU (Stock Keeping Unit)",

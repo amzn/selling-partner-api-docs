@@ -40,8 +40,7 @@
         ],
         "fulfillment_availability": [
           {
-            "fulfillment_channel_code": "AMAZON_NA",
-            "quantity": 10
+            "fulfillment_channel_code": "AMAZON_NA"
           }
         ]
       }

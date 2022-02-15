@@ -32,7 +32,9 @@
   - [Step 5. Add an AWS Security Token Service policy to your IAM user](#step-5-add-an-aws-security-token-service-policy-to-your-iam-user)
   
 - [Registering your application](#registering-your-application)
-  
+
+- [Updating your application information](#updating-your-application-information)
+
 - [Viewing your application information and credentials](#viewing-your-application-information-and-credentials)
 
 - [Authorizing Selling Partner API applications](#authorizing-selling-partner-api-applications)
@@ -43,9 +45,9 @@
 
   - [Migrating authorization from Amazon Marketplace Web Service](#migrating-authorization-from-amazon-marketplace-web-service)
 
-- [Amazon Partner Network authorization workflow](#amazon-partner-network-authorization-workflow)
+- [Amazon Seller Central Partner Network authorization workflow](#amazon-seller-central-partner-network-authorization-workflow)
   
-  - [Step 1. The selling partner initiates authorization from the Amazon Partner Network](#step-1-the-selling-partner-initiates-authorization-from-the-amazon-partner-network)
+  - [Step 1. The selling partner initiates authorization from the Amazon Seller Central Partner Network](#step-1-the-selling-partner-initiates-authorization-from-the-amazon-seller-central-partner-network)
   
   - [Step 2. The selling partner consents to authorize your application](#step-2-the-selling-partner-consents-to-authorize-your-application)
   
@@ -67,10 +69,10 @@
   
   - [Step 4. Your application exchanges the LWA authorization code for a LWA refresh token](#step-4-your-application-exchanges-the-lwa-authorization-code-for-a-lwa-refresh-token)
 
+
 - [Self authorization](#self-authorization)
 
 - [Authorization with the Restricted Data Token](#authorization-with-the-restricted-data-token)
-   - [How do I get an RDT?](#how-do-i-get-an-rdt)
 
 - [Generating a Java SDK with LWA token exchange and authentication](#generating-a-java-sdk-with-lwa-token-exchange-and-authentication)
 
@@ -156,7 +158,7 @@ The Selling Partner API is a REST-based API that helps Amazon selling partners p
 
 With the Selling Partner API, you can:
 
-  - Set up an OAuth authorization workflow that selling partners initiate from the Amazon Partner Network detail page or from your own website.
+  - Set up an OAuth authorization workflow that selling partners initiate from the Amazon Seller Central Partner Network detail page or from your own website.
 
   - Generate an SDK that can help you with LWA token exchange and authentication.
 
@@ -556,6 +558,48 @@ The following procedures show you how to register your application, depending on
 
 **Important.** When registering your application, the IAM ARN that you provide must be for the IAM entity to which you attached the IAM policy from  [Step 3. Create an IAM policy](#Step-3-Create-an-IAM-policy). In this workflow, that IAM entity is the IAM role from [Step 4. Create an IAM role](#Step-4-Create-an-IAM-role). If you register your application using your IAM user, be sure that the IAM policy is attached to it. Otherwise your calls to the Selling Partner API will fail. We recommend registering your application using an IAM role, as shown in this workflow, to help you better control access to your AWS resources.
 
+# Updating your application information
+
+After you [register your application](#registering-your-application), you might find that you later want to update your application information. For example, you might want to change the IAM ARN associated with your application or add another OAuth redirect URI. 
+
+**Note.** When you update the IAM ARN for your application, both the old IAM ARN and the new IAM ARN are in effect for 14 days. This gives you time to update your authorization workflow for the new IAM ARN. After 14 days, the old IAM ARN expires.
+
+The way you update your application information varies slightly depending on the application type. For the purposes of updating your application information, applications are grouped into two types:
+
+- **All public applications and private seller applications.** These are: (1) Applications that are publicly available and are authorized by a seller or by a vendor,  and (2) seller applications that are available only to your organization, and are self-authorized.
+
+- **Private vendor applications.** Vendor applications that are available only to your organization, and are self-authorized.
+
+For more information, see [Terminology](#terminology).
+
+**To update your application information (for all public applications and private seller applications)**
+
+1.  Sign into Seller Central using the credentials that you used to [register as a developer](#registering-as-a-developer).
+
+2.  In the **Partner Network** menu, click **Develop Apps**.
+
+    The **Developer Central** page appears.
+
+3. Click the **Edit app** button next to the application that you want to update the information for.
+
+    The **App registration** page appears.
+
+4. Edit the values on the page that you want to update, and then click **Save and exit**.
+
+**To update your application information (for private vendor applications)**
+
+1. Sign into Vendor Central with the credentials that you used to [register as a developer](#registering-as-a-developer).
+
+2. In the **Integration** menu, click **API Integration**.
+
+   The **Developer Central** page appears. 
+
+3. Click the **Edit app** button next to the application that you want to update the information for.
+
+    The **App registration** page appears.
+
+4. Edit the values on the page that you want to update, and then click **Save and exit**.
+
 # Viewing your application information and credentials
 
 After you [register your application](#registering-your-application) you can view information about your application, as well as your Login with Amazon (LWA) credentials. The way you view this information varies slightly depending on the application type. For the purposes of viewing your application information and credentials, applications are grouped into two types:
@@ -601,7 +645,7 @@ The authorization model for the Selling Partner API is based on [Login with Amaz
 The way your applications are authorized depends on the application type. Here are applications types grouped by how they are authorized:
 
 - **Public applications for sellers.** Applications that are publicly available and are authorized by sellers. These applications can be authorized using the following methods:
-  - [Amazon Partner Network authorization workflow.](#amazon-partner-network-authorization-workflow) An OAuth authorization workflow initiated from the Amazon Partner Network detail page.
+  - [Amazon Seller Central Partner Network authorization workflow.](#amazon-seller-central-partner-network-authorization-workflow) An OAuth authorization workflow initiated from the Amazon Seller Central Partner Network detail page.
   - [Website authorization workflow.](#Website-authorization-workflow) An OAuth authorization workflow initiated from your own website.
 
 - **Public applications for vendors.** Applications that are publicly available and are authorized by vendors. These applications can be authorized using the following method:
@@ -618,7 +662,7 @@ For more information, see [Terminology](#Terminology).
 
 An OAuth authorization URI is a key component for creating and testing Selling Partner API authorization workflows. The OAuth authorization URI redirects a browser to an Amazon consent page, where a selling partner can give your application consent to make calls to the Selling Partner API on their behalf. If the selling partner is not signed into Seller Central (for sellers) or Vendor Central (for vendors), a sign-in page appears first. 
 
-If a selling partner authorizes your application starting from your own website (the [Website authorization workflow](#website-authorization-workflow)) your website uses an OAuth authorization URI to redirect the selling partner to the Amazon consent page. Even if a selling partner authorizes your application starting from the Amazon Partner Network (the [Amazon Partner Network authorization workflow](#amazon-partner-network-authorization-workflow)), you still need an OAuth authorization URI to test your authorization workflow in draft status before creating a live listing in the Amazon Partner Network.
+If a selling partner authorizes your application starting from your own website (the [Website authorization workflow](#website-authorization-workflow)) your website uses an OAuth authorization URI to redirect the selling partner to the Amazon consent page. Even if a selling partner authorizes your application starting from the Amazon Seller Central Partner Network (the [Amazon Seller Central Partner Network authorization workflow](#amazon-seller-central-partner-network-authorization-workflow)), you still need an OAuth authorization URI to test your authorization workflow in draft status before creating a live listing in the Amazon Seller Central Partner Network.
 
 For the purposes of constructing an OAuth authorization URI, applications are grouped into two types:
 
@@ -634,7 +678,7 @@ The following procedures show you how to construct an OAuth authorization URI, d
 
 1.  Get the Seller Central URL for the marketplace where you want selling partners to authorize your application. See [Seller Central URLs](#seller-central-urls) for a list of URLs by marketplace. Example: `https://sellercentral.amazon.com`
 
-2.  Combine the Seller Central URL with `/apps/authorize/consent?{your application ID}`.
+2.  Combine the Seller Central URL with `/apps/authorize/consent?application_id={your application ID}`.
 
     Example: `https://sellercentral.amazon.com/apps/authorize/consent?application_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28`
 
@@ -650,23 +694,27 @@ You need to construct OAuth authorization URIs for the marketplaces in which sel
 
 If you are creating an OAuth authorization URI for testing your authorization workflow, add the version=beta parameter. This indicates that the authorization workflow is for an application in draft status. Example: `https://sellercentral-europe.amazon.com/apps/authorize/consent?application_id=amzn1.sellerapps.app.0bf296b5-36a6-4942-a13e-EXAMPLEfcd28&version=beta`
 
-For information about creating and testing an authorization workflow, see [Amazon Partner Network authorization workflow](#amazon-partner-network-authorization-workflow) and [Website authorization workflow](#website-authorization-workflow).
+For information about creating and testing an authorization workflow, see [Amazon Seller Central Partner Network authorization workflow](#amazon-seller-central-partner-network-authorization-workflow) and [Website authorization workflow](#website-authorization-workflow).
 
 ## Migrating authorization from Amazon Marketplace Web Service
 
 **For seller applications only.**
 
-If a seller has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a [hybrid Selling Partner API application](#Hybrid-Selling-Partner-API-applications). This eliminates the need to request authorization from the selling partner again. For more information, see the [Authorization API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/authorization-api-use-case-guide/authorization-api-use-case-guide-v1.md).
+If a seller has authorized you to make calls to Amazon Marketplace Web Service on their behalf, you can use the Authorization API to migrate that authorization to a [hybrid Selling Partner API application](#Hybrid-Selling-Partner-API-applications). This eliminates the need to request authorization from this seller for your hybrid SP-API application.
 
-# Amazon Partner Network authorization workflow
+**Note.** Authorizations of a hybrid SP-API application expire after one year. Be sure to have your selling partners reauthorize your SP-API hybrid application yearly before their authorizations expire. 
+
+For more information, see the [Authorization API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/authorization-api-use-case-guide/authorization-api-use-case-guide-v1.md).
+
+# Amazon Seller Central Partner Network authorization workflow
 
 **For seller applications only**
 
-The Amazon Partner Network authorization workflow is an OAuth authorization workflow that the selling partner initiates from the Amazon Partner Network detail page. When you list a Selling Partner API application on the Amazon Partner Network, selling partners can authorize your application by clicking an **Authorize Now** button on the detail page.
+The Amazon Seller Central Partner Network (Amazon SCPN) authorization workflow is an OAuth authorization workflow that the selling partner initiates from the Amazon SCPN detail page. When you list a Selling Partner API application on the Amazon SCPN, selling partners can authorize your application by clicking an **Authorize Now** button on the detail page.
 
 **Testing your authorization workflow**
 
-Before listing your application on the Amazon Partner Network, you should test your authorization workflow while your application is in draft status. Your test workflow won’t be exactly the same as the final production workflow, but you'll be able to ensure that your application can exchange parameters with Amazon and receive authorization information.
+Before listing your application on the Amazon SCPN, you should test your authorization workflow while your application is in draft status. Your test workflow won’t be exactly the same as the final production workflow, but you'll be able to ensure that your application can exchange parameters with Amazon and receive authorization information.
 
 **To set up a test authorization workflow**
 
@@ -676,7 +724,7 @@ Before listing your application on the Amazon Partner Network, you should test y
 
 3.  At [Step 3. The selling partner signs into your website](#Step-3-The-selling-partner-signs-into-your-website), be sure that your workflow adds the `version=beta` parameter to the Amazon callback URI to indicate that the workflow is for authorizing an application in draft status.
 
-You are now ready to test your authorization workflow with a trusted selling partner who works with you. Alternatively, you can test the workflow yourself, using your own selling account credentials. Instead of starting at [Step 1. The selling partner initiates authorization from the Amazon Partner Network](#step-1-the-selling-partner-initiates-authorization-from-the-amazon-partner-network), the selling partner starts the test workflow by navigating to an OAuth authorization URI that you constructed previously.
+You are now ready to test your authorization workflow with a trusted selling partner who works with you. Alternatively, you can test the workflow yourself, using your own selling account credentials. Instead of starting at [Step 1. The selling partner initiates authorization from the Amazon Seller Central Partner Network](#step-1-the-selling-partner-initiates-authorization-from-the-amazon-seller-central-partner-network), the selling partner starts the test workflow by navigating to an OAuth authorization URI that you constructed previously.
 
 **Note:** If you have more than one regional OAuth authorization URI, be sure give the selling partner the OAuth authorization URI that corresponds to the region that they operate in.
 
@@ -684,15 +732,15 @@ When you have finished testing the authorization workflow you can convert it to 
 
 **To convert your test authorization workflow to a productions workflow**
 
-1.  List your application in the Amazon Partner Network. This changes your application from draft status to published status.
+1.  List your application in the Amazon SCPN. This changes your application from draft status to published status.
 
 2.  Update your workflow so that it no longer adds the `version=beta` parameter to the Amazon callback URI in [Step 3. The selling partner signs into your website](#Step-3-The-selling-partner-signs-into-your-website).
 
-    Now any selling partner can authorize your published application starting at [Step 1. The selling partner initiates authorization from the Amazon Partner Network](#step-1-the-selling-partner-initiates-authorization-from-the-amazon-partner-network).
+    Now any selling partner can authorize your published application starting at [Step 1. The selling partner initiates authorization from the Amazon Seller Central Partner Network](#step-1-the-selling-partner-initiates-authorization-from-the-amazon-seller-central-partner-network).
 
 **Steps**
 
-[Step 1. The selling partner initiates authorization from the Amazon Partner Network](#step-1-the-selling-partner-initiates-authorization-from-the-amazon-partner-network)
+[Step 1. The selling partner initiates authorization from the Amazon Seller Central Partner Network](#step-1-the-selling-partner-initiates-authorization-from-the-amazon-seller-central-partner-network)
 
 [Step 2. The selling partner consents to authorize your application](#step-2-the-selling-partner-consents-to-authorize-your-application)
 
@@ -702,9 +750,9 @@ When you have finished testing the authorization workflow you can convert it to 
 
 [Step 5. Your application exchanges the LWA authorization code for an LWA refresh token](#step-5-your-application-exchanges-the-lwa-authorization-code-for-an-lwa-refresh-token)
 
-## Step 1. The selling partner initiates authorization from the Amazon Partner Network
+## Step 1. The selling partner initiates authorization from the Amazon Seller Central Partner Network
 
-1.  The selling partner signs into Seller Central and goes to the Amazon Partner Network.
+1.  The selling partner signs into Seller Central and goes to the Amazon Seller Central Partner Network (Amazon SCPN).
 
 2.  The selling partner goes to the detail page for your application and clicks the **Authorize Now** button. The consent page for your application appears.
 
@@ -720,7 +768,7 @@ When you have finished testing the authorization workflow you can convert it to 
 | **amazon_state**         | A state value generated by Amazon to guard against cross-site request forgery attacks.    |
 | **selling_partner_id**  | The identifier of the selling partner who is authorizing your application.     |
 
-**Note:** If this a test workflow (the selling partner started by navigating to your OAuth authorization URI) Amazon includes the `version=beta` parameter. If this is a production workflow (the selling partner started from the Amazon Partner Network), Amazon does not include the parameter.
+**Note:** If this a test workflow (the selling partner started by navigating to your OAuth authorization URI) Amazon includes the `version=beta` parameter. If this is a production workflow (the selling partner started from the Amazon SCPN), Amazon does not include the parameter.
 
 For example:
 ```
@@ -758,7 +806,7 @@ Your website's sign-in page appears.
 </tbody>
 </table>
 
-**Note:** If you include the `version=beta` parameter, the workflow authorizes an application in Draft state. If you do not include the parameter, the workflow authorizes an application published on the Amazon Partner Network.
+**Note:** If you include the `version=beta` parameter, the workflow authorizes an application in Draft state. If you do not include the parameter, the workflow authorizes an application published on the Amazon Seller Central Partner Network.
 
 For example:
 ```
@@ -816,7 +864,7 @@ For more information, see the Login with Amazon documentation:
 | **client_secret** | Part of your LWA credentials. To get this value, see [Viewing your application information and credentials](#viewing-your-application-information-and-credentials).  |
 
 For example:
-```http
+```plain
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -830,7 +878,7 @@ grant_type=authorization_code&code=SplxlOexamplebYS6WxSbIA&client_id=foodev&clie
 | **token_type**    | The type of token returned. Should be bearer.   |
 | **expires_in**    | The number of seconds before the access token becomes invalid.  |
 | **refresh_token** | A long-lived token that can be exchanged for a new access token. See [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api). |
-```http
+```plain
 HTTP/l.l 200 OK
 Content-Type: application/json;
 charset UTF-8
@@ -877,7 +925,7 @@ When you have finished testing the authorization workflow you can convert it to 
 
 **To convert your test authorization workflow to a productions workflow**
 
-1.  List your application in the Amazon Partner Network. This changes your application from draft status to published status.
+1.  List your application in the Amazon Seller Central Partner Network. This changes your application from draft status to published status.
 
     **Important.** Your application must be in published status for the Webstore authorization workflow to work.
 
@@ -933,7 +981,7 @@ Setting up your “Authorize” button(s) is a one-time task.
 </tbody>
 </table>
 
-**Note:** If you include the `version=beta` parameter, the workflow authorizes an application in Draft state. If you do not include the parameter, the workflow authorizes an application published on the Amazon Partner Network.
+**Note:** If you include the `version=beta` parameter, the workflow authorizes an application in Draft state. If you do not include the parameter, the workflow authorizes an application published on the Amazon Seller Central Partner Network.
 
 For example:
 ```
@@ -1023,7 +1071,7 @@ For more information, see the Login with Amazon documentation:
 </table>
 
 For example:
-```http
+```plain
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1037,7 +1085,7 @@ grant_type=authorization_code&code=SplxlOexamplebYS6WxSbIA&client_id=foodev&clie
 | **token_type**    | The type of token returned. Should be bearer.      |
 | **expires_in**    | The number of seconds before the access token becomes invalid.   |
 | **refresh_token** | A long-lived token that can be exchanged for a new access token. See [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api). |
-```http
+```plain
 HTTP/l.l 200 OK
 Content-Type: application/json;
 charset UTF-8
@@ -1118,6 +1166,7 @@ The self authorization procedure varies depending on if you have a seller applic
 
     **Note.**  If your selling account is merged with accounts from other regions, you will receive a separate refresh token for each region. Your application is now authorized to access your selling account(s).      
     
+
 An LWA refresh token is a long-lived token that you exchange for an LWA access token. An access token obtained through this token exchange must be included with calls to all Selling Partner API operations except [restricted operations](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md#restricted-operations) and [grantless operations](#grantless-operations), which use somewhat different authorization models. After an access token is issued it is valid for one hour. The same access token can be used for multiple API calls, until it expires.
 
 To exchange a refresh token for an access token using a generated SDK, see [Connecting to the Selling Partner API using a generated Java SDK](#connecting-to-the-selling-partner-api-using-a-generated-java-sdk). To manually exchange a refresh token for an access token, see [Connecting to the Selling Partner API](#connecting-to-the-selling-partner-api).
@@ -1174,7 +1223,7 @@ The SDK is copied to C:\\SwaggerToCL\\Sellers_JavaCL
 
 10. Build the AA Library and add it as a dependency of the SDK:
     
-    1.  Navigate to the **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** folder of your local copy of the repository and run mvn package. This generates a folder named "target". In this folder is a JAR file named **sellingpartnerapi-aa-java-1.0-jar-with-dependencies.jar** (or something similar) and all of the required dependencies.
+    1.  Navigate to the **selling-partner-api-models\\clients\\sellingpartner-api-aa-java** folder of your local copy of the repository and run `mvn package`. This generates a folder named "target". In this folder is a JAR file named **sellingpartnerapi-aa-java-1.0-jar-with-dependencies.jar** (or something similar) and all of the required dependencies.
     
     2.  Install the JAR file in your local Maven repository.
 
@@ -1296,7 +1345,7 @@ Create an instance of `AWSAuthenticationCredentialsProvider`, using the followin
 
 Example:
 ```
-import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentials;
+import com.amazon.SellingPartnerAPIAA.AWSAuthenticationCredentialsProvider;
 
 AWSAuthenticationCredentialsProvider awsAuthenticationCredentialsProvider=AWSAuthenticationCredentialsProvider.builder()
   .roleArn("myroleARN")
@@ -1506,7 +1555,7 @@ To request an LWA access token, make a secure HTTP POST to the LWA authenticatio
 </table>
 
 Example for calling an operation that requires selling partner authorization:
-```http
+```plain
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1516,7 +1565,7 @@ grant_type=refresh_token
 &client_secret=Y76SDl2F
 ```
 Example for calling a grantless operation:
-```http
+```plain
 POST /auth/o2/token HTTP/l.l
 Host: api.amazon.com
 Content-Type: application/x-www-form-urlencoded;charset=UTF-8
@@ -1536,8 +1585,8 @@ A successful response includes the following values.
 | **access_token**  | The LWA access token. Maximum size: 2048 bytes.   |
 | **token_type**    | The type of token returned. Must be *bearer*. |
 | **expires_in**    | The number of seconds before the LWA access token becomes invalid.  |
-| **refresh_token** | The LWA access token that you submitted in the request. Maximum size: 2048 bytes. |
-```http
+| **refresh_token** | The LWA refresh token that you submitted in the request. Maximum size: 2048 bytes. |
+```plain
 HTTP/l.l 200 OK
 Content-Type: application/json;charset UTF-8
 Cache-Control: no-store
@@ -1564,7 +1613,7 @@ Here are the components of a Selling Partner API URI.
 | Path parameter | The path parameters.  | `shipmentId1`  |
 
 For example:
-```http
+```plain
 PUT https://sellingpartnerapi-na.amazon.com/fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10
 ```
 ## Step 3. Add headers to the URI
@@ -1581,7 +1630,7 @@ Add headers to the URI that you constructed in [Step 2. Construct a Selling Part
 | user-agent    | Your application name and version number, platform, and programming language. These help Amazon diagnose and fix problems you might encounter with the service. See [Include a User-Agent header in all](#include-a-user-agent-header-in-all-requests) [requests](#include-a-user-agent-header-in-all-requests). |
 
 Here is an example of a request to the Selling Partner API with URI and headers but no signing information:
-```http
+```plain
 PUT /fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10 HTTP/1.1
 host: sellingpartnerapi-na.amazon.com
 user-agent: My Selling Tool/2.0 (Language=Java/1.8.0.221;
@@ -1632,7 +1681,7 @@ To create and sign your request, complete the following:
       - See [Authorization header](#authorization-header) for details about creating an `Authorization` header parameter.
 
     The following example shows what a request might look like after you've added the signing information to it using the Authorization header.
-```http
+```plain
 PUT /fba/inbound/v0/shipments/shipmentId1/preorder/confirm?MarketplaceId=ATVPDKIKX0DER&NeedByDate=2020-10-10HTTP/1.1
 Authorization: AWS4-HMAC-SHA256 Credential=AKIAIHV6HIXXXXXXX/20201022/us-east-1/execute-api/aws4_request, SignedHeaders=host;user-agent;x-amz-access-token,
 Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924aEXAMPLE
@@ -1699,7 +1748,7 @@ In response to an HTTP request, the Selling Partner API returns response headers
 ### Success Response
 
 If your request is successful, the Selling Partner API returns the data requested. Here is an example of a successful response:
-```http
+```plain
 HTTP/1.1 200 OK
 Content-Length: 368
 Content-Type: application/json
@@ -1725,7 +1774,7 @@ If your request is unsuccessful, the Selling Partner API returns an error respon
 | details     | Link to additional information.     | No           |
 
 Here is an example of an error response:
-```http
+```plain
 HTTP/1.1 400 Bad Request
 Content-Length: 117
 Content-Type: application/json
@@ -1791,13 +1840,13 @@ Because the User-Agent header is transmitted in every request, it is a good prac
 
 A hybrid Selling Partner API application is an application that can make calls both to the Selling Partner API and to Amazon Marketplace Web Service (Amazon MWS). Use a hybrid application when your solution requires functionality from both services. When a selling partner authorizes your hybrid Selling Partner API application, they are (1) authorizing your Amazon MWS developer ID to make calls to Amazon MWS on their behalf, and (2) authorizing the application to make calls to the Selling Partner API on their behalf.
 
-Amazon considers a hybrid application to be a single application. For example, when you publish a hybrid application to the Amazon Partner Network, you manage it as a single application.
+Amazon considers a hybrid application to be a single application. For example, when you publish a hybrid application to the Amazon Seller Central Partner Network, you manage it as a single application.
 
 ## Creating a hybrid Selling Partner API application
 
 **To create a hybrid application**
 
-1.  Publish your Amazon MWS application to the Amazon Partner Network. For information about publishing your application, see [Amazon Partner Network Listing Guide](https://docs.developer.amazonservices.com/en_US/dev_guide/DG_AppListingGuide.html) in the Amazon MWS documentation.
+1.  Publish your Amazon MWS application to the Amazon Seller Central Partner Network. For information about publishing your application, see [Amazon Seller Central Partner Network Listing Guide](https://docs.developer.amazonservices.com/en_US/dev_guide/DG_AppListingGuide.html) in the Amazon MWS documentation.
 
 2.  Sign into Seller Central using the credentials that you used to [register as a developer](#registering-as-a-developer).
 
@@ -1991,7 +2040,7 @@ Here are the Vendor Central URLs by marketplace.
 | Egypt           | <https://vendorcentral.amazon.me>     |
 | Turkey          | <https://vendorcentral.amazon.com.tr> |
 | U.A.E.          | <https://vendorcentral.amazon.me>     |
-| India           | <https://www.vendorcentral.in>        |
+| India           | <https://vendorcentral.amazon.in>     |
 
 **Far East**
 

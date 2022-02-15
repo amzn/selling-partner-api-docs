@@ -55,7 +55,7 @@ Returns a list of inventory summaries. The summaries returned depend on the pres
 
 | Rate (requests per second) | Burst |
 | ---- | ---- |
-| 5 | 10 |
+| 2 | 2 |
 
 For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
