@@ -36,7 +36,7 @@ The Selling Partner API for Orders helps you programmatically retrieve order inf
 
 
 ### Operations
-[getOrders](#getorders)<br>[getOrder](#getorder)<br>[getOrderBuyerInfo](#getorderbuyerinfo)<br>[getOrderAddress](#getorderaddress)<br>[getOrderItems](#getorderitems)<br>[getOrderItemsBuyerInfo](#getorderitemsbuyerinfo)<br>[updateShipmentStatus](#updateshipmentstatus)<br>
+[getOrders](#getorders)<br>[getOrder](#getorder)<br>[getOrderBuyerInfo](#getorderbuyerinfo)<br>[getOrderAddress](#getorderaddress)<br>[getOrderItems](#getorderitems)<br>[getOrderItemsBuyerInfo](#getorderitemsbuyerinfo)<br>[updateShipmentStatus](#updateshipmentstatus)<br>[getOrderRegulatedInfo](#getorderregulatedinfo)<br>[updateVerificationStatus](#updateverificationstatus)<br>
 <a name="paths"></a>
 ## Paths
 
@@ -66,8 +66,8 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**Query**|**LastUpdatedAfter**  <br>*optional*|A date used for selecting orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in ISO 8601 format.|string|
 |**Query**|**LastUpdatedBefore**  <br>*optional*|A date used for selecting orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in ISO 8601 format.|string|
 |**Query**|**OrderStatuses**  <br>*optional*|A list of OrderStatus values used to filter the results. Possible values: PendingAvailability (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.); Pending (The order has been placed but payment has not been authorized); Unshipped (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped); PartiallyShipped (One or more, but not all, items in the order have been shipped); Shipped (All items in the order have been shipped); InvoiceUnconfirmed (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.); Canceled (The order has been canceled); and Unfulfillable (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.).|< string > array|
-|**Query**|**MarketplaceIds**  <br>*required*|A list of MarketplaceId values. Used to select orders that were placed in the specified marketplaces.<br><br>See the [Selling Partner API Developer Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#marketplaceid-values) for a complete list of marketplaceId values.<br>**Max count** : 50|< string > array|
-|**Query**|**FulfillmentChannels**  <br>*optional*|A list that indicates how an order was fulfilled. Filters the results by fulfillment channel. Possible values: FBA (Fulfillment by Amazon); SellerFulfilled (Fulfilled by the seller).|< string > array|
+|**Query**|**MarketplaceIds**  <br>*required*|A list of MarketplaceId values. Used to select orders that were placed in the specified marketplaces.<br><br>See the [Selling Partner API Developer Guide](doc:marketplace-ids) for a complete list of marketplaceId values.<br>**Max count** : 50|< string > array|
+|**Query**|**FulfillmentChannels**  <br>*optional*|A list that indicates how an order was fulfilled. Filters the results by fulfillment channel. Possible values: AFN (Fulfillment by Amazon); MFN (Fulfilled by the seller).|< string > array|
 |**Query**|**PaymentMethods**  <br>*optional*|A list of payment method values. Used to select orders paid using the specified payment methods. Possible values: COD (Cash on delivery); CVS (Convenience store payment); Other (Any payment method other than COD or CVS).|< string > array|
 |**Query**|**BuyerEmail**  <br>*optional*|The email address of a buyer. Used to select orders that contain the specified email address.|string|
 |**Query**|**SellerOrderId**  <br>*optional*|An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If SellerOrderId is specified, then FulfillmentChannels, OrderStatuses, PaymentMethod, LastUpdatedAfter, LastUpdatedBefore, and BuyerEmail cannot be specified.|string|
@@ -92,7 +92,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrdersResponse](#getordersresponse)|
 
-For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+
 <a name="getorder"></a>
 ### GET /orders/v0/orders/{orderId}
 **Operation: getOrder**
@@ -129,15 +129,13 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderResponse](#getorderresponse)|
 
-For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+
 <a name="getorderbuyerinfo"></a>
 ### GET /orders/v0/orders/{orderId}/buyerInfo
 **Operation: getOrderBuyerInfo**
 
 #### Description
 Returns buyer information for the specified order.
-
-**Important.** We recommend using the getOrders operation to get buyer information for an order, as the getOrderBuyerInfo operation is scheduled for deprecation on January 12, 2022. For more information, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md).
 
 **Usage Plans:**
 
@@ -168,15 +166,13 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderBuyerInfoResponse](#getorderbuyerinforesponse)|
 
-For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+
 <a name="getorderaddress"></a>
 ### GET /orders/v0/orders/{orderId}/address
 **Operation: getOrderAddress**
 
 #### Description
 Returns the shipping address for the specified order.
-
-**Important.** We recommend using the getOrders operation to get shipping address information for an order, as the getOrderAddress operation is scheduled for deprecation on January 12, 2022. For more information, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md).
 
 **Usage Plans:**
 
@@ -207,7 +203,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderAddressResponse](#getorderaddressresponse)|
 
-For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+
 <a name="getorderitems"></a>
 ### GET /orders/v0/orders/{orderId}/orderItems
 **Operation: getOrderItems**
@@ -247,15 +243,13 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsResponse](#getorderitemsresponse)|
 
-For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+
 <a name="getorderitemsbuyerinfo"></a>
 ### GET /orders/v0/orders/{orderId}/orderItems/buyerInfo
 **Operation: getOrderItemsBuyerInfo**
 
 #### Description
 Returns buyer information for the order items in the specified order.
-
-**Important.** We recommend using the getOrderItems operation to get buyer information for the order items in an order, as the getOrderItemsBuyerInfo operation is scheduled for deprecation on January 12, 2022. For more information, see the [Tokens API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/tokens-api-use-case-guide/tokens-API-use-case-guide-2021-03-01.md).
 
 **Usage Plans:**
 
@@ -287,7 +281,7 @@ The x-amzn-RateLimit-Limit response header returns the usage plan rate limits th
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.<br>_Note:_ For this status code, the rate limit header is deprecated and no longer returned.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderItemsBuyerInfoResponse](#getorderitemsbuyerinforesponse)|
 
-For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+
 <a name="updateshipmentstatus"></a>
 ### POST /orders/v0/orders/{orderId}/shipment
 **Operation: updateShipmentStatus**
@@ -312,22 +306,88 @@ Update the shipment status.
 |**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
 |**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
 |**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
 |**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
 |**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
 |**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
 
-For additional error status codes, descriptions and schemas, see [Error responses and schemas](#error-responses-and-schemas).
+
+<a name="getorderregulatedinfo"></a>
+### GET /orders/v0/orders/{orderId}/regulatedInfo
+**Operation: getOrderRegulatedInfo**
+
+#### Description
+Returns regulated information for the order indicated by the specified order ID.
+
+**Usage Plans:**
+
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 0.0055 | 20 |
+|Selling partner specific| Variable | Variable |
+
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
 
 
+#### Parameters
 
-<a name="error-responses-and-schemas"></a>
-### Error Responses and Schemas
-This table contains HTTP status codes and associated information for error responses.
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**orderId**  <br>*required*|An orderId is an Amazon-defined order identifier, in 3-7-7 format.|string|
+
+
+#### Responses
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**413**|The request size exceeded the maximum accepted size.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
-|**415**|The request payload is in an unsupported format.  <br>**Headers**:  <br>`x-amzn-RequestId` (string):Unique request reference ID.|[UpdateShipmentStatusErrorResponse](#updateshipmentstatuserrorresponse)|
+|**200**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderRegulatedInfoResponse](#getorderregulatedinforesponse)|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderRegulatedInfoResponse](#getorderregulatedinforesponse)|
+|**403**|Indicates access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderRegulatedInfoResponse](#getorderregulatedinforesponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderRegulatedInfoResponse](#getorderregulatedinforesponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderRegulatedInfoResponse](#getorderregulatedinforesponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderRegulatedInfoResponse](#getorderregulatedinforesponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[GetOrderRegulatedInfoResponse](#getorderregulatedinforesponse)|
+
+
+<a name="updateverificationstatus"></a>
+### PATCH /orders/v0/orders/{orderId}/regulatedInfo
+**Operation: updateVerificationStatus**
+
+#### Description
+Updates (approves or rejects) the verification status of an order containing regulated products.
+
+**Usage Plans:**
+
+| Plan type | Rate (requests per second) | Burst |
+| ---- | ---- | ---- |
+|Default| 0.0055 | 20 |
+|Selling partner specific| Variable | Variable |
+
+The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see "Usage Plans and Rate Limits" in the Selling Partner API documentation.
+
+
+#### Parameters
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Path**|**orderId**  <br>*required*|An orderId is an Amazon-defined order identifier, in 3-7-7 format.|string|
+|**Body**|**payload**  <br>*required*|Request to update the verification status of an order containing regulated products.|[UpdateVerificationStatusRequest](#updateverificationstatusrequest)|
+
+
+#### Responses
+
+|HTTP Code|Description|Schema|
+|---|---|---|
+|**204**|Success.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|No Content|
+|**400**|Request has missing or invalid parameters and cannot be parsed.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateVerificationStatusErrorResponse](#updateverificationstatuserrorresponse)|
+|**403**|Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateVerificationStatusErrorResponse](#updateverificationstatuserrorresponse)|
+|**404**|The resource specified does not exist.  <br>**Headers** :   <br>`x-amzn-RateLimit-Limit` (string) : Your rate limit (requests per second) for this operation.  <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateVerificationStatusErrorResponse](#updateverificationstatuserrorresponse)|
+|**413**|The request size exceeded the maximum accepted size.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateVerificationStatusErrorResponse](#updateverificationstatuserrorresponse)|
+|**415**|The request payload is in an unsupported format.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateVerificationStatusErrorResponse](#updateverificationstatuserrorresponse)|
+|**429**|The frequency of requests was greater than allowed.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateVerificationStatusErrorResponse](#updateverificationstatuserrorresponse)|
+|**500**|An unexpected condition occurred that prevented the server from fulfilling the request.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateVerificationStatusErrorResponse](#updateverificationstatuserrorresponse)|
+|**503**|Temporary overloading or maintenance of the server.  <br>**Headers** :   <br>`x-amzn-RequestId` (string) : Unique request reference ID.|[UpdateVerificationStatusErrorResponse](#updateverificationstatuserrorresponse)|
 
 
 <a name="definitions"></a>
@@ -343,6 +403,28 @@ Request to update the status of shipment of an order.
 |**marketplaceId**  <br>*required*|the unobfuscated marketplace ID|[MarketplaceId](#marketplaceid)|
 |**shipmentStatus**  <br>*required*|the status of the shipment of the order to be updated|[ShipmentStatus](#shipmentstatus)|
 |**orderItems**  <br>*optional*|the list of order items and quantities when the seller wants to partially update the shipment status of the order|[OrderItems](#orderitems)|
+
+
+<a name="updateverificationstatusrequest"></a>
+### UpdateVerificationStatusRequest
+Request to update the verification status of an order containing regulated products.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**regulatedOrderVerificationStatus**  <br>*required*|The updated values of the VerificationStatus field.|[UpdateVerificationStatusRequestBody](#updateverificationstatusrequestbody)|
+
+
+<a name="updateverificationstatusrequestbody"></a>
+### UpdateVerificationStatusRequestBody
+The updated values of the VerificationStatus field.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**status**  <br>*required*|The new verification status of the order.|enum ([Status](#status-subgroup-1))|
+|**externalReviewerId**  <br>*required*|The identifier for the order's regulated information reviewer.|string|
+|**rejectionReasonId**  <br>*optional*|The unique identifier for the rejection reason used for rejecting the order's regulated information. Only required if the new status is rejected.|string|
 
 
 <a name="marketplaceid"></a>
@@ -391,6 +473,16 @@ The error response schema for the UpdateShipmentStatus operation.
 |**errors**  <br>*optional*|One or more unexpected errors occurred during the UpdateShipmentStatus operation.|[ErrorList](#errorlist)|
 
 
+<a name="updateverificationstatuserrorresponse"></a>
+### UpdateVerificationStatusErrorResponse
+The error response schema for the UpdateVerificationStatus operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**errors**  <br>*optional*|One or more unexpected errors occurred during the UpdateVerificationStatus operation.|[ErrorList](#errorlist)|
+
+
 <a name="getordersresponse"></a>
 ### GetOrdersResponse
 The response schema for the getOrders operation.
@@ -422,6 +514,17 @@ The response schema for the getOrderBuyerInfo operation.
 |---|---|---|
 |**payload**  <br>*optional*|The payload for the getOrderBuyerInfo operations.|[OrderBuyerInfo](#orderbuyerinfo)|
 |**errors**  <br>*optional*|One or more unexpected errors occurred during the getOrderBuyerInfo operation.|[ErrorList](#errorlist)|
+
+
+<a name="getorderregulatedinforesponse"></a>
+### GetOrderRegulatedInfoResponse
+The response schema for the getOrderRegulatedInfo operation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**payload**  <br>*optional*|The payload for the getOrderBuyerInfo operations.|[OrderRegulatedInfo](#orderregulatedinfo)|
+|**errors**  <br>*optional*|One or more unexpected errors occurred during the getOrderRegulatedInfo operation.|[ErrorList](#errorlist)|
 
 
 <a name="getorderaddressresponse"></a>
@@ -517,8 +620,9 @@ Order information.
 |**PromiseResponseDueDate**  <br>*optional*|Indicates the date by which the seller must respond to the buyer with an estimated ship date. Returned only for Sourcing on Demand orders.|string|
 |**IsEstimatedShipDateSet**  <br>*optional*|When true, the estimated ship date is set for the order. Returned only for Sourcing on Demand orders.|boolean|
 |**IsSoldByAB**  <br>*optional*|When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.|boolean|
+|**IsIBA**  <br>*optional*|When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.|boolean|
 |**DefaultShipFromLocationAddress**  <br>*optional*|The recommended location for the seller to ship the items from. It is calculated at checkout. The seller may or may not choose to ship from this location.|[Address](#address)|
-|**BuyerInvoicePreference**  <br>*optional*|The buyer’s invoicing preference.|enum ([BuyerInvoicePreference](#buyerinvoicepreference))|
+|**BuyerInvoicePreference**  <br>*optional*|The buyer's invoicing preference. Available only in the TR marketplace.|enum ([BuyerInvoicePreference](#buyerinvoicepreference))|
 |**BuyerTaxInformation**  <br>*optional*|Contains the business invoice tax information.|[BuyerTaxInformation](#buyertaxinformation)|
 |**FulfillmentInstruction**  <br>*optional*|Contains the instructions about the fulfillment like where should it be fulfilled from.|[FulfillmentInstruction](#fulfillmentinstruction)|
 |**IsISPU**  <br>*optional*|When true, this order is marked to be picked up from a store rather than delivered.|boolean|
@@ -527,6 +631,7 @@ Order information.
 |**ShippingAddress**  <br>*optional*|The shipping address for the order.|[Address](#address)|
 |**BuyerInfo**  <br>*optional*|Buyer information|[BuyerInfo](#buyerinfo)|
 |**AutomatedShippingSettings**  <br>*optional*|Contains information regarding the Shipping Settings Automaton program, such as whether the order's shipping settings were generated automatically, and what those settings are.|[AutomatedShippingSettings](#automatedshippingsettings)|
+|**HasRegulatedItems**  <br>*optional*|Whether the order contains regulated items which may require additional approval steps before being fulfilled.|boolean|
 
 
 <a name="orderbuyerinfo"></a>
@@ -542,6 +647,68 @@ Buyer information for an order.
 |**BuyerCounty**  <br>*optional*|The county of the buyer.|string|
 |**BuyerTaxInfo**  <br>*optional*|Tax information about the buyer.|[BuyerTaxInfo](#buyertaxinfo)|
 |**PurchaseOrderNumber**  <br>*optional*|The purchase order (PO) number entered by the buyer at checkout. Returned only for orders where the buyer entered a PO number at checkout.|string|
+
+
+<a name="orderregulatedinfo"></a>
+### OrderRegulatedInfo
+The order's regulated information along with its verification status.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**AmazonOrderId**  <br>*required*|An Amazon-defined order identifier, in 3-7-7 format.|string|
+|**RegulatedInformation**  <br>*required*|The regulated information collected during purchase and used to verify the order.|[RegulatedInformation](#regulatedinformation)|
+|**RequiresDosageLabel**  <br>*required*|Whether the order requires attaching a dosage information label when shipped.|boolean|
+|**RegulatedOrderVerificationStatus**  <br>*required*|The order's verification status.|[RegulatedOrderVerificationStatus](#regulatedorderverificationstatus)|
+
+
+<a name="regulatedorderverificationstatus"></a>
+### RegulatedOrderVerificationStatus
+The verification status of the order along with associated approval or rejection metadata.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**Status**  <br>*required*|The verification status of the order.|enum ([Status](#status-subgroup-2))|
+|**RequiresMerchantAction**  <br>*required*|Whether the regulated information provided in the order requires a review by the merchant.|boolean|
+|**ValidRejectionReasons**  <br>*required*|A list of valid rejection reasons that may be used to reject the order's regulated information.|< [RejectionReason](#rejectionreason) > array|
+|**RejectionReason**  <br>*optional*|The reason for rejecting the order's regulated information. Not present if the order isn't rejected.|[RejectionReason](#rejectionreason)|
+|**ReviewDate**  <br>*optional*|The date the order was reviewed. In ISO 8601 date time format.|string|
+|**ExternalReviewerId**  <br>*optional*|The identifier for the order's regulated information reviewer.|string|
+
+
+<a name="rejectionreason"></a>
+### RejectionReason
+The reason for rejecting the order's regulated information. Not present if the order isn't rejected.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**RejectionReasonId**  <br>*required*|The unique identifier for the rejection reason.|string|
+|**RejectionReasonDescription**  <br>*required*|The human-readable description of this rejection reason.|string|
+
+
+<a name="regulatedinformation"></a>
+### RegulatedInformation
+The regulated information collected during purchase and used to verify the order.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**Fields**  <br>*required*|A list of regulated information fields as collected from the regulatory form.|< [RegulatedInformationField](#regulatedinformationfield) > array|
+
+
+<a name="regulatedinformationfield"></a>
+### RegulatedInformationField
+A field collected from the regulatory form.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**FieldId**  <br>*required*|The unique identifier for the field.|string|
+|**FieldLabel**  <br>*required*|The human-readable name for the field.|string|
+|**FieldType**  <br>*required*|The type of field the field.|enum ([FieldType](#fieldtype))|
+|**FieldValue**  <br>*required*|The content of the field as collected in regulatory form. Note that FileAttachment type fields will contain an URL to download the attachment here.|string|
 
 
 <a name="orderaddress"></a>
@@ -705,6 +872,7 @@ A single order item.
 |**StoreChainStoreId**  <br>*optional*|The store chain store identifier. Linked to a specific store in a store chain.|string|
 |**DeemedResellerCategory**  <br>*optional*|The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.|enum ([DeemedResellerCategory](#deemedresellercategory))|
 |**BuyerInfo**  <br>*optional*|A single item's buyer information.|[ItemBuyerInfo](#itembuyerinfo)|
+|**BuyerRequestedCancel**  <br>*optional*|Information about whether or not a buyer requested cancellation.|[BuyerRequestedCancel](#buyerrequestedcancel)|
 
 
 <a name="orderitemsbuyerinfolist"></a>
@@ -792,7 +960,7 @@ Information about withheld taxes.
 
 <a name="buyertaxinformation"></a>
 ### BuyerTaxInformation
-Contains the business invoice tax information.
+Contains the business invoice tax information. Available only in the TR marketplace.
 
 
 |Name|Description|Schema|
@@ -853,6 +1021,17 @@ Contains information regarding the Shipping Settings Automation program, such as
 |**AutomatedShipMethod**  <br>*optional*|Auto-generated ship method for SSA orders.|string|
 
 
+<a name="buyerrequestedcancel"></a>
+### BuyerRequestedCancel
+Information about whether or not a buyer requested cancellation.
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**IsBuyerRequestedCancel**  <br>*optional*|When true, the buyer has requested cancellation.|boolean|
+|**BuyerCancelReason**  <br>*optional*|Reason for buyer requesting cancel|string|
+
+
 <a name="errorlist"></a>
 ### ErrorList
 A list of error responses returned when a request is unsuccessful.
@@ -874,7 +1053,7 @@ Error response returned when the request is unsuccessful.
 
 <a name="buyerinvoicepreference"></a>
 ### BuyerInvoicePreference
-The buyer’s invoicing preference.
+The buyer's invoicing preference. Available only in the TR marketplace.
 
 *Type* : enum
 
@@ -984,6 +1163,19 @@ Whether the order was fulfilled by Amazon (AFN) or by the seller (MFN).
 |**AFN**|Fulfilled by Amazon.|
 
 
+<a name="fieldtype"></a>
+### FieldType
+The type of field the field.
+
+*Type* : enum
+
+
+|Value|Description|
+|---|---|
+|**Text**|This field is a text representation of a response collected from the regulatory form.|
+|**FileAttachment**|This field contains the link to an attachment collected from the regulatory form.|
+
+
 <a name="deemedresellercategory"></a>
 ### DeemedResellerCategory
 The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.
@@ -995,4 +1187,28 @@ The category of deemed reseller. This applies to selling partners that are not b
 |---|---|
 |**IOSS**|Import one stop shop. The item being purchased is not held in the EU for shipment.|
 |**UOSS**|Union one stop shop. The item being purchased is held in the EU for shipment.|
+
+
+<a name="status"></a>
+### Status
+*Type* : enum
+
+<a id="status-subgroup-1"></a>**For use with the definition(s): [UpdateVerificationStatusRequestBody](#updateverificationstatusrequestbody)**
+The new verification status of the order.
+
+|Value|Description|
+|---|---|
+|**Approved**|The order's regulated information has been reviewed and approved.|
+|**Rejected**|The order's regulated information has been reviewed and rejected.|
+
+<a id="status-subgroup-2"></a>**For use with the definition(s): [RegulatedOrderVerificationStatus](#regulatedorderverificationstatus)**
+The verification status of the order.
+
+|Value|Description|
+|---|---|
+|**Pending**|The order is pending approval. Note the approval might be needed from someone other than the merchant as determined by the RequiresMerchantAction field.|
+|**Approved**|The order's regulated information has been reviewed and approved.|
+|**Rejected**|The order's regulated information has been reviewed and rejected.|
+|**Expired**|The time to review the order's regulated information has expired.|
+|**Cancelled**|The order was cancelled by the purchaser.|
 
