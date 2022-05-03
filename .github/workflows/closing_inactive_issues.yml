@@ -1,0 +1,58 @@
+name: "Close stale issues"
+
+# Controls when the action will run.
+on:
+  schedule:
+    # Controls when the action will run: Minute (0-59) | Hour (0-23) | Day of the month (1-31) | Month (1-12 or JAN-DEC) | Day of the week (0-6 or SUN-SAT)
+    - cron: "30 18 * * *"
+
+jobs:
+  cleanup:
+    name: Stale issue job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/stale-issue-cleanup@v4
+        with:
+
+          #Issue types to process ("issues", "pull_requests", or "issues,pull_requests")
+          issue-types: 'issues'
+          # Setting messages to an empty string will cause the automation to skip
+          # that category
+          # Implementing ancient issue closure only at the moment.
+          ancient-issue-message: 'This is a very old issue that is probably not getting as much
+          attention as it deserves. 
+          We encourage you to check if this is still an issue in
+          the latest release and if you find that this is still a problem, please feel free
+          to provide a comment or open a new issue.'
+          #stale-issue-message: 'It looks like this issue has not been active for more than five days.
+          #In the absence of more information, we will be closing this issue soon.
+          #If you find that this is still a problem, please add a comment to prevent automatic closure, or
+          #if the issue is already closed please feel free to reopen it.'
+
+          # These labels are required
+          stale-issue-label: 'closing soon'
+          exempt-issue-labels: 'no auto-closure'
+          response-requested-label: 'answer required'
+
+          # Don't set closed-for-staleness label to skip closing very old issues
+          # regardless of label
+          closed-for-staleness-label: 'closed for inactivity'
+
+          # Issue timing. Setting ancient issues to 6 months and stale to 1 month with no activity.
+          # Issue will automatically close after 5 days of being marked as stale.
+          # For Dry-run purposes, closing issues after 1 day.
+          #days-before-stale: 30
+          days-before-close: 1
+          days-before-ancient: 180
+
+          # If you don't want to mark an issue as being ancient based on a
+          # threshold of "upvotes", you can set this here. An "upvote" is
+          # the total number of +1, heart, hooray, and rocket reactions
+          # on an issue.
+          # Current threshold based off the minimum expected for a possible bug.
+          minimum-upvotes-to-exempt: 10
+
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          loglevel: DEBUG
+          # Set dry-run to true to not perform label or close actions.
+          dry-run: true
