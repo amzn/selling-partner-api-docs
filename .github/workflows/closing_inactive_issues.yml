@@ -19,12 +19,12 @@ jobs:
           # Setting messages to an empty string will cause the automation to skip
           # that category
           # Implementing ancient issue closure only at the moment.
-          ancient-issue-message: 'This is a very old issue that is probably not getting as much
+          stale-issue-message: 'This is a very old issue that is probably not getting as much
           attention as it deserves. 
           We encourage you to check if this is still an issue after 
           the latest release and if you find that this is still a problem, please feel free
           to open a new issue and make a reference to this one.'
-          #stale-issue-message: 'It looks like this issue has not been active for more than five days.
+          #ancient-issue-message: 'It looks like this issue has not been active for more than thirty days.
           #In the absence of more information, we will be closing this issue soon.
           #If you find that this is still a problem, please add a comment to prevent automatic closure, or
           #if the issue is already closed please feel free to reopen it.'
@@ -40,7 +40,7 @@ jobs:
 
           # Issue timing. Setting ancient issues to 6 months and stale to 1 month with no activity.
           # Issue will automatically close after 5 days of being marked as stale.
-          #days-before-stale: 30
+          days-before-stale: 180
           days-before-close: 5
           days-before-ancient: 180
 
