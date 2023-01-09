@@ -1,28 +1,42 @@
 ---
-name: Documentation Bug Report
-about: Report an error in our documentation
-title: "[BUG] Documentation"
-labels: bug, documentation
+name: Bug Report
+about: Report an error or outage
+title: "[BUG] [SP-API] [Issue]"
+labels: bug, outage
 assignees: ''
 
 ---
 
-**If you need help troubleshooting a problem with Selling Partner APIs, please [open a support case](https://developer.amazonservices.com/support). Issues are for reporting documentation bugs and enhancements only.**
+<!--
+PLEASE HELP US PROCESS GITHUB ISSUES FASTER BY PROVIDING THE FOLLOWING INFORMATION.
+ISSUES MISSING IMPORTANT INFORMATION MAY BE CLOSED WITHOUT INVESTIGATION.
+-->
+## I'm submitting a...
+<!-- Check one of the following options with "x" -->
+<pre><code>[ ] Regression (a behavior that used to work and stopped working in a new release)
+[ ] Bug report  <!-- Please search GitHub for a similar issue before submitting -->
+[ ] Feature request
+[ ] Documentation issue or request
+[ ] Other... Please describe:
+</code></pre>
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+<!--- Provide a general summary of the issue in the Title above -->
 
-**URL of the content on GitHub**
-Please provide the GitHub URL for the documentation where you see the bug.
+## SP-API Name and Version or Report/Feed Type
 
-**Description of what the documentation currently says**
-Please describe the section/paragraph of the documentation where you see the bug.
+## Expected Behavior
+<!--- If you're describing a bug, tell us what should happen -->
+<!--- If you're suggesting a change/improvement, tell us how it should work -->
 
-**Description of what the documentation should say**
-A clear and concise description of the guidance you expected to see in the documentation.
+## Current Behavior
+<!--- If describing a bug, tell us what happens instead of the expected behavior -->
+<!--- Include full errors, uncaught exceptions, how long this has been happening, if you are able to reproduce consistently -->
+<!--- If this is happening only to particular regions/marketplaces, specify -->
+<!--- If service responses are relevant, please include any -->
+<!--- If suggesting a change/improvement, explain the difference from current behavior -->
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Context/Screenshots
+<!--- How has this issue affected you? What are you trying to accomplish? -->
 
-**Additional context**
-Add any other context about the problem here.
+## Your Environment
+<!--- Include as many relevant details about the environment where the bug was discovered -->
