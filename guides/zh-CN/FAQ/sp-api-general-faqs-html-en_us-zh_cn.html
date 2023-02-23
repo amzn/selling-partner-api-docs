@@ -1,0 +1,631 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>sp-api-general-faqs</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>有关此页面的最新版本，请参阅 </span><a href='https://developer-docs.amazon.com/sp-api/docs/sp-api-general-faqs' target='_blank' class='url'>https://developer-docs.amazon.com/sp-api/docs/sp-api-general-faqs</a></p><h2 id='accounts'><span>账户</span></h2><h3 id='do-i-need-a-professional-selling-account-to-register-as-a-selling-partner-api-developer'><span>我是否需要注册专业销售账户才能成为销售伙伴 API 开发者？</span></h3><details> 
+  <summary>点击此处以展开回答。</summary></details><p><span>是的，只有注册专业销售账户才能开发销售伙伴 API 或与之集成。个人账户不符合条件。您可以随时将您的账户升级为专业计划。可以从</span><a href='https://sellercentral.amazon.com//hz/sc/account-information'><span>账户信息</span></a><span>的“您的服务”下查看您的销售计划类型和商城信息。</span>
+</details></p><h3 id='do-i-need-to-have-a-professional-selling-account-to-use-sandbox-endpoint'><span>是否必须拥有专业销售账户才能使用沙箱端点？</span></h3><details>
+  <summary>点击此处以展开回答。</summary></details><p><span>是的，对 SP-API 进行沙箱调用与进行生产调用相同，区别在于您要将调用指向 SP-API 沙箱端点。调用沙箱端点会返回所有销售伙伴 API 的静态模拟响应。沙箱端点允许您在不影响生产数据或触发真实事件的情况下测试应用程序。</span>
+</details></p><h3 id='will-updating-my-developer-profile-affect-existing-applications-or-roles'><span>更新开发者资料是否会影响现有的应用程序或职权？</span></h3><details> 
+  <summary>点击此处以展开回答。</summary></details><p><span>不会。当您提交更改以更新开发者资料时，将创建一个新 case。根据您收到的 case 反馈，您需要在回复中提供的截止日期之前更新/修改您的个人资料。</span>
+</details><span> </span></p><h3 id='after-i-update-my-developer-profile-how-long-does-it-take-to-complete-review'><span>更新开发者资料后，完成审查需要多长时间？</span></h3><details>
+  <summary>点击此处以展开回答。</summary></details><p><span>审查通常需要至少 2 周。如果您没有受限 (PII) 职权，并且是首次申请这些职权，则审查花费的时间会更长。亚马逊需要使用最新 ADP 审查受限 (PII) 职权，ADP 会经常更新。</span>
+</details></p><h2 id='authorization'><span>授权</span></h2><h3 id='why-am-i-not-able-to-make-successful-call-to-authorizations-api-or-why-getauthorizationcode-returns-no-mws-authorization-found'><span>为什么我无法成功调用授权 API，或者为什么 getAuthorizationCode 返回“未找到 MWS 授权”？</span></h3><details>
+  <summary>点击此处以展开回答。</summary></details><p><span>如果您使用尚未发布的 SP-API 应用程序或混合应用程序向授权 API 发出请求，则会返回此错误。请注意向授权 API 发出有效请求的以下先决条件：</span></p><ul><li><span>已发布的 MWS 应用程序</span></li><li><span>已发布的 MWS 应用程序已转换为混合应用程序</span></li><li><span>混合应用程序还发布到亚马逊销售伙伴应用商店</span></li><li><span>MWS 的所有开发者 ID 都已添加到混合应用程序中，卖家也已在 MWS 中授权了该应用程序。</span></li></ul><p></details></p><h3 id='why-do-i-need-to-use-the-authorization-api-during-migration'><span>为什么我需要在迁移期间使用授权 API？</span></h3><details> 
+  <summary>点击此处以展开回答。</summary></details><p><span>您可以使用授权 API 实现错误处理，以便在迁移期间 SP-API 代码出错时回退到 MWS 代码。</span>
+</details><span> </span></p><h3 id='why-is-the-confirm-button-not-working-when-i-test-the-authorization-workflow'><span>测试授权工作流程时，为什么“确认”按钮不起作用？</span></h3><details>
+  <summary>点击此处以展开回答。</summary></details><p><span>为了使授权工作流程在亚马逊销售伙伴应用商店和网站工作流程中都能正常运行，SP-API 应用程序必须包含 OAuth 登录 URI 和重定向 URI 的详细信息。未能为这两个字段中的任一个添加信息均会导致“确认”按钮不起作用。</span>
+</details></p><h3 id='why-is-the-mws-auth-token-not-returned-with-spapioauthcode-during-oauth-workflow-process-for-a-hybrid-application'><span>在混合应用程序的 OAuth 工作流程中，为什么 </span><code>spapi_oauth_code</code><span> 没有返回 MWS 身份验证令牌？</span></h3><details>
+  <summary>点击此处以展开回答。</summary></details><p><span>对于自我授权用例（即，使用 OAuth 工作流程授权您自己的卖家账户），不会返回 MWS 身份验证令牌。</span>
+</details></p><h3 id='what-are-the-login-and-redirect-uri-values-to-be-added-in-oauth-information-when-i-am-registering-my-app'><span>我在注册我的应用程序时，要在 OAuth 信息中添加哪些登录和重定向 URI 值？</span></h3><details>
+  <summary>点击此处以展开回答。</summary></details><p><span></span><strong><span>OAuth 登录 URI</span></strong><span> 定义了网站在授权期间的登录页面。此 URI 是在卖家同意授权您的应用程序后显示的。</span></p><p><span></span><strong><span>OAuth 重定向 URI</span></strong><span> 用于在授权后将浏览器重定向到您的应用程序。您可以通过在 OAuth URL 中包含 redirect_uri 参数来指定多个重定向。如果未指定 redirect_uri 参数，它将默认为您定义的第一个 OAuth 重定向 URI。</span></p><p><strong><span>注意</span></strong><span>： OAuth 重定向 URI 不支持 localhost: URI。必须同时指定 OAuth 登录 URI 和 OAuth 重定向 URI，才能成功将其保存到您的应用程序注册中。</span>
+</details></p><h3 id='when-will-the-refresh-token-expire'><span>刷新令牌何时到期？</span></h3><details>
+  <summary>私人开发者点击此处以展开回答。</summary> 刷新令牌的有效期很长。
+</details>
+<details>
+<summary>公共开发者点击此处以展开回答。</summary> 刷新令牌在一年后到期。
+</details><h3 id='can-we-get-the-expiration-date-of-refresh-tokens-through-sp-apis'><span>我们可否通过 SP-API 获取刷新令牌的到期日期？</span></h3><details> 
+  <summary>点击此处以展开回答。</summary></details><p><span>不能。但是，我们将在到期前 30 天向卖家发送一封电子邮件，提醒他们重新授权其 SP-API 应用程序。</span>
+</details></p><h3 id='how-is-a-publication-application-for-sellers-authorized'><span>如何获得卖家的应用程序发布授权？</span></h3><details> 
+  <summary>点击此处以展开回答。</summary></details><p><span>在 2022 年 12 月 31 日之前，用户可以使用授权 API 将授权令牌从 MWS 转换为 SP-API。</span></p><p><span>12 月 31 日之后，您需要通过</span><a href='https://developer-docs.amazon.com/sp-api/docs/amazon-seller-central-partner-network-authorization-workflow'><span>销售伙伴应用商店授权工作流程</span></a><span>或</span><a href='https://developer-docs.amazon.com/sp-api/docs/website-authorization-workflow'><span>网站授权工作流程</span></a><span>实现 OAuth 授权。</span></p><p></details></p><h2 id='publishing-and-editing-applications'><span>发布和编辑应用程序</span></h2><h3 id='how-do-i-publish-my-application-how-long-will-the-process-take'><span>如何发布应用程序？ 该过程需要多长时间？</span></h3><details> 
+  <summary>点击此处以展开回答。</summary></details><p><span>发布应用程序的过程：</span></p><ol start='' ><li><span>访问</span><a href='https://sellercentral.amazon.com/sellingpartner/developerconsole'><span>开发者平台</span></a><span>。</span></li><li><span>要更新现有应用程序，请从要发布的应用程序的下拉列表</span><strong><span>编辑应用程序</span></strong><span>中选择</span><strong><span>创建商品信息</span></strong><span>。</span></li><li><span>输入应用程序信息。</span></li><li><span>提交您的应用程序。</span></li></ol><p><strong><span>注意：</span></strong><span> 完成整个过程并发布应用程序通常需要两周以上的时间。</span></p><p></details></p><h3 id='can-i-change-the-iam-arn-once-the-sp-api-app-has-been-created-or-when-i-have-converted-mws-to-hybrid-app'><span>创建 SP-API 应用程序或将 MWS 转换为混合应用程序后，我能否更改 IAM ARN？</span></h3><details>
+  <summary>点击此处以展开回答。</summary></details><p><span>可以。当您在开发者平台页面（在卖家平台或供应商平台中）编辑应用程序信息时，可以将 IAM ARN 替换为新值。旧 IAM ARN 和新 IAM ARN 的有效期均为 14 天，这使您有时间更新您对新 IAM ARN 的授权工作流程。14 天后，旧的 IAM ARN 过期。</span>
+</details></p><h3 id='i-want-to-update-an-application-that-is-already-published-if-i-submit-the-application-with-updated-information-does-it-affect-the-existing-one'><span>我想更新已经发布的应用程序。如果我要提交包含更新信息的应用程序，这是否会影响现有的应用程序？</span></h3><details> 
+  <summary>点击此处以展开回答。</summary></details><p><span>不会。现有应用程序在发布过程中不会受到影响。更改获得批准并发布后，新版本将显示给客户。</span>
+</details></p><h2 id='general-questions'><span>一般问题</span></h2><h3 id='how-do-i-use-multiple-redirect-uris'><span>如何使用多个重定向 URI？</span></h3><details>
+    <summary>点击此处以展开回答。</summary></details><p><span>当销售伙伴登录您的网站（</span><a href='https://developer-docs.amazon.com/sp-api/docs/amazon-seller-central-partner-network-authorization-workflow#step-3-the-selling-partner-signs-into-your-website'><span>销售伙伴应用商店授权工作流程中的第 3 步</span></a><span>）时，您的应用程序会将亚马逊回调 URI 加载到浏览器中，并添加重定向 URI、</span><code>amazon_state</code><span> 参数和 </span><code>state</code><span> 参数。</span></p><p><span>要为应用程序使用多个重定向 URI，必须在注册应用程序时添加 OAuth 重定向 URI。请注意，必须同时指定 OAuth 登录 URI 和 OAuth 重定向 URI 值，才能成功将其保存到您的应用程序注册中。OAuth 重定向 URI 不接受 localhost: URI。</span></p><p><span>如果为应用程序配置了多个重定向 URI，请在</span><a href='https://developer-docs.amazon.com/sp-api/docs/amazon-seller-central-partner-network-authorization-workflow#step-3-the-selling-partner-signs-into-your-website'><span>销售伙伴应用商店授权工作流程的第 3 步</span></a><span>中传递要用作查询参数的重定向 URI。如果您不包括 </span><code>redirect_uri</code><span> 参数，则默认为您在注册应用程序时指定的第一个 OAuth 重定向 URI。</span>
+</details></p><h3 id='does-amazon-provide-a-client-library-for-rubyphp'><span>亚马逊是否为 Ruby/PHP 提供客户端库？</span></h3><details>
+  <summary>点击此处以展开回答。</summary></details><p><span>不。亚马逊不支持 Ruby/PHP 的客户端库。</span></summary>
+</details></p><h3 id='which-version-should-i-use-when-there-are-multiple-versions-of-the-same-api'><span>如果同一 API 有多个版本，我应该使用哪个版本？</span></h3><details>
+  <summary>点击此处以展开回答。</summary> 我们建议使用最新版本。最新版本消除了较早的错误，而较旧版本则相应地被弃用。
+</details><p>&#160;</p></div></div>
+</body>
+</html>
